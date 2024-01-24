@@ -1,0 +1,171 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+
+HEADER
+{
+	VERSION = 1;
+	TIME_UNIT = ns;
+	DATA_OFFSET = 0.0;
+	DATA_DURATION = 1000.0;
+	SIMULATION_TIME = 1000.0;
+	GRID_PHASE = 0.0;
+	GRID_PERIOD = 10.0;
+	GRID_DUTY_CYCLE = 50;
+}
+
+SIGNAL("CLKIN")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("enable")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("SyCLOK")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+TRANSITION_LIST("CLKIN")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 100;
+			LEVEL 0 FOR 5.0;
+			LEVEL 1 FOR 5.0;
+		}
+	}
+}
+
+TRANSITION_LIST("enable")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 82.304;
+		LEVEL 1 FOR 30.178;
+		LEVEL 0 FOR 244.969;
+		LEVEL 1 FOR 47.415;
+		LEVEL 0 FOR 202.815;
+		LEVEL 1 FOR 281.207;
+		LEVEL 0 FOR 111.112;
+	}
+}
+
+TRANSITION_LIST("SyCLOK")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 100.567;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 5.0;
+			LEVEL 0 FOR 5.0;
+		}
+		LEVEL 1 FOR 5.0;
+		LEVEL 0 FOR 245.0;
+		NODE
+		{
+			REPEAT = 4;
+			LEVEL 1 FOR 5.0;
+			LEVEL 0 FOR 5.0;
+		}
+		LEVEL 1 FOR 5.0;
+		LEVEL 0 FOR 215.0;
+		NODE
+		{
+			REPEAT = 27;
+			LEVEL 1 FOR 5.0;
+			LEVEL 0 FOR 5.0;
+		}
+		LEVEL 1 FOR 5.0;
+		LEVEL 0 FOR 94.433;
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "enable";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = ASCII;
+	TREE_INDEX = 0;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "CLKIN";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = ASCII;
+	TREE_INDEX = 1;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SyCLOK";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = ASCII;
+	TREE_INDEX = 2;
+	TREE_LEVEL = 0;
+}
+
+TIME_BAR
+{
+	TIME = 30275;
+	MASTER = TRUE;
+}
+
+TIME_BAR
+{
+	TIME = 1000000;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 1000000;
+	MASTER = FALSE;
+}
+;

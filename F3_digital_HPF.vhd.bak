@@ -1,0 +1,127 @@
+-----------------------------------------------------------------
+-- AA2380V1 OSVA PROJECT.
+-- Date: 21/08/19	Designer: O.N
+-----------------------------------------------------------------
+-- Intel MAXV 5M570 CPLD	Take xxx LE.
+-- Function F3 :  F3_digital_HPF.vhd
+-- 
+-- DC calibration mode and digital high-pass filter.
+-- 
+------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity F3_digital_HPF is
+--
+port(
+	-- INPUTS
+	nFS			: in  std_logic ; -- ADC effective sampling rate
+	DOUTL		: in  std_logic_vector(23 downto 0) ; -- Left channel ADC data
+	DOUTR		: in  std_logic_vector(23 downto 0) ; -- Right channel ADC data
+	DIG_HPF		: in  std_logic ; -- Digital high-pass filter enable 
+	DC_CAL		: in  std_logic ; -- Offset removal calibration
+	CAL_PULSE	: in  std_logic ; -- Offset removal calibration pulse.
+	-- OUTPUTS
+	DOUTFL		: out  std_logic_vector(23 downto 0) ; -- Left channel filtered ADC data
+	DOUTFR		: out  std_logic_vector(23 downto 0)  -- Left channel filtered ADC data
+	
+);
+ 
+end F3_digital_HPF;
+
+architecture Behavioral of F3_digital_HPF is
+
+signal	DATASUBL	:	std_logic_vector(23 downto 0) ; -- Filtered output Left
+signal	DATASUBR	:	std_logic_vector(23 downto 0) ; -- Filtered output Right
+signal	ADDERL		:	std_logic_vector(39 downto 0) ; -- Accumulator adder Left output
+signal	ADDERR		:	std_logic_vector(39 downto 0) ; -- Accumulator adder Right output
+signal	ACCUML		:	std_logic_vector(39 downto 0) ; -- Accumulator output sample Left
+signal	ACCUMR		:	std_logic_vector(39 downto 0) ; -- Accumulator output sample Right
+signal	MSBL		:	std_logic_vector(15 downto 0) ;	-- 16 MSB bits of adder equal MSB of 24bits data word.Left
+signal	MSBR		:	std_logic_vector(15 downto 0) ;	-- 16 MSB bits of adder equal MSB of 24bits data word.Right
+
+signal 	OFFSUBL		:	std_logic_vector(23 downto 0) ; -- DC offset substractor Left
+signal 	OFFSUBR		:	std_logic_vector(23 downto 0) ; -- DC offset substractor Right
+signal  OFFL		:	std_logic_vector(23 downto 0) ; -- DC offset substractor Left
+signal  OFFR		:	std_logic_vector(23 downto 0) ; -- DC offset substractor Right
+
+signal	MuxAddr		: std_logic_vector(1 downto 0)  ;
+
+begin
+
+------------------------------------------------------------------
+-- Digital high-pass filter
+--
+--
+------------------------------------------------------------------
+IIR_HPFilter : process (nFS,DATASUBL,DATASUBR) is
+begin
+	--
+	case	DATASUBL(23) is
+			when '0' => MSBL <= x"0000" ;
+			when '1' => MSBL <= x"FFFF" ;
+	end case;
+	case	DATASUBR(23) is
+			when '0' => MSBR <= x"0000" ;
+			when '1' => MSBR <= x"FFFF" ;
+	end case;
+	--
+	if	rising_edge(nFS)	then
+		-- Left
+		ACCUML <= ADDERL ; 
+		ADDERL <= std_logic_vector(signed(ACCUML) + signed((MSBL & DATASUBL))) ; 
+		-- Right
+		ACCUMR <= ADDERR ; 
+		ADDERR <= std_logic_vector(signed(ACCUMR) + signed((MSBR & DATASUBR))) ;
+	end if;
+end process IIR_HPFilter;
+
+DATASUBL <= std_logic_vector(signed(DOUTL) - signed(ACCUML(39 downto 16))) ;
+DATASUBR <= std_logic_vector(signed(DOUTR) - signed(ACCUMR(39 downto 16))) ;
+
+
+
+------------------------------------------------------------------
+-- Offset calibration process
+-- (This activate HPF for CAL_PULSE time, 
+-- and then store DC value before to disable HPF).
+------------------------------------------------------------------
+OffsetCalib : process (nFS,CAL_PULSE,DOUTL,DOUTR,OFFL,OFFR) is
+begin
+	--
+	if	rising_edge(nFS) and CAL_PULSE='1'	then
+		OFFL	<= ACCUML(39 downto 16) ; -- remove averaged value until CAL_PULSE become low (Left)
+		OFFR	<= ACCUMR(39 downto 16) ; -- remove averaged value until CAL_PULSE become low (Right)
+	end if;
+
+OFFSUBL <= std_logic_vector(signed(DOUTL) - signed(OFFL)) ; -- Remove offset Left channel
+OFFSUBR <= std_logic_vector(signed(DOUTR) - signed(OFFR)) ; -- Remove offset Right channel
+
+end process OffsetCalib ;
+------------------------------------------------------------------
+-- Data MUX to select :
+-- 1) Normal unfiltered outputs 
+-- 2) output with High-Pass filter enabled
+-- 3) DC calibration mode
+-- 
+------------------------------------------------------------------
+MUXEDdata : process (DC_CAL, DIG_HPF,MuxAddr,DOUTL,DOUTR,DATASUBL,DATASUBR,OFFSUBR,OFFSUBL) is
+begin
+MuxAddr	<= (DC_CAL) & (DIG_HPF and not DC_CAL) ; --
+
+	case (MuxAddr) is
+		when "00" 	=> 	DOUTFL <= DOUTL ;
+						DOUTFR <= DOUTR ;
+		when "01"	=>	DOUTFL <= DATASUBL ;
+						DOUTFR <= DATASUBR ;
+		when "10"	=>  DOUTFL <= OFFSUBL ;
+						DOUTFR <= OFFSUBR ;
+		when others =>  DOUTFL <= (others => '-') ;
+						DOUTFR <= (others => '-') ;
+	end case;
+	
+end process MUXEDdata ;
+
+end Behavioral ;

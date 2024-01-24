@@ -1,0 +1,130 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Altera Program License
+# Subscription Agreement, Altera MegaCore Function License
+# Agreement, or other applicable license agreement, including,
+# without limitation, that your use is for the sole purpose of
+# programming logic devices manufactured by Altera and sold by
+# Altera or its authorized distributors.  Please refer to the
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+# Date created = 08:54:12  March 19, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		AA2380-MAXV_TSTQ9.1_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "MAX II"
+set_global_assignment -name DEVICE EPM570T144C3
+set_global_assignment -name TOP_LEVEL_ENTITY F20_EmulateADC
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:49:37  JANUARY 24, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name ADD_DEFAULT_PINS_TO_SIMULATION_OUTPUT_WAVEFORMS OFF
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_global_assignment -name MISC_FILE "D:/Quartus/9.1/AA2380_MAXV_TEST/AA2380_MAXV_v001.dpf"
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_global_assignment -name MISC_FILE "D:/Quartus/9.1/AA2380_MAXV_V0.01/AA2380_MAXV_v001.dpf"
+set_global_assignment -name VHDL_FILE F0_ctrl_encoder.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F0_ctrl_encoder.vwf
+set_global_assignment -name BDF_FILE AA2380_MAXV.bdf
+set_global_assignment -name VHDL_FILE F1_ADCx2_DistributedRead.vhd
+set_global_assignment -name VHDL_FILE F2_leds_decoders.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F2_leds_decoders.vwf
+set_global_assignment -name VHDL_FILE F3_digital_HPF.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F3_digital_HPF.vwf
+set_global_assignment -name VHDL_FILE F4_LR_DATAMUX.vhd
+set_global_assignment -name VHDL_FILE F3_digital_HPF_fast.vhd
+set_global_assignment -name VHDL_FILE F5_Parr_to_I2S.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F5_Parr_to_I2S.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE F3_digital_HPF_fast.vwf
+set_global_assignment -name VHDL_FILE F7_Ready.vhd
+set_global_assignment -name VHDL_FILE F8_SPDIF_TX.vhd
+set_global_assignment -name VHDL_FILE F6_SDRwidget.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F6_SDRwidget.vwf
+set_global_assignment -name VHDL_FILE F9_ADCx2_FastRead.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F9_ADCx2_FastRead.vwf
+set_global_assignment -name VHDL_FILE F10_MAX10Link.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F10_MAX10Link.vwf
+set_global_assignment -name VHDL_FILE F1_ADCx2_DistributedReadAVG.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F1_ADCx2_DistributedReadAVG.vwf
+set_global_assignment -name VHDL_FILE F3_AutoZero.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F3_AutoZero.vwf
+set_global_assignment -name VHDL_FILE F3_AutoZeroS.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F3_AutoZeroS.vwf
+set_global_assignment -name VHDL_FILE CoderRead_v3.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE CoderRead_v3.vwf
+set_global_assignment -name VHDL_FILE F14_slaveio.vhd
+set_global_assignment -name VHDL_FILE F13_SPI_master_16io.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F13_SPI_master_16io.vwf
+set_global_assignment -name VHDL_FILE F12_SPI_slave_32io.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F12_SPI_slave_32io.vwf
+set_global_assignment -name BDF_FILE TEST_SPIO.bdf
+set_global_assignment -name VHDL_FILE F13_SPI_master_32io.vhd
+set_global_assignment -name INCREMENTAL_COMPILATION OFF
+set_global_assignment -name VECTOR_WAVEFORM_FILE TEST_SPIO.vwf
+set_global_assignment -name VHDL_FILE F1_readADC_multimodes.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F1_readADC_multimodes.vwf
+set_global_assignment -name VHDL_FILE TESTclkdivider.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE TESTclkdivider.vwf
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
+set_global_assignment -name DEVICE_FILTER_PACKAGE TQFP
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 144
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 3
+set_global_assignment -name VHDL_FILE FXX_ClockEnable.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE FXX_ClockEnable.vwf
+set_global_assignment -name GLITCH_INTERVAL "1 ps"
+set_global_assignment -name VECTOR_WAVEFORM_FILE F1_readADC_multimodes_1ms.vwf
+set_global_assignment -name VHDL_FILE F20_EmulateADC.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F20_EmulateADC.vwf
+set_global_assignment -name BDF_FILE F00_TestADC.bdf
+set_global_assignment -name GDF_FILE .gdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE F00_TestADC_simple.vwf
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to nROT_push
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to nROT_Ta
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to nROT_Tb
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CONF[3]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CONF[2]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CONF[1]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to CONF[0]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to IN_PIN0
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to IN_PIN1
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to IN_PIN2
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to IN_PIN3
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ADC1_BUSY
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ADC1_SDO
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ADC2_BUSY
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ADC2_SDO
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to UIO[3]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to UIO[2]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to UIO[1]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to UIO[0]
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE F20_EmulateADC.vwf
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"

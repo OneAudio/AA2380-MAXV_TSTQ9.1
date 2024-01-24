@@ -1,0 +1,287 @@
+Simulator report for AA2380_MAXV_v001
+Wed Jan 24 08:30:09 2024
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 100.0 us     ;
+; Simulation Netlist Size     ; 83 nodes     ;
+; Simulation Coverage         ;      68.82 % ;
+; Total Number of Transitions ; 24031        ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; MAX II       ;
+; Device                      ; EPM570T144C3 ;
++-----------------------------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                              ;
++--------------------------------------------------------------------------------------------+--------------------+---------------+
+; Option                                                                                     ; Setting            ; Default Value ;
++--------------------------------------------------------------------------------------------+--------------------+---------------+
+; Simulation mode                                                                            ; Timing             ; Timing        ;
+; Start time                                                                                 ; 0 ns               ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF               ;               ;
+; Vector input source                                                                        ; F20_EmulateADC.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; Off                ; On            ;
+; Check outputs                                                                              ; Off                ; Off           ;
+; Report simulation coverage                                                                 ; On                 ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                 ; On            ;
+; Display missing 1-value coverage report                                                    ; On                 ; On            ;
+; Display missing 0-value coverage report                                                    ; On                 ; On            ;
+; Detect setup and hold time violations                                                      ; Off                ; Off           ;
+; Detect glitches                                                                            ; Off                ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                ; Off           ;
+; Generate Signal Activity File                                                              ; Off                ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                 ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE         ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; On                 ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto               ; Auto          ;
++--------------------------------------------------------------------------------------------+--------------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      68.82 % ;
+; Total nodes checked                                 ; 83           ;
+; Total output ports checked                          ; 93           ;
+; Total output ports with complete 1/0-value coverage ; 64           ;
+; Total output ports with no 1/0-value coverage       ; 29           ;
+; Total output ports with no 1-value coverage         ; 29           ;
+; Total output ports with no 0-value coverage         ; 29           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++-----------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                   ;
++----------------------------------+-----------------------------------------+------------------+
+; Node Name                        ; Output Port Name                        ; Output Port Type ;
++----------------------------------+-----------------------------------------+------------------+
+; |F20_EmulateADC|BUSY_on          ; |F20_EmulateADC|BUSY_on                 ; regout           ;
+; |F20_EmulateADC|SRDATA[23]       ; |F20_EmulateADC|SRDATA[23]              ; regout           ;
+; |F20_EmulateADC|QB               ; |F20_EmulateADC|CLEAR_MOY~0             ; combout          ;
+; |F20_EmulateADC|QB               ; |F20_EmulateADC|QB                      ; regout           ;
+; |F20_EmulateADC|SCK_count[1]     ; |F20_EmulateADC|SCK_count[1]~1          ; cout0            ;
+; |F20_EmulateADC|SCK_count[1]     ; |F20_EmulateADC|SCK_count[1]~1COUT1_17  ; cout1            ;
+; |F20_EmulateADC|SCK_count[2]     ; |F20_EmulateADC|SCK_count[2]~3          ; cout0            ;
+; |F20_EmulateADC|SCK_count[2]     ; |F20_EmulateADC|SCK_count[2]~3COUT1_19  ; cout1            ;
+; |F20_EmulateADC|SCK_count[3]     ; |F20_EmulateADC|SCK_count[3]~5          ; cout0            ;
+; |F20_EmulateADC|SCK_count[3]     ; |F20_EmulateADC|SCK_count[3]~5COUT1_21  ; cout1            ;
+; |F20_EmulateADC|SCK_count[4]     ; |F20_EmulateADC|SCK_count[4]            ; regout           ;
+; |F20_EmulateADC|Busy_end         ; |F20_EmulateADC|Busy_end                ; regout           ;
+; |F20_EmulateADC|SRDATA[22]       ; |F20_EmulateADC|SRDATA[22]              ; regout           ;
+; |F20_EmulateADC|Emulate_SDO~0    ; |F20_EmulateADC|Emulate_SDO~0           ; combout          ;
+; |F20_EmulateADC|Equal1~0         ; |F20_EmulateADC|Equal1~0                ; combout          ;
+; |F20_EmulateADC|Emulate_SDO~1    ; |F20_EmulateADC|Emulate_SDO~1           ; combout          ;
+; |F20_EmulateADC|QA               ; |F20_EmulateADC|QA                      ; regout           ;
+; |F20_EmulateADC|Equal1~1         ; |F20_EmulateADC|Equal1~1                ; combout          ;
+; |F20_EmulateADC|Busy_count[0]    ; |F20_EmulateADC|Busy_count[0]~1         ; cout0            ;
+; |F20_EmulateADC|Busy_count[0]    ; |F20_EmulateADC|Busy_count[0]~1COUT1_18 ; cout1            ;
+; |F20_EmulateADC|Busy_count[1]    ; |F20_EmulateADC|Busy_count[1]~3         ; cout0            ;
+; |F20_EmulateADC|Busy_count[1]    ; |F20_EmulateADC|Busy_count[1]~3COUT1_20 ; cout1            ;
+; |F20_EmulateADC|Busy_count[2]    ; |F20_EmulateADC|Busy_count[2]~5         ; cout0            ;
+; |F20_EmulateADC|Busy_count[2]    ; |F20_EmulateADC|Busy_count[2]~5COUT1_22 ; cout1            ;
+; |F20_EmulateADC|Busy_end~0       ; |F20_EmulateADC|Busy_end~0              ; combout          ;
+; |F20_EmulateADC|Busy_count[5]    ; |F20_EmulateADC|Busy_count[5]           ; regout           ;
+; |F20_EmulateADC|Busy_count[3]    ; |F20_EmulateADC|Busy_count[3]           ; regout           ;
+; |F20_EmulateADC|Busy_count[3]    ; |F20_EmulateADC|Busy_count[3]~9         ; cout             ;
+; |F20_EmulateADC|Busy_count[4]    ; |F20_EmulateADC|Busy_count[4]           ; regout           ;
+; |F20_EmulateADC|Busy_count[4]    ; |F20_EmulateADC|Busy_count[4]~11        ; cout0            ;
+; |F20_EmulateADC|SRDATA[21]       ; |F20_EmulateADC|SRDATA[21]              ; regout           ;
+; |F20_EmulateADC|SRDATA[20]       ; |F20_EmulateADC|SRDATA[20]              ; regout           ;
+; |F20_EmulateADC|SRDATA[19]       ; |F20_EmulateADC|SRDATA[19]              ; regout           ;
+; |F20_EmulateADC|SRDATA[18]       ; |F20_EmulateADC|SRDATA[18]              ; regout           ;
+; |F20_EmulateADC|SRDATA[17]       ; |F20_EmulateADC|SRDATA[17]              ; regout           ;
+; |F20_EmulateADC|SRDATA[16]       ; |F20_EmulateADC|SRDATA[16]              ; regout           ;
+; |F20_EmulateADC|SRDATA[15]       ; |F20_EmulateADC|SRDATA[15]              ; regout           ;
+; |F20_EmulateADC|SRDATA[14]       ; |F20_EmulateADC|SRDATA[14]              ; regout           ;
+; |F20_EmulateADC|SRDATA[13]       ; |F20_EmulateADC|SRDATA[13]              ; regout           ;
+; |F20_EmulateADC|SRDATA[12]       ; |F20_EmulateADC|SRDATA[12]              ; regout           ;
+; |F20_EmulateADC|SRDATA[11]       ; |F20_EmulateADC|SRDATA[11]              ; regout           ;
+; |F20_EmulateADC|SRDATA[10]       ; |F20_EmulateADC|SRDATA[10]              ; regout           ;
+; |F20_EmulateADC|SRDATA[9]        ; |F20_EmulateADC|SRDATA[9]               ; regout           ;
+; |F20_EmulateADC|SRDATA[8]        ; |F20_EmulateADC|SRDATA[8]               ; regout           ;
+; |F20_EmulateADC|SRDATA[7]        ; |F20_EmulateADC|SRDATA[7]               ; regout           ;
+; |F20_EmulateADC|SRDATA[6]        ; |F20_EmulateADC|SRDATA[6]               ; regout           ;
+; |F20_EmulateADC|SRDATA[5]        ; |F20_EmulateADC|SRDATA[5]               ; regout           ;
+; |F20_EmulateADC|SRDATA[4]        ; |F20_EmulateADC|SRDATA[4]               ; regout           ;
+; |F20_EmulateADC|SRDATA[3]        ; |F20_EmulateADC|SRDATA[3]               ; regout           ;
+; |F20_EmulateADC|SRDATA[2]        ; |F20_EmulateADC|SRDATA[2]               ; regout           ;
+; |F20_EmulateADC|SRDATA[1]        ; |F20_EmulateADC|SRDATA[1]               ; regout           ;
+; |F20_EmulateADC|SRDATA[0]        ; |F20_EmulateADC|SRDATA[0]               ; regout           ;
+; |F20_EmulateADC|CNV              ; |F20_EmulateADC|CNV~corein              ; combout          ;
+; |F20_EmulateADC|SCK              ; |F20_EmulateADC|SCK~corein              ; combout          ;
+; |F20_EmulateADC|MCLK             ; |F20_EmulateADC|MCLK~corein             ; combout          ;
+; |F20_EmulateADC|BUSY             ; |F20_EmulateADC|BUSY                    ; padio            ;
+; |F20_EmulateADC|SDO              ; |F20_EmulateADC|SDO                     ; padio            ;
+; |F20_EmulateADC|tst_CLEAR_REG    ; |F20_EmulateADC|tst_CLEAR_REG           ; padio            ;
+; |F20_EmulateADC|tst_CLEAR_MOY    ; |F20_EmulateADC|tst_CLEAR_MOY           ; padio            ;
+; |F20_EmulateADC|tst_SCK_count[0] ; |F20_EmulateADC|tst_SCK_count[0]        ; padio            ;
+; |F20_EmulateADC|tst_SCK_count[1] ; |F20_EmulateADC|tst_SCK_count[1]        ; padio            ;
+; |F20_EmulateADC|tst_SCK_count[2] ; |F20_EmulateADC|tst_SCK_count[2]        ; padio            ;
+; |F20_EmulateADC|tst_SCK_count[3] ; |F20_EmulateADC|tst_SCK_count[3]        ; padio            ;
+; |F20_EmulateADC|tst_SCK_count[4] ; |F20_EmulateADC|tst_SCK_count[4]        ; padio            ;
++----------------------------------+-----------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++------------------------------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                                       ;
++----------------------------------+------------------------------------------+------------------+
+; Node Name                        ; Output Port Name                         ; Output Port Type ;
++----------------------------------+------------------------------------------+------------------+
+; |F20_EmulateADC|SCK_count[4]     ; |F20_EmulateADC|SCK_count[4]~7           ; cout0            ;
+; |F20_EmulateADC|SCK_count[4]     ; |F20_EmulateADC|SCK_count[4]~7COUT1_23   ; cout1            ;
+; |F20_EmulateADC|SCK_count[5]     ; |F20_EmulateADC|SCK_count[5]             ; regout           ;
+; |F20_EmulateADC|Busy_count[4]    ; |F20_EmulateADC|Busy_count[4]~11COUT1_24 ; cout1            ;
+; |F20_EmulateADC|DATADC[23]       ; |F20_EmulateADC|DATADC[23]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[22]       ; |F20_EmulateADC|DATADC[22]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[21]       ; |F20_EmulateADC|DATADC[21]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[20]       ; |F20_EmulateADC|DATADC[20]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[19]       ; |F20_EmulateADC|DATADC[19]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[18]       ; |F20_EmulateADC|DATADC[18]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[17]       ; |F20_EmulateADC|DATADC[17]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[16]       ; |F20_EmulateADC|DATADC[16]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[15]       ; |F20_EmulateADC|DATADC[15]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[14]       ; |F20_EmulateADC|DATADC[14]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[13]       ; |F20_EmulateADC|DATADC[13]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[12]       ; |F20_EmulateADC|DATADC[12]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[11]       ; |F20_EmulateADC|DATADC[11]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[10]       ; |F20_EmulateADC|DATADC[10]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[9]        ; |F20_EmulateADC|DATADC[9]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[8]        ; |F20_EmulateADC|DATADC[8]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[7]        ; |F20_EmulateADC|DATADC[7]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[6]        ; |F20_EmulateADC|DATADC[6]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[5]        ; |F20_EmulateADC|DATADC[5]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[4]        ; |F20_EmulateADC|DATADC[4]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[3]        ; |F20_EmulateADC|DATADC[3]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[2]        ; |F20_EmulateADC|DATADC[2]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[1]        ; |F20_EmulateADC|DATADC[1]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[0]        ; |F20_EmulateADC|DATADC[0]~corein         ; combout          ;
+; |F20_EmulateADC|tst_SCK_count[5] ; |F20_EmulateADC|tst_SCK_count[5]         ; padio            ;
++----------------------------------+------------------------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++------------------------------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                                       ;
++----------------------------------+------------------------------------------+------------------+
+; Node Name                        ; Output Port Name                         ; Output Port Type ;
++----------------------------------+------------------------------------------+------------------+
+; |F20_EmulateADC|SCK_count[4]     ; |F20_EmulateADC|SCK_count[4]~7           ; cout0            ;
+; |F20_EmulateADC|SCK_count[4]     ; |F20_EmulateADC|SCK_count[4]~7COUT1_23   ; cout1            ;
+; |F20_EmulateADC|SCK_count[5]     ; |F20_EmulateADC|SCK_count[5]             ; regout           ;
+; |F20_EmulateADC|Busy_count[4]    ; |F20_EmulateADC|Busy_count[4]~11COUT1_24 ; cout1            ;
+; |F20_EmulateADC|DATADC[23]       ; |F20_EmulateADC|DATADC[23]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[22]       ; |F20_EmulateADC|DATADC[22]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[21]       ; |F20_EmulateADC|DATADC[21]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[20]       ; |F20_EmulateADC|DATADC[20]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[19]       ; |F20_EmulateADC|DATADC[19]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[18]       ; |F20_EmulateADC|DATADC[18]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[17]       ; |F20_EmulateADC|DATADC[17]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[16]       ; |F20_EmulateADC|DATADC[16]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[15]       ; |F20_EmulateADC|DATADC[15]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[14]       ; |F20_EmulateADC|DATADC[14]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[13]       ; |F20_EmulateADC|DATADC[13]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[12]       ; |F20_EmulateADC|DATADC[12]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[11]       ; |F20_EmulateADC|DATADC[11]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[10]       ; |F20_EmulateADC|DATADC[10]~corein        ; combout          ;
+; |F20_EmulateADC|DATADC[9]        ; |F20_EmulateADC|DATADC[9]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[8]        ; |F20_EmulateADC|DATADC[8]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[7]        ; |F20_EmulateADC|DATADC[7]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[6]        ; |F20_EmulateADC|DATADC[6]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[5]        ; |F20_EmulateADC|DATADC[5]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[4]        ; |F20_EmulateADC|DATADC[4]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[3]        ; |F20_EmulateADC|DATADC[3]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[2]        ; |F20_EmulateADC|DATADC[2]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[1]        ; |F20_EmulateADC|DATADC[1]~corein         ; combout          ;
+; |F20_EmulateADC|DATADC[0]        ; |F20_EmulateADC|DATADC[0]~corein         ; combout          ;
+; |F20_EmulateADC|tst_SCK_count[5] ; |F20_EmulateADC|tst_SCK_count[5]         ; padio            ;
++----------------------------------+------------------------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Wed Jan 24 08:30:09 2024
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off AA2380_MAXV -c AA2380_MAXV_v001
+Info: Using vector source file "D:/Quartus/9.1/AA2380_MAXV_V0.01/F20_EmulateADC.vwf"
+Info: Overwriting simulation input file with simulation results
+    Info: A backup of F20_EmulateADC.vwf called AA2380_MAXV_v001.sim_ori.vwf has been created in the db folder
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      68.82 %
+Info: Number of transitions in simulation is 24031
+Info: Vector file F20_EmulateADC.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 147 megabytes
+    Info: Processing ended: Wed Jan 24 08:30:09 2024
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

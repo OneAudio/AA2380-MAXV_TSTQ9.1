@@ -1,0 +1,92 @@
+--------------------------------------------------------------------
+-- ON le 27/08/2019 -- AA2380 OSVA analyzer
+--------------------------------------------------------------------
+-- Intel MAXV 5M570 CPLD	Take xx LE.
+-- Function F10 :  F10_MAX10Link.vhd
+-- --------------------------------------------------------------------
+-- Digital interface for AA10M08 digital logic board.
+-- L/R ADC data are send in mixed form (4 bits bus serial data).
+-- Left/Right clock and Muxclock(12.5M) are also sent for decoding ADC data.
+-- The 2x4bits bus can handle 100 Mbits rate (8 x 32bits @ 1.5625 MHz).
+-- 
+-- The SPI link is slave on AA2380 side. The master is AA10M08 board
+-- that take AA2380 board control.
+-- This link is used to send many commands on ADC board, like sampling rate
+-- and averaging ratio. 
+--
+--
+-- Note: For the max datarate of : 100M/64= 1.5625 MHz
+-- If whe use 32 data muxed in 4 bits then the required
+-- mux clock will be : 1.5625 ( 32/4) = 12.5 MHz (80ns period) 
+--------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity F10_MAX10Link is
+Port (
+	-- INPUTS
+	-- CLOCK		:in			std_logic ; -- 100 MHz main clock
+	MUX_CLK		:in			std_logic ; -- 12.5MHz data MUX clock (synch to nFS !)
+	READY		:in			std_logic ; -- Ready flag	
+	DATAL		:in			std_logic_vector(23 downto 0) ; -- ADC data bus Left channel
+	DATAR		:in			std_logic_vector(23 downto 0) ; -- ADC data bus Right channel
+	-- nFS			:in			std_logic ; -- Effective ADC sampling rate clock
+	-- OUTPUTS
+	-- ??
+	-- INTERFACE CONNECTOR I/O PORTS
+	-- i:o inputs
+	-- SPI_MOSI	:in			STD_LOGIC ;-- SPI serial interface for control/config.
+	-- SPI_CLK		:in			STD_LOGIC ;-- SPI clock 
+	-- SPI_nCS		:in			STD_LOGIC ;-- SPI chip select (active low).
+	-- i:o outputs
+	MDATAL		:out		STD_LOGIC_VECTOR(3 downto 0) ;-- ADC data left channel Muxed data 4 bits
+	MDATAR		:out		STD_LOGIC_VECTOR(3 downto 0) ;-- ADC data left channel Muxed data 4 bits
+	-- LRCKO		:out		STD_LOGIC ;-- ADC Left/Right clock => ADC real sampling clock
+	MUX_CLKO	:buffer		STD_LOGIC -- Data Mux clock clock
+	-- SPI_MISO	:out		STD_LOGIC -- SPI serial interface for control/config (slave)
+);
+end F10_MAX10Link;
+
+architecture Behavioral of F10_MAX10Link is
+
+signal	muxstate	: integer range 0 to 7 :=0 ; -- mux state counter
+
+
+begin
+---------------------------------------------------------------------------------------
+-- Multiplexing ADC data to be send on two 4bits word at 8x sampling frequency.
+--
+---------------------------------------------------------------------------------------
+process (MUX_CLK,muxstate,Ready)
+begin
+if	ready='1'	then
+	if 	falling_edge(MUX_CLK)	then	-- mux change ADC 4 bits sent to output at each falling_edge of MUX_CLK
+		muxstate <= muxstate + 1	; -- increment counter
+		case	muxstate is
+				when 0	=>	MDATAL <= DATAL(3 downto 0) ; -- LSB sent (Left)
+							MDATAR <= DATAR(3 downto 0) ; -- LSB sent (Right)
+				when 1	=>	MDATAL <= DATAL(7 downto 4) ;
+							MDATAR <= DATAR(7 downto 4) ;
+				when 2	=>	MDATAL <= DATAL(11 downto 8) ;
+							MDATAR <= DATAR(11 downto 8) ;
+				when 3	=>	MDATAL <= DATAL(15 downto 12) ;
+							MDATAR <= DATAR(15 downto 12) ;
+				when 4	=>	MDATAL <= DATAL(19 downto 16) ;
+							MDATAR <= DATAR(19 downto 16) ;
+				when 5	=>	MDATAL <= DATAL(23 downto 20) ; -- MSB sent (Left)
+							MDATAR <= DATAR(23 downto 20) ; -- MSB sent (Right)
+				when 6	=>	MDATAL <= x"0" ;
+							MDATAR <= x"0" ;
+				when 7	=>	MDATAL <= x"0" ;
+							MDATAR <= x"0" ;
+		end case;
+	end if;
+else
+	MDATAL 		<= x"0" ;
+	MDATAR 		<= x"0" ;
+	muxstate	<= 0 	;
+end if;
+end process;
+
+
+end Behavioral;

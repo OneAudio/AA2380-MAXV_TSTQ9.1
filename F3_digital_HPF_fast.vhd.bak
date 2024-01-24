@@ -1,0 +1,85 @@
+-----------------------------------------------------------------
+-- AA2380V1 OSVA PROJECT.
+-- Date: 22/08/19	Designer: O.N
+-----------------------------------------------------------------
+-- Intel MAXV 5M570 CPLD	Take 130 LE.
+-- Function F3 :  F3_digital_HPF_fast.vhd
+-- 
+-- DC Offset calibration.
+-- The "fast" version is made to require lower LE by using
+-- 
+-- NOTE:
+-- When CAL_PULSE is initiate, we store actual ADCs DATA value.
+-- Then this value is subsctacted from actual ADCs value to
+-- allow offset removal.
+-- Because there is no averaging of ADC read value, the remaining
+-- offset is higher, but that require much less LE !
+------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity F3_digital_HPF_fast is
+--
+port(
+	-- INPUTS
+	nFS			: in  std_logic ; -- ADC effective sampling rate
+	DOUTL		: in  std_logic_vector(23 downto 0) ; -- Left channel ADC data
+	DOUTR		: in  std_logic_vector(23 downto 0) ; -- Right channel ADC data
+	CAL_PULSE	: in  std_logic ; -- Offset removal calibration pulse.
+	-- OUTPUTS
+	DOUTFL		: out  std_logic_vector(23 downto 0) ; -- Left channel filtered ADC data
+	DOUTFR		: out  std_logic_vector(23 downto 0)  -- Left channel filtered ADC data
+	
+);
+ 
+end F3_digital_HPF_fast;
+
+architecture Behavioral of F3_digital_HPF_fast is
+
+signal	OFFSETL	:	std_logic_vector(33 downto 0) ; -- Stored offset Left channel
+signal	OFFSETR	:	std_logic_vector(33 downto 0) ; -- Stored offset Right channel
+signal	avgcount:	integer range 0 to 1024 := 0  ; -- averaging counter (10bits wide
+-- signal	MSBL	:	std_logic_vector(9 downto 0) ; -- 
+-- signal	MSBR	:	std_logic_vector(9 downto 0) ; -- 
+begin
+
+------------------------------------------------------------------
+-- 
+-- Acummulated 1024 ADC value and then divide it by 1024 (10 bits)
+-- to take the offset average value.
+-- Then it is substracted to current ADC value to remove this offset.
+------------------------------------------------------------------
+-- average : process (nFS,avgcount,CAL_PULSE,DOUTL,DOUTR,OFFSETL,OFFSETR,MSBL,MSBR) is
+average : process (nFS,avgcount,CAL_PULSE,DOUTL,DOUTR,OFFSETL,OFFSETR) is
+begin
+	--
+	-- case	DOUTL(23) is
+			-- when '0' => MSBL <= "0000000000" ;
+			-- when '1' => MSBL <= "1111111111" ;
+	-- end case;
+	-- case	DOUTR(23) is
+			-- when '0' => MSBR <= "0000000000" ;
+			-- when '1' => MSBR <= "1111111111" ;
+	-- end case;
+	--
+	if	CAL_PULSE='1'	then
+		if	rising_edge(nFS)	then
+			if	avgcount < 1024	then
+				-- OFFSETL <= std_logic_vector(signed(OFFSETL) + signed(MSBL & DOUTL) ); -- accumulate
+				-- OFFSETR <= std_logic_vector(signed(OFFSETR) + signed(MSBR & DOUTR) ); -- accumulate
+				OFFSETL <= std_logic_vector(signed(OFFSETL) + signed(DOUTL) ); -- accumulate
+				OFFSETR <= std_logic_vector(signed(OFFSETR) + signed(DOUTR) ); -- accumulate
+				avgcount <= avgcount + 1	; -- increment counter	
+			end if;
+		end if;
+	else
+		avgcount	<= 0 ; --reset counter
+	end if;
+	DOUTFL		<=  std_logic_vector(signed(DOUTL) - signed(OFFSETL(33 downto 10)))	;
+	DOUTFR		<=  std_logic_vector(signed(DOUTR) - signed(OFFSETR(33 downto 10)))	;
+			
+end process average;
+
+end Behavioral ;

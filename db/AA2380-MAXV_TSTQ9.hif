@@ -1,0 +1,663 @@
+Quartus II
+Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+45
+3415
+OFF
+OFF
+OFF
+ON
+ON
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+F00_TestADC
+# storage
+db|AA2380-MAXV_TSTQ9.(0).cnf
+db|AA2380-MAXV_TSTQ9.(0).cnf
+# case_insensitive
+# source_file
+f00_testadc.bdf
+77dd5b86b672fc81c75ad1f72841042
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+F1_readADC_multimodes
+# storage
+db|AA2380-MAXV_TSTQ9.(1).cnf
+db|AA2380-MAXV_TSTQ9.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f1_readadc_multimodes.vhd
+82fc590f116a5df1aec1085b9571e5f
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+F1_readADC_multimodes:inst2
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+F20_EmulateADC
+# storage
+db|AA2380-MAXV_TSTQ9.(2).cnf
+db|AA2380-MAXV_TSTQ9.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f20_emulateadc.vhd
+2eeb8fde1d48acccaf9f62c6da89f1
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+F20_EmulateADC:inst
+F20_EmulateADC:inst1
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+lpm_divide
+# storage
+db|AA2380-MAXV_TSTQ9.(3).cnf
+db|AA2380-MAXV_TSTQ9.(3).cnf
+# case_insensitive
+# source_file
+|altera|quartus|libraries|megafunctions|lpm_divide.tdf
+54966f81ff8a917b1dc9b9ad1a09648
+7
+# user_parameter {
+LPM_WIDTHN
+5
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHD
+5
+PARAMETER_UNKNOWN
+USR
+LPM_NREPRESENTATION
+UNSIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_DREPRESENTATION
+UNSIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+LPM_REMAINDERPOSITIVE
+TRUE
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+5
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+lpm_divide_ovl
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+OPTIMIZE_FOR_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+}
+# used_port {
+quotient4
+-1
+3
+quotient3
+-1
+3
+quotient2
+-1
+3
+quotient1
+-1
+3
+quotient0
+-1
+3
+denom4
+-1
+3
+denom3
+-1
+3
+denom2
+-1
+3
+denom1
+-1
+3
+denom0
+-1
+3
+numer2
+-1
+1
+numer1
+-1
+1
+numer0
+-1
+1
+numer4
+-1
+2
+numer3
+-1
+2
+}
+# macro_sequence
+
+# end
+# entity
+lpm_divide_ovl
+# storage
+db|AA2380-MAXV_TSTQ9.(4).cnf
+db|AA2380-MAXV_TSTQ9.(4).cnf
+# case_insensitive
+# source_file
+db|lpm_divide_ovl.tdf
+16d4dbc09525eea4cc92458dba29a4c
+7
+# used_port {
+quotient4
+-1
+3
+quotient3
+-1
+3
+quotient2
+-1
+3
+quotient1
+-1
+3
+quotient0
+-1
+3
+numer4
+-1
+3
+numer3
+-1
+3
+numer2
+-1
+3
+numer1
+-1
+3
+numer0
+-1
+3
+denom4
+-1
+3
+denom3
+-1
+3
+denom2
+-1
+3
+denom1
+-1
+3
+denom0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+sign_div_unsign_9kh
+# storage
+db|AA2380-MAXV_TSTQ9.(5).cnf
+db|AA2380-MAXV_TSTQ9.(5).cnf
+# case_insensitive
+# source_file
+db|sign_div_unsign_9kh.tdf
+6ef16d19e72675d7cfa35d88b662aa
+7
+# used_port {
+remainder4
+-1
+3
+remainder3
+-1
+3
+remainder2
+-1
+3
+remainder1
+-1
+3
+remainder0
+-1
+3
+quotient4
+-1
+3
+quotient3
+-1
+3
+quotient2
+-1
+3
+quotient1
+-1
+3
+quotient0
+-1
+3
+numerator4
+-1
+3
+numerator3
+-1
+3
+numerator2
+-1
+3
+numerator1
+-1
+3
+numerator0
+-1
+3
+denominator4
+-1
+3
+denominator3
+-1
+3
+denominator2
+-1
+3
+denominator1
+-1
+3
+denominator0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+alt_u_div_die
+# storage
+db|AA2380-MAXV_TSTQ9.(6).cnf
+db|AA2380-MAXV_TSTQ9.(6).cnf
+# case_insensitive
+# source_file
+db|alt_u_div_die.tdf
+55833f6b9ca5c17225cdc24bda13fd3
+7
+# used_port {
+remainder4
+-1
+3
+remainder3
+-1
+3
+remainder2
+-1
+3
+remainder1
+-1
+3
+remainder0
+-1
+3
+quotient4
+-1
+3
+quotient3
+-1
+3
+quotient2
+-1
+3
+quotient1
+-1
+3
+quotient0
+-1
+3
+numerator4
+-1
+3
+numerator3
+-1
+3
+numerator2
+-1
+3
+numerator1
+-1
+3
+numerator0
+-1
+3
+denominator4
+-1
+3
+denominator3
+-1
+3
+denominator2
+-1
+3
+denominator1
+-1
+3
+denominator0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_e7c
+# storage
+db|AA2380-MAXV_TSTQ9.(7).cnf
+db|AA2380-MAXV_TSTQ9.(7).cnf
+# case_insensitive
+# source_file
+db|add_sub_e7c.tdf
+96ad42ad95674c4a0886a18804897c9
+7
+# used_port {
+result0
+-1
+3
+datab0
+-1
+3
+dataa0
+-1
+3
+cout
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_f7c
+# storage
+db|AA2380-MAXV_TSTQ9.(8).cnf
+db|AA2380-MAXV_TSTQ9.(8).cnf
+# case_insensitive
+# source_file
+db|add_sub_f7c.tdf
+69ed0357ce718e04187c6ef7a2f742e
+7
+# used_port {
+result1
+-1
+3
+result0
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cout
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_g7c
+# storage
+db|AA2380-MAXV_TSTQ9.(9).cnf
+db|AA2380-MAXV_TSTQ9.(9).cnf
+# case_insensitive
+# source_file
+db|add_sub_g7c.tdf
+8afa15aebdda3992ef74dd61871ffca
+7
+# used_port {
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cout
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_h7c
+# storage
+db|AA2380-MAXV_TSTQ9.(10).cnf
+db|AA2380-MAXV_TSTQ9.(10).cnf
+# case_insensitive
+# source_file
+db|add_sub_h7c.tdf
+19e6e830aa9f1fe1337bfb6a76ed4ba0
+7
+# used_port {
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cout
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_i7c
+# storage
+db|AA2380-MAXV_TSTQ9.(11).cnf
+db|AA2380-MAXV_TSTQ9.(11).cnf
+# case_insensitive
+# source_file
+db|add_sub_i7c.tdf
+e11622bee4837a4d5ee838799e9cd2b7
+7
+# used_port {
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cout
+-1
+3
+}
+# macro_sequence
+
+# end
+# complete
+

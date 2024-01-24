@@ -1,0 +1,99 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 16 16 240 176)
+	(text "F13_SPI_master_32io" (rect 5 0 113 12)(font "Arial" ))
+	(text "inst" (rect 8 144 25 156)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "CLOCK_spi" (rect 0 0 57 12)(font "Arial" ))
+		(text "CLOCK_spi" (rect 21 27 78 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 1))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "strobe" (rect 0 0 30 12)(font "Arial" ))
+		(text "strobe" (rect 21 43 51 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "DATA_in[31..0]" (rect 0 0 74 12)(font "Arial" ))
+		(text "DATA_in[31..0]" (rect 21 59 95 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "SPI_MISO" (rect 0 0 50 12)(font "Arial" ))
+		(text "SPI_MISO" (rect 21 75 71 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 1))
+	)
+	(port
+		(pt 224 32)
+		(output)
+		(text "DATA_out[31..0]" (rect 0 0 81 12)(font "Arial" ))
+		(text "DATA_out[31..0]" (rect 122 27 203 39)(font "Arial" ))
+		(line (pt 224 32)(pt 208 32)(line_width 3))
+	)
+	(port
+		(pt 224 48)
+		(output)
+		(text "SPI_CLK" (rect 0 0 44 12)(font "Arial" ))
+		(text "SPI_CLK" (rect 159 43 203 55)(font "Arial" ))
+		(line (pt 224 48)(pt 208 48)(line_width 1))
+	)
+	(port
+		(pt 224 64)
+		(output)
+		(text "SPI_MOSI" (rect 0 0 50 12)(font "Arial" ))
+		(text "SPI_MOSI" (rect 153 59 203 71)(font "Arial" ))
+		(line (pt 224 64)(pt 208 64)(line_width 1))
+	)
+	(port
+		(pt 224 80)
+		(output)
+		(text "SPI_ADCnCS" (rect 0 0 68 12)(font "Arial" ))
+		(text "SPI_ADCnCS" (rect 135 75 203 87)(font "Arial" ))
+		(line (pt 224 80)(pt 208 80)(line_width 1))
+	)
+	(port
+		(pt 224 96)
+		(output)
+		(text "ckpspi_cnt_tst[6..0]" (rect 0 0 97 12)(font "Arial" ))
+		(text "ckpspi_cnt_tst[6..0]" (rect 106 91 203 103)(font "Arial" ))
+		(line (pt 224 96)(pt 208 96)(line_width 3))
+	)
+	(port
+		(pt 224 112)
+		(output)
+		(text "spi_run_tst" (rect 0 0 54 12)(font "Arial" ))
+		(text "spi_run_tst" (rect 149 107 203 119)(font "Arial" ))
+		(line (pt 224 112)(pt 208 112)(line_width 1))
+	)
+	(drawing
+		(rectangle (rect 16 16 208 144)(line_width 1))
+	)
+)

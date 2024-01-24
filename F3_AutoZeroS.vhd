@@ -1,0 +1,146 @@
+-----------------------------------------------------------------
+-- AA2380V1 OSVA PROJECT.
+-- Date: 30/10/19	Designer: O.N (aka Frex on DYaudio)
+-----------------------------------------------------------------
+-- Intel MAXV 5M570 CPLD	Take 151 LE.
+-- Function F3 :  F3_AutoZero.vhd
+--
+-- Allow DC offset removal when CAL_PULSE is active.
+-- The DC offset is stored and substracted from actual ADC value.
+-- For minimum LE utilisation, both channels offset are calculated
+-- sequentially with same unit.
+-- (this require more time, but not an issue.)
+-- --------------------------------------------------------------
+-- Dynamic DC removal filter
+-- From application note Xylinx Ref :
+-- 24 bits data input and output.
+-- The k factor is 1 / 65536 (16 bit are added to the accumulator).
+-- That give a time constant for 192kHz sampling rate (input clock)
+-- of  2.35s for reach 1/1000 error.
+-- RC= Tsx n = 5.21e-6 x 65536 = 0.341s
+-- For 0.1% error (1/1000), t= -RC ln 0.001 = 2.35 s
+-- For 0.06 ppm error (24 bits) , t= -RC ln 0.06e-6 =  5.7 s
+--
+-- The autozero minimum time for each sampling rate (48k,96k and 192kHz),
+-- to reach the 24bits accuracy is :
+-- RC@48k = 1.36s
+-- RC@96k = 0.683 s
+-- RC@192k= 0.341 s
+-- For 0.06 ppm error (24 bits) , t= -0.341 ln 0.06e-6 =  5.7 s @ 192 kHz
+-- For 0.06 ppm error (24 bits) , t= -0.683 ln 0.06e-6 =  11.35 s @ 96 kHz
+-- For 0.06 ppm error (24 bits) , t= -1.36 ln 0.06e-6 =   22.6 s @ 48kHz
+
+------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity F3_AutoZeroS is
+--
+port(
+	-- INPUTS
+	FS				: in  std_logic ; -- ADC effective sampling rate
+	DATAL			: in  std_logic_vector(23 downto 0) ; -- Left channel ADC data
+	DATAR			: in  std_logic_vector(23 downto 0) ; -- Right channel ADC data
+	Start_CAL	: in  std_logic ; -- Input pulse to initiate calibration.
+	CIP				: buffer std_logic ; -- Calibration In Progress indicator
+	-- OUTPUTS
+	DATAFL		: buffer  std_logic_vector(23 downto 0) ; -- Left channel filtered ADC data
+	DATAFR		: buffer  std_logic_vector(23 downto 0) ; -- Left channel filtered ADC data
+	--TEST
+  TST_CalCNT : out integer range 0 to 131071  ; --
+	TST_AVG_end : out  std_logic ;  --
+	TST_Channel : out  std_logic  --
+);
+
+end F3_AutoZeroS;
+
+architecture Behavioral of F3_AutoZeroS is
+
+signal	ACCUM		:	std_logic_vector(39 downto 0) ; -- Accumulator output sample Left
+signal	MSB			:	std_logic_vector(15 downto 0) ;	-- 16 MSB bits of adder equal MSB of 24bits data word.Left
+signal	DATA		:	std_logic_vector(23 downto 0) ;	--
+
+signal  OFFL			:	std_logic_vector(23 downto 0) ; -- DC offset substractor Left
+signal  OFFR			:	std_logic_vector(23 downto 0) ; -- DC offset substractor Right
+
+signal  CalCNT		: Integer range 0 to 131071 ; -- averaged samples counter
+signal	AVG_end		: std_logic ;
+signal  Channel	: std_logic ;
+
+
+begin
+------------------------------------------------------------------
+-- Calibration pulse generator
+-- This pulse have fixed lenght of 65536 x FS(Sample rate) period.
+-- For 192kHz = 1.360 s
+-- For 96 kHz = 0.683 s
+-- For 48 kHz = 0.341 s
+------------------------------------------------------------------
+process (FS,Start_CAL,CIP,CalCNT,AVG_end,Channel) is
+begin
+		-- Edge detect
+		if 			AVG_end='1'	then
+						CIP		<= '0'	; -- Reset pulse at end of averaging.
+		elsif 	rising_edge(Start_CAL)	then
+						CIP		<= '1'	;	-- Start calibration at rising edge of Start_CAL
+		end if;
+		--
+		-- Counter for 65536 period of FS.
+		if 			CIP='0'	then
+						CalCNT	<= 0 ;
+						AVG_end <= '0' ;
+		elsif		rising_edge(FS) then
+						CalCNT	<= CalCNT + 1 ;
+						if 			CalCNT = 131071	then
+										AVG_end	<= '1'	; -- end of averaging
+						end if;
+						if 			CalCNT < 65536	then
+										Channel	<= '0'	;
+						else
+										Channel	<= '1'	;
+						end if;
+		end if;
+end process;
+
+-- TEst outputs
+TST_CalCNT  <=  CalCNT;
+TST_AVG_end <=  AVG_end;
+TST_Channel <= Channel ;
+------------------------------------------------------------------
+-- Autozero.
+------------------------------------------------------------------
+process (FS,DATA,DATAR,DATAL,CIP,channel) is
+begin
+	-- Set sign bit at accumulator output
+	case Channel	is
+			when '0'	=> DATA <= DATAL ;
+			when '1'	=> DATA <= DATAR ;
+	end case;
+	--
+	case	DATA(23) is
+			when '0' => MSB <= x"0000" ;
+			when '1' => MSB <= x"FFFF" ;
+	end case;
+	-- Accumulate at each new sample
+	if CIP='1'	then
+			--
+			if		rising_edge(FS) then
+						ACCUM <= std_logic_vector(signed(ACCUM) + signed((MSB & DATA))) ;
+			end if;
+			--
+			if 		Channel = '0'	then
+						OFFL <= ACCUM(39 downto 16) ;
+			else
+						OFFR <= ACCUM(39 downto 16) ;
+			end if;
+	end if;
+end process ;
+
+DATAFL <= std_logic_vector(signed(DATAL) - signed(OFFL(23 downto 0))) ;
+DATAFR <= std_logic_vector(signed(DATAR) - signed(OFFR(23 downto 0))) ;
+
+
+
+end Behavioral ;

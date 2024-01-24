@@ -1,0 +1,149 @@
+ON le 04/04/2019
+-----------------
+Logiciel de test du CPLD (5M570CT100C5N) de la carte AA2380v1 de l'OSVA.
+
+Version 0 du 28/08/2019.
+------------------------
+Les leds tricolores CMS sont rouges pendant la phase de calibration
+==> mode calibration avec appuie long sur bouton.
+
+==> changement de sample rate par appui court dur codeur
+de manière séquencielle : 48k-96k-192k ..
+
+
+Explication des straps J17:
+---------------------------
+
+CONF 0 = Single-Ended / Differential (Left Channel)
+CONF 1 = Analog Filter bandwidth (Left Channel)
+
+CONF 2 = Single-Ended / Differential (Right Channel)
+CONF 3 = Analog Filter bandwidth (Right Channel)
+
+Connecteur de test J12 :
+----------------------------
+UI0 0	= I2S LRCK
+UI0 1	= I2S BCK
+UI0 2	= I2S SDATA
+UI0 3	= nFS (1.5625 MHz = 100MHz/64)
+UI0 4	= 128FS ()
+UI0 5	= Ready (100ms on at startup)
+---- Pour 6 à 9 on peut mettre des cavaliers qui tire à la masse (pull-up)
+UI0 6	= Bit 1/3  Average value LSB ( 1x to 128x )
+UI0 7	= Bit 2/3  Average value ( 1x to 128x )
+UI0 8	= Bit 3/3  Average value MSB ( 1x to 128x )
+UI0 9	= FIR or SinC digiital filter
+----
+UIO 10 = CLKSLOW (=100Hz)
+
+
+
+Autres signaux de test  J16 (connecteur isolé):
+--------------------------------------------------
+Note : il faut alimenter J14 en 3v3.
+
+Pin 1  = ISOUT PIN0  = SDR SDATA
+Pin 3  = ISOUT PIN1  = SDR FSYNC
+Pin 5  = ISOUT PIN2  = SDR MCLK
+Pin 7  = ISOUT PIN3  = SDR LRCK
+Pin 9  = ISIN PIN0   = SDR DFS0
+Pin 11 = ISIN PIN1   = SDR DFS1
+Pin 13 = ISOUT PIN4  = SDR SCLK
+Pin 15 = ISOUT PIN5  = SEnDIFF
+Pin 17 = ISOUT PIN6  = HBWon
+Pin 19 = ISOUT PIN7  = FIRnSinC
+Pin 21 = ISIN PIN2   = SDR nRSTN
+Pin 23 = ISIN PIN3   = xx
+Pin 25 = ISOUT PIN8  = CAL_Pulse
+Pin 27 = ISOUT PIN9  = GND
+Pin 29 = ISOUT PIN10 = GND
+Pin 31 = ISOUT PIN11 = GND
+Pin 33 = ISIN PIN4   = xx
+Pin 35 = ISIN PIN5   = xx
+
+
+Tests of 21/09/19
+-----------------
+(For simpler debug, we remove digital HPF)
+
+1/ Only left channel is send o both L/R SPDIF output
+We see that LRCK is near 100% duty cycle and must be 50%!
+2/ The averaging values others than max avg are not working.
+(The avg set value is not send to ADC read function ?...)
+3/ Sine wave at input is not correctly reproduced (corrupted value..)
+------------------------------------------------------------------------------------
+
+
+
+***********************************************************************************
+                   SUITE DU DEVELLOPPEMENT DU PROJET "OSVA"
+************************************************************************************
+Le 22/11/2002. On repart du travail précédent pour continuer le projet avec la 10M08
+------------------------------------------------------------------------------------
+Quartus 16.1.0 build 196 - 10/24/2016 SJ Lite Edition
+Checksum :  002D6CCC ; Usercode : 002D6C92
+Remplissage : 537 LE /570 (94%)
+------------------------------------------------------------------------------------
+Position des relais au repos (non alimenté):
+> Filtre anti-repliement = 38.4 kHz (1= 384kHz)
+> Entrées en Single-Ended sur BNC de gauche (1= Différentielle)
+JPA(CONF0)= si pas de jumper , différentielle car pull-up a 1.
+JPB(CONF1)= si pas de jumper Fcuttof= 384kHz car pull-up a 1.
+
+
+To do list :
+------------
+Mettre un retard sur la mise en route des relais (décalé 1s ?).
+Inversé le fonctionnement avec les jumpers (?).
+
+Faire la fonction qui envoie les données vers la carte 10M08 gros bloc).
+Repenser la commande des leds pour être simples !
+
+La fonction F1_ADCx2_DistributedReadAVG ne marche pas ...(à revoir ?)
+
+23/11/20
+--------
+On ajoute une fonction qui permet la synchronisation des canaux L/R du
+module SPDIF. On modifie aussi les couleurs de Leds.
+Délai de 1s pour les relais au démarrage.
+A tester..
+
+
+
+
+------------------------------------------------------------------------------------
+Le 20/01/2021.- Mise au point version Beta -- GIT comit n° : a029cbb
+CPLD : 5M570ZT100  Remplissage : 73 %  Checksum: 002F325E
+------------------------------------------------------------------------------------
+Cette version permet de tester les différentes fonctions finale.
+En oarticulier le module "F1_readADC_multimodes" qui autorise de nombreuses combinaisons
+de SR/AVG entre 32kHz et 1536kHz.
+
+La carte codeur permet de choisir le sample rate (leds vert/jaune/orange) et si on appui
+sur le codeur alors on choisi la valeur de moyennage (que fait l'ADC) entre x1 et x128.
+Certaines combinaisons ne son pas possible (limite de Fs x avg <= 1536kHz).
+
+Résultat :
+Le pilotage du codeur et des leds de la carte AA2380PAN semble OK.
+On arrive à faire fonctionner la sortie SPDIF (actuellement la seule que l'on peut utiliser),
+et on voit bien le SNR qui s'améliore lorsque la moyenne augmente.
+
+Les modes normal et distribué fonctionnement, mais pas complèetement :
+
+1) Lorsque la moyenne est égale à 1 (qq soit Fs), il semble que le données soit corrompus,
+le résultat de mesure est anormal : on mesure un niveau trés faible valeur numérique fixe.
+
+2) Il semble que seule la voie de droite soit fonctionnelle. ?
+(On la retrouve sur les 2 voies avec le soft d'analyse).
+
+3) En mode distribué, le signal de sortie passe à zéro lorsque Fs x avg = 768kHz (au lieu de 1536).
+Cela semble mieux se passer en mode normal.
+
+(A voir avec des vrais signaux !).
+
+------------------------------------------------------------------------------------
+Le 29/01/2021.- Mise au point version Beta -- GIT comit n° :
+CPLD : 5M570ZT100  Remplissage :  %  Checksum:
+------------------------------------------------------------------------------------
+Correction pour avoir les 2 cannaux LR --> OK
+Correction avoir les canneaux LR dans le bon sens (idem voies physque OSVA et logiciel PC avec signal S/PDIF) --> OK
