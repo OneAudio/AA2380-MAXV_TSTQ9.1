@@ -38,19 +38,14 @@
 
 set_global_assignment -name FAMILY "MAX II"
 set_global_assignment -name DEVICE EPM570T144C4
-set_global_assignment -name TOP_LEVEL_ENTITY F00_TestADC
+set_global_assignment -name TOP_LEVEL_ENTITY Test_F20II
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:51:00  JANUARY 24, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name BDF_FILE AA2380_MAXV.bdf
 set_global_assignment -name LL_ROOT_REGION ON -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region"
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name BDF_FILE F00_TestADC.bdf
-set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
-set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
@@ -58,5 +53,13 @@ set_global_assignment -name DEVICE_FILTER_PACKAGE TQFP
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 144
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 4
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE F00_TestADC.vwf
 set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name VHDL_FILE F20_EmulateADCII.vhd
+set_global_assignment -name BDF_FILE Test_F20II.bdf
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VECTOR_WAVEFORM_FILE F20_EmulateADCII.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE F20_EmulateADCII.vwf
