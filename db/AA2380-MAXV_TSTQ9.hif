@@ -1,7 +1,7 @@
 Quartus II
 Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 45
-3415
+3420
 OFF
 OFF
 OFF
@@ -19,53 +19,6 @@ VHSM_ON
 -- End Library Paths --
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
-# entity
-F00_TestADC
-# storage
-db|AA2380-MAXV_TSTQ9.(0).cnf
-db|AA2380-MAXV_TSTQ9.(0).cnf
-# case_insensitive
-# source_file
-f00_testadc.bdf
-77dd5b86b672fc81c75ad1f72841042
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# macro_sequence
-
-# end
-# entity
-F1_readADC_multimodes
-# storage
-db|AA2380-MAXV_TSTQ9.(1).cnf
-db|AA2380-MAXV_TSTQ9.(1).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f1_readadc_multimodes.vhd
-82fc590f116a5df1aec1085b9571e5f
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
 # entity
 F20_EmulateADC
 # storage
@@ -89,6 +42,10 @@ AUTO_RAM_RECOGNITION
 ON
 AUTO_ROM_RECOGNITION
 ON
+}
+# hierarchies {
+F20_EmulateADC:inst
+F20_EmulateADC:inst1
 }
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
@@ -673,9 +630,6 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
-# hierarchies {
-F20_EmulateADCII:inst
-}
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
@@ -696,9 +650,59 @@ e2adef6f7158c2e7e3271773777d7d
 BLOCK_DESIGN_NAMING
 AUTO
 }
+# macro_sequence
+
+# end
+# entity
+F00_TestADC
+# storage
+db|AA2380-MAXV_TSTQ9.(0).cnf
+db|AA2380-MAXV_TSTQ9.(0).cnf
+# case_insensitive
+# source_file
+f00_testadc.bdf
+b146b43b1346d25a3be6cb4358247c30
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
 # hierarchies {
 |
 }
+# macro_sequence
+
+# end
+# entity
+F1_readADC_multimodes
+# storage
+db|AA2380-MAXV_TSTQ9.(1).cnf
+db|AA2380-MAXV_TSTQ9.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f1_readadc_multimodes.vhd
+c1c39a3e8ae360af4196751a9831542b
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+F1_readADC_multimodes:inst2
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 
 # end

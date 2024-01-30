@@ -65,7 +65,9 @@ port(
   Test_CNVen_SCK    : out std_logic ;
   Test_CNVclk_cnt   : out integer range 0 to 32 ;
   Test_AVG_count    : out integer range 0 to 127;
-  Test_TCLK23       : out integer range 0 to 23
+  Test_TCLK23       : out integer range 0 to 23;
+  Test_TCNVen_SCK   : out std_logic ;
+  Test_TCNVen_SHFT  : out std_logic
   --
 );
 
@@ -105,6 +107,9 @@ signal r_DATAR	 	   : std_logic_vector(23 downto 0);
 signal AVG_count    : integer range 0 to 127 ; -- sample average counter
 signal dAVG         : integer range 1 to 128 ; --
 
+signal T_CNVen_SCK  : std_logic ; --
+signal T_CNVen_SHFT : std_logic ; --
+
 --
 
 begin
@@ -126,6 +131,9 @@ Test_CNVen_SCK    <= CNVen_SCK ; -- TEST
 Test_CNVclk_cnt   <= CNVclk_cnt ; -- TEST
 Test_AVG_count    <= AVG_count  ; -- TEST
 Test_TCLK23       <= TCLK23     ; -- TEST
+
+Test_TCNVen_SCK   <= T_CNVen_SCK  ; -- TEST
+Test_TCNVen_SHFT  <= T_CNVen_SHFT ; -- TEST
 
 
 
@@ -267,9 +275,11 @@ begin
         SEL_RDCLK <=  0   ; -- reset SEL_RDCLK
     else
         if AVG= 0 then
-            SEL_RDCLK <= SEL_nFS + (7-AVG) -1 ; -- substract 1 to get same result as  with AVG=1..
+            SEL_RDCLK <= SEL_nFS + (7-AVG) - 1 ; -- substract 1 to get same result as  with AVG=1.. 
+            -- AVG + SR = SEL_nFS donc SEL_RDCLK=  AVG + SR + 7 - AVG - 1 = SR + 6 !!!! ?
         else
             SEL_RDCLK <= SEL_nFS + (7-AVG)    ; -- result value = 0 to 14
+            -- AVG + SR = SEL_nFS donc SEL_RDCLK=  AVG + SR + 7 - AVG = SR + 7 !!!! ?
         end if;
         --
         if  AQMODE = '1' then    -- Distributed read Mode
@@ -283,7 +293,7 @@ begin
                 when 7  => ReadCLK <= MCLK_divider(5)  ; -- 1.536M
                 when others => ReadCLK <= '0'           ;
             end case;
-       else                      -- Mode Normal
+       else                      -- Mode Normal.  (Note SEL_nFS= AVG + SR)
             case  SEL_nFS is
               when 0 => ReadCLK <= MCLK_divider(6)  ; -- 0.768K
               when 1 => ReadCLK <= MCLK_divider(5)  ; -- 1.536M
@@ -359,20 +369,20 @@ begin
   if  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
       if    rising_edge(ReadCLK) then   -- All the process is synchroous to ReadCLK
           --
-    			if    CNVclk_cnt < CK_cycle then    -- compare cycle counter with CK_cycle value
+    			if    CNVclk_cnt <= CK_cycle then    -- compare cycle counter with CK_cycle value
     				    CNVclk_cnt <= CNVclk_cnt + 1 ;      -- Increment clock cylce counter
     			end if;
 
            -- *** PARTIE A RETRAVAILLER ***
     			-- ADC clock pulse window
-    			if    CNVclk_cnt>0 and  CNVclk_cnt< CK_cycle  then
+    			if    CNVclk_cnt>0 and  CNVclk_cnt <= CK_cycle  then
     				    CNVen_SCK  <= '1' ; -- Enable window for clock
     			else
     				    CNVen_SCK  <= '0' ; -- Disable window for clock
     			end if;
           --
     			-- ADC read data clock window (for shift register data read)
-    			if    CNVclk_cnt < (CK_cycle-1) then
+    			if    CNVclk_cnt < (CK_cycle) then
     				    CNVen_SHFT <= '1' ; -- Enable serial data read window
     			else
     				    CNVen_SHFT <= '0' ; -- Disable serial data read window
@@ -384,21 +394,21 @@ begin
   end if;
 end process;
 
+-------------------------------------------------------
 -- Combination of enable and clocks with clock enable
 -------------------------------------------------------
-RDenable : process (ReadCLK,AVGen_SCK,CNVen_SHFT,CNVen_SCK,AVGen_READ,)
+RDenable : process (ReadCLK,AVGen_SCK,CNVen_SHFT,CNVen_SCK,AVGen_READ,T_CNVen_SHFT,T_CNVen_SCK)
 begin
+    -- To avoid glitchs when combinate clock & pulse synch to same clock,
+    -- when must use "clock-enable" module below.
     if  falling_edge(ReadCLK) then
-        T_ADC_CLK     <= AVGen_SCK  and CNVen_SCK   ;
-        T_ADC_SHIFT   <= AVGen_READ and CNVen_SHFT  ;
+        T_CNVen_SCK  <= CNVen_SCK  ; -- signal "CNVen_SCK" synch to falling edge of ReadCLK
+        T_CNVen_SHFT <= CNVen_SHFT ; -- signal "CNVen_SHFT" synch to falling edge of ReadCLK
     end if;
-    ADC_CLK   <= T_ADC_CLK    and ReadCLK ;
-    ADC_SHIFT <= T_ADC_SHIFT  and ReadCLK ;
+    -- Now combinations below will not produce glitches !
+    ADC_CLK   <= T_CNVen_SCK  and ReadCLK and AVGen_SCK ;
+    ADC_SHIFT <= T_CNVen_SHFT and ReadCLK and AVGen_READ ;
 end process RDenable;
-
-
--- ADC_CLK    <= ReadCLK and AVGen_SCK  and CNVen_SCK   ; -- ADC clock pulse
--- ADC_SHIFT  <= ReadCLK and AVGen_READ and CNVen_SHFT  ; -- ADC shift read clock
 
 SCKR <= ADC_CLK ; --
 SCKL <= ADC_CLK ; --
@@ -469,15 +479,33 @@ begin
 end process AVG_cycles;
 
 ------------------------------------------------------------------
----- window to limit the reading of the only 23 first clock cycle
+---- window to limit the reading of the only 23 first clock cycle AVGen_READ
 --------------------------------------------------------------------
-process (CNVen_SCK,ADC_CLK,TCLK23)
+-- process (AVGen_READ,ADC_CLK,TCLK23)
+-- begin
+--   -- the TCLK23 counter is reset outside "AVGen_READ" window.
+-- 	if	    AVGen_READ = '0' then -- Replace "CNVen_SCK"
+-- 		      TCLK23 <= 0			;
+-- 	elsif   rising_edge(ADC_CLK) and TCLK23 < 23 then
+--           TCLK23 <= TCLK23 + 1 ;
+-- 	end if;
+-- end process;
+
+process (AVGen_READ,ADC_CLK,TCLK23,CNVA,AVG)
 begin
-	if	    CNVen_SCK = '0' then
-		      TCLK23 <= 0			;
-	elsif   rising_edge(ADC_CLK) and TCLK23 < 23 then
-          TCLK23 <= TCLK23 + 1 ;
-	end if;
+  -- the TCLK23 counter is reset outside "AVGen_READ" window.
+    if      AVG=0 then
+        if	CNVA='1' then -- 
+            TCLK23 <= 0		 ;
+        end if;
+    else
+        if   AVGen_READ = '0' then -- Replace "CNVen_SCK"   
+            TCLK23 <= 0	;
+        end if
+    end if;
+    if   rising_edge(ADC_CLK) and TCLK23 < 23 then
+        TCLK23 <= TCLK23 + 1 ;
+    end if;
 end process;
 
 ------------------------------------------------------------------
@@ -543,7 +571,8 @@ end process ADCserial_read;
 
 ------------------------------------------------------------------------------
 -- Transfer data register to DOUTL and DOUTR output at each rising edge
--- of Fso (LRCK) signal output is 0 if enable input is low
+-- of "FSo" (Effective output sample frequency).
+-- If "OutOfRange" signal output is 0 if enable input is low
 ------------------------------------------------------------------------------
 process (FSo,r_DATAL,r_DATAR,OutOfRange)
 begin
@@ -555,6 +584,5 @@ begin
     		DOUTR <= r_DATAR; -- Right channel data latch
 	end if;
 end process;
-
 
 end Behavioral ;
