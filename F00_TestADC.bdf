@@ -614,7 +614,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1224 120 1272 152)
+	(rect 1272 120 1320 152)
 	(text "NOT" (rect 1 0 21 10)(font "Arial" (font_size 6)))
 	(text "inst3" (rect 3 21 26 33)(font "Arial" ))
 	(port
@@ -639,7 +639,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1224 152 1272 184)
+	(rect 1272 152 1320 184)
 	(text "NOT" (rect 1 0 21 10)(font "Arial" (font_size 6)))
 	(text "inst4" (rect 3 21 26 33)(font "Arial" ))
 	(port
@@ -1140,24 +1140,6 @@ applicable agreement for further details.
 	(pt 1120 152)
 )
 (connector
-	(text "CNVR" (rect 1285 152 1316 164)(font "Arial" ))
-	(pt 1272 168)
-	(pt 1312 168)
-)
-(connector
-	(text "CNVL" (rect 1285 120 1314 132)(font "Arial" ))
-	(pt 1272 136)
-	(pt 1312 136)
-)
-(connector
-	(pt 1120 136)
-	(pt 1224 136)
-)
-(connector
-	(pt 1120 168)
-	(pt 1224 168)
-)
-(connector
 	(text "Fsox128" (rect 1140 184 1182 196)(font "Arial" ))
 	(pt 1120 200)
 	(pt 1176 200)
@@ -1283,19 +1265,9 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "CNVL" (rect 205 72 234 84)(font "Arial" ))
-	(pt 256 88)
-	(pt 200 88)
-)
-(connector
 	(text "SCKL" (rect 208 88 236 100)(font "Arial" ))
 	(pt 256 104)
 	(pt 200 104)
-)
-(connector
-	(text "CNVR" (rect 205 272 236 284)(font "Arial" ))
-	(pt 256 288)
-	(pt 200 288)
 )
 (connector
 	(text "SCKR" (rect 208 288 238 300)(font "Arial" ))
@@ -1345,6 +1317,36 @@ applicable agreement for further details.
 	(pt 1120 120)
 	(pt 1200 120)
 	(bus)
+)
+(connector
+	(text "CNVR" (rect 1333 152 1364 164)(font "Arial" ))
+	(pt 1320 168)
+	(pt 1360 168)
+)
+(connector
+	(text "CNVL" (rect 1333 120 1362 132)(font "Arial" ))
+	(pt 1320 136)
+	(pt 1360 136)
+)
+(connector
+	(text "nCNVL" (rect 1222 120 1257 132)(font "Arial" ))
+	(pt 1120 136)
+	(pt 1272 136)
+)
+(connector
+	(text "nCNVR" (rect 1221 152 1258 164)(font "Arial" ))
+	(pt 1120 168)
+	(pt 1272 168)
+)
+(connector
+	(text "CNVL" (rect 205 72 234 84)(font "Arial" ))
+	(pt 256 88)
+	(pt 200 88)
+)
+(connector
+	(text "CNVR" (rect 205 272 236 284)(font "Arial" ))
+	(pt 256 288)
+	(pt 200 288)
 )
 (junction (pt 160 56))
 (junction (pt 176 72))
