@@ -1,5 +1,5 @@
 Analysis & Synthesis report for AA2380-MAXV_TSTQ9
-Wed Jan 31 08:46:50 2024
+Sun Feb 11 20:08:45 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -43,13 +43,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                               ;
 +-----------------------------+----------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Jan 31 08:46:50 2024        ;
+; Analysis & Synthesis Status ; Successful - Sun Feb 11 20:08:45 2024        ;
 ; Quartus II Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name               ; AA2380-MAXV_TSTQ9                            ;
 ; Top-level Entity Name       ; F00_TestADC                                  ;
 ; Family                      ; MAX II                                       ;
-; Total logic elements        ; 331                                          ;
-; Total pins                  ; 133                                          ;
+; Total logic elements        ; 318                                          ;
+; Total pins                  ; 169                                          ;
 ; Total virtual pins          ; 0                                            ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                ;
 +-----------------------------+----------------------------------------------+
@@ -60,7 +60,7 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                     ; EPM570F256C4       ;                    ;
+; Device                                                                     ; EPM2210F324C4      ;                    ;
 ; Top-level entity name                                                      ; F00_TestADC        ; AA2380-MAXV_TSTQ9  ;
 ; Family name                                                                ; MAX II             ; Stratix II         ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
@@ -132,59 +132,59 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                             ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                             ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-; F00_TestADC.bdf                  ; yes             ; User Block Diagram/Schematic File  ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/F00_TestADC.bdf            ;
-; f1_readadc_multimodes.vhd        ; yes             ; User VHDL File                     ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/f1_readadc_multimodes.vhd  ;
-; f20_emulateadc.vhd               ; yes             ; Auto-Found VHDL File               ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/f20_emulateadc.vhd         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                       ; d:/altera/quartus/libraries/megafunctions/lpm_divide.tdf                                                                 ;
-; db/lpm_divide_ovl.tdf            ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/lpm_divide_ovl.tdf      ;
-; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/sign_div_unsign_9kh.tdf ;
-; db/alt_u_div_die.tdf             ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/alt_u_div_die.tdf       ;
-; db/add_sub_e7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/add_sub_e7c.tdf         ;
-; db/add_sub_f7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/add_sub_f7c.tdf         ;
-; db/add_sub_g7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/add_sub_g7c.tdf         ;
-; db/add_sub_h7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/add_sub_h7c.tdf         ;
-; db/add_sub_i7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/db/add_sub_i7c.tdf         ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                   ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                   ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------+
+; F00_TestADC.bdf                  ; yes             ; User Block Diagram/Schematic File  ; D:/GIT/AA2380-MAXV_TSTQ9.1/F00_TestADC.bdf                     ;
+; f1_readadc_multimodes.vhd        ; yes             ; User VHDL File                     ; D:/GIT/AA2380-MAXV_TSTQ9.1/f1_readadc_multimodes.vhd           ;
+; f20_emulateadc.vhd               ; yes             ; User VHDL File                     ; D:/GIT/AA2380-MAXV_TSTQ9.1/f20_emulateadc.vhd                  ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                       ; c:/altera/91sp2/quartus/libraries/megafunctions/lpm_divide.tdf ;
+; db/lpm_divide_ovl.tdf            ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/lpm_divide_ovl.tdf               ;
+; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/sign_div_unsign_9kh.tdf          ;
+; db/alt_u_div_die.tdf             ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/alt_u_div_die.tdf                ;
+; db/add_sub_e7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/add_sub_e7c.tdf                  ;
+; db/add_sub_f7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/add_sub_f7c.tdf                  ;
+; db/add_sub_g7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/add_sub_g7c.tdf                  ;
+; db/add_sub_h7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/add_sub_h7c.tdf                  ;
+; db/add_sub_i7c.tdf               ; yes             ; Auto-Generated Megafunction        ; D:/GIT/AA2380-MAXV_TSTQ9.1/db/add_sub_i7c.tdf                  ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                      ;
-+---------------------------------------------+------------------------------------+
-; Resource                                    ; Usage                              ;
-+---------------------------------------------+------------------------------------+
-; Total logic elements                        ; 331                                ;
-;     -- Combinational with no register       ; 174                                ;
-;     -- Register only                        ; 83                                 ;
-;     -- Combinational with a register        ; 74                                 ;
-;                                             ;                                    ;
-; Logic element usage by number of LUT inputs ;                                    ;
-;     -- 4 input functions                    ; 79                                 ;
-;     -- 3 input functions                    ; 80                                 ;
-;     -- 2 input functions                    ; 73                                 ;
-;     -- 1 input functions                    ; 12                                 ;
-;     -- 0 input functions                    ; 4                                  ;
-;                                             ;                                    ;
-; Logic elements by mode                      ;                                    ;
-;     -- normal mode                          ; 268                                ;
-;     -- arithmetic mode                      ; 63                                 ;
-;     -- qfbk mode                            ; 0                                  ;
-;     -- register cascade mode                ; 0                                  ;
-;     -- synchronous clear/load mode          ; 14                                 ;
-;     -- asynchronous clear/load mode         ; 104                                ;
-;                                             ;                                    ;
-; Total registers                             ; 157                                ;
-; Total logic cells in carry chains           ; 76                                 ;
-; I/O pins                                    ; 133                                ;
-; Maximum fan-out node                        ; F1_readADC_multimodes:inst2|Add0~1 ;
-; Maximum fan-out                             ; 61                                 ;
-; Total fan-out                               ; 1221                               ;
-; Average fan-out                             ; 2.63                               ;
-+---------------------------------------------+------------------------------------+
++--------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                    ;
++---------------------------------------------+----------------------------------+
+; Resource                                    ; Usage                            ;
++---------------------------------------------+----------------------------------+
+; Total logic elements                        ; 318                              ;
+;     -- Combinational with no register       ; 183                              ;
+;     -- Register only                        ; 60                               ;
+;     -- Combinational with a register        ; 75                               ;
+;                                             ;                                  ;
+; Logic element usage by number of LUT inputs ;                                  ;
+;     -- 4 input functions                    ; 82                               ;
+;     -- 3 input functions                    ; 77                               ;
+;     -- 2 input functions                    ; 82                               ;
+;     -- 1 input functions                    ; 13                               ;
+;     -- 0 input functions                    ; 4                                ;
+;                                             ;                                  ;
+; Logic elements by mode                      ;                                  ;
+;     -- normal mode                          ; 255                              ;
+;     -- arithmetic mode                      ; 63                               ;
+;     -- qfbk mode                            ; 0                                ;
+;     -- register cascade mode                ; 0                                ;
+;     -- synchronous clear/load mode          ; 14                               ;
+;     -- asynchronous clear/load mode         ; 83                               ;
+;                                             ;                                  ;
+; Total registers                             ; 135                              ;
+; Total logic cells in carry chains           ; 76                               ;
+; I/O pins                                    ; 169                              ;
+; Maximum fan-out node                        ; F1_readADC_multimodes:inst2|SCKL ;
+; Maximum fan-out                             ; 43                               ;
+; Total fan-out                               ; 1186                             ;
+; Average fan-out                             ; 2.44                             ;
++---------------------------------------------+----------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -192,62 +192,38 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                                                                            ; Library Name ;
 +-------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |F00_TestADC                              ; 331 (0)     ; 157          ; 0          ; 133  ; 0            ; 174 (0)      ; 83 (0)            ; 74 (0)           ; 76 (0)          ; 0 (0)      ; |F00_TestADC                                                                                                                                                   ; work         ;
-;    |F1_readADC_multimodes:inst2|          ; 285 (258)   ; 116          ; 0          ; 0    ; 0            ; 169 (142)    ; 59 (59)           ; 57 (57)          ; 65 (46)         ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2                                                                                                                       ; work         ;
-;       |lpm_divide:Div0|                   ; 27 (0)      ; 0            ; 0          ; 0    ; 0            ; 27 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0                                                                                                       ; work         ;
-;          |lpm_divide_ovl:auto_generated|  ; 27 (0)      ; 0            ; 0          ; 0    ; 0            ; 27 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated                                                                         ; work         ;
-;             |sign_div_unsign_9kh:divider| ; 27 (0)      ; 0            ; 0          ; 0    ; 0            ; 27 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider                                             ; work         ;
-;                |alt_u_div_die:divider|    ; 27 (8)      ; 0            ; 0          ; 0    ; 0            ; 27 (8)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider                       ; work         ;
+; |F00_TestADC                              ; 318 (0)     ; 135          ; 0          ; 169  ; 0            ; 183 (0)      ; 60 (0)            ; 75 (0)           ; 76 (0)          ; 0 (0)      ; |F00_TestADC                                                                                                                                                   ; work         ;
+;    |F1_readADC_multimodes:inst2|          ; 267 (239)   ; 92           ; 0          ; 0    ; 0            ; 175 (147)    ; 35 (35)           ; 57 (57)          ; 65 (46)         ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2                                                                                                                       ; work         ;
+;       |lpm_divide:Div0|                   ; 28 (0)      ; 0            ; 0          ; 0    ; 0            ; 28 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0                                                                                                       ; work         ;
+;          |lpm_divide_ovl:auto_generated|  ; 28 (0)      ; 0            ; 0          ; 0    ; 0            ; 28 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated                                                                         ; work         ;
+;             |sign_div_unsign_9kh:divider| ; 28 (0)      ; 0            ; 0          ; 0    ; 0            ; 28 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider                                             ; work         ;
+;                |alt_u_div_die:divider|    ; 28 (9)      ; 0            ; 0          ; 0    ; 0            ; 28 (9)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider                       ; work         ;
 ;                   |add_sub_g7c:add_sub_2| ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 6 (6)           ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider|add_sub_g7c:add_sub_2 ; work         ;
 ;                   |add_sub_h7c:add_sub_3| ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 7 (7)           ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider|add_sub_h7c:add_sub_3 ; work         ;
 ;                   |add_sub_i7c:add_sub_4| ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 6 (6)           ; 0 (0)      ; |F00_TestADC|F1_readADC_multimodes:inst2|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider|add_sub_i7c:add_sub_4 ; work         ;
-;    |F20_EmulateADC:inst1|                 ; 46 (46)     ; 41           ; 0          ; 0    ; 0            ; 5 (5)        ; 24 (24)           ; 17 (17)          ; 11 (11)         ; 0 (0)      ; |F00_TestADC|F20_EmulateADC:inst1                                                                                                                              ; work         ;
+;    |F20_EmulateADC:inst1|                 ; 49 (49)     ; 42           ; 0          ; 0    ; 0            ; 7 (7)        ; 24 (24)           ; 18 (18)          ; 11 (11)         ; 0 (0)      ; |F00_TestADC|F20_EmulateADC:inst1                                                                                                                              ; work         ;
+;    |F20_EmulateADC:inst|                  ; 2 (2)       ; 1            ; 0          ; 0    ; 0            ; 1 (1)        ; 1 (1)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |F00_TestADC|F20_EmulateADC:inst                                                                                                                               ; work         ;
 +-------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-----------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                            ;
-+-----------------------------------------+-----------------------------------------------------+
-; Register name                           ; Reason for Removal                                  ;
-+-----------------------------------------+-----------------------------------------------------+
-; F20_EmulateADC:inst|QA                  ; Merged with F20_EmulateADC:inst1|QA                 ;
-; F20_EmulateADC:inst|QB                  ; Merged with F20_EmulateADC:inst1|QB                 ;
-; F20_EmulateADC:inst|Busy_count[0..5]    ; Lost fanout                                         ;
-; F20_EmulateADC:inst|Busy_end            ; Lost fanout                                         ;
-; F20_EmulateADC:inst|SRDATA[0]           ; Lost fanout                                         ;
-; F20_EmulateADC:inst|SCK_count[0..5]     ; Lost fanout                                         ;
-; F20_EmulateADC:inst|CLEAR_REG           ; Lost fanout                                         ;
-; F20_EmulateADC:inst|SRDATA[1..22]       ; Lost fanout                                         ;
-; F20_EmulateADC:inst|BUSY_on             ; Merged with F20_EmulateADC:inst1|BUSY_on            ;
-; F20_EmulateADC:inst|SRDATA[23]          ; Merged with F20_EmulateADC:inst1|SRDATA[23]         ;
-; F1_readADC_multimodes:inst2|sBUSYL      ; Merged with F1_readADC_multimodes:inst2|sBUSYR      ;
-; F1_readADC_multimodes:inst2|r_DATAL[0]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[0]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[1]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[1]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[2]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[2]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[3]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[3]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[4]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[4]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[5]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[5]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[6]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[6]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[7]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[7]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[8]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[8]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[9]  ; Merged with F1_readADC_multimodes:inst2|r_DATAR[9]  ;
-; F1_readADC_multimodes:inst2|r_DATAL[10] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[10] ;
-; F1_readADC_multimodes:inst2|r_DATAL[11] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[11] ;
-; F1_readADC_multimodes:inst2|r_DATAL[12] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[12] ;
-; F1_readADC_multimodes:inst2|r_DATAL[13] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[13] ;
-; F1_readADC_multimodes:inst2|r_DATAL[14] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[14] ;
-; F1_readADC_multimodes:inst2|r_DATAL[15] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[15] ;
-; F1_readADC_multimodes:inst2|r_DATAL[16] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[16] ;
-; F1_readADC_multimodes:inst2|r_DATAL[17] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[17] ;
-; F1_readADC_multimodes:inst2|r_DATAL[18] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[18] ;
-; F1_readADC_multimodes:inst2|r_DATAL[19] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[19] ;
-; F1_readADC_multimodes:inst2|r_DATAL[20] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[20] ;
-; F1_readADC_multimodes:inst2|r_DATAL[21] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[21] ;
-; F1_readADC_multimodes:inst2|r_DATAL[22] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[22] ;
-; F1_readADC_multimodes:inst2|r_DATAL[23] ; Merged with F1_readADC_multimodes:inst2|r_DATAR[23] ;
-; Total Number of Removed Registers = 66  ;                                                     ;
-+-----------------------------------------+-----------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                      ;
++----------------------------------------+------------------------------------------------+
+; Register name                          ; Reason for Removal                             ;
++----------------------------------------+------------------------------------------------+
+; F20_EmulateADC:inst|QA                 ; Merged with F20_EmulateADC:inst1|QA            ;
+; F20_EmulateADC:inst|QB                 ; Merged with F20_EmulateADC:inst1|QB            ;
+; F20_EmulateADC:inst|Busy_count[0..5]   ; Lost fanout                                    ;
+; F20_EmulateADC:inst|Busy_end           ; Lost fanout                                    ;
+; F20_EmulateADC:inst|SRDATA[0..21]      ; Lost fanout                                    ;
+; F20_EmulateADC:inst|SCK_count[0..5]    ; Lost fanout                                    ;
+; F20_EmulateADC:inst|BUSY_on            ; Merged with F20_EmulateADC:inst1|BUSY_on       ;
+; F20_EmulateADC:inst|READ_end           ; Merged with F20_EmulateADC:inst1|READ_end      ;
+; F20_EmulateADC:inst|SRDATA[22]         ; Merged with F20_EmulateADC:inst1|SRDATA[22]    ;
+; F1_readADC_multimodes:inst2|sBUSYL     ; Merged with F1_readADC_multimodes:inst2|sBUSYR ;
+; Total Number of Removed Registers = 41 ;                                                ;
++----------------------------------------+------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -255,12 +231,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 157   ;
+; Total registers                              ; 135   ;
 ; Number of registers using Synchronous Clear  ; 14    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 80    ;
-; Number of registers using Asynchronous Load  ; 24    ;
-; Number of registers using Clock Enable       ; 24    ;
+; Number of registers using Asynchronous Clear ; 58    ;
+; Number of registers using Asynchronous Load  ; 25    ;
+; Number of registers using Clock Enable       ; 22    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -304,7 +280,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Jan 31 08:46:48 2024
+    Info: Processing started: Sun Feb 11 20:08:44 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
 Info: Found 1 design units, including 1 entities, in source file aa2380_maxv.bdf
     Info: Found entity 1: AA2380_MAXV
@@ -318,22 +294,28 @@ Info: Found 1 design units, including 1 entities, in source file test_f20ii.bdf
 Info: Found 2 design units, including 1 entities, in source file f1_readadc_multimodes.vhd
     Info: Found design unit 1: F1_readADC_multimodes-Behavioral
     Info: Found entity 1: F1_readADC_multimodes
-Info: Elaborating entity "F00_TestADC" for the top level hierarchy
-Info: Elaborating entity "F1_readADC_multimodes" for hierarchy "F1_readADC_multimodes:inst2"
-Warning: Using design file f20_emulateadc.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+Info: Found 2 design units, including 1 entities, in source file f1_readadc_multimodestst.vhd
+    Info: Found design unit 1: F1_readADC_multimodesTST-Behavioral
+    Info: Found entity 1: F1_readADC_multimodesTST
+Info: Found 2 design units, including 1 entities, in source file f20_emulateadc.vhd
     Info: Found design unit 1: F20_EmulateADC-Behavioral
     Info: Found entity 1: F20_EmulateADC
+Info: Elaborating entity "F00_TestADC" for the top level hierarchy
+Warning: Pin "LT2380_SDOR" is missing source
+Warning: Pin "DOUTR[23..0]" is missing source
+Warning: Pin "SDORin" not connected
+Info: Elaborating entity "F1_readADC_multimodes" for hierarchy "F1_readADC_multimodes:inst2"
 Info: Elaborating entity "F20_EmulateADC" for hierarchy "F20_EmulateADC:inst"
 Warning: Clock multiplexers are found and protected
     Warning: Found clock multiplexer F1_readADC_multimodes:inst2|ReadCLK~synth
+    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|Mux14
+    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
+    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
+    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
+    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
     Warning: Found clock multiplexer F1_readADC_multimodes:inst2|Mux15
-    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
-    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
-    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
-    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|SEL_RDCLK~synth
-    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|Mux16
-    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|Mux8
-    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|Mux9
+    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|Mux6
+    Warning: Found clock multiplexer F1_readADC_multimodes:inst2|Mux7
 Info: Inferred 1 megafunctions from design logic
     Info: Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "F1_readADC_multimodes:inst2|Div0"
 Info: Elaborated megafunction instantiation "F1_readADC_multimodes:inst2|lpm_divide:Div0"
@@ -358,8 +340,34 @@ Info: Found 1 design units, including 1 entities, in source file db/add_sub_h7c.
     Info: Found entity 1: add_sub_h7c
 Info: Found 1 design units, including 1 entities, in source file db/add_sub_i7c.tdf
     Info: Found entity 1: add_sub_i7c
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LT2380_SDOR" is stuck at GND
+    Warning (13410): Pin "DOUTR[23]" is stuck at GND
+    Warning (13410): Pin "DOUTR[22]" is stuck at GND
+    Warning (13410): Pin "DOUTR[21]" is stuck at GND
+    Warning (13410): Pin "DOUTR[20]" is stuck at GND
+    Warning (13410): Pin "DOUTR[19]" is stuck at GND
+    Warning (13410): Pin "DOUTR[18]" is stuck at GND
+    Warning (13410): Pin "DOUTR[17]" is stuck at GND
+    Warning (13410): Pin "DOUTR[16]" is stuck at GND
+    Warning (13410): Pin "DOUTR[15]" is stuck at GND
+    Warning (13410): Pin "DOUTR[14]" is stuck at GND
+    Warning (13410): Pin "DOUTR[13]" is stuck at GND
+    Warning (13410): Pin "DOUTR[12]" is stuck at GND
+    Warning (13410): Pin "DOUTR[11]" is stuck at GND
+    Warning (13410): Pin "DOUTR[10]" is stuck at GND
+    Warning (13410): Pin "DOUTR[9]" is stuck at GND
+    Warning (13410): Pin "DOUTR[8]" is stuck at GND
+    Warning (13410): Pin "DOUTR[7]" is stuck at GND
+    Warning (13410): Pin "DOUTR[6]" is stuck at GND
+    Warning (13410): Pin "DOUTR[5]" is stuck at GND
+    Warning (13410): Pin "DOUTR[4]" is stuck at GND
+    Warning (13410): Pin "DOUTR[3]" is stuck at GND
+    Warning (13410): Pin "DOUTR[2]" is stuck at GND
+    Warning (13410): Pin "DOUTR[1]" is stuck at GND
+    Warning (13410): Pin "DOUTR[0]" is stuck at GND
 Info: Registers with preset signals will power-up high
-Info: 37 registers lost all their fanouts during netlist optimizations. The first 37 are displayed below.
+Info: 35 registers lost all their fanouts during netlist optimizations. The first 35 are displayed below.
     Info: Register "F20_EmulateADC:inst|Busy_count[4]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|Busy_count[3]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|Busy_count[2]" lost all its fanouts during netlist optimizations.
@@ -368,14 +376,6 @@ Info: 37 registers lost all their fanouts during netlist optimizations. The firs
     Info: Register "F20_EmulateADC:inst|Busy_count[0]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|Busy_end" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|SRDATA[0]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|SCK_count[5]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|SCK_count[4]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|SCK_count[3]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|SCK_count[2]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|SCK_count[1]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|SCK_count[0]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|CLEAR_REG" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst|SRDATA[22]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|SRDATA[21]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|SRDATA[20]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|SRDATA[19]" lost all its fanouts during netlist optimizations.
@@ -397,17 +397,25 @@ Info: 37 registers lost all their fanouts during netlist optimizations. The firs
     Info: Register "F20_EmulateADC:inst|SRDATA[3]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|SRDATA[2]" lost all its fanouts during netlist optimizations.
     Info: Register "F20_EmulateADC:inst|SRDATA[1]" lost all its fanouts during netlist optimizations.
-Info: Implemented 464 device resources after synthesis - the final resource count might be different
-    Info: Implemented 32 input pins
-    Info: Implemented 101 output pins
-    Info: Implemented 331 logic cells
+    Info: Register "F20_EmulateADC:inst|SCK_count[5]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst|SCK_count[3]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst|SCK_count[4]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst|SCK_count[2]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst|SCK_count[1]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst|SCK_count[0]" lost all its fanouts during netlist optimizations.
+Warning: Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SDORin"
+Info: Implemented 487 device resources after synthesis - the final resource count might be different
+    Info: Implemented 33 input pins
+    Info: Implemented 136 output pins
+    Info: Implemented 318 logic cells
 Warning: Ignored assignments for entity "AA2380-MAXV_TSTQ9" -- entity does not exist in design
     Warning: Assignment for entity set_global_assignment -name LL_ROOT_REGION ON -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
     Warning: Assignment for entity set_global_assignment -name LL_MEMBER_STATE LOCKED -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 238 megabytes
-    Info: Processing ended: Wed Jan 31 08:46:50 2024
-    Info: Elapsed time: 00:00:02
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 44 warnings
+    Info: Peak virtual memory: 245 megabytes
+    Info: Processing ended: Sun Feb 11 20:08:45 2024
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:02
 
 

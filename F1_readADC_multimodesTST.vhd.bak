@@ -1,10 +1,10 @@
 -----------------------------------------------------------------
 -- AA2380V1 OSVA PROJECT.
--- Date: 11/02/24	Designer: O.N
+-- Date: 21/12/20	Designer: O.N
 -- Design notes, please read : "SPECIF_SPI_LTC2380-24.vhd" and
 -- "F1_readADC_multimodes.xls"
 -----------------------------------------------------------------
--- Intel MAXV 5M570 CPLD	Take ?? LE
+-- Intel MAXV 5M570 CPLD	Take (65) LE.
 -- Function F1 :  F1_readADC_multimodes.vhd
 -- Function to read data from two LT2380-24 ADC using any of the two modes :
 -- #############################################################################
@@ -13,15 +13,14 @@
 -- 3) DistributedRead   **  nFS=(FsoxAVG) , 24 reading distributed in (N-1)
 --                          conversion cycles. Fs: 12kHz...1536kHz
 -- #############################################################################
--- 
--- version corrected for proper work in any modes combination.
--- Note 11/02/2024 : For now, the input "ITLV" is not yet used.(to be done).
---------------------------------------------------------------------------------
+-- NOTES : TBD
+--
+------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity F1_readADC_multimodes is
+entity F1_readADC_multimodesTST is
 --
 port(
   -- Inputs ports
@@ -72,9 +71,9 @@ port(
   --
 );
 
-end F1_readADC_multimodes;
+end F1_readADC_multimodesTST;
 
-architecture Behavioral of F1_readADC_multimodes is
+architecture Behavioral of F1_readADC_multimodesTST is
 --
 signal  OutOfRange  : integer range 0 to 1 :=0  ; --
 signal  SpdifOK     : integer range 0 to 1 :=0  ; --
@@ -111,6 +110,8 @@ signal dAVG         : integer range 1 to 128 ; --
 signal T_CNVen_SCK  : std_logic ; --
 signal T_CNVen_SHFT : std_logic ; --
 signal ResetAVGread : std_logic ; --
+
+signal MCLK_ReadCLK    : unsigned (7 downto 0)    ; -- counter for clock divivier, f mini for reading ADC is 768kHz, div maxi=128 depuis 98.304MHz
 
 --
 
@@ -161,14 +162,14 @@ begin
   end if;
   -- COnvert binary AVG value to real Decimal average value.
   case  AVG   is
-        when 0 => dAVG  <= 1   ; -- 1 sample average
+        when 0 => dAVG  <= 1   ; --
         when 1 => dAVG  <= 2   ; --
         when 2 => dAVG  <= 4   ; --
         when 3 => dAVG  <= 8   ; --
         when 4 => dAVG  <= 16  ; --
         when 5 => dAVG  <= 32  ; --
         when 6 => dAVG  <= 64  ; --
-        when 7 => dAVG  <= 128 ; -- 128 sample average
+        when 7 => dAVG  <= 128 ; --
   end case ;
   --
 end process RangeCheck;
@@ -193,15 +194,22 @@ end process SpdifCheck;
 -- Fsox128 (MHz) : 1.536,3.072,6.144,12.288,24.576
 -- NOTE: No clock if OutOfRange is active.
 ------------------------------------------------------------------
-MCLK_div : process(MCLK,AVG,MCLK_divider,SEL_nFS,SR,OutOfRange)
+MCLK_div : process(MCLK,AVG,MCLK_divider,SEL_nFS,SR,OutOfRange,sBUSYR,sBUSYL,MCLK_ReadCLK)
 begin
     -- DivideMCLK
     if  rising_edge(MCLK)  then
         MCLK_divider <= MCLK_divider + 1 ; -- increment MCLK_divider counter
     end if;
+    
+    -- DivideMCLK for ReadClock only (synchronized to busy flags to make low latency)
+    if  (sBUSYR='1' or sBUSYL='1')  then
+        MCLK_ReadCLK <= "00000001" ; -- counter set to 2 when busy active
+    elsif rising_edge(MCLK)  then
+        MCLK_ReadCLK <= MCLK_ReadCLK + 1 ; -- increment MCLK_ReadCLK counter
+    end if;
     --
     -- Compute AVG + Fso value to select nFS frequency value.
-    -- SEL_nFS= 0 to 7 for nFS= 12k to 1536kHz
+    -- SEL_nFS= 0 (min) to 7 (max) for nFS= 12k to 1536kHz
     SEL_nFS <= AVG + SR ; -- sum of AVG and Fso values
     --
     -- Select nFS Clock value from calculated SEL_nFS
@@ -254,19 +262,16 @@ end process MCLK_div ;
 -- Si le signal OutOfRange est actif pas de signal de clock en sortie
 -- (combinaison SR/AVG non compatible)
 ------------------------------------------------------------------
-ReadCLK_SEL : process(MCLK,MCLK_divider,AVG,SEL_nFS,SEL_RDCLK,AQMODE,OutOfRange)
+ReadCLK_SEL : process(MCLK,MCLK_divider,AVG,SEL_nFS,SEL_RDCLK,AQMODE,OutOfRange,MCLK_ReadCLK)
 begin
     -- Set number of clock cycles for Normal and DIstributed Read modes.
     if  AQMODE = '1' then -- Distributed read Mode
         case AVG is
-            -- New corrected table values to allow correct reading when nFS become high
-            -- The number of clock cycle has been reduced.(02/2024)
             when 0       => CK_cycle <= 24; -- 24 cycles if no averaging
             when 1       => CK_cycle <= 24; -- 24 clock cycles
-            when 2       => CK_cycle <= 8 ; -- 8 clock cycles
-            when 3       => CK_cycle <= 4 ; -- 4  clock cycles 
-            when 4       => CK_cycle <= 2 ; -- 2  clock cycles
-            when others  => CK_cycle <= 1 ; -- otherwise 1 clock cycles
+            when 2       => CK_cycle <= 12; -- 12 clock cycles
+            when 3       => CK_cycle <= 6 ; -- 6  clock cycles
+            when others  => CK_cycle <= 3 ; -- otherwise 3 clock cycles
         end case;
     else
          CK_cycle <= 24; -- always 24 clocks cycles in NormalRead mode.
@@ -281,29 +286,25 @@ begin
     else
         if AVG= 0 then
             SEL_RDCLK <= SEL_nFS + (7-AVG) - 1 ; -- substract 1 to get same result as  with AVG=1.. 
-            -- SEL_nFS=(SR+AVG), valeur entre 0 et 7 pour nFS= 12k à 1536kHz
-            -- SEL_RDCLK = (SR+AVG)+(7-AVG)-1 soit ==> SR+6 
+            -- AVG + SR = SEL_nFS donc SEL_RDCLK=  AVG + SR + 7 - AVG - 1 = SR + 6 !!!! ?
         else
             SEL_RDCLK <= SEL_nFS + (7-AVG)    ; -- result value = 0 to 14
-            -- SEL_RDCLK = (SR+AVG)+(7-AVG)-1 soit ==> SR+7
+            -- AVG + SR = SEL_nFS donc SEL_RDCLK=  AVG + SR + 7 - AVG = SR + 7 !!!! ?
         end if;
         --
         if  AQMODE = '1' then    -- Distributed read Mode
             case  SEL_RDCLK is
-            -- In distributed read, the reading clock has been increased
-            -- because at high nFS value the read time is too short
-            -- with slow read clock.
-                when 6  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M ** added the 30/01/24 for proper work at avg=0 and aqmode=1
-                when 7  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
-                when 8  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
-                when 9  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
-                when 10 => ReadCLK <= MCLK_divider(2)  ; -- 12.288M
-                when 11 => ReadCLK <= MCLK_divider(1)  ; -- 24.576M 
-                when 12 => ReadCLK <= MCLK_divider(0)  ; -- 49.152M
-                when 13 => ReadCLK <= MCLK             ; -- 98.304M
+                when 13 => ReadCLK <= MCLK     ; -- 98.304M
+                when 12 => ReadCLK <= MCLK_ReadCLK(0)  ; -- 49.152M
+                when 11 => ReadCLK <= MCLK_ReadCLK(1)  ; -- 24.576M
+                when 10 => ReadCLK <= MCLK_ReadCLK(2)  ; -- 12.288M
+                when 9  => ReadCLK <= MCLK_ReadCLK(3)  ; -- 6.144M
+                when 8  => ReadCLK <= MCLK_ReadCLK(4)  ; -- 3.072M
+                when 7  => ReadCLK <= MCLK_ReadCLK(5)  ; -- 1.536M
+                when 6  => ReadCLK <= MCLK_ReadCLK(4)  ; -- 0.768M ** added the 30/01/24 for proper work at avg=0 and aqmode=1
                 when others => ReadCLK <= '0'           ;
             end case;
-       else                      -- Normal Mode  (Note SEL_nFS= AVG + SR)
+       else                      -- Mode Normal.  (Note SEL_nFS= AVG + SR)
             case  SEL_nFS is
               when 0 => ReadCLK <= MCLK_divider(6)  ; -- 0.768K
               when 1 => ReadCLK <= MCLK_divider(5)  ; -- 1.536M
@@ -353,6 +354,11 @@ begin
 end process CNV_pulse;
 
 ------------------------------------------------------------------
+-- AU desssus OK !
+--
+--
+-- Au dessous NON TESTE !
+------------------------------------------------------------------
 --  Data read CLock pulse generator
 -- "CK_cycle" is the number of reading clock cycle / conversion
 -- "ReadCLK" is clock used to read data (depend on Mode,SR and AVG)
@@ -370,34 +376,31 @@ begin
         sBUSYL <=BUSYL ; -- Synch BUSYL to MCLK
         sBUSYR <=BUSYR ; -- Synch BUSYR to MCLK
   end if;
-  --
+--
   if  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
       if    rising_edge(ReadCLK) then   -- All the process is synchroous to ReadCLK
-                --
-    			if    CNVclk_cnt <= CK_cycle then    -- compare cycle counter with CK_cycle value
-    				    CNVclk_cnt <= CNVclk_cnt + 1 ;      -- Increment clock cylce counter
+          --
+    			if  CNVclk_cnt <= CK_cycle then    -- compare cycle counter with CK_cycle value
+    				CNVclk_cnt <= CNVclk_cnt + 1 ;      -- Increment clock cylce counter
     			end if;
-                --
-                -- ADC clock pulse window
-    			if    CNVclk_cnt>0 and  CNVclk_cnt <= CK_cycle  then
-    				    CNVen_SCK  <= '1' ; -- Enable window for clock
+           -- *** PARTIE A RETRAVAILLER ***
+    			-- ADC clock pulse window
+    			if  CNVclk_cnt>0 and  CNVclk_cnt <= CK_cycle  then
+    				CNVen_SCK  <= '1' ; -- Enable window for clock
     			else
-    				    CNVen_SCK  <= '0' ; -- Disable window for clock
+    				CNVen_SCK  <= '0' ; -- Disable window for clock
     			end if;
-                --
+          --
     			-- ADC read data clock window (for shift register data read)
-    			if    CNVclk_cnt < (CK_cycle) then
-    				    CNVen_SHFT <= '1' ; -- Enable serial data read window
+    			if  CNVclk_cnt < (CK_cycle) then
+    				CNVen_SHFT <= '1' ; -- Enable serial data read window
     			else
-    				    CNVen_SHFT <= '0' ; -- Disable serial data read window
+    				CNVen_SHFT <= '0' ; -- Disable serial data read window
     			end if;
 		    --
 	    end if;
   else
       CNVclk_cnt <= 0;  -- Reset tclk_cnt when BUSY is high
-      -- Added below 11/02/24: (more clean behaviour)
-      CNVen_SHFT <= '0' ; -- shift window always disable when busy active
-      CNVen_SCK  <= '0' ; -- sck window always disable when busy active
   end if;
 end process;
 
@@ -408,7 +411,7 @@ RDenable : process (ReadCLK,AVGen_SCK,CNVen_SHFT,CNVen_SCK,AVGen_READ,T_CNVen_SH
 begin
     -- To avoid glitchs when combinate clock & pulse synch to same clock,
     -- when must use "clock-enable" module below.
-    if  falling_edge(ReadCLK) then
+    if      (ReadCLK) then
         T_CNVen_SCK  <= CNVen_SCK  ; -- signal "CNVen_SCK" synch to falling edge of ReadCLK
         T_CNVen_SHFT <= CNVen_SHFT ; -- signal "CNVen_SHFT" synch to falling edge of ReadCLK
     end if;
@@ -454,7 +457,7 @@ begin
         if rising_edge(nFS) then
             --
             if  AVG_count < dAVG then  --  compare average counter and AVG input value
-                AVG_count <=AVG_count +1; -- increment counter
+                AVG_count <=AVG_count +1; -- increment coounter
             else
                 AVG_count <= 1		; -- reset counter
             end if;
@@ -488,6 +491,16 @@ end process AVG_cycles;
 ------------------------------------------------------------------
 ---- window to limit the reading of the only 23 first clock cycle AVGen_READ
 --------------------------------------------------------------------
+-- process (AVGen_READ,ADC_CLK,TCLK23)
+-- begin
+--   -- the TCLK23 counter is reset outside "AVGen_READ" window.
+-- 	if	    AVGen_READ = '0' then -- Replace "CNVen_SCK"
+-- 		      TCLK23 <= 0			;
+-- 	elsif   rising_edge(ADC_CLK) and TCLK23 < 23 then
+--           TCLK23 <= TCLK23 + 1 ;
+-- 	end if;
+-- end process;
+
 -- ** MODIF DU 30/01/24 pour régler le problème lorsque  AVG=0 pas de moyennage 
 process (AVGen_READ,ADC_CLK,TCLK23,CNVA,AVG,ResetAVGread)
 begin

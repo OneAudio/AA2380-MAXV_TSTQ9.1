@@ -28,6 +28,8 @@
  --                 of its bank.
  --					Bank 1:		3.3V
  --					Bank 2:		3.3V
+ --					Bank 3:		3.3V
+ --					Bank 4:		3.3V
  -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
  --					It can also be used to report unused dedicated pins. The connection
  --					on the board for unused dedicated pins depends on whether this will
@@ -61,263 +63,331 @@
  ---------------------------------------------------------------------------------
 
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-CHIP  "AA2380-MAXV_TSTQ9"  ASSIGNED TO AN: EPM570F256C4
+CHIP  "AA2380-MAXV_TSTQ9"  ASSIGNED TO AN: EPM2210F324C4
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
 GNDIO                        : A1        : gnd    :                   :         :           :                
-Test_CNVclk_cnt[1]           : A2        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : A2        :        :                   :         : 2         :                
 VCCIO2                       : A3        : power  :                   : 3.3V    : 2         :                
 GND*                         : A4        :        :                   :         : 2         :                
-DOUTR[15]                    : A5        : output : 3.3-V LVTTL       :         : 2         : N              
-Test_TCLK23[1]               : A6        : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[22]                    : A7        : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[23]                    : A8        : output : 3.3-V LVTTL       :         : 2         : N              
-Test_AVG_count[6]            : A9        : output : 3.3-V LVTTL       :         : 2         : N              
-Test_SEL_RDCLK[2]            : A10       : output : 3.3-V LVTTL       :         : 2         : N              
-Fso                          : A11       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : A12       :        :                   :         : 2         :                
-GND*                         : A13       :        :                   :         : 2         :                
-VCCIO2                       : A14       : power  :                   : 3.3V    : 2         :                
-GND*                         : A15       :        :                   :         : 2         :                
-GNDIO                        : A16       : gnd    :                   :         :           :                
-DOUTL[4]                     : B1        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[21]                   : A5        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[2]                    : A6        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[16]                   : A7        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[5]                    : A8        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[20]                   : A9        : output : 3.3-V LVTTL       :         : 2         : N              
+Test_TCLK23[1]               : A10       : output : 3.3-V LVTTL       :         : 2         : N              
+AQMODE                       : A11       : input  : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[22]                    : A12       : output : 3.3-V LVTTL       :         : 2         : N              
+Test_AVG_count[6]            : A13       : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[18]                   : A14       : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[12]                   : A15       : output : 3.3-V LVTTL       :         : 2         : N              
+VCCIO2                       : A16       : power  :                   : 3.3V    : 2         :                
+GND*                         : A17       :        :                   :         : 2         :                
+GNDIO                        : A18       : gnd    :                   :         :           :                
+GND*                         : B1        :        :                   :         : 2         :                
 GNDIO                        : B2        : gnd    :                   :         :           :                
-DOUTR[4]                     : B3        : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[15]                    : B4        : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[22]                    : B5        : output : 3.3-V LVTTL       :         : 2         : N              
-Test_CNVclk_cnt[0]           : B6        : output : 3.3-V LVTTL       :         : 2         : N              
-EDATA[1]                     : B7        : input  : 3.3-V LVTTL       :         : 2         : N              
-Test_AVG_count[5]            : B8        : output : 3.3-V LVTTL       :         : 2         : N              
-EDATA[23]                    : B9        : input  : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[17]                    : B10       : output : 3.3-V LVTTL       :         : 2         : N              
-Fsox128                      : B11       : output : 3.3-V LVTTL       :         : 2         : N              
-Test_AVG_count[2]            : B12       : output : 3.3-V LVTTL       :         : 2         : N              
-Test_SEL_nFS[0]              : B13       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[9]                     : B14       : output : 3.3-V LVTTL       :         : 2         : N              
-GNDIO                        : B15       : gnd    :                   :         :           :                
-Test_CK_cycle[0]             : B16       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : B3        :        :                   :         : 2         :                
+GND*                         : B4        :        :                   :         : 2         :                
+Test_CNVclk_cnt[4]           : B5        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[10]                   : B6        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[6]                    : B7        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[22]                   : B8        : output : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[5]                     : B9        : output : 3.3-V LVTTL       :         : 2         : N              
+Test_AVG_count[5]            : B10       : output : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[23]                    : B11       : output : 3.3-V LVTTL       :         : 2         : N              
+Test_AVG_count[0]            : B12       : output : 3.3-V LVTTL       :         : 2         : N              
+LT2380_SCKcount[1]           : B13       : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[8]                    : B14       : output : 3.3-V LVTTL       :         : 2         : N              
+SDORin                       : B15       : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : B16       :        :                   :         : 2         :                
+GNDIO                        : B17       : gnd    :                   :         :           :                
+GND*                         : B18       :        :                   :         : 2         :                
 VCCIO1                       : C1        : power  :                   : 3.3V    : 1         :                
-DOUTR[0]                     : C2        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[5]                     : C3        : input  : 3.3-V LVTTL       :         : 1         : N              
-Test_CNVclk_cnt[5]           : C4        : output : 3.3-V LVTTL       :         : 2         : N              
-Test_TCLK23[2]               : C5        : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[21]                    : C6        : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[23]                    : C7        : output : 3.3-V LVTTL       :         : 2         : N              
-Test_TCNVen_SCK              : C8        : output : 3.3-V LVTTL       :         : 2         : N              
-EDATA[0]                     : C9        : input  : 3.3-V LVTTL       :         : 2         : N              
-Test_SEL_RDCLK[0]            : C10       : output : 3.3-V LVTTL       :         : 2         : N              
-EDATA[2]                     : C11       : input  : 3.3-V LVTTL       :         : 2         : N              
-Test_AVG_count[4]            : C12       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[10]                    : C13       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[11]                    : C14       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[1]                     : C15       : output : 3.3-V LVTTL       :         : 2         : N              
-VCCIO2                       : C16       : power  :                   : 3.3V    : 2         :                
-EDATA[22]                    : D1        : input  : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : D2        :        :                   :         : 1         :                
-GND*                         : D3        :        :                   :         : 1         :                
-EDATA[18]                    : D4        : input  : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[13]                    : D5        : output : 3.3-V LVTTL       :         : 2         : N              
-NC                           : D6        :        :                   :         :           :                
-NC                           : D7        :        :                   :         :           :                
-NC                           : D8        :        :                   :         :           :                
-NC                           : D9        :        :                   :         :           :                
-NC                           : D10       :        :                   :         :           :                
-Test_CK_cycle[4]             : D11       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : D12       :        :                   :         : 2         :                
-DOUTL[13]                    : D13       : output : 3.3-V LVTTL       :         : 2         : N              
-BUSYL                        : D14       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[11]                    : D15       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[10]                    : D16       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[0]                     : E1        : output : 3.3-V LVTTL       :         : 1         : N              
-Test_CNVclk_cnt[4]           : E2        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[3]                     : E3        : input  : 3.3-V LVTTL       :         : 1         : N              
-Test_AVG_count[0]            : E4        : output : 3.3-V LVTTL       :         : 1         : N              
-NC                           : E5        :        :                   :         :           :                
-NC                           : E6        :        :                   :         :           :                
-NC                           : E7        :        :                   :         :           :                
-NC                           : E8        :        :                   :         :           :                
-NC                           : E9        :        :                   :         :           :                
-NC                           : E10       :        :                   :         :           :                
-NC                           : E11       :        :                   :         :           :                
-NC                           : E12       :        :                   :         :           :                
+GND*                         : C2        :        :                   :         : 1         :                
+GND*                         : C3        :        :                   :         : 1         :                
+GND*                         : C4        :        :                   :         : 2         :                
+DOUTL[6]                     : C5        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : C6        :        :                   :         : 2         :                
+Test_SEL_RDCLK[2]            : C7        : output : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[17]                    : C8        : output : 3.3-V LVTTL       :         : 2         : N              
+nFS                          : C9        : output : 3.3-V LVTTL       :         : 2         : N              
+EDATA[16]                    : C10       : input  : 3.3-V LVTTL       :         : 2         : N              
+LT2380_SCKcount[5]           : C11       : output : 3.3-V LVTTL       :         : 2         : N              
+EDATA[3]                     : C12       : input  : 3.3-V LVTTL       :         : 2         : N              
+LT2380_SCKcount[2]           : C13       : output : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[21]                    : C14       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : C15       :        :                   :         : 2         :                
+DOUTL[11]                    : C16       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : C17       :        :                   :         : 3         :                
+VCCIO3                       : C18       : power  :                   : 3.3V    : 3         :                
+DOUTL[1]                     : D1        : output : 3.3-V LVTTL       :         : 1         : N              
+DOUTR[3]                     : D2        : output : 3.3-V LVTTL       :         : 1         : N              
+DOUTL[7]                     : D3        : output : 3.3-V LVTTL       :         : 1         : N              
+rDATAL[7]                    : D4        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : D5        :        :                   :         : 2         :                
+GND*                         : D6        :        :                   :         : 2         :                
+Test_CK_cycle[0]             : D7        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[4]                    : D8        : output : 3.3-V LVTTL       :         : 2         : N              
+Test_TCLK23[3]               : D9        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[19]                   : D10       : output : 3.3-V LVTTL       :         : 2         : N              
+LT2380_SCKcount[4]           : D11       : output : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[8]                     : D12       : output : 3.3-V LVTTL       :         : 2         : N              
+Test_SEL_nFS[2]              : D13       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : D14       :        :                   :         : 2         :                
+rDATAL[11]                   : D15       : output : 3.3-V LVTTL       :         : 3         : N              
+Test_AVGen_SCK               : D16       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : D17       :        :                   :         : 3         :                
+GND*                         : D18       :        :                   :         : 3         :                
+GND*                         : E1        :        :                   :         : 1         :                
+DOUTR[11]                    : E2        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : E3        :        :                   :         : 1         :                
+EDATA[22]                    : E4        : input  : 3.3-V LVTTL       :         : 1         : N              
+Test_OutOfRange              : E5        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : E6        :        :                   :         : 2         :                
+EDATA[21]                    : E7        : input  : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[0]                     : E8        : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[3]                    : E9        : output : 3.3-V LVTTL       :         : 2         : N              
+Test_AVG_count[1]            : E10       : output : 3.3-V LVTTL       :         : 2         : N              
+LT2380_SCKcount[3]           : E11       : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : E12       :        :                   :         : 2         :                
 GND*                         : E13       :        :                   :         : 2         :                
-Test_SEL_nFS[2]              : E14       : output : 3.3-V LVTTL       :         : 2         : N              
-Test_AVGen_READ              : E15       : output : 3.3-V LVTTL       :         : 2         : N              
-EDATA[12]                    : E16       : input  : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[6]                     : F1        : output : 3.3-V LVTTL       :         : 1         : N              
-DOUTR[1]                     : F2        : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : F3        :        :                   :         : 1         :                
-NC                           : F4        :        :                   :         :           :                
-NC                           : F5        :        :                   :         :           :                
-NC                           : F6        :        :                   :         :           :                
-NC                           : F7        :        :                   :         :           :                
-VCCIO2                       : F8        : power  :                   : 3.3V    : 2         :                
-VCCIO2                       : F9        : power  :                   : 3.3V    : 2         :                
-NC                           : F10       :        :                   :         :           :                
-NC                           : F11       :        :                   :         :           :                
-NC                           : F12       :        :                   :         :           :                
-DOUTL[12]                    : F13       : output : 3.3-V LVTTL       :         : 2         : N              
-AVG[0]                       : F14       : input  : 3.3-V LVTTL       :         : 2         : N              
-Test_CK_cycle[3]             : F15       : output : 3.3-V LVTTL       :         : 2         : N              
-BUSYR                        : F16       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : G1        :        :                   :         : 1         :                
-EDATA[15]                    : G2        : input  : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : G3        :        :                   :         : 1         :                
-NC                           : G4        :        :                   :         :           :                
-NC                           : G5        :        :                   :         :           :                
-NC                           : G6        :        :                   :         :           :                
-GNDIO                        : G7        : gnd    :                   :         :           :                
-GNDIO                        : G8        : gnd    :                   :         :           :                
-GNDIO                        : G9        : gnd    :                   :         :           :                
-GNDIO                        : G10       : gnd    :                   :         :           :                
-NC                           : G11       :        :                   :         :           :                
-NC                           : G12       :        :                   :         :           :                
-NC                           : G13       :        :                   :         :           :                
-DOUTL[21]                    : G14       : output : 3.3-V LVTTL       :         : 2         : N              
-AVG[1]                       : G15       : input  : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[17]                    : G16       : output : 3.3-V LVTTL       :         : 2         : N              
-Test_CNVclk_cnt[2]           : H1        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[17]                    : H2        : input  : 3.3-V LVTTL       :         : 1         : N              
-EDATA[11]                    : H3        : input  : 3.3-V LVTTL       :         : 1         : N              
-NC                           : H4        :        :                   :         :           :                
-MCLK                         : H5        : input  : 3.3-V LVTTL       :         : 1         : N              
-VCCIO1                       : H6        : power  :                   : 3.3V    : 1         :                
+LT2380_Read_end              : E14       : output : 3.3-V LVTTL       :         : 3         : N              
+rDATAL[1]                    : E15       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : E16       :        :                   :         : 3         :                
+rDATAL[15]                   : E17       : output : 3.3-V LVTTL       :         : 3         : N              
+rDATAL[9]                    : E18       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : F1        :        :                   :         : 1         :                
+CNVR                         : F2        : output : 3.3-V LVTTL       :         : 1         : N              
+DOUTR[6]                     : F3        : output : 3.3-V LVTTL       :         : 1         : N              
+Test_CNVclk_cnt[1]           : F4        : output : 3.3-V LVTTL       :         : 1         : N              
+Test_CNVclk_cnt[0]           : F5        : output : 3.3-V LVTTL       :         : 1         : N              
+SDOR                         : F6        : output : 3.3-V LVTTL       :         : 1         : N              
+DOUTR[14]                    : F7        : output : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[10]                    : F8        : output : 3.3-V LVTTL       :         : 2         : N              
+DOUTL[3]                     : F9        : output : 3.3-V LVTTL       :         : 2         : N              
+Test_AVG_count[3]            : F10       : output : 3.3-V LVTTL       :         : 2         : N              
+LT2380_SCKcount[0]           : F11       : output : 3.3-V LVTTL       :         : 2         : N              
+Test_CK_cycle[3]             : F12       : output : 3.3-V LVTTL       :         : 2         : N              
+rDATAL[14]                   : F13       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : F14       :        :                   :         : 3         :                
+GND*                         : F15       :        :                   :         : 3         :                
+rDATAL[13]                   : F16       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : F17       :        :                   :         : 3         :                
+DOUTL[18]                    : F18       : output : 3.3-V LVTTL       :         : 3         : N              
+EDATA[17]                    : G1        : input  : 3.3-V LVTTL       :         : 1         : N              
+Test_CNVclk_cnt[2]           : G2        : output : 3.3-V LVTTL       :         : 1         : N              
+rDATAL[17]                   : G3        : output : 3.3-V LVTTL       :         : 1         : N              
+EDATA[20]                    : G4        : input  : 3.3-V LVTTL       :         : 1         : N              
+DOUTL[2]                     : G5        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : G6        :        :                   :         : 1         :                
+CNVL                         : G7        : output : 3.3-V LVTTL       :         : 1         : N              
+GNDINT                       : G8        : gnd    :                   :         :           :                
+VCCIO2                       : G9        : power  :                   : 3.3V    : 2         :                
+VCCIO2                       : G10       : power  :                   : 3.3V    : 2         :                
+VCCINT                       : G11       : power  :                   : 2.5V/3.3V :           :                
+Test_AVG_count[2]            : G12       : output : 3.3-V LVTTL       :         : 3         : N              
+Test_AVG_count[4]            : G13       : output : 3.3-V LVTTL       :         : 3         : N              
+Test_CNVclk_cnt[5]           : G14       : output : 3.3-V LVTTL       :         : 3         : N              
+DOUTL[9]                     : G15       : output : 3.3-V LVTTL       :         : 3         : N              
+BUSYR                        : G16       : output : 3.3-V LVTTL       :         : 3         : N              
+AVG[1]                       : G17       : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : G18       :        :                   :         : 3         :                
+GND*                         : H1        :        :                   :         : 1         :                
+rDATAL[0]                    : H2        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : H3        :        :                   :         : 1         :                
+Test_CK_cycle[4]             : H4        : output : 3.3-V LVTTL       :         : 1         : N              
+Test_AVGen_READ              : H5        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : H6        :        :                   :         : 1         :                
 GNDINT                       : H7        : gnd    :                   :         :           :                
-VCCINT                       : H8        : power  :                   : 2.5V/3.3V :           :                
-GNDINT                       : H9        : gnd    :                   :         :           :                
-VCCINT                       : H10       : power  :                   : 2.5V/3.3V :           :                
-VCCIO2                       : H11       : power  :                   : 3.3V    : 2         :                
-SCKL                         : H12       : output : 3.3-V LVTTL       :         : 2         : N              
-NC                           : H13       :        :                   :         :           :                
-Test_ADC_CLK                 : H14       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[2]                     : H15       : output : 3.3-V LVTTL       :         : 2         : N              
-Test_TCNVen_SHFT             : H16       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : J1        :        :                   :         : 1         :                
-Test_TCLK23[0]               : J2        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[6]                     : J3        : input  : 3.3-V LVTTL       :         : 1         : N              
-NC                           : J4        :        :                   :         :           :                
-Test_TCLK23[4]               : J5        : output : 3.3-V LVTTL       :         : 1         : N              
-VCCIO1                       : J6        : power  :                   : 3.3V    : 1         :                
-VCCINT                       : J7        : power  :                   : 2.5V/3.3V :           :                
+GNDIO                        : H8        : gnd    :                   :         :           :                
+GNDIO                        : H9        : gnd    :                   :         :           :                
+GNDIO                        : H10       : gnd    :                   :         :           :                
+GNDIO                        : H11       : gnd    :                   :         :           :                
+VCCINT                       : H12       : power  :                   : 2.5V/3.3V :           :                
+DOUTL[16]                    : H13       : output : 3.3-V LVTTL       :         : 3         : N              
+LT2380_loadSR                : H14       : output : 3.3-V LVTTL       :         : 3         : N              
+Test_CNVen_SHFT              : H15       : output : 3.3-V LVTTL       :         : 3         : N              
+DOUTR[13]                    : H16       : output : 3.3-V LVTTL       :         : 3         : N              
+DOUTL[13]                    : H17       : output : 3.3-V LVTTL       :         : 3         : N              
+DOUTL[15]                    : H18       : output : 3.3-V LVTTL       :         : 3         : N              
+Test_ENVen_SCK               : J1        : output : 3.3-V LVTTL       :         : 1         : N              
+DOUTR[19]                    : J2        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : J3        :        :                   :         : 1         :                
+GND*                         : J4        :        :                   :         : 1         :                
+GND*                         : J5        :        :                   :         : 1         :                
+MCLK                         : J6        : input  : 3.3-V LVTTL       :         : 1         : N              
+VCCIO1                       : J7        : power  :                   : 3.3V    : 1         :                
 GNDINT                       : J8        : gnd    :                   :         :           :                
 VCCINT                       : J9        : power  :                   : 2.5V/3.3V :           :                
 GNDINT                       : J10       : gnd    :                   :         :           :                
-VCCIO2                       : J11       : power  :                   : 3.3V    : 2         :                
-SR[0]                        : J12       : input  : 3.3-V LVTTL       :         : 2         : N              
-NC                           : J13       :        :                   :         :           :                
-SR[2]                        : J14       : input  : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[7]                     : J15       : output : 3.3-V LVTTL       :         : 2         : N              
-SR[1]                        : J16       : input  : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[18]                    : K1        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[19]                    : K2        : input  : 3.3-V LVTTL       :         : 1         : N              
-DOUTR[16]                    : K3        : output : 3.3-V LVTTL       :         : 1         : N              
-NC                           : K4        :        :                   :         :           :                
-NC                           : K5        :        :                   :         :           :                
-NC                           : K6        :        :                   :         :           :                
-GNDIO                        : K7        : gnd    :                   :         :           :                
-GNDIO                        : K8        : gnd    :                   :         :           :                
-GNDIO                        : K9        : gnd    :                   :         :           :                
-GNDIO                        : K10       : gnd    :                   :         :           :                
-NC                           : K11       :        :                   :         :           :                
-NC                           : K12       :        :                   :         :           :                
-NC                           : K13       :        :                   :         :           :                
-DOUTR[8]                     : K14       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[7]                     : K15       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[5]                     : K16       : output : 3.3-V LVTTL       :         : 2         : N              
-EDATA[20]                    : L1        : input  : 3.3-V LVTTL       :         : 1         : N              
-EDATA[16]                    : L2        : input  : 3.3-V LVTTL       :         : 1         : N              
-SDOR                         : L3        : output : 3.3-V LVTTL       :         : 1         : N              
-DOUTR[18]                    : L4        : output : 3.3-V LVTTL       :         : 1         : N              
-NC                           : L5        :        :                   :         :           :                
-TDI                          : L6        : input  :                   :         : 1         :                
-NC                           : L7        :        :                   :         :           :                
-VCCIO1                       : L8        : power  :                   : 3.3V    : 1         :                
-VCCIO1                       : L9        : power  :                   : 3.3V    : 1         :                
-NC                           : L10       :        :                   :         :           :                
-NC                           : L11       :        :                   :         :           :                
-NC                           : L12       :        :                   :         :           :                
-DOUTR[12]                    : L13       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[5]                     : L14       : output : 3.3-V LVTTL       :         : 2         : N              
-Test_CK_cycle[1]             : L15       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTR[14]                    : L16       : output : 3.3-V LVTTL       :         : 2         : N              
-Test_SEL_nFS[1]              : M1        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[4]                     : M2        : input  : 3.3-V LVTTL       :         : 1         : N              
-Test_CNVen_SHFT              : M3        : output : 3.3-V LVTTL       :         : 1         : N              
-AQMODE                       : M4        : input  : 3.3-V LVTTL       :         : 1         : N              
-TDO                          : M5        : output :                   :         : 1         :                
-NC                           : M6        :        :                   :         :           :                
-NC                           : M7        :        :                   :         :           :                
-AVG[2]                       : M8        : input  : 3.3-V LVTTL       :         : 1         : N              
-DOUTR[2]                     : M9        : output : 3.3-V LVTTL       :         : 1         : N              
-NC                           : M10       :        :                   :         :           :                
-NC                           : M11       :        :                   :         :           :                
-NC                           : M12       :        :                   :         :           :                
-Test_SEL_RDCLK[1]            : M13       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : M14       :        :                   :         : 2         :                
-EDATA[8]                     : M15       : input  : 3.3-V LVTTL       :         : 2         : N              
-Test_SpdifOK                 : M16       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : N1        :        :                   :         : 1         :                
-EDATA[7]                     : N2        : input  : 3.3-V LVTTL       :         : 1         : N              
-DOUTL[16]                    : N3        : output : 3.3-V LVTTL       :         : 1         : N              
-TMS                          : N4        : input  :                   :         : 1         :                
-Test_TCLK23[3]               : N5        : output : 3.3-V LVTTL       :         : 1         : N              
-NC                           : N6        :        :                   :         :           :                
-NC                           : N7        :        :                   :         :           :                
-NC                           : N8        :        :                   :         :           :                
-NC                           : N9        :        :                   :         :           :                
-NC                           : N10       :        :                   :         :           :                
-NC                           : N11       :        :                   :         :           :                
-GND*                         : N12       :        :                   :         : 1         :                
-Test_AVGen_SCK               : N13       : output : 3.3-V LVTTL       :         : 2         : N              
-DOUTL[8]                     : N14       : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : N15       :        :                   :         : 2         :                
-GND*                         : N16       :        :                   :         : 2         :                
-VCCIO1                       : P1        : power  :                   : 3.3V    : 1         :                
-DOUTR[6]                     : P2        : output : 3.3-V LVTTL       :         : 1         : N              
-TCK                          : P3        : input  :                   :         : 1         :                
-Test_CK_cycle[2]             : P4        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[14]                    : P5        : input  : 3.3-V LVTTL       :         : 1         : N              
-DOUTL[19]                    : P6        : output : 3.3-V LVTTL       :         : 1         : N              
-DOUTR[19]                    : P7        : output : 3.3-V LVTTL       :         : 1         : N              
-Test_AVG_count[3]            : P8        : output : 3.3-V LVTTL       :         : 1         : N              
-Test_AVG_count[1]            : P9        : output : 3.3-V LVTTL       :         : 1         : N              
-CNVR                         : P10       : output : 3.3-V LVTTL       :         : 1         : N              
-Test_ADC_SHIFT               : P11       : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : P12       :        :                   :         : 1         :                
-DOUTR[9]                     : P13       : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : P14       :        :                   :         : 2         :                
-GND*                         : P15       :        :                   :         : 2         :                
-VCCIO2                       : P16       : power  :                   : 3.3V    : 2         :                
-DOUTL[3]                     : R1        : output : 3.3-V LVTTL       :         : 1         : N              
-GNDIO                        : R2        : gnd    :                   :         :           :                
-DOUTR[3]                     : R3        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[10]                    : R4        : input  : 3.3-V LVTTL       :         : 1         : N              
-Test_ENVen_SCK               : R5        : output : 3.3-V LVTTL       :         : 1         : N              
-Test_SEL_RDCLK[3]            : R6        : output : 3.3-V LVTTL       :         : 1         : N              
-DOUTL[20]                    : R7        : output : 3.3-V LVTTL       :         : 1         : N              
-SDOL                         : R8        : output : 3.3-V LVTTL       :         : 1         : N              
-Test_ReadCLK                 : R9        : output : 3.3-V LVTTL       :         : 1         : N              
-SCKR                         : R10       : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : R11       :        :                   :         : 1         :                
-EDATA[9]                     : R12       : input  : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : R13       :        :                   :         : 1         :                
-GND*                         : R14       :        :                   :         : 1         :                
-GNDIO                        : R15       : gnd    :                   :         :           :                
-DOUTL[14]                    : R16       : output : 3.3-V LVTTL       :         : 1         : N              
-GNDIO                        : T1        : gnd    :                   :         :           :                
-EDATA[21]                    : T2        : input  : 3.3-V LVTTL       :         : 1         : N              
-VCCIO1                       : T3        : power  :                   : 3.3V    : 1         :                
-Test_OutOfRange              : T4        : output : 3.3-V LVTTL       :         : 1         : N              
-Test_CNVclk_cnt[3]           : T5        : output : 3.3-V LVTTL       :         : 1         : N              
-EDATA[13]                    : T6        : input  : 3.3-V LVTTL       :         : 1         : N              
-DOUTR[20]                    : T7        : output : 3.3-V LVTTL       :         : 1         : N              
-CNVL                         : T8        : output : 3.3-V LVTTL       :         : 1         : N              
-Test_CNVA                    : T9        : output : 3.3-V LVTTL       :         : 1         : N              
-nFS                          : T10       : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : T11       :        :                   :         : 1         :                
-GND*                         : T12       :        :                   :         : 1         :                
-GND*                         : T13       :        :                   :         : 1         :                
-VCCIO1                       : T14       : power  :                   : 3.3V    : 1         :                
-GND*                         : T15       :        :                   :         : 1         :                
-GNDIO                        : T16       : gnd    :                   :         :           :                
+VCCINT                       : J11       : power  :                   : 2.5V/3.3V :           :                
+VCCIO3                       : J12       : power  :                   : 3.3V    : 3         :                
+EDATA[13]                    : J13       : input  : 3.3-V LVTTL       :         : 3         : N              
+EDATA[14]                    : J14       : input  : 3.3-V LVTTL       :         : 3         : N              
+Test_TCLK23[0]               : J15       : output : 3.3-V LVTTL       :         : 3         : N              
+DOUTL[12]                    : J16       : output : 3.3-V LVTTL       :         : 3         : N              
+DOUTL[14]                    : J17       : output : 3.3-V LVTTL       :         : 3         : N              
+EDATA[10]                    : J18       : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : K1        :        :                   :         : 1         :                
+GND*                         : K2        :        :                   :         : 1         :                
+GND*                         : K3        :        :                   :         : 1         :                
+Test_SEL_nFS[0]              : K4        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : K5        :        :                   :         : 1         :                
+Test_TCLK23[4]               : K6        : output : 3.3-V LVTTL       :         : 1         : N              
+VCCIO1                       : K7        : power  :                   : 3.3V    : 1         :                
+VCCINT                       : K8        : power  :                   : 2.5V/3.3V :           :                
+GNDINT                       : K9        : gnd    :                   :         :           :                
+VCCINT                       : K10       : power  :                   : 2.5V/3.3V :           :                
+GNDINT                       : K11       : gnd    :                   :         :           :                
+VCCIO3                       : K12       : power  :                   : 3.3V    : 3         :                
+GND*                         : K13       :        :                   :         : 3         :                
+BUSYL                        : K14       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : K15       :        :                   :         : 3         :                
+SR[2]                        : K16       : input  : 3.3-V LVTTL       :         : 3         : N              
+LT2380_CLEAR_MOY             : K17       : output : 3.3-V LVTTL       :         : 3         : N              
+EDATA[12]                    : K18       : input  : 3.3-V LVTTL       :         : 3         : N              
+DOUTR[4]                     : L1        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : L2        :        :                   :         : 1         :                
+GND*                         : L3        :        :                   :         : 1         :                
+Test_TCNVen_SCK              : L4        : output : 3.3-V LVTTL       :         : 1         : N              
+Test_SEL_nFS[1]              : L5        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : L6        :        :                   :         : 1         :                
+VCCINT                       : L7        : power  :                   : 2.5V/3.3V :           :                
+GNDIO                        : L8        : gnd    :                   :         :           :                
+GNDIO                        : L9        : gnd    :                   :         :           :                
+GNDIO                        : L10       : gnd    :                   :         :           :                
+GNDIO                        : L11       : gnd    :                   :         :           :                
+GNDINT                       : L12       : gnd    :                   :         :           :                
+Test_SEL_RDCLK[1]            : L13       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : L14       :        :                   :         : 3         :                
+GND*                         : L15       :        :                   :         : 3         :                
+GND*                         : L16       :        :                   :         : 3         :                
+GND*                         : L17       :        :                   :         : 3         :                
+GND*                         : L18       :        :                   :         : 3         :                
+GND*                         : M1        :        :                   :         : 1         :                
+Test_SEL_RDCLK[0]            : M2        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : M3        :        :                   :         : 1         :                
+GND*                         : M4        :        :                   :         : 1         :                
+GND*                         : M5        :        :                   :         : 1         :                
+Test_CNVA                    : M6        : output : 3.3-V LVTTL       :         : 1         : N              
+TDI                          : M7        : input  :                   :         : 1         :                
+VCCINT                       : M8        : power  :                   : 2.5V/3.3V :           :                
+VCCIO4                       : M9        : power  :                   : 3.3V    : 4         :                
+VCCIO4                       : M10       : power  :                   : 3.3V    : 4         :                
+GNDINT                       : M11       : gnd    :                   :         :           :                
+EDATA[2]                     : M12       : input  : 3.3-V LVTTL       :         : 3         : N              
+EDATA[5]                     : M13       : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : M14       :        :                   :         : 3         :                
+GND*                         : M15       :        :                   :         : 3         :                
+EDATA[0]                     : M16       : input  : 3.3-V LVTTL       :         : 3         : N              
+DOUTR[8]                     : M17       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : M18       :        :                   :         : 3         :                
+Test_SEL_RDCLK[3]            : N1        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : N2        :        :                   :         : 1         :                
+GND*                         : N3        :        :                   :         : 1         :                
+GND*                         : N4        :        :                   :         : 1         :                
+GND*                         : N5        :        :                   :         : 1         :                
+TDO                          : N6        : output :                   :         : 1         :                
+GND*                         : N7        :        :                   :         : 4         :                
+Test_CK_cycle[1]             : N8        : output : 3.3-V LVTTL       :         : 4         : N              
+AVG[2]                       : N9        : input  : 3.3-V LVTTL       :         : 4         : N              
+rDATAL[23]                   : N10       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : N11       :        :                   :         : 4         :                
+EDATA[8]                     : N12       : input  : 3.3-V LVTTL       :         : 4         : N              
+DOUTR[15]                    : N13       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : N14       :        :                   :         : 3         :                
+GND*                         : N15       :        :                   :         : 3         :                
+DOUTR[12]                    : N16       : output : 3.3-V LVTTL       :         : 3         : N              
+EDATA[6]                     : N17       : input  : 3.3-V LVTTL       :         : 3         : N              
+EDATA[4]                     : N18       : input  : 3.3-V LVTTL       :         : 3         : N              
+DOUTR[16]                    : P1        : output : 3.3-V LVTTL       :         : 1         : N              
+DOUTR[5]                     : P2        : output : 3.3-V LVTTL       :         : 1         : N              
+DOUTR[18]                    : P3        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : P4        :        :                   :         : 1         :                
+TMS                          : P5        : input  :                   :         : 1         :                
+DOUTR[9]                     : P6        : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : P7        :        :                   :         : 4         :                
+EDATA[18]                    : P8        : input  : 3.3-V LVTTL       :         : 4         : N              
+EDATA[19]                    : P9        : input  : 3.3-V LVTTL       :         : 4         : N              
+SCKR                         : P10       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : P11       :        :                   :         : 4         :                
+GND*                         : P12       :        :                   :         : 4         :                
+GND*                         : P13       :        :                   :         : 4         :                
+GND*                         : P14       :        :                   :         : 3         :                
+GND*                         : P15       :        :                   :         : 3         :                
+GND*                         : P16       :        :                   :         : 3         :                
+GND*                         : P17       :        :                   :         : 3         :                
+GND*                         : P18       :        :                   :         : 3         :                
+GND*                         : R1        :        :                   :         : 1         :                
+GND*                         : R2        :        :                   :         : 1         :                
+GND*                         : R3        :        :                   :         : 1         :                
+TCK                          : R4        : input  :                   :         : 1         :                
+GND*                         : R5        :        :                   :         : 4         :                
+DOUTR[0]                     : R6        : output : 3.3-V LVTTL       :         : 4         : N              
+Test_CK_cycle[2]             : R7        : output : 3.3-V LVTTL       :         : 4         : N              
+EDATA[23]                    : R8        : input  : 3.3-V LVTTL       :         : 4         : N              
+Test_ReadCLK                 : R9        : output : 3.3-V LVTTL       :         : 4         : N              
+AVG[0]                       : R10       : input  : 3.3-V LVTTL       :         : 4         : N              
+EDATA[1]                     : R11       : input  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : R12       :        :                   :         : 4         :                
+DOUTR[1]                     : R13       : output : 3.3-V LVTTL       :         : 4         : N              
+LT2380_SDOR                  : R14       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : R15       :        :                   :         : 3         :                
+GND*                         : R16       :        :                   :         : 3         :                
+GND*                         : R17       :        :                   :         : 3         :                
+DOUTR[23]                    : R18       : output : 3.3-V LVTTL       :         : 3         : N              
+VCCIO1                       : T1        : power  :                   : 3.3V    : 1         :                
+GND*                         : T2        :        :                   :         : 1         :                
+GND*                         : T3        :        :                   :         : 1         :                
+GND*                         : T4        :        :                   :         : 4         :                
+GND*                         : T5        :        :                   :         : 4         :                
+DOUTR[17]                    : T6        : output : 3.3-V LVTTL       :         : 4         : N              
+Test_CNVclk_cnt[3]           : T7        : output : 3.3-V LVTTL       :         : 4         : N              
+Test_ADC_CLK                 : T8        : output : 3.3-V LVTTL       :         : 4         : N              
+Test_TCNVen_SHFT             : T9        : output : 3.3-V LVTTL       :         : 4         : N              
+DOUTR[22]                    : T10       : output : 3.3-V LVTTL       :         : 4         : N              
+DOUTL[19]                    : T11       : output : 3.3-V LVTTL       :         : 4         : N              
+DOUTR[7]                     : T12       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : T13       :        :                   :         : 4         :                
+DOUTL[20]                    : T14       : output : 3.3-V LVTTL       :         : 4         : N              
+DOUTR[2]                     : T15       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : T16       :        :                   :         : 3         :                
+GND*                         : T17       :        :                   :         : 3         :                
+VCCIO3                       : T18       : power  :                   : 3.3V    : 3         :                
+GND*                         : U1        :        :                   :         : 4         :                
+GNDIO                        : U2        : gnd    :                   :         :           :                
+GND*                         : U3        :        :                   :         : 4         :                
+DOUTR[21]                    : U4        : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : U5        :        :                   :         : 4         :                
+GND*                         : U6        :        :                   :         : 4         :                
+Fsox128                      : U7        : output : 3.3-V LVTTL       :         : 4         : N              
+SDOL                         : U8        : output : 3.3-V LVTTL       :         : 4         : N              
+SCKL                         : U9        : output : 3.3-V LVTTL       :         : 4         : N              
+SR[0]                        : U10       : input  : 3.3-V LVTTL       :         : 4         : N              
+SR[1]                        : U11       : input  : 3.3-V LVTTL       :         : 4         : N              
+LT2380_CLEAR_REG             : U12       : output : 3.3-V LVTTL       :         : 4         : N              
+EDATA[9]                     : U13       : input  : 3.3-V LVTTL       :         : 4         : N              
+EDATA[15]                    : U14       : input  : 3.3-V LVTTL       :         : 4         : N              
+DOUTR[20]                    : U15       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : U16       :        :                   :         : 4         :                
+GNDIO                        : U17       : gnd    :                   :         :           :                
+GND*                         : U18       :        :                   :         : 4         :                
+GNDIO                        : V1        : gnd    :                   :         :           :                
+GND*                         : V2        :        :                   :         : 4         :                
+VCCIO4                       : V3        : power  :                   : 3.3V    : 4         :                
+GND*                         : V4        :        :                   :         : 4         :                
+GND*                         : V5        :        :                   :         : 4         :                
+GND*                         : V6        :        :                   :         : 4         :                
+DOUTL[4]                     : V7        : output : 3.3-V LVTTL       :         : 4         : N              
+Test_TCLK23[2]               : V8        : output : 3.3-V LVTTL       :         : 4         : N              
+Test_SpdifOK                 : V9        : output : 3.3-V LVTTL       :         : 4         : N              
+Test_ADC_SHIFT               : V10       : output : 3.3-V LVTTL       :         : 4         : N              
+Fso                          : V11       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : V12       :        :                   :         : 4         :                
+EDATA[11]                    : V13       : input  : 3.3-V LVTTL       :         : 4         : N              
+EDATA[7]                     : V14       : input  : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : V15       :        :                   :         : 4         :                
+VCCIO4                       : V16       : power  :                   : 3.3V    : 4         :                
+DOUTR[10]                    : V17       : output : 3.3-V LVTTL       :         : 4         : N              
+GNDIO                        : V18       : gnd    :                   :         :           :                

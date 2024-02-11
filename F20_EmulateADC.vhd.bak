@@ -29,9 +29,10 @@ port(
   BUSY          : out std_logic  ; -- BUSY output (conversion in progress, fixed duration of 400ns)
   SDO           : out std_logic ;  -- ADC data output
   -- Test output only
-  tst_TCLEAR_REG     : out std_logic ;
-  tst_TCLEAR_MOY     : out std_logic ;
-  tst_TSCK_count    : out integer range 0 to 32
+  tst_CLEAR_REG     : out std_logic ;
+  tst_CLEAR_MOY     : out std_logic ;
+  tst_SCK_count    : out integer range 0 to 32;
+  tst_loadSR		: out std_logic 
 );
 
 end F20_EmulateADC;
@@ -55,13 +56,16 @@ signal  CLS        : std_logic ;
 
 signal SCK_count    : integer range 0 to 32 ;
 
+signal LOAD_SR : std_logic ;
+
+
 begin
 
 --- Copy of signals for tests purpose
 tst_CLEAR_REG <= CLEAR_REG  ; -- TEst output
 tst_CLEAR_MOY <= CLEAR_MOY  ; -- TEst output
 tst_SCK_count  <= SCK_count ; -- TEst output
-
+tst_loadSR	<= loadSR;
 
 ------------------------------------------------------------------
 -- Function to emulate busy of DAC for simulation purpose
@@ -78,7 +82,7 @@ begin
       if    rising_edge(MCLK) then
             if   BUSY_on='1' then
               Busy_count <= Busy_count + 1 ; --
-                if    Busy_count= 35  then -- 35x10ns = 350ns pulse width
+                if    Busy_count= 35  then -- 35x10ns =350ns pulse width 
                       Busy_end <= '1'  ; --
                 else
                       Busy_end <= '0'  ; --
@@ -111,20 +115,33 @@ begin
       end if;
       CLEAR_MOY <=  QB and CNV  ;
       --
-      -- Check number of SCK shift
-      if      CNV='1' and SCK_count=23 then
+
+      --PARTIE A REVOIR !! en dessous.
+
+     -- Check number of SCK shift
+       if      (CNV='1' and SCK_count=23) or CLEAR_MOY='1'  then -- ON le 08/02/24 : on reset aussi le compteur SCK_count si clear_moy est actif
                SCK_count <= 0   ;
                CLEAR_REG <= '0'  ;
       elsif    rising_edge(SCK) then
+            --
+            if    SCK_count>=22  then
+                  LOAD_SR <= '1' ;
+            else
+                  LOAD_SR <= '0' ;
+            end if;
+            --
             if    SCK_count=23  then
                   CLEAR_REG <= '1'  ;
             else
                   SCK_count <= SCK_count +1 ;
             end if;
+
       end if;
 
+
       -- Shift register update  
-      if    CLEAR_MOY='1' or  CLEAR_REG='1' then
+      if    CLEAR_MOY='1' or  LOAD_SR='1' then
+      --if    CNV='1'  then -- test
             SRDATA <= DATADC;
       elsif rising_edge(SCK)   then
             SRDATA <= SRDATA(22 downto 0) & '0'  ; -- décalage d'un bit à chaque front montant de SCK
