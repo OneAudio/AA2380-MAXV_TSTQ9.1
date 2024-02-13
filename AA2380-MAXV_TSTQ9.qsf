@@ -51,16 +51,17 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 4
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
-set_global_assignment -name SIMULATION_MODE TIMING
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
 set_global_assignment -name VHDL_FILE F20_EmulateADCII.vhd
 set_global_assignment -name BDF_FILE Test_F20II.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE F20_EmulateADCII.vwf
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE F00_TestADC.vwf
 set_global_assignment -name VHDL_FILE f1_readadc_multimodes.vhd
 set_global_assignment -name ADD_DEFAULT_PINS_TO_SIMULATION_OUTPUT_WAVEFORMS OFF
 set_global_assignment -name CHECK_OUTPUTS OFF
 set_global_assignment -name VHDL_FILE F1_readADC_multimodesTST.vhd
 set_global_assignment -name VHDL_FILE f20_emulateadc.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F00_TestADC_mini.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE F00_TestADC_mini.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"

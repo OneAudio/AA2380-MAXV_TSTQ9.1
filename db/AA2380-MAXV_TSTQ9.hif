@@ -478,7 +478,7 @@ db|AA2380-MAXV_TSTQ9.(3).cnf
 db|AA2380-MAXV_TSTQ9.(3).cnf
 # case_insensitive
 # source_file
-c:|altera|91sp2|quartus|libraries|megafunctions|lpm_divide.tdf
+|altera|quartus|libraries|megafunctions|lpm_divide.tdf
 54966f81ff8a917b1dc9b9ad1a09648
 7
 # user_parameter {
@@ -590,7 +590,7 @@ numer3
 
 # end
 # entity
-f1_readadc_multimodes
+F1_readADC_multimodes
 # storage
 db|AA2380-MAXV_TSTQ9.(1).cnf
 db|AA2380-MAXV_TSTQ9.(1).cnf
@@ -601,7 +601,7 @@ ON
 # case_insensitive
 # source_file
 f1_readadc_multimodes.vhd
-f74a6b1cf8329a9d6c0547a92681df
+7836283714ebdcdfad1b823cdcdfbcb
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -617,16 +617,16 @@ ON
 F1_readADC_multimodes:inst2
 }
 # lmf
-c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+|altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 
 # end
 # entity
-F20_EmulateADC
+f20_emulateadc
 # storage
-db|AA2380-MAXV_TSTQ9.(2).cnf
-db|AA2380-MAXV_TSTQ9.(2).cnf
+db|AA2380-MAXV_TSTQ9.(0).cnf
+db|AA2380-MAXV_TSTQ9.(0).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -634,7 +634,7 @@ ON
 # case_insensitive
 # source_file
 f20_emulateadc.vhd
-af446058766e120a1fd85f0c6533dfc
+29453a8721a3b080ea66d7e3c9510c4
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -651,7 +651,7 @@ F20_EmulateADC:inst
 F20_EmulateADC:inst1
 }
 # lmf
-c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+|altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 
@@ -659,12 +659,12 @@ a36c8ec425c8a2589af98b2d4daabc3
 # entity
 F00_TestADC
 # storage
-db|AA2380-MAXV_TSTQ9.(0).cnf
-db|AA2380-MAXV_TSTQ9.(0).cnf
+db|AA2380-MAXV_TSTQ9.(2).cnf
+db|AA2380-MAXV_TSTQ9.(2).cnf
 # case_insensitive
 # source_file
 f00_testadc.bdf
-aae65a5025405f87c8f8907e73dddab8
+b21a18de52aa74110447332d1a5ac
 26
 # internal_option {
 BLOCK_DESIGN_NAMING

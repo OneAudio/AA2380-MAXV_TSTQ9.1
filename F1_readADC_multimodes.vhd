@@ -68,7 +68,11 @@ port(
   Test_AVG_count    : out integer range 0 to 127;
   Test_TCLK23       : out integer range 0 to 23;
   Test_TCNVen_SCK   : out std_logic ;
-  Test_TCNVen_SHFT  : out std_logic
+  Test_TCNVen_SHFT  : out std_logic ;
+  MCLK_div_Clear    : buffer std_logic;
+  SyncOUT           : buffer std_logic;
+  DATA_Lacth        : buffer std_logic
+
   --
 );
 
@@ -112,6 +116,9 @@ signal T_CNVen_SCK  : std_logic ; --
 signal T_CNVen_SHFT : std_logic ; --
 signal ResetAVGread : std_logic ; --
 
+
+signal AVGlatch : integer range 0 to 7; --
+
 --
 
 begin
@@ -136,6 +143,31 @@ Test_TCLK23       <= TCLK23     ; -- TEST
 
 Test_TCNVen_SCK   <= T_CNVen_SCK  ; -- TEST
 Test_TCNVen_SHFT  <= T_CNVen_SHFT ; -- TEST
+
+
+------------------------------------------------------------------
+-- Generate a MCLK_div_Clear pulse when the AVG value is changed.
+-- MCLK_div_Clear is used to reset all counter and allow
+-- Fso clock to be always welle phased with averaging cycle.
+------------------------------------------------------------------
+ChangeDetect : process(MCLK,AVG,CNVA,SyncOUT)
+begin
+    if rising_edge(MCLK)    then
+        AVGlatch <= AVG ; -- record previous  state
+        if  AVGlatch /= AVG then -- compare previous with new state. 
+            MCLK_div_Clear <= '1'; -- set MCLK_div_Clear to high
+        else
+            MCLK_div_Clear <= '0'; -- set MCLK_div_Clear to low
+        end if;
+        --
+        DATA_Lacth <= SyncOUT and  CNVA; --Generate Fso sync pulse
+        --
+    end if;
+
+end process  ChangeDetect;
+
+------------------------------------------------------------------
+
 
 
 
@@ -173,6 +205,10 @@ begin
   --
 end process RangeCheck;
 
+
+
+
+
 ------------------------------------------------------------------
 -- Detect S/PDIF out of range if Fso become > 192k.
 -- (No S/PDIF link allow more than 192K stream)
@@ -193,10 +229,12 @@ end process SpdifCheck;
 -- Fsox128 (MHz) : 1.536,3.072,6.144,12.288,24.576
 -- NOTE: No clock if OutOfRange is active.
 ------------------------------------------------------------------
-MCLK_div : process(MCLK,AVG,MCLK_divider,SEL_nFS,SR,OutOfRange)
+MCLK_div : process(MCLK,AVG,MCLK_divider,SEL_nFS,SR,OutOfRange,MCLK_div_Clear)
 begin
     -- DivideMCLK
-    if  rising_edge(MCLK)  then
+    if  MCLK_div_Clear='1'   then
+        MCLK_divider <= "0111111111111"; -- reset main MCLK counter
+    elsif rising_edge(MCLK)  then
         MCLK_divider <= MCLK_divider + 1 ; -- increment MCLK_divider counter
     end if;
     --
@@ -363,7 +401,7 @@ end process CNV_pulse;
 -- In AQU mode "0" (Normal read),
 --
 ------------------------------------------------------------------
-ADC_clocks : process (MCLK,BUSYL,BUSYR,CK_cycle,ReadCLK,CNVclk_cnt,sBUSYL,sBUSYR)
+ADC_clocks : process (MCLK,BUSYL,BUSYR,CK_cycle,ReadCLK,CNVclk_cnt,sBUSYL,sBUSYR,MCLK_div_Clear)
 begin
   ---- Generate synchronous to MCLK BUSY flag (delay 1 period max:10ns@100M)
   if rising_edge(MCLK) then
@@ -371,7 +409,9 @@ begin
         sBUSYR <=BUSYR ; -- Synch BUSYR to MCLK
   end if;
   --
-  if  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
+  if    MCLK_div_Clear='1' then
+        CNVclk_cnt <= 0;
+  elsif  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
       if    rising_edge(ReadCLK) then   -- All the process is synchroous to ReadCLK
                 --
     			if    CNVclk_cnt <= CK_cycle then    -- compare cycle counter with CK_cycle value
@@ -444,12 +484,13 @@ SCKL <= ADC_CLK ; --
 -- Donc, le signal est actif tout le temps SAUF la dernière conversion de la moyenne.
 --
 ----------------------------------------------------------------------------
-AVG_cycles : process(nFS,AQMODE,dAVG,AVG_count,OutOfRange)
+AVG_cycles : process(nFS,AQMODE,dAVG,AVG_count,OutOfRange,MCLK_div_Clear)
 begin
-    if  OutOfRange= 1  then
+    if  OutOfRange= 1  or MCLK_div_Clear= '1' then
         AVGen_SCK   <= '0'  ; --
         AVGen_READ  <= '0'  ; --
         AVG_count   <=  1   ; --
+        SyncOUT     <= '0'  ; --
     else
         if rising_edge(nFS) then
             --
@@ -479,7 +520,15 @@ begin
                 AVGen_READ <= '1' 	; -- enable reading for only 4x6 clocks count
             else
                 AVGen_READ <= '0' 	; -- disable reading
+            end if; 
+            
+            -- Generate sync signal
+            if  AVG_count=dAVG  then
+                SyncOUT <= '1' 	; -- enable 
+            else
+                SyncOUT <= '0' 	; -- disable
             end if;
+
         end if;
     end if;
 
