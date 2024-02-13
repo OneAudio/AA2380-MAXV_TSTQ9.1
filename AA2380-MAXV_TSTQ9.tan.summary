@@ -5,8 +5,8 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 14.506 ns
-From           : AVG[0]
+Actual Time    : 13.875 ns
+From           : AVG[2]
 To             : F1_readADC_multimodes:inst2|AVGen_READ
 From Clock     : --
 To Clock       : AVG[2]
@@ -15,9 +15,9 @@ Failed Paths   : 0
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 26.922 ns
-From           : F1_readADC_multimodes:inst2|r_DATAL[11]
-To             : rDATAL[11]
+Actual Time    : 28.522 ns
+From           : F1_readADC_multimodes:inst2|TCLK23[0]
+To             : Test_TCLK23[0]
 From Clock     : AVG[0]
 To Clock       : --
 Failed Paths   : 0
@@ -25,9 +25,9 @@ Failed Paths   : 0
 Type           : Worst-case tpd
 Slack          : N/A
 Required Time  : None
-Actual Time    : 19.578 ns
+Actual Time    : 20.602 ns
 From           : AVG[0]
-To             : Test_ADC_SHIFT
+To             : Test_ADC_CLK
 From Clock     : --
 To Clock       : --
 Failed Paths   : 0
@@ -35,9 +35,9 @@ Failed Paths   : 0
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : 11.663 ns
-From           : AVG[2]
-To             : F1_readADC_multimodes:inst2|CNVen_SHFT
+Actual Time    : 11.383 ns
+From           : AVG[0]
+To             : F1_readADC_multimodes:inst2|CNVclk_cnt[0]
 From Clock     : --
 To Clock       : AVG[0]
 Failed Paths   : 0
@@ -45,49 +45,29 @@ Failed Paths   : 0
 Type           : Clock Setup: 'SR[2]'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 33.67 MHz ( period = 29.702 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
+Actual Time    : 36.31 MHz ( period = 27.544 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
 From Clock     : SR[2]
 To Clock       : SR[2]
-Failed Paths   : 0
-
-Type           : Clock Setup: 'AVG[2]'
-Slack          : N/A
-Required Time  : None
-Actual Time    : 34.14 MHz ( period = 29.288 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
-From Clock     : AVG[2]
-To Clock       : AVG[2]
 Failed Paths   : 0
 
 Type           : Clock Setup: 'AVG[0]'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 34.46 MHz ( period = 29.022 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
+Actual Time    : 36.91 MHz ( period = 27.092 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
 From Clock     : AVG[0]
 To Clock       : AVG[0]
-Failed Paths   : 0
-
-Type           : Clock Setup: 'AVG[1]'
-Slack          : N/A
-Required Time  : None
-Actual Time    : 34.46 MHz ( period = 29.022 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
-From Clock     : AVG[1]
-To Clock       : AVG[1]
 Failed Paths   : 0
 
 Type           : Clock Setup: 'SR[1]'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 34.46 MHz ( period = 29.022 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
+Actual Time    : 37.66 MHz ( period = 26.556 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
 From Clock     : SR[1]
 To Clock       : SR[1]
 Failed Paths   : 0
@@ -95,19 +75,39 @@ Failed Paths   : 0
 Type           : Clock Setup: 'SR[0]'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 34.46 MHz ( period = 29.022 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
+Actual Time    : 37.66 MHz ( period = 26.554 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
 From Clock     : SR[0]
 To Clock       : SR[0]
+Failed Paths   : 0
+
+Type           : Clock Setup: 'AVG[2]'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 37.92 MHz ( period = 26.370 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
+From Clock     : AVG[2]
+To Clock       : AVG[2]
+Failed Paths   : 0
+
+Type           : Clock Setup: 'AVG[1]'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 38.09 MHz ( period = 26.256 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
+From Clock     : AVG[1]
+To Clock       : AVG[1]
 Failed Paths   : 0
 
 Type           : Clock Setup: 'MCLK'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 49.37 MHz ( period = 20.254 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
+Actual Time    : 56.70 MHz ( period = 17.638 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
 From Clock     : MCLK
 To Clock       : MCLK
 Failed Paths   : 0
@@ -115,9 +115,9 @@ Failed Paths   : 0
 Type           : Clock Setup: 'AQMODE'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 91.12 MHz ( period = 10.974 ns )
-From           : F1_readADC_multimodes:inst2|CNVen_SCK
-To             : F1_readADC_multimodes:inst2|T_CNVen_SCK
+Actual Time    : 111.09 MHz ( period = 9.002 ns )
+From           : F1_readADC_multimodes:inst2|CNVen_SHFT
+To             : F1_readADC_multimodes:inst2|T_CNVen_SHFT
 From Clock     : AQMODE
 To Clock       : AQMODE
 Failed Paths   : 0
@@ -126,81 +126,71 @@ Type           : Clock Hold: 'SR[2]'
 Slack          : Not operational: Clock Skew > Data Delay
 Required Time  : None
 Actual Time    : N/A
-From           : F20_EmulateADC:inst1|SRDATA[5]
-To             : F20_EmulateADC:inst|SRDATA[6]
+From           : F20_EmulateADC:inst|SRDATA[14]
+To             : F20_EmulateADC:inst1|SRDATA[15]
 From Clock     : SR[2]
 To Clock       : SR[2]
-Failed Paths   : 250
-
-Type           : Clock Hold: 'AVG[2]'
-Slack          : Not operational: Clock Skew > Data Delay
-Required Time  : None
-Actual Time    : N/A
-From           : F20_EmulateADC:inst1|SRDATA[5]
-To             : F20_EmulateADC:inst|SRDATA[6]
-From Clock     : AVG[2]
-To Clock       : AVG[2]
-Failed Paths   : 251
-
-Type           : Clock Hold: 'SR[0]'
-Slack          : Not operational: Clock Skew > Data Delay
-Required Time  : None
-Actual Time    : N/A
-From           : F20_EmulateADC:inst1|SRDATA[5]
-To             : F20_EmulateADC:inst|SRDATA[6]
-From Clock     : SR[0]
-To Clock       : SR[0]
-Failed Paths   : 345
-
-Type           : Clock Hold: 'SR[1]'
-Slack          : Not operational: Clock Skew > Data Delay
-Required Time  : None
-Actual Time    : N/A
-From           : F20_EmulateADC:inst1|SRDATA[5]
-To             : F20_EmulateADC:inst|SRDATA[6]
-From Clock     : SR[1]
-To Clock       : SR[1]
-Failed Paths   : 283
-
-Type           : Clock Hold: 'AVG[1]'
-Slack          : Not operational: Clock Skew > Data Delay
-Required Time  : None
-Actual Time    : N/A
-From           : F20_EmulateADC:inst1|SRDATA[5]
-To             : F20_EmulateADC:inst|SRDATA[6]
-From Clock     : AVG[1]
-To Clock       : AVG[1]
-Failed Paths   : 261
+Failed Paths   : 244
 
 Type           : Clock Hold: 'AVG[0]'
 Slack          : Not operational: Clock Skew > Data Delay
 Required Time  : None
 Actual Time    : N/A
-From           : F20_EmulateADC:inst1|SRDATA[5]
-To             : F20_EmulateADC:inst|SRDATA[6]
+From           : F20_EmulateADC:inst|SRDATA[14]
+To             : F20_EmulateADC:inst1|SRDATA[15]
 From Clock     : AVG[0]
 To Clock       : AVG[0]
-Failed Paths   : 276
+Failed Paths   : 248
+
+Type           : Clock Hold: 'SR[1]'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : F20_EmulateADC:inst|SRDATA[14]
+To             : F20_EmulateADC:inst1|SRDATA[15]
+From Clock     : SR[1]
+To Clock       : SR[1]
+Failed Paths   : 244
+
+Type           : Clock Hold: 'SR[0]'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : F20_EmulateADC:inst|SRDATA[14]
+To             : F20_EmulateADC:inst1|SRDATA[15]
+From Clock     : SR[0]
+To Clock       : SR[0]
+Failed Paths   : 245
+
+Type           : Clock Hold: 'AVG[2]'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : F20_EmulateADC:inst|SRDATA[14]
+To             : F20_EmulateADC:inst1|SRDATA[15]
+From Clock     : AVG[2]
+To Clock       : AVG[2]
+Failed Paths   : 244
+
+Type           : Clock Hold: 'AVG[1]'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : F20_EmulateADC:inst|SRDATA[14]
+To             : F20_EmulateADC:inst1|SRDATA[15]
+From Clock     : AVG[1]
+To Clock       : AVG[1]
+Failed Paths   : 244
 
 Type           : Clock Hold: 'MCLK'
 Slack          : Not operational: Clock Skew > Data Delay
 Required Time  : None
 Actual Time    : N/A
-From           : F1_readADC_multimodes:inst2|MCLK_div_Clear
-To             : F1_readADC_multimodes:inst2|CNVen_SHFT
+From           : F20_EmulateADC:inst|SRDATA[14]
+To             : F20_EmulateADC:inst1|SRDATA[15]
 From Clock     : MCLK
 To Clock       : MCLK
-Failed Paths   : 239
-
-Type           : Clock Hold: 'AQMODE'
-Slack          : Not operational: Clock Skew > Data Delay
-Required Time  : None
-Actual Time    : N/A
-From           : F20_EmulateADC:inst1|SRDATA[5]
-To             : F20_EmulateADC:inst|SRDATA[6]
-From Clock     : AQMODE
-To Clock       : AQMODE
-Failed Paths   : 15
+Failed Paths   : 229
 
 Type           : Total number of failed paths
 Slack          : 
@@ -210,7 +200,7 @@ From           :
 To             : 
 From Clock     : 
 To Clock       : 
-Failed Paths   : 1920
+Failed Paths   : 1698
 
 --------------------------------------------------------------------------------------
 

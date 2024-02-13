@@ -232,9 +232,9 @@ end process SpdifCheck;
 MCLK_div : process(MCLK,AVG,MCLK_divider,SEL_nFS,SR,OutOfRange,MCLK_div_Clear)
 begin
     -- DivideMCLK
-    if  MCLK_div_Clear='1'   then
-        MCLK_divider <= "0111111111111"; -- reset main MCLK counter
-    elsif rising_edge(MCLK)  then
+    --if  MCLK_div_Clear='1'   then
+    --    MCLK_divider <= "0000000000000"; -- reset main MCLK counter
+    if rising_edge(MCLK)  then
         MCLK_divider <= MCLK_divider + 1 ; -- increment MCLK_divider counter
     end if;
     --
@@ -409,9 +409,9 @@ begin
         sBUSYR <=BUSYR ; -- Synch BUSYR to MCLK
   end if;
   --
-  if    MCLK_div_Clear='1' then
-        CNVclk_cnt <= 0;
-  elsif  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
+  --if    MCLK_div_Clear='1' then
+       -- CNVclk_cnt <= 0;
+  if  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
       if    rising_edge(ReadCLK) then   -- All the process is synchroous to ReadCLK
                 --
     			if    CNVclk_cnt <= CK_cycle then    -- compare cycle counter with CK_cycle value
@@ -486,7 +486,7 @@ SCKL <= ADC_CLK ; --
 ----------------------------------------------------------------------------
 AVG_cycles : process(nFS,AQMODE,dAVG,AVG_count,OutOfRange,MCLK_div_Clear)
 begin
-    if  OutOfRange= 1  or MCLK_div_Clear= '1' then
+    if  OutOfRange= 1  then --or MCLK_div_Clear= '1' then
         AVGen_SCK   <= '0'  ; --
         AVGen_READ  <= '0'  ; --
         AVG_count   <=  1   ; --
@@ -621,12 +621,12 @@ end process ADCserial_read;
 -- of "FSo" (Effective output sample frequency).
 -- If "OutOfRange" signal output is 0 if enable input is low
 ------------------------------------------------------------------------------
-process (FSo,r_DATAL,r_DATAR,OutOfRange)
+process (FSo,r_DATAL,r_DATAR,OutOfRange,DATA_Lacth)
 begin
   if    OutOfRange= 1 then
         DOUTL <= x"000000"  ; -- Reset DATA if OutOfRange detected
         DOUTR <= x"000000"  ; -- Reset DATA if OutOfRange detected
-  elsif	rising_edge(FSo) then
+  elsif	rising_edge(Fso) then
     		DOUTL <= r_DATAL; -- Left channel data latch
     		DOUTR <= r_DATAR; -- Right channel data latch
 	end if;
