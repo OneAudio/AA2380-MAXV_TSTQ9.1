@@ -3,14 +3,16 @@
 -- Date: 23/12/20	Designer: O.N
 -- Design notes, please read : "SPECIF_SPI_LTC2380-24.vhd" and
 -- "F1_readADC_multimodes.xls"
+-- Take 33 LE.
 -----------------------------------------------------------------
 -- This module is to emulate LTC2380-24 ADC signals
 -- behaviour for testing purpose only.
 --
--- Update from 23/12/2020 :
--- Auto reset shift register if no clock betweeen two CNV pulse,
--- or if 24 SCK clock shift are done (in any number of conversion).
--- Take 127 LE.
+-- Update from 14/02/2024 :
+-- The input DATA_Latch must be used to latch input data before 
+-- to be sent on SDO serial output (accordingly to number of sample 
+-- averaged).
+--
 ------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
@@ -56,44 +58,40 @@ begin
       if      Busy_end='1'  then
               BUSY_on <= '0'  ; --
       elsif   rising_edge(CNV) then
-              BUSY_on <= '1'  ; --
+              BUSY_on <= '1'  ; -- Busy set to high as soon rising edge of CNV pulse
       end if;
       --
       if    rising_edge(MCLK) then
             if   BUSY_on='1' then
-              Busy_count <= Busy_count + 1 ; --
-                if    Busy_count= 35  then -- 35x10ns =350ns pulse width 
-                      Busy_end <= '1'  ; --
+              Busy_count <= Busy_count + 1 ; -- increment counter
+                if    Busy_count= 35  then -- 35x10ns =350ns pulse width (real measured Busy time=350ns, Datasheet max=391ns)
+                      Busy_end <= '1'  ; -- engage reset of busy signal when Busy_count value is reached.
                 else
-                      Busy_end <= '0'  ; --
+                      Busy_end <= '0'  ; -- no reset
                 end if;
             else
-                Busy_count  <=  0  ;
-                Busy_end    <= '0' ;
+                Busy_count  <=  0  ; -- reset counter
+                Busy_end    <= '0' ; -- no busy reset
             end if;
       end if;
-BUSY <= BUSY_on ;
+BUSY <= BUSY_on ;-- send to busy output
 
 
 end process Emulate_Busy ;
 ------------------------------------------------------------------
---- MODULE 2 SEULEMENT POUR TEST------------------------------------
-------------------------------------------------------------------
--- A partir de donnée d'un bus parrallele 24 bits,
--- génére des valeurs
--- en série à la place de SDOR et SDOL (valeurs série des ADC).
+-- A partir de donnée d'un bus parrallele 24 bits,génére des valeurs
+-- en série à la place de SDO.
 ------------------------------------------------------------------
 Emulate_SDO : process(DATADC,SCK,SRDATA,DATA_Latch)
 begin
       -- Shift register update  
       if    DATA_Latch='1' then
-            SRDATA <= DATADC;
-      elsif rising_edge(SCK)   then
+            SRDATA <= DATADC; --Latch parallel input data when DATA_Latch is high
+      elsif rising_edge(SCK)   then             
             SRDATA <= SRDATA(22 downto 0) & '0'  ; -- décalage d'un bit à chaque front montant de SCK
       end if;
-SDO <= SRDATA(23)  ; -- Le MSB de xDOSL est la sortie série
+SDO <= SRDATA(23)  ; -- The MSB of SRDATA is the output of serial shift register 
 
 end process Emulate_SDO ;
-
 
 end Behavioral ;

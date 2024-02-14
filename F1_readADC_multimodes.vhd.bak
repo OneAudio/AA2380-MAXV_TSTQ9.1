@@ -150,7 +150,7 @@ Test_TCNVen_SHFT  <= T_CNVen_SHFT ; -- TEST
 -- MCLK_div_Clear is used to reset all counter and allow
 -- Fso clock to be always welle phased with averaging cycle.
 ------------------------------------------------------------------
-ChangeDetect : process(MCLK,AVG)
+ChangeDetect : process(MCLK,AVG,CNVA,SyncOUT)
 begin
     if rising_edge(MCLK)    then
         AVGlatch <= AVG ; -- record previous  state
@@ -159,10 +159,9 @@ begin
         else
             MCLK_div_Clear <= '0'; -- set MCLK_div_Clear to low
         end if;
-    end if;
-
-    if     falling_edge(CNVA)    then
-        DATA_Lacth <= SyncOUT ; --
+        --
+        DATA_Lacth <= SyncOUT and  CNVA; --Generate Fso sync pulse
+        --
     end if;
 
 end process  ChangeDetect;
@@ -234,7 +233,7 @@ MCLK_div : process(MCLK,AVG,MCLK_divider,SEL_nFS,SR,OutOfRange,MCLK_div_Clear)
 begin
     -- DivideMCLK
     if  MCLK_div_Clear='1'   then
-        MCLK_divider <= "0111111111111"; -- reset main MCLK counter
+        MCLK_divider <= "0000000000000"; -- reset main MCLK counter
     elsif rising_edge(MCLK)  then
         MCLK_divider <= MCLK_divider + 1 ; -- increment MCLK_divider counter
     end if;
@@ -336,7 +335,7 @@ begin
                 when 7  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
                 when 8  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
                 when 9  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
-                when 10 => ReadCLK <= MCLK_divider(2)  ; -- 12.288M
+                when 10 => ReadCLK <= MCLK_divider(1)  ; -- 24.576M ** modified  for proper work.14/02/24
                 when 11 => ReadCLK <= MCLK_divider(1)  ; -- 24.576M 
                 when 12 => ReadCLK <= MCLK_divider(0)  ; -- 49.152M
                 when 13 => ReadCLK <= MCLK             ; -- 98.304M
@@ -402,7 +401,7 @@ end process CNV_pulse;
 -- In AQU mode "0" (Normal read),
 --
 ------------------------------------------------------------------
-ADC_clocks : process (MCLK,BUSYL,BUSYR,CK_cycle,ReadCLK,CNVclk_cnt,sBUSYL,sBUSYR)
+ADC_clocks : process (MCLK,BUSYL,BUSYR,CK_cycle,ReadCLK,CNVclk_cnt,sBUSYL,sBUSYR,MCLK_div_Clear)
 begin
   ---- Generate synchronous to MCLK BUSY flag (delay 1 period max:10ns@100M)
   if rising_edge(MCLK) then
@@ -487,7 +486,7 @@ SCKL <= ADC_CLK ; --
 ----------------------------------------------------------------------------
 AVG_cycles : process(nFS,AQMODE,dAVG,AVG_count,OutOfRange,MCLK_div_Clear)
 begin
-    if  OutOfRange= 1  or MCLK_div_Clear= '1' then
+    if  OutOfRange= 1  then or MCLK_div_Clear= '1' then
         AVGen_SCK   <= '0'  ; --
         AVGen_READ  <= '0'  ; --
         AVG_count   <=  1   ; --
@@ -622,12 +621,12 @@ end process ADCserial_read;
 -- of "FSo" (Effective output sample frequency).
 -- If "OutOfRange" signal output is 0 if enable input is low
 ------------------------------------------------------------------------------
-process (FSo,r_DATAL,r_DATAR,OutOfRange)
+process (FSo,r_DATAL,r_DATAR,OutOfRange,DATA_Lacth)
 begin
   if    OutOfRange= 1 then
         DOUTL <= x"000000"  ; -- Reset DATA if OutOfRange detected
         DOUTR <= x"000000"  ; -- Reset DATA if OutOfRange detected
-  elsif	rising_edge(FSo) then
+  elsif	rising_edge(Fso) then
     		DOUTL <= r_DATAL; -- Left channel data latch
     		DOUTR <= r_DATAR; -- Right channel data latch
 	end if;

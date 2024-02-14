@@ -22,7 +22,7 @@ applicable agreement for further details.
 (header "graphic" (version "1.3"))
 (pin
 	(input)
-	(rect -72 48 96 64)
+	(rect 168 176 336 192)
 	(text "INPUT" (rect 133 0 161 10)(font "Arial" (font_size 6)))
 	(text "MCLK" (rect 9 0 38 12)(font "Arial" ))
 	(pt 168 8)
@@ -86,25 +86,9 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect -72 64 96 80)
+	(rect 168 192 336 208)
 	(text "INPUT" (rect 133 0 161 10)(font "Arial" (font_size 6)))
 	(text "EDATA[23..0]" (rect 9 0 76 12)(font "Arial" ))
-	(pt 168 8)
-	(drawing
-		(line (pt 92 12)(pt 117 12)(line_width 1))
-		(line (pt 92 4)(pt 117 4)(line_width 1))
-		(line (pt 121 8)(pt 168 8)(line_width 1))
-		(line (pt 92 12)(pt 92 4)(line_width 1))
-		(line (pt 117 4)(pt 121 8)(line_width 1))
-		(line (pt 117 12)(pt 121 8)(line_width 1))
-	)
-	(text "VCC" (rect 136 7 156 17)(font "Arial" (font_size 6)))
-)
-(pin
-	(input)
-	(rect 712 600 880 616)
-	(text "INPUT" (rect 133 0 161 10)(font "Arial" (font_size 6)))
-	(text "SDORin" (rect 9 0 49 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 92 12)(pt 117 12)(line_width 1))
@@ -470,7 +454,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 552 136 728 152)
+	(rect 664 304 840 320)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "BUSYL" (rect 90 0 126 12)(font "Arial" ))
 	(pt 0 8)
@@ -486,7 +470,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 552 152 728 168)
+	(rect 664 320 840 336)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "SDOL" (rect 90 0 119 12)(font "Arial" ))
 	(pt 0 8)
@@ -502,7 +486,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 552 168 728 184)
+	(rect 664 336 840 352)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "BUSYR" (rect 90 0 128 12)(font "Arial" ))
 	(pt 0 8)
@@ -518,7 +502,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 552 184 728 200)
+	(rect 664 352 840 368)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "SDOR" (rect 90 0 121 12)(font "Arial" ))
 	(pt 0 8)
@@ -614,25 +598,9 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 1144 96 1320 112)
+	(rect 1200 96 1376 112)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "rDATAL[23..0]" (rect 90 0 159 12)(font "Arial" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8)(line_width 1))
-		(line (pt 52 4)(pt 78 4)(line_width 1))
-		(line (pt 52 12)(pt 78 12)(line_width 1))
-		(line (pt 52 12)(pt 52 4)(line_width 1))
-		(line (pt 78 4)(pt 82 8)(line_width 1))
-		(line (pt 82 8)(pt 78 12)(line_width 1))
-		(line (pt 78 12)(pt 82 8)(line_width 1))
-	)
-)
-(pin
-	(output)
-	(rect 704 576 880 592)
-	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
-	(text "LT2380_SDOR" (rect 90 0 163 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8)(line_width 1))
@@ -663,22 +631,6 @@ applicable agreement for further details.
 (pin
 	(output)
 	(rect 1160 512 1336 528)
-	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
-	(text "SyncOUT" (rect 90 0 138 12)(font "Arial" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8)(line_width 1))
-		(line (pt 52 4)(pt 78 4)(line_width 1))
-		(line (pt 52 12)(pt 78 12)(line_width 1))
-		(line (pt 52 12)(pt 52 4)(line_width 1))
-		(line (pt 78 4)(pt 82 8)(line_width 1))
-		(line (pt 82 8)(pt 78 12)(line_width 1))
-		(line (pt 78 12)(pt 82 8)(line_width 1))
-	)
-)
-(pin
-	(output)
-	(rect 1160 528 1336 544)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "DATA_Latch" (rect 90 0 151 12)(font "Arial" ))
 	(pt 0 8)
@@ -760,7 +712,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 256 24 416 152)
+	(rect 496 152 656 280)
 	(text "F20_EmulateADC" (rect 5 0 93 12)(font "Arial" ))
 	(text "inst" (rect 8 112 25 124)(font "Arial" ))
 	(port
@@ -817,7 +769,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 256 256 416 384)
+	(rect 496 384 656 512)
 	(text "F20_EmulateADC" (rect 5 0 93 12)(font "Arial" ))
 	(text "inst1" (rect 8 112 31 124)(font "Arial" ))
 	(port
@@ -1146,16 +1098,9 @@ applicable agreement for further details.
 	(port
 		(pt 216 496)
 		(output)
-		(text "SyncOUT" (rect 0 0 48 12)(font "Arial" ))
-		(text "SyncOUT" (rect 147 491 195 503)(font "Arial" ))
+		(text "DATA_Latch" (rect 0 0 61 12)(font "Arial" ))
+		(text "DATA_Latch" (rect 134 491 195 503)(font "Arial" ))
 		(line (pt 216 496)(pt 200 496)(line_width 1))
-	)
-	(port
-		(pt 216 512)
-		(output)
-		(text "DATA_Lacth" (rect 0 0 61 12)(font "Arial" ))
-		(text "DATA_Lacth" (rect 134 507 195 519)(font "Arial" ))
-		(line (pt 216 512)(pt 200 512)(line_width 1))
 	)
 	(drawing
 		(rectangle (rect 16 16 200 528)(line_width 1))
@@ -1346,17 +1291,6 @@ applicable agreement for further details.
 	(pt 1272 168)
 )
 (connector
-	(text "DOUTR[23..0]" (rect 1367 80 1437 92)(font "Arial" ))
-	(pt 1344 96)
-	(pt 1424 96)
-	(bus)
-)
-(connector
-	(pt 1120 104)
-	(pt 1144 104)
-	(bus)
-)
-(connector
 	(text "SDOL" (rect 864 136 893 148)(font "Arial" ))
 	(pt 856 152)
 	(pt 904 152)
@@ -1367,102 +1301,109 @@ applicable agreement for further details.
 	(pt 904 184)
 )
 (connector
-	(pt 160 56)
-	(pt 160 288)
-)
-(connector
-	(pt 176 72)
-	(pt 176 304)
-	(bus)
-)
-(connector
-	(pt 160 288)
-	(pt 256 288)
-)
-(connector
-	(pt 176 304)
-	(pt 256 304)
-	(bus)
-)
-(connector
-	(pt 96 56)
-	(pt 160 56)
-)
-(connector
-	(pt 160 56)
-	(pt 256 56)
-)
-(connector
-	(pt 96 72)
-	(pt 176 72)
-	(bus)
-)
-(connector
-	(pt 176 72)
-	(pt 256 72)
-	(bus)
-)
-(connector
-	(text "CNVR" (rect 205 320 236 332)(font "Arial" ))
-	(pt 200 336)
-	(pt 256 336)
-)
-(connector
-	(text "SCKR" (rect 208 336 238 348)(font "Arial" ))
-	(pt 200 352)
-	(pt 256 352)
-)
-(connector
-	(text "SCKL" (rect 208 104 236 116)(font "Arial" ))
-	(pt 256 120)
-	(pt 200 120)
-)
-(connector
-	(text "CNVL" (rect 205 88 234 100)(font "Arial" ))
-	(pt 256 104)
-	(pt 200 104)
-)
-(connector
 	(pt 1120 504)
 	(pt 1160 504)
+)
+(connector
+	(pt 400 184)
+	(pt 400 416)
+)
+(connector
+	(pt 400 416)
+	(pt 496 416)
+)
+(connector
+	(pt 416 432)
+	(pt 496 432)
+	(bus)
+)
+(connector
+	(text "CNVR" (rect 445 448 476 460)(font "Arial" ))
+	(pt 440 464)
+	(pt 496 464)
+)
+(connector
+	(text "SCKR" (rect 448 464 478 476)(font "Arial" ))
+	(pt 440 480)
+	(pt 496 480)
+)
+(connector
+	(text "SCKL" (rect 448 232 476 244)(font "Arial" ))
+	(pt 496 248)
+	(pt 440 248)
+)
+(connector
+	(text "CNVL" (rect 445 216 474 228)(font "Arial" ))
+	(pt 496 232)
+	(pt 440 232)
+)
+(connector
+	(text "DATA_Latch" (rect 443 432 504 444)(font "Arial" ))
+	(pt 496 448)
+	(pt 440 448)
+)
+(connector
+	(text "DATA_Latch" (rect 443 200 504 212)(font "Arial" ))
+	(pt 496 216)
+	(pt 440 216)
+)
+(connector
+	(text "BUSYR" (rect 677 400 715 412)(font "Arial" ))
+	(pt 656 416)
+	(pt 712 416)
+)
+(connector
+	(text "SDOR" (rect 676 416 707 428)(font "Arial" ))
+	(pt 656 432)
+	(pt 712 432)
+)
+(connector
+	(text "BUSYL" (rect 693 168 729 180)(font "Arial" ))
+	(pt 656 184)
+	(pt 728 184)
+)
+(connector
+	(text "SDOL" (rect 696 184 725 196)(font "Arial" ))
+	(pt 656 200)
+	(pt 728 200)
+)
+(connector
+	(pt 336 184)
+	(pt 400 184)
+)
+(connector
+	(pt 400 184)
+	(pt 496 184)
+)
+(connector
+	(pt 336 200)
+	(pt 416 200)
+	(bus)
+)
+(connector
+	(pt 416 200)
+	(pt 496 200)
+	(bus)
+)
+(connector
+	(pt 416 200)
+	(pt 416 432)
+	(bus)
+)
+(connector
+	(text "DOUTR[23..0]" (rect 1143 104 1213 116)(font "Arial" ))
+	(pt 1120 120)
+	(pt 1200 120)
+	(bus)
+)
+(connector
+	(pt 1120 104)
+	(pt 1200 104)
+	(bus)
 )
 (connector
 	(pt 1120 520)
 	(pt 1160 520)
 )
-(connector
-	(pt 1120 536)
-	(pt 1160 536)
-)
-(connector
-	(text "DATA_Latch" (rect 203 304 264 316)(font "Arial" ))
-	(pt 256 320)
-	(pt 200 320)
-)
-(connector
-	(text "DATA_Latch" (rect 203 72 264 84)(font "Arial" ))
-	(pt 256 88)
-	(pt 200 88)
-)
-(connector
-	(text "BUSYR" (rect 437 272 475 284)(font "Arial" ))
-	(pt 416 288)
-	(pt 472 288)
-)
-(connector
-	(text "SDOR" (rect 436 288 467 300)(font "Arial" ))
-	(pt 416 304)
-	(pt 472 304)
-)
-(connector
-	(text "BUSYL" (rect 453 40 489 52)(font "Arial" ))
-	(pt 416 56)
-	(pt 488 56)
-)
-(connector
-	(text "SDOL" (rect 456 56 485 68)(font "Arial" ))
-	(pt 416 72)
-	(pt 488 72)
-)
-(junction (pt 160 56))
-(junction (pt 176 72))
+(junction (pt 400 184))
+(junction (pt 416 200))

@@ -1,7 +1,7 @@
 Quartus II
 Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 45
-3516
+3515
 OFF
 OFF
 OFF
@@ -472,67 +472,13 @@ AUTO
 
 # end
 # entity
-F00_TestADC
-# storage
-db|AA2380-MAXV_TSTQ9.(2).cnf
-db|AA2380-MAXV_TSTQ9.(2).cnf
-# case_insensitive
-# source_file
-f00_testadc.bdf
-b21a18de52aa74110447332d1a5ac
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
-F20_EmulateADC
-# storage
-db|AA2380-MAXV_TSTQ9.(1).cnf
-db|AA2380-MAXV_TSTQ9.(1).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f20_emulateadc.vhd
-29453a8721a3b080ea66d7e3c9510c4
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# hierarchies {
-F20_EmulateADC:inst
-F20_EmulateADC:inst1
-}
-# lmf
-c:|altera|91sp2|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
 lpm_divide
 # storage
 db|AA2380-MAXV_TSTQ9.(3).cnf
 db|AA2380-MAXV_TSTQ9.(3).cnf
 # case_insensitive
 # source_file
-c:|altera|91sp2|quartus|libraries|megafunctions|lpm_divide.tdf
+|altera|quartus|libraries|megafunctions|lpm_divide.tdf
 54966f81ff8a917b1dc9b9ad1a09648
 7
 # user_parameter {
@@ -644,10 +590,44 @@ numer3
 
 # end
 # entity
-F1_readADC_multimodes
+F20_EmulateADC
 # storage
-db|AA2380-MAXV_TSTQ9.(0).cnf
-db|AA2380-MAXV_TSTQ9.(0).cnf
+db|AA2380-MAXV_TSTQ9.(2).cnf
+db|AA2380-MAXV_TSTQ9.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f20_emulateadc.vhd
+75314ca3ba592b3f75f08092f296e3
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+F20_EmulateADC:inst
+F20_EmulateADC:inst1
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+f1_readadc_multimodes
+# storage
+db|AA2380-MAXV_TSTQ9.(1).cnf
+db|AA2380-MAXV_TSTQ9.(1).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -655,7 +635,7 @@ ON
 # case_insensitive
 # source_file
 f1_readadc_multimodes.vhd
-e4ca73626ee878c17e264095bb5c931d
+d11f3eb49301b294bacd389f3f3a9e3
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -671,8 +651,28 @@ ON
 F1_readADC_multimodes:inst2
 }
 # lmf
-c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+|altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+F00_TestADC
+# storage
+db|AA2380-MAXV_TSTQ9.(0).cnf
+db|AA2380-MAXV_TSTQ9.(0).cnf
+# case_insensitive
+# source_file
+f00_testadc.bdf
+7e8132528d1c7be4e8d9a0ffab9bc18b
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
 # macro_sequence
 
 # end

@@ -4,7 +4,7 @@
 -- Design notes, please read : "SPECIF_SPI_LTC2380-24.vhd" and
 -- "F1_readADC_multimodes.xls"
 -----------------------------------------------------------------
--- Intel MAXV 5M570 CPLD	Take ?? LE
+-- Intel MAXV 5M570 CPLD	Take 334 LE
 -- Function F1 :  F1_readADC_multimodes.vhd
 -- Function to read data from two LT2380-24 ADC using any of the two modes :
 -- #############################################################################
@@ -16,6 +16,8 @@
 -- 
 -- version corrected for proper work in any modes combination.
 -- Note 11/02/2024 : For now, the input "ITLV" is not yet used.(to be done).
+-- Added: All counters are reseted each time there is transistion value of AVG or SR.
+-- Added: SyncOUT clock to allow easy sych of averaged data.
 --------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
@@ -31,9 +33,9 @@ port(
   AQMODE        : in  std_logic; -- ADC acquisision mode 2 bits (00=NormalRead,01=DistributedRead,others TBD)
   ITLV          : in  std_logic; -- Allow simultaneous acquisision or interleaved (0=simultaneous 1= interleaved)
   -- Output ports
-  Fso		        : buffer  std_logic ; -- effective output sampling rate (12,24,48,96,192,384,768,1536 kHz)
-  nFS			      : buffer std_logic ; -- ADC sampling rate unaveraged (equal Fso * averaging ratio)
-  DOUTL	 	      : out std_logic_vector(23 downto 0); --ADC parrallel output data, 24 bits wide, Left channel
+  Fso		    : buffer  std_logic ; -- effective output sampling rate (12,24,48,96,192,384,768,1536 kHz)
+  nFS			: buffer std_logic ; -- ADC sampling rate unaveraged (equal Fso * averaging ratio)
+  DOUTL	 	    : out std_logic_vector(23 downto 0); --ADC parrallel output data, 24 bits wide, Left channel
   r_DATAL       : buffer std_logic_vector(23 downto 0);
   DOUTR	 	      : out std_logic_vector(23 downto 0); --ADC parrallel output data, 24 bits wide, Right channel
   --- ADC i/o control signals
@@ -70,8 +72,7 @@ port(
   Test_TCNVen_SCK   : out std_logic ;
   Test_TCNVen_SHFT  : out std_logic ;
   MCLK_div_Clear    : buffer std_logic;
-  SyncOUT           : buffer std_logic;
-  DATA_Lacth        : buffer std_logic
+  DATA_Latch        : buffer std_logic
 
   --
 );
@@ -106,8 +107,7 @@ signal AVGen_SCK     : std_logic ; --
 signal AVGen_READ    : std_logic ; --
 signal TCLK23        : integer range 0 to 23 ; --
 
---signal r_DATAL	 	   : std_logic_vector(23 downto 0);
-signal r_DATAR	 	   : std_logic_vector(23 downto 0);
+signal r_DATAR	 	 : std_logic_vector(23 downto 0);
 
 signal AVG_count    : integer range 1 to 128 ; -- sample average counter
 signal dAVG         : integer range 1 to 128 ; --
@@ -117,8 +117,9 @@ signal T_CNVen_SHFT : std_logic ; --
 signal ResetAVGread : std_logic ; --
 
 
-signal AVGlatch : integer range 0 to 7; --
-
+signal AVGlatch     : integer range 0 to 7; --
+signal SRLatch      : integer range 0 to 7; --
+signal SyncOUT      : std_logic;
 --
 
 begin
@@ -154,13 +155,14 @@ ChangeDetect : process(MCLK,AVG,CNVA,SyncOUT)
 begin
     if rising_edge(MCLK)    then
         AVGlatch <= AVG ; -- record previous  state
-        if  AVGlatch /= AVG then -- compare previous with new state. 
+        SRLatch  <=  SR ;
+        if  (AVGlatch /= AVG) or (SRLatch /= SR)  then -- compare previous with new state. 
             MCLK_div_Clear <= '1'; -- set MCLK_div_Clear to high
         else
             MCLK_div_Clear <= '0'; -- set MCLK_div_Clear to low
         end if;
         --
-        DATA_Lacth <= SyncOUT and  CNVA; --Generate Fso sync pulse
+        DATA_Latch <= SyncOUT and  CNVA; --Generate Fso sync pulse
         --
     end if;
 
@@ -232,9 +234,9 @@ end process SpdifCheck;
 MCLK_div : process(MCLK,AVG,MCLK_divider,SEL_nFS,SR,OutOfRange,MCLK_div_Clear)
 begin
     -- DivideMCLK
-    --if  MCLK_div_Clear='1'   then
-    --    MCLK_divider <= "0000000000000"; -- reset main MCLK counter
-    if rising_edge(MCLK)  then
+    if  MCLK_div_Clear='1'   then
+        MCLK_divider <= "0000000000000"; -- reset main MCLK counter
+    elsif rising_edge(MCLK)  then
         MCLK_divider <= MCLK_divider + 1 ; -- increment MCLK_divider counter
     end if;
     --
@@ -335,7 +337,7 @@ begin
                 when 7  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
                 when 8  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
                 when 9  => ReadCLK <= MCLK_divider(2)  ; -- 12.288M 
-                when 10 => ReadCLK <= MCLK_divider(2)  ; -- 12.288M
+                when 10 => ReadCLK <= MCLK_divider(1)  ; -- 24.576M ** modified  for proper work.14/02/24
                 when 11 => ReadCLK <= MCLK_divider(1)  ; -- 24.576M 
                 when 12 => ReadCLK <= MCLK_divider(0)  ; -- 49.152M
                 when 13 => ReadCLK <= MCLK             ; -- 98.304M
@@ -409,9 +411,9 @@ begin
         sBUSYR <=BUSYR ; -- Synch BUSYR to MCLK
   end if;
   --
-  --if    MCLK_div_Clear='1' then
-       -- CNVclk_cnt <= 0;
-  if  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
+  if    MCLK_div_Clear='1' then
+        CNVclk_cnt <= 0;
+  elsif  (sBUSYR='0' and sBUSYL='0')  then -- sBUSY flags must be low.
       if    rising_edge(ReadCLK) then   -- All the process is synchroous to ReadCLK
                 --
     			if    CNVclk_cnt <= CK_cycle then    -- compare cycle counter with CK_cycle value
@@ -486,7 +488,7 @@ SCKL <= ADC_CLK ; --
 ----------------------------------------------------------------------------
 AVG_cycles : process(nFS,AQMODE,dAVG,AVG_count,OutOfRange,MCLK_div_Clear)
 begin
-    if  OutOfRange= 1  then --or MCLK_div_Clear= '1' then
+    if  OutOfRange= 1  or MCLK_div_Clear= '1' then
         AVGen_SCK   <= '0'  ; --
         AVGen_READ  <= '0'  ; --
         AVG_count   <=  1   ; --
@@ -621,7 +623,7 @@ end process ADCserial_read;
 -- of "FSo" (Effective output sample frequency).
 -- If "OutOfRange" signal output is 0 if enable input is low
 ------------------------------------------------------------------------------
-process (FSo,r_DATAL,r_DATAR,OutOfRange,DATA_Lacth)
+process (FSo,r_DATAL,r_DATAR,OutOfRange,DATA_Latch)
 begin
   if    OutOfRange= 1 then
         DOUTL <= x"000000"  ; -- Reset DATA if OutOfRange detected

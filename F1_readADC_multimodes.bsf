@@ -292,16 +292,9 @@ applicable agreement for further details.
 	(port
 		(pt 216 496)
 		(output)
-		(text "SyncOUT" (rect 0 0 48 12)(font "Arial" ))
-		(text "SyncOUT" (rect 147 491 195 503)(font "Arial" ))
+		(text "DATA_Latch" (rect 0 0 61 12)(font "Arial" ))
+		(text "DATA_Latch" (rect 134 491 195 503)(font "Arial" ))
 		(line (pt 216 496)(pt 200 496)(line_width 1))
-	)
-	(port
-		(pt 216 512)
-		(output)
-		(text "DATA_Lacth" (rect 0 0 61 12)(font "Arial" ))
-		(text "DATA_Lacth" (rect 134 507 195 519)(font "Arial" ))
-		(line (pt 216 512)(pt 200 512)(line_width 1))
 	)
 	(drawing
 		(rectangle (rect 16 16 200 528)(line_width 1))
