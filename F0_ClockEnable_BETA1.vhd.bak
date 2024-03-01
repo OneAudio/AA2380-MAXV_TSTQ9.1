@@ -1,0 +1,104 @@
+--------------------------------------------------------------------------------
+-- Ressource : -- https://www.fpga4student.com/2017/08/how-to-generate-clock-enable-signal.html
+-- fpga4student.com: FPGA projects, Verilog projects, VHDL projects,
+-- Generate clock enable signal instead of creating another clock domain
+-- Assume that the input clock : CK98M304
+--------------------------------------------------------------------------------
+-- O.N - 27/02/2024
+-- take ??? LE
+-- 
+-- 
+--------------------------------------------------------------------------------
+-- NOTES sur les différents signaux d'horloges nécessaires :
+--
+-- RANGE of clocks:
+-- Fso (kHz)     : 12,24,48,96,192,384,768,1536k
+-- Fsox128 (MHz) : 1.536,3.072,6.144,12.288,24.576
+-- NOTE: No clock if OutOfRange is active.
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--------------------------------------------------------------------------------
+library  IEEE;
+use  IEEE.STD_LOGIC_1164.ALL;
+use  ieee.numeric_std.all;
+use IEEE.STD_LOGIC_UNSIGNED.ALL; 
+
+entity  F0_ClockEnable_BETA1  is
+port(
+    CK98M304     :	in  std_logic   ;  -- Master input clock (98.304MHz)
+    -- LRCK clock
+    CK24M576      :	out std_logic   ;  --  kHz clock 
+    CK12K000      :	out std_logic   ;  --  kHz clock
+    -- CK0384K      :	out std_logic   ;  -- 
+		-- CK0192K    	: out std_logic   ;  -- 
+		-- CK0096K    	: out std_logic   ;  -- 
+		-- CK0048K    	: out std_logic   ;  -- 
+		-- CK0024K    	: out std_logic   ;  -- 
+    clken1     : buffer std_logic  ;
+    clken2     : buffer std_logic  
+    );
+end  F0_ClockEnable_BETA1;
+
+
+ARCHITECTURE DESCRIPTION OF F0_ClockEnable_BETA1 IS
+
+signal   counter1     : integer range 0 to 3    ;
+signal   counter2     : integer range 0 to 8191 ;
+
+
+begin
+
+process(CK98M304)
+begin
+  if(rising_edge(CK98M304)) then
+    --
+    if(counter1 =3 ) then
+      clken1 <= '1';
+      counter1 <= 0 ;
+    else
+    else
+      clken1 <= '0';
+    counter1 <= counter1 + 1 ;
+    end if;
+    --
+    if(counter2 =8191 ) then
+      clken2 <= '1';
+      counter2 <= 0 ;
+    else
+      clken2 <= '0';
+    counter2 <= counter2 + 1 ;
+    end if;
+  end if;
+end process;
+
+
+-- Use the same clock and the slow clock enable signal above 
+-- to drive another part of the design to avoid domain crossing issues
+
+process(CK98M304)
+begin
+  if(rising_edge(CK98M304)) then
+  --
+    if(clken1 = '1') then
+        CK24M576 <= '1'; --
+    else
+        CK24M576 <= '0'; --
+    end if;
+    --
+    if(clken2 = '1') then
+        CK12K000 <= '1'; --
+    else
+        CK12K000 <= '0'; --
+    end if;
+  end if;
+end process;
+
+
+END DESCRIPTION;
