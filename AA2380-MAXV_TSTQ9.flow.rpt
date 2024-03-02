@@ -1,5 +1,5 @@
 Flow report for AA2380-MAXV_TSTQ9
-Wed Feb 14 14:38:47 2024
+Sat Mar 02 15:46:37 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,16 +38,16 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; Flow Summary                                                           ;
 +-------------------------+----------------------------------------------+
-; Flow Status             ; Successful - Wed Feb 14 14:38:47 2024        ;
+; Flow Status             ; Successful - Sat Mar 02 15:46:37 2024        ;
 ; Quartus II Version      ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name           ; AA2380-MAXV_TSTQ9                            ;
-; Top-level Entity Name   ; F00_TestADC                                  ;
+; Top-level Entity Name   ; F0_ClockEnable_BETA2                         ;
 ; Family                  ; MAX II                                       ;
 ; Device                  ; EPM2210F324C3                                ;
 ; Timing Models           ; Final                                        ;
-; Met timing requirements ; No                                           ;
-; Total logic elements    ; 331 / 2,210 ( 15 % )                         ;
-; Total pins              ; 159 / 272 ( 58 % )                           ;
+; Met timing requirements ; Yes                                          ;
+; Total logic elements    ; 174 / 2,210 ( 8 % )                          ;
+; Total pins              ; 14 / 272 ( 5 % )                             ;
 ; Total virtual pins      ; 0                                            ;
 ; UFM blocks              ; 0 / 1 ( 0 % )                                ;
 +-------------------------+----------------------------------------------+
@@ -58,25 +58,25 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/14/2024 14:38:36 ;
+; Start date & time ; 03/02/2024 15:46:33 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; AA2380-MAXV_TSTQ9   ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                      ;
-+---------------------------------------+--------------------------------+-------------------+-------------+------------+
-; Assignment Name                       ; Value                          ; Default Value     ; Entity Name ; Section Id ;
-+---------------------------------------+--------------------------------+-------------------+-------------+------------+
-; COMPILER_SIGNATURE_ID                 ; 92668497786263.170791791620908 ; --                ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP                ; 85                             ; --                ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP                ; 0                              ; --                ; --          ; --         ;
-; PARTITION_COLOR                       ; 16764057                       ; --                ; F00_TestADC ; Top        ;
-; PARTITION_NETLIST_TYPE                ; SOURCE                         ; --                ; F00_TestADC ; Top        ;
-; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                           ; --                ; --          ; --         ;
-; TOP_LEVEL_ENTITY                      ; F00_TestADC                    ; AA2380-MAXV_TSTQ9 ; --          ; --         ;
-+---------------------------------------+--------------------------------+-------------------+-------------+------------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                ;
++---------------------------------------+---------------------------------+-------------------+----------------------+------------+
+; Assignment Name                       ; Value                           ; Default Value     ; Entity Name          ; Section Id ;
++---------------------------------------+---------------------------------+-------------------+----------------------+------------+
+; COMPILER_SIGNATURE_ID                 ; 189262218608270.170939079306448 ; --                ; --                   ; --         ;
+; MAX_CORE_JUNCTION_TEMP                ; 85                              ; --                ; --                   ; --         ;
+; MIN_CORE_JUNCTION_TEMP                ; 0                               ; --                ; --                   ; --         ;
+; PARTITION_COLOR                       ; 16764057                        ; --                ; F0_ClockEnable_BETA2 ; Top        ;
+; PARTITION_NETLIST_TYPE                ; SOURCE                          ; --                ; F0_ClockEnable_BETA2 ; Top        ;
+; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                            ; --                ; --                   ; --         ;
+; TOP_LEVEL_ENTITY                      ; F0_ClockEnable_BETA2            ; AA2380-MAXV_TSTQ9 ; --                   ; --         ;
++---------------------------------------+---------------------------------+-------------------+----------------------+------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------+
@@ -84,11 +84,11 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:02     ; 1.0                     ; 238 MB              ; 00:00:04                           ;
-; Fitter                  ; 00:00:03     ; 1.0                     ; 194 MB              ; 00:00:10                           ;
-; Assembler               ; 00:00:01     ; 1.0                     ; 179 MB              ; 00:00:00                           ;
-; Classic Timing Analyzer ; 00:00:01     ; 1.0                     ; 149 MB              ; 00:00:02                           ;
-; Total                   ; 00:00:07     ; --                      ; --                  ; 00:00:16                           ;
+; Analysis & Synthesis    ; 00:00:01     ; 1.0                     ; 232 MB              ; 00:00:01                           ;
+; Fitter                  ; 00:00:00     ; 1.0                     ; 215 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:00     ; 1.0                     ; 189 MB              ; 00:00:00                           ;
+; Classic Timing Analyzer ; 00:00:00     ; 1.0                     ; 159 MB              ; 00:00:00                           ;
+; Total                   ; 00:00:01     ; --                      ; --                  ; 00:00:02                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -97,10 +97,10 @@ applicable agreement for further details.
 +-------------------------+------------------+---------------+------------+----------------+
 ; Module Name             ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
 +-------------------------+------------------+---------------+------------+----------------+
-; Analysis & Synthesis    ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
-; Fitter                  ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
-; Classic Timing Analyzer ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
+; Analysis & Synthesis    ; i5-Etabli        ; Windows Vista ; 6.2        ; x86_64         ;
+; Fitter                  ; i5-Etabli        ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; i5-Etabli        ; Windows Vista ; 6.2        ; x86_64         ;
+; Classic Timing Analyzer ; i5-Etabli        ; Windows Vista ; 6.2        ; x86_64         ;
 +-------------------------+------------------+---------------+------------+----------------+
 
 
