@@ -4,7 +4,7 @@
 -- Generate clock enable signal instead of creating another clock domain
 -- Assume that the input clock : CK98M304
 --------------------------------------------------------------------------------
--- O.N - 02/03/2024 -- take 189 LE
+-- O.N - 02/03/2024 -- take 192 LE
 --------------------------------------------------------------------------------
 -- NOTES sur les différents signaux d'horloges nécessaires :
 -- RANGE of clocks:
@@ -169,7 +169,10 @@ begin
         SetCnt_ReadCLK <= SetCnt_nFS / 64 ; -- Read clock is 64x time faster than nFS frequency
     else
         -- Distributed reading aquisition mode of ADC (LTC2380-24)
-        -- (24 data samples read in the whole Fso cycle) 
+        -- (24 data samples read in the whole Fso cycle)
+-- NOTE DU 06/03/2024 à 18h00 ;
+-- Est il pertinent d'utiliser le SR seulement pour définir la valeur de lhorloge ReadCLK ?
+-- Ici, par ex en mode distribué à 384kHz et AVG=2, la fréquence est trop faible pour lue !
         case SR is
             when 0 => SetCnt_ReadCLK <= 8 ; -- 12.288 MHz (= 98.304/8) -- SR=12kHz
             when 1 => SetCnt_ReadCLK <= 8 ; -- 12.288 MHz (= 98.304/8) -- SR=24kHz
