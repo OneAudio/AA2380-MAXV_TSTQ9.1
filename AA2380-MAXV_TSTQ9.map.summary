@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Sat Mar 02 15:46:34 2024
+Analysis & Synthesis Status : Successful - Wed Mar 06 15:28:59 2024
 Quartus II Version : 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
 Revision Name : AA2380-MAXV_TSTQ9
-Top-level Entity Name : F0_ClockEnable_BETA2
+Top-level Entity Name : TEST_Multimodes_ExtClockEnable
 Family : MAX II
-Total logic elements : 181
-Total pins : 14
+Total logic elements : 394
+Total pins : 69
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

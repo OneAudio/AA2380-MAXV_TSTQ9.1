@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="AA2380-MAXV_TSTQ9">
+		<CBX_INST_ENTRY INSTANCE_NAME="|TEST_Multimodes_ExtClockEnable|CONSTVAL:inst13|lpm_constant:lpm_constant_component" CBX_FILE_NAME="lpm_constant_rs6.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_ovl.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
