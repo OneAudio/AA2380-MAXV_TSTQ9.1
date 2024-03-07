@@ -1,5 +1,5 @@
 Analysis & Synthesis report for AA2380-MAXV_TSTQ9
-Wed Mar 06 15:28:59 2024
+Thu Mar 07 15:46:17 2024
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,13 +45,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                               ;
 +-----------------------------+----------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Mar 06 15:28:59 2024        ;
+; Analysis & Synthesis Status ; Successful - Thu Mar 07 15:46:17 2024        ;
 ; Quartus II Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name               ; AA2380-MAXV_TSTQ9                            ;
 ; Top-level Entity Name       ; TEST_Multimodes_ExtClockEnable               ;
 ; Family                      ; MAX II                                       ;
-; Total logic elements        ; 394                                          ;
-; Total pins                  ; 69                                           ;
+; Total logic elements        ; 411                                          ;
+; Total pins                  ; 68                                           ;
 ; Total virtual pins          ; 0                                            ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                ;
 +-----------------------------+----------------------------------------------+
@@ -162,20 +162,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 394   ;
-;     -- Combinational with no register       ; 229   ;
+; Total logic elements                        ; 411   ;
+;     -- Combinational with no register       ; 246   ;
 ;     -- Register only                        ; 47    ;
 ;     -- Combinational with a register        ; 118   ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 117   ;
-;     -- 3 input functions                    ; 56    ;
-;     -- 2 input functions                    ; 136   ;
-;     -- 1 input functions                    ; 36    ;
+;     -- 4 input functions                    ; 129   ;
+;     -- 3 input functions                    ; 68    ;
+;     -- 2 input functions                    ; 130   ;
+;     -- 1 input functions                    ; 35    ;
 ;     -- 0 input functions                    ; 2     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 301   ;
+;     -- normal mode                          ; 318   ;
 ;     -- arithmetic mode                      ; 93    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
@@ -184,11 +184,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;       ;
 ; Total registers                             ; 165   ;
 ; Total logic cells in carry chains           ; 108   ;
-; I/O pins                                    ; 69    ;
+; I/O pins                                    ; 68    ;
 ; Maximum fan-out node                        ; MCLK  ;
 ; Maximum fan-out                             ; 61    ;
-; Total fan-out                               ; 1321  ;
-; Average fan-out                             ; 2.85  ;
+; Total fan-out                               ; 1392  ;
+; Average fan-out                             ; 2.91  ;
 +---------------------------------------------+-------+
 
 
@@ -197,13 +197,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                                                                                                ; Library Name ;
 +-------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |TEST_Multimodes_ExtClockEnable           ; 394 (0)     ; 165          ; 0          ; 69   ; 0            ; 229 (0)      ; 47 (0)            ; 118 (0)          ; 108 (0)         ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable                                                                                                                                                    ; work         ;
-;    |F0_ClockEnable_BETA2:inst|            ; 168 (168)   ; 59           ; 0          ; 0    ; 0            ; 109 (109)    ; 9 (9)             ; 50 (50)          ; 49 (49)         ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst                                                                                                                          ; work         ;
-;    |F1_readADCmulti_ExtClk:inst1|         ; 193 (165)   ; 74           ; 0          ; 0    ; 0            ; 119 (91)     ; 27 (27)           ; 47 (47)          ; 53 (34)         ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1                                                                                                                       ; work         ;
-;       |lpm_divide:Div0|                   ; 28 (0)      ; 0            ; 0          ; 0    ; 0            ; 28 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0                                                                                                       ; work         ;
-;          |lpm_divide_ovl:auto_generated|  ; 28 (0)      ; 0            ; 0          ; 0    ; 0            ; 28 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated                                                                         ; work         ;
-;             |sign_div_unsign_9kh:divider| ; 28 (0)      ; 0            ; 0          ; 0    ; 0            ; 28 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider                                             ; work         ;
-;                |alt_u_div_die:divider|    ; 28 (9)      ; 0            ; 0          ; 0    ; 0            ; 28 (9)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider                       ; work         ;
+; |TEST_Multimodes_ExtClockEnable           ; 411 (0)     ; 165          ; 0          ; 68   ; 0            ; 246 (0)      ; 47 (0)            ; 118 (0)          ; 108 (0)         ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable                                                                                                                                                    ; work         ;
+;    |F0_ClockEnable_BETA2:inst|            ; 186 (186)   ; 59           ; 0          ; 0    ; 0            ; 127 (127)    ; 9 (9)             ; 50 (50)          ; 49 (49)         ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst                                                                                                                          ; work         ;
+;    |F1_readADCmulti_ExtClk:inst1|         ; 192 (163)   ; 74           ; 0          ; 0    ; 0            ; 118 (89)     ; 27 (27)           ; 47 (47)          ; 53 (34)         ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1                                                                                                                       ; work         ;
+;       |lpm_divide:Div0|                   ; 29 (0)      ; 0            ; 0          ; 0    ; 0            ; 29 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0                                                                                                       ; work         ;
+;          |lpm_divide_ovl:auto_generated|  ; 29 (0)      ; 0            ; 0          ; 0    ; 0            ; 29 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated                                                                         ; work         ;
+;             |sign_div_unsign_9kh:divider| ; 29 (0)      ; 0            ; 0          ; 0    ; 0            ; 29 (0)       ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider                                             ; work         ;
+;                |alt_u_div_die:divider|    ; 29 (10)     ; 0            ; 0          ; 0    ; 0            ; 29 (10)      ; 0 (0)             ; 0 (0)            ; 19 (0)          ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider                       ; work         ;
 ;                   |add_sub_g7c:add_sub_2| ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 6 (6)           ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider|add_sub_g7c:add_sub_2 ; work         ;
 ;                   |add_sub_h7c:add_sub_3| ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 7 (7)           ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider|add_sub_h7c:add_sub_3 ; work         ;
 ;                   |add_sub_i7c:add_sub_4| ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 6 (6)           ; 0 (0)      ; |TEST_Multimodes_ExtClockEnable|F1_readADCmulti_ExtClk:inst1|lpm_divide:Div0|lpm_divide_ovl:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_die:divider|add_sub_i7c:add_sub_4 ; work         ;
@@ -264,15 +264,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                   ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------+
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst|counter_nFS[1]     ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst|counter_Fso[12]    ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst|counter_ReadCLK[8] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst|clken_nFS           ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst|counter_Fso[9]      ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |TEST_Multimodes_ExtClockEnable|F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------+
@@ -317,7 +317,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Wed Mar 06 15:28:55 2024
+    Info: Processing started: Thu Mar 07 15:46:14 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
 Info: Found 1 design units, including 1 entities, in source file aa2380_maxv.bdf
     Info: Found entity 1: AA2380_MAXV
@@ -349,7 +349,6 @@ Info: Found 2 design units, including 1 entities, in source file constval.vhd
     Info: Found design unit 1: constval-SYN
     Info: Found entity 1: CONSTVAL
 Info: Elaborating entity "TEST_Multimodes_ExtClockEnable" for the top level hierarchy
-Warning: Pin "Clear" not connected
 Info: Elaborating entity "F0_ClockEnable_BETA2" for hierarchy "F0_ClockEnable_BETA2:inst"
 Info: Elaborating entity "F1_readADCmulti_ExtClk" for hierarchy "F1_readADCmulti_ExtClk:inst1"
 Info: Elaborating entity "F20_EmulateADC" for hierarchy "F20_EmulateADC:inst9"
@@ -388,19 +387,17 @@ Info: Found 1 design units, including 1 entities, in source file db/add_sub_h7c.
 Info: Found 1 design units, including 1 entities, in source file db/add_sub_i7c.tdf
     Info: Found entity 1: add_sub_i7c
 Info: Registers with preset signals will power-up high
-Warning: Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "Clear"
-Info: Implemented 463 device resources after synthesis - the final resource count might be different
-    Info: Implemented 9 input pins
+Info: Implemented 479 device resources after synthesis - the final resource count might be different
+    Info: Implemented 8 input pins
     Info: Implemented 60 output pins
-    Info: Implemented 394 logic cells
+    Info: Implemented 411 logic cells
 Warning: Ignored assignments for entity "AA2380-MAXV_TSTQ9" -- entity does not exist in design
     Warning: Assignment for entity set_global_assignment -name LL_ROOT_REGION ON -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
     Warning: Assignment for entity set_global_assignment -name LL_MEMBER_STATE LOCKED -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 237 megabytes
-    Info: Processing ended: Wed Mar 06 15:28:59 2024
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:10
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 238 megabytes
+    Info: Processing ended: Thu Mar 07 15:46:17 2024
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

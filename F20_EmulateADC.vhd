@@ -64,7 +64,7 @@ begin
       if    rising_edge(MCLK) then
             if   BUSY_on='1' then
               Busy_count <= Busy_count + 1 ; -- increment counter
-                if    Busy_count= 35  then -- 35x10ns =350ns pulse width (real measured Busy time=350ns, Datasheet max=391ns)
+                if    Busy_count= 36  then -- 35x10ns =350ns pulse width (real measured Busy time=350ns, Datasheet max=391ns)
                       Busy_end <= '1'  ; -- engage reset of busy signal when Busy_count value is reached.
                 else
                       Busy_end <= '0'  ; -- no reset

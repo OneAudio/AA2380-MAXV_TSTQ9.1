@@ -637,39 +637,6 @@ a36c8ec425c8a2589af98b2d4daabc3
 
 # end
 # entity
-F20_EmulateADC
-# storage
-db|AA2380-MAXV_TSTQ9.(15).cnf
-db|AA2380-MAXV_TSTQ9.(15).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f20_emulateadc.vhd
-75314ca3ba592b3f75f08092f296e3
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# hierarchies {
-F20_EmulateADC:inst9
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
 CONSTVAL
 # storage
 db|AA2380-MAXV_TSTQ9.(16).cnf
@@ -811,26 +778,6 @@ CONSTVAL:inst13|lpm_constant:lpm_constant_component
 
 # end
 # entity
-TEST_Multimodes_ExtClockEnable
-# storage
-db|AA2380-MAXV_TSTQ9.(2).cnf
-db|AA2380-MAXV_TSTQ9.(2).cnf
-# case_insensitive
-# source_file
-test_multimodes_extclockenable.bdf
-4cdc4aa4ad302c328a5cb123c9c9e04
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 F1_readADCmulti_ExtClk
 # storage
 db|AA2380-MAXV_TSTQ9.(14).cnf
@@ -864,6 +811,39 @@ a36c8ec425c8a2589af98b2d4daabc3
 
 # end
 # entity
+F20_EmulateADC
+# storage
+db|AA2380-MAXV_TSTQ9.(15).cnf
+db|AA2380-MAXV_TSTQ9.(15).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f20_emulateadc.vhd
+33f6973fcb5c94458a2919ecd4ac37ad
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+F20_EmulateADC:inst9
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
 F0_ClockEnable_BETA2
 # storage
 db|AA2380-MAXV_TSTQ9.(1).cnf
@@ -875,7 +855,7 @@ ON
 # case_insensitive
 # source_file
 f0_clockenable_beta2.vhd
-e868e1eec475c7c409a76163dcecdd4
+1f51303f7add8f52363be980af18
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -893,6 +873,26 @@ F0_ClockEnable_BETA2:inst
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+TEST_Multimodes_ExtClockEnable
+# storage
+db|AA2380-MAXV_TSTQ9.(2).cnf
+db|AA2380-MAXV_TSTQ9.(2).cnf
+# case_insensitive
+# source_file
+test_multimodes_extclockenable.bdf
+48fed3c6131caa44da8395c7aa0ede8
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
 # macro_sequence
 
 # end
