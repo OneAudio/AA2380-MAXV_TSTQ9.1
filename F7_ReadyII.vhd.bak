@@ -1,0 +1,65 @@
+-------------------------------------------------------
+-- ON le 08/03/2024 --s
+-------------------------------------------------------
+-- Intel MAXV 5M570 CPLD	Take (52) 43 LE.
+-- Function F7 :  F7_ReadyII.vhd
+-------------------------------------------------------
+-- Generate ready signal after a delay from main clock.
+-- You can choose :
+-- 
+-------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity F7_ReadyII is
+    Port (
+        FSo		    :in			    STD_LOGIC ;-- 
+        SR  		:in integer  range 0 to 7 ;-- 
+		CLKSLOW		:buffer		    STD_LOGIC ;--
+		READY		:buffer		    STD_LOGIC  --
+        );
+end F7_ReadyII;
+
+architecture Behavioral of F7_ReadyII is
+signal counter	: integer range 1 to 512 :=1 ; --
+signal toggle	: integer range 1 to 768 :=1 ; --
+signal slowcnt	: integer range 1 to 768 :=1 ; -- 
+
+begin
+
+process (FSo,SR,READY,slowcnt,toggle,CLKSLOW)
+begin
+    -- SR value change divider value to get same CLKSLOW value (1kHz)
+    case SR is
+        when 0 => toggle <=6   ;-- FSo=12k
+        when 1 => toggle <=12  ;-- FSo=24k
+        when 2 => toggle <=24  ;-- FSo=48k
+        when 3 => toggle <=48  ;-- FSo=96k
+        when 4 => toggle <=96  ;-- FSo=192k
+        when 5 => toggle <=192 ;-- FSo=384k
+        when 6 => toggle <=384 ;-- FSo=768k
+        when 7 => toggle <=768 ;-- FSo=1536k
+    end case;
+    --
+	if rising_edge(FSo) then
+		-- slow clock from clkin
+		if  slowcnt=toggle	then
+			CLKSLOW <= not CLKSLOW ; -- invert CLKSLOW
+			slowcnt <= 1 ; -- reset slowcnt counter
+		else
+			slowcnt <= slowcnt + 1 ; -- increment slowcnt counter
+		end if;
+	end if;
+    --
+	if falling_edge(CLKSLOW) then
+		-- ready single pulse at startup
+		if  counter < 500 then
+			Ready   <= '0' ;-- Ready signal not active
+			counter <= counter +1; -- increment counter
+	    else
+		 	Ready <= '1'; -- Ready active
+		end if;
+	end if;
+end process;
+
+end Behavioral;

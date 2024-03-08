@@ -660,9 +660,6 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
-# hierarchies {
-CONSTVAL:inst13
-}
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
@@ -771,9 +768,6 @@ result0
 -1
 3
 }
-# hierarchies {
-CONSTVAL:inst13|lpm_constant:lpm_constant_component
-}
 # macro_sequence
 
 # end
@@ -800,9 +794,6 @@ AUTO_RAM_RECOGNITION
 ON
 AUTO_ROM_RECOGNITION
 ON
-}
-# hierarchies {
-F1_readADCmulti_ExtClk:inst1
 }
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
@@ -834,9 +825,6 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
-# hierarchies {
-F20_EmulateADC:inst9
-}
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
@@ -867,9 +855,6 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
-# hierarchies {
-F0_ClockEnable_BETA2:inst
-}
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
@@ -890,9 +875,100 @@ test_multimodes_extclockenable.bdf
 BLOCK_DESIGN_NAMING
 AUTO
 }
+# macro_sequence
+
+# end
+# entity
+TEST_Clocks_Modules
+# storage
+db|AA2380-MAXV_TSTQ9.(18).cnf
+db|AA2380-MAXV_TSTQ9.(18).cnf
+# case_insensitive
+# source_file
+test_clocks_modules.bdf
+337157ca821d8139d7b06f3da95a36b4
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+F7_Ready
+# storage
+db|AA2380-MAXV_TSTQ9.(19).cnf
+db|AA2380-MAXV_TSTQ9.(19).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f7_ready.vhd
+915ab08330923f7ee878e75f2396054
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+clkval
+98304000
+PARAMETER_SIGNED_DEC
+USR
+fslow
+50
+PARAMETER_SIGNED_DEC
+USR
+delay
+100
+PARAMETER_SIGNED_DEC
+USR
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+F7_ReadyII
+# storage
+db|AA2380-MAXV_TSTQ9.(20).cnf
+db|AA2380-MAXV_TSTQ9.(20).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f7_readyii.vhd
+1ddb875a6bcc713d1574c0bf77fe6c34
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
 # hierarchies {
 |
 }
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 
 # end
