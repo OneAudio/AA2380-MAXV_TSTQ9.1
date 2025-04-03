@@ -1,0 +1,137 @@
+----------------------------------------------------------------------------
+---- 07/28/2010  Author(s):Vipin Lal, lalnitt@gmail.com 				----		
+---- Design Name: lfsr													----				
+---- Project Name: lfsr_randgen										   	----	
+---- Description: 														----	
+----  A random number generator based on linear feedback shift         	----
+----  register(LFSR).A LFSR is a shift register whose input bit is a    ----
+----  linear function of its previous state.The detailed documentation  ----	
+----  is available in the file named manual.pdf.   						----	
+---- This file is a part of the lfsr_randgen project at                 ----
+---- http://www.opencores.org/						                    ----
+----------------------------------------------------------------------------
+--- Modified by ON the 22/06/17											----
+--- output is now signed 2's complement.								----
+----------------------------------------------------------------------------
+--- Modified by ON the 11/02/2025 - (74LE)								----
+---- 																	----
+---- LFSR of 24bits length, pattern repetiton rate is 2^n/Fclock.		----
+---- With 48kHz clock, the pattern time length is ~350s. (11s @ 1.536M)	----
+----
+---- Here, the amount of noise is controlled by register Set_Dither.	----
+---- It's value can be from 0 to 7 (3bits) in order to add 0 to 7 LSB   ----
+---- of noise in DATAin signal.											----
+---- 																	----							
+---- Option to be added ? :												----
+---- input to get only Datain or only dither at output ?...				----
+---- to be continued...													----
+----------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+library work;
+use work.lfsr_pkg.ALL; 
+
+entity lfsr_testII is
+   
+port (	
+	FSclk 		: in 	std_logic;-- clock input at sampling rate frequency
+	set_seed 	: in 	std_logic;-- synchronous seed init input
+	seed 		: in 	std_logic_vector(23 downto 0); --seed data word (must be not all 0 !)
+	NoiseOnly	: in 	std_logic;-- input to get only random noise on DATAout (active high)
+	Set_Dither	: in 	integer range 0 to 7; --effective dither bits (range 0 to 7)
+	DATAin 		: in 	signed(23 downto 0);-- input data word (signed 24 bits)
+	DATAout		: buffer   signed(23 downto 0); -- output data word (signed 24 bits)
+	overflow	: out	std_logic;-- overflow output indicator (active high)
+	--test outputs
+	DATAoutLSB 	: buffer signed(9 downto 0); -- LSBs of DATAout for check purpose
+    random_out   : buffer signed(7 downto 0) -- Dither alone output (signed 8 bits)
+    --
+	);
+end lfsr_testII;
+
+architecture Behavioral of lfsr_testII is
+
+signal		random_out24 	: SIGNED(23 downto 0);
+
+begin
+
+process(FSclk,DATAin,DATAout,Set_Dither,random_out)
+
+-- variable for lfsr
+variable 	rand_temp 		: std_logic_vector (23 downto 0):=(0 => '1',others => '0');
+variable 	temp 			: std_logic := '0';
+
+begin
+-- LFSR Generation (use work.lfsr package)
+if(rising_edge(FSclk)) then
+	--
+	if(set_seed = '1') then
+	rand_temp := seed; -- synchronous load of seed input value.
+	end if;
+	--
+	temp := xor_gates(rand_temp);
+	rand_temp(23 downto 1) := rand_temp(22 downto 0);
+	rand_temp(0) := temp;
+	--
+end if;
+
+-- Le registre de sortie rand_outT est de 8 bits no signé
+-- garde entre 0 et 8 bits de poids faible du registre lfsr
+
+-- Keep 8 bits random value register.
+-- The random value is shifted to the Set_Dither value to keep only
+-- the desired number of output dither bit.
+-- The random_out register is signed and the MSB is always the sign.
+random_out <= shift_right(signed(rand_temp(7 downto 0)),(7-Set_Dither)); 
+
+
+
+-- signed values of random_out and DATAin is summed to get the output with the noise.
+--DATAout <= signed(DATAin) + signed(random_out) ; --adding n Bits of dither to NCO wave. 
+
+-- Test output that keep only the first 8 MSB.
+DATAoutLSB <= DATAout(9 downto 0);
+end process;
+
+
+---------------------------------------------------------------------------------
+--- Overflow detection
+---------------------------------------------------------------------------------
+-- Extend B_8bit to 24 bits with sign extension
+random_out24 <= resize(random_out, 24); -- resizing before addition to keep sign.
+
+process(random_out24, DATAin,DATAout,NoiseOnly)
+begin
+
+	if 	NoiseOnly='1'	then
+		DATAout <= signed(random_out24) ;  -- only noise
+	else
+		if Set_Dither=7	then
+			DATAout <= signed(DATAin) ; -- pass-thrue mode (no noise)
+		else
+			DATAout <= signed(DATAin) + signed(random_out24) ; --adding n Bits of dither to NCO wave. 
+		end if;
+	end if;
+    --
+	-- Check for overflow with this equation :
+	--Overflow=(A(23)= B(23)​) AND (A(23)=Sum(23​))
+    if ((DATAin(23) = random_out24(23)) and (DATAin(23) /= DATAout(23))) then
+        Overflow <= '1';-- overflow detected
+    else
+        Overflow <= '0';-- no overflow
+    end if;
+
+
+
+
+
+end process;
+
+
+
+
+end Behavioral;
+

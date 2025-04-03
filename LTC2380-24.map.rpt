@@ -1,0 +1,485 @@
+Analysis & Synthesis report for LTC2380-24
+Thu Apr 03 14:12:49 2025
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                               ;
++-----------------------------+----------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Thu Apr 03 14:12:49 2025        ;
+; Quartus II Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
+; Revision Name               ; LTC2380-24                                   ;
+; Top-level Entity Name       ; 4LanesRXTX                                   ;
+; Family                      ; MAX II                                       ;
+; Total logic elements        ; 87                                           ;
+; Total pins                  ; 63                                           ;
+; Total virtual pins          ; 0                                            ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                                ;
++-----------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; 4LanesRXTX         ; LTC2380-24         ;
+; Family name                                                                ; MAX II             ; Stratix II         ;
+; Optimization Technique                                                     ; Speed              ; Balanced           ;
+; Use Generated Physical Constraints File                                    ; Off                ;                    ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                         ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                         ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------+
+; F15_Par2I2S_2x4LanesII.vhd       ; yes             ; User VHDL File                     ; D:/Quartus/9.1/EPM570_I2S_generator_v1.13/F15_Par2I2S_2x4LanesII.vhd ;
+; F16_I2S2Par_2x4Lanes.vhd         ; yes             ; User VHDL File                     ; D:/Quartus/9.1/EPM570_I2S_generator_v1.13/F16_I2S2Par_2x4Lanes.vhd   ;
+; 4LanesRXTX.bdf                   ; yes             ; User Block Diagram/Schematic File  ; D:/Quartus/9.1/EPM570_I2S_generator_v1.13/4LanesRXTX.bdf             ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Total logic elements                        ; 87     ;
+;     -- Combinational with no register       ; 32     ;
+;     -- Register only                        ; 48     ;
+;     -- Combinational with a register        ; 7      ;
+;                                             ;        ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 6      ;
+;     -- 3 input functions                    ; 25     ;
+;     -- 2 input functions                    ; 3      ;
+;     -- 1 input functions                    ; 1      ;
+;     -- 0 input functions                    ; 4      ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 87     ;
+;     -- arithmetic mode                      ; 0      ;
+;     -- qfbk mode                            ; 0      ;
+;     -- register cascade mode                ; 0      ;
+;     -- synchronous clear/load mode          ; 0      ;
+;     -- asynchronous clear/load mode         ; 27     ;
+;                                             ;        ;
+; Total registers                             ; 55     ;
+; I/O pins                                    ; 63     ;
+; Maximum fan-out node                        ; CLK8FS ;
+; Maximum fan-out                             ; 51     ;
+; Total fan-out                               ; 315    ;
+; Average fan-out                             ; 2.10   ;
++---------------------------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                              ;
++-----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------+--------------+
+; Compilation Hierarchy Node        ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                      ; Library Name ;
++-----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------+--------------+
+; |4LanesRXTX                       ; 87 (0)      ; 55           ; 0          ; 63   ; 0            ; 32 (0)       ; 48 (0)            ; 7 (0)            ; 0 (0)           ; 0 (0)      ; |4LanesRXTX                              ; work         ;
+;    |F15_Par2I2S_2x4LanesII:inst1| ; 27 (27)     ; 26           ; 0          ; 0    ; 0            ; 1 (1)        ; 22 (22)           ; 4 (4)            ; 0 (0)           ; 0 (0)      ; |4LanesRXTX|F15_Par2I2S_2x4LanesII:inst1 ; work         ;
+;    |F16_I2S2Par_2x4Lanes:inst|    ; 60 (60)     ; 29           ; 0          ; 0    ; 0            ; 31 (31)      ; 26 (26)           ; 3 (3)            ; 0 (0)           ; 0 (0)      ; |4LanesRXTX|F16_I2S2Par_2x4Lanes:inst    ; work         ;
++-----------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                 ;
++-----------------------------------------------------+--------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                  ; Free of Timing Hazards ;
++-----------------------------------------------------+--------------------------------------+------------------------+
+; F16_I2S2Par_2x4Lanes:inst|DATAL[23]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[22]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[21]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[20]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[19]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[18]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[17]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[16]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[15]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[14]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[13]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[12]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[11]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[10]                 ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[9]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[8]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[7]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[6]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[5]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[4]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[3]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[2]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[1]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; F16_I2S2Par_2x4Lanes:inst|DATAL[0]                  ; F16_I2S2Par_2x4Lanes:inst|Synchpulse ; yes                    ;
+; Number of user-specified and inferred latches = 24  ;                                      ;                        ;
++-----------------------------------------------------+--------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                  ;
++--------------------------------------------+----------------------------------------+
+; Register name                              ; Reason for Removal                     ;
++--------------------------------------------+----------------------------------------+
+; F15_Par2I2S_2x4LanesII:inst1|Rshift[0..23] ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 24     ;                                        ;
++--------------------------------------------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                            ;
++----------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; Register name                          ; Reason for Removal        ; Registers Removed due to This Register                                            ;
++----------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+; F15_Par2I2S_2x4LanesII:inst1|Rshift[3] ; Stuck at GND              ; F15_Par2I2S_2x4LanesII:inst1|Rshift[7], F15_Par2I2S_2x4LanesII:inst1|Rshift[11],  ;
+;                                        ; due to stuck port data_in ; F15_Par2I2S_2x4LanesII:inst1|Rshift[15], F15_Par2I2S_2x4LanesII:inst1|Rshift[19], ;
+;                                        ;                           ; F15_Par2I2S_2x4LanesII:inst1|Rshift[23]                                           ;
+; F15_Par2I2S_2x4LanesII:inst1|Rshift[2] ; Stuck at GND              ; F15_Par2I2S_2x4LanesII:inst1|Rshift[6], F15_Par2I2S_2x4LanesII:inst1|Rshift[10],  ;
+;                                        ; due to stuck port data_in ; F15_Par2I2S_2x4LanesII:inst1|Rshift[14], F15_Par2I2S_2x4LanesII:inst1|Rshift[18], ;
+;                                        ;                           ; F15_Par2I2S_2x4LanesII:inst1|Rshift[22]                                           ;
+; F15_Par2I2S_2x4LanesII:inst1|Rshift[1] ; Stuck at GND              ; F15_Par2I2S_2x4LanesII:inst1|Rshift[5], F15_Par2I2S_2x4LanesII:inst1|Rshift[9],   ;
+;                                        ; due to stuck port data_in ; F15_Par2I2S_2x4LanesII:inst1|Rshift[13], F15_Par2I2S_2x4LanesII:inst1|Rshift[17], ;
+;                                        ;                           ; F15_Par2I2S_2x4LanesII:inst1|Rshift[21]                                           ;
+; F15_Par2I2S_2x4LanesII:inst1|Rshift[0] ; Stuck at GND              ; F15_Par2I2S_2x4LanesII:inst1|Rshift[4], F15_Par2I2S_2x4LanesII:inst1|Rshift[8],   ;
+;                                        ; due to stuck port data_in ; F15_Par2I2S_2x4LanesII:inst1|Rshift[12], F15_Par2I2S_2x4LanesII:inst1|Rshift[16], ;
+;                                        ;                           ; F15_Par2I2S_2x4LanesII:inst1|Rshift[20]                                           ;
++----------------------------------------+---------------------------+-----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 55    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 3     ;
+; Number of registers using Asynchronous Load  ; 24    ;
+; Number of registers using Clock Enable       ; 24    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Apr 03 14:12:48 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LTC2380-24 -c LTC2380-24
+Info: Found 2 design units, including 0 entities, in source file lfsr_pkg.vhd
+    Info: Found design unit 1: lfsr_pkg
+    Info: Found design unit 2: lfsr_pkg-body
+Info: Found 1 design units, including 1 entities, in source file clockdiv.bdf
+    Info: Found entity 1: clockdiv
+Info: Found 2 design units, including 1 entities, in source file nco8.vhd
+    Info: Found design unit 1: nco8-rtl
+    Info: Found entity 1: nco8
+Info: Found 2 design units, including 1 entities, in source file spdif_transmitter.vhd
+    Info: Found design unit 1: spdif_transmitter-behavioral
+    Info: Found entity 1: spdif_transmitter
+Info: Found 2 design units, including 1 entities, in source file sinefs_24bit48p.vhd
+    Info: Found design unit 1: SineFS_24bit48p-Behavioral
+    Info: Found entity 1: SineFS_24bit48p
+Info: Found 2 design units, including 1 entities, in source file or4s.vhd
+    Info: Found design unit 1: or4s-SYN
+    Info: Found entity 1: or4s
+Info: Found 2 design units, including 1 entities, in source file or5bus.vhd
+    Info: Found design unit 1: or5bus-SYN
+    Info: Found entity 1: or5bus
+Info: Found 2 design units, including 1 entities, in source file mux4_1.vhd
+    Info: Found design unit 1: mux4_1-SYN
+    Info: Found entity 1: Mux4_1
+Info: Found 1 design units, including 1 entities, in source file lt2380spdif.bdf
+    Info: Found entity 1: LT2380SPDIF
+Info: Found 2 design units, including 1 entities, in source file sinefs_24bit48p_lowlevels.vhd
+    Info: Found design unit 1: SineFS_24bit48p_lowlevels-Behavioral
+    Info: Found entity 1: SineFS_24bit48p_lowlevels
+Info: Found 2 design units, including 1 entities, in source file zerocal.vhd
+    Info: Found design unit 1: zerocal-Behavioral
+    Info: Found entity 1: zerocal
+Info: Found 2 design units, including 1 entities, in source file parallel_to_i2s.vhd
+    Info: Found design unit 1: Parallel_to_I2S-Behavioral
+    Info: Found entity 1: Parallel_to_I2S
+Info: Found 2 design units, including 1 entities, in source file lut_24bi16psincos.vhd
+    Info: Found design unit 1: LUT_24bi16Psincos-Behavioral
+    Info: Found entity 1: LUT_24bi16Psincos
+Info: Found 2 design units, including 1 entities, in source file lut_24bi64psincos.vhd
+    Info: Found design unit 1: LUT_24bi64Psincos-Behavioral
+    Info: Found entity 1: LUT_24bi64Psincos
+Info: Found 2 design units, including 1 entities, in source file dither.vhd
+    Info: Found design unit 1: Dither-rtl
+    Info: Found entity 1: Dither
+Info: Found 2 design units, including 1 entities, in source file lfsr.vhd
+    Info: Found design unit 1: lfsr-Behavioral
+    Info: Found entity 1: lfsr
+Info: Found 2 design units, including 1 entities, in source file test_signed2unsigned.vhd
+    Info: Found design unit 1: Test_signed2unsigned-Behavioral
+    Info: Found entity 1: Test_signed2unsigned
+Info: Found 2 design units, including 1 entities, in source file adder.vhd
+    Info: Found design unit 1: Adder-rtl
+    Info: Found entity 1: Adder
+Info: Found 2 design units, including 1 entities, in source file ditheradder.vhd
+    Info: Found design unit 1: DitherAdder-Behavioral
+    Info: Found entity 1: DitherAdder
+Info: Found 2 design units, including 1 entities, in source file lfsr_test.vhd
+    Info: Found design unit 1: lfsr_test-Behavioral
+    Info: Found entity 1: lfsr_test
+Info: Found 2 design units, including 1 entities, in source file unsignedtosigned.vhd
+    Info: Found design unit 1: UnsignedToSigned-Behavioral
+    Info: Found entity 1: UnsignedToSigned
+Info: Found 2 design units, including 1 entities, in source file dynamicresize.vhd
+    Info: Found design unit 1: DynamicResize-Behavioral
+    Info: Found entity 1: DynamicResize
+Info: Found 2 design units, including 1 entities, in source file dividebytwo.vhd
+    Info: Found design unit 1: DivideByTwo-Behavioral
+    Info: Found entity 1: DivideByTwo
+Info: Found 2 design units, including 1 entities, in source file lfsr_testiis.vhd
+    Info: Found design unit 1: lfsr_testIIs-Behavioral
+    Info: Found entity 1: lfsr_testIIs
+Info: Found 2 design units, including 1 entities, in source file mclksel_ii.vhd
+    Info: Found design unit 1: MCLKsel_II-MCLKselect
+    Info: Found entity 1: MCLKsel_II
+Info: Found 2 design units, including 1 entities, in source file compteur_base96.vhd
+    Info: Found design unit 1: compteur_base96-Behavioral
+    Info: Found entity 1: compteur_base96
+Info: Found 2 design units, including 1 entities, in source file lut_quarteriii.vhd
+    Info: Found design unit 1: LUT_QuarterIII-Behavioral
+    Info: Found entity 1: LUT_QuarterIII
+Info: Found 1 design units, including 1 entities, in source file testlutcount96.bdf
+    Info: Found entity 1: TestLUTcount96
+Info: Found 2 design units, including 1 entities, in source file lut_quarterii.vhd
+    Info: Found design unit 1: LUT_QuarterII-Behavioral
+    Info: Found entity 1: LUT_QuarterII
+Info: Found 2 design units, including 1 entities, in source file counter7bitsup.vhd
+    Info: Found design unit 1: counter7bitsup-SYN
+    Info: Found entity 1: Counter7bitsup
+Info: Found 1 design units, including 1 entities, in source file ncoanddither.bdf
+    Info: Found entity 1: NCOandDIther
+Info: Found 2 design units, including 1 entities, in source file f0_nco.vhd
+    Info: Found design unit 1: F0_NCO-Behavioral
+    Info: Found entity 1: F0_NCO
+Info: Found 2 design units, including 1 entities, in source file lfsr_iv.vhd
+    Info: Found design unit 1: lfsr_IV-Behavioral
+    Info: Found entity 1: lfsr_IV
+Info: Found 2 design units, including 1 entities, in source file f0_nco_gen.vhd
+    Info: Found design unit 1: F0_NCO_Gen-Behavioral
+    Info: Found entity 1: F0_NCO_Gen
+Info: Found 2 design units, including 1 entities, in source file f0_nco_dithered.vhd
+    Info: Found design unit 1: F0_NCO_dithered-Behavioral
+    Info: Found entity 1: F0_NCO_dithered
+Info: Found 2 design units, including 1 entities, in source file f1_coderfset.vhd
+    Info: Found design unit 1: F1_CoderFSET-select_mode
+    Info: Found entity 1: F1_CoderFSET
+Info: Found 2 design units, including 1 entities, in source file f1_coderfset_ai.vhd
+    Info: Found design unit 1: F1_CoderFSET_Ai-optimized
+    Info: Found entity 1: F1_CoderFSET_Ai
+Info: Found 2 design units, including 1 entities, in source file f15_par2i2s_2x4lanes.vhd
+    Info: Found design unit 1: F15_Par2I2S_2x4Lanes-Behavioral
+    Info: Found entity 1: F15_Par2I2S_2x4Lanes
+Info: Found 2 design units, including 1 entities, in source file f15_par2i2s_2x4lanesii.vhd
+    Info: Found design unit 1: F15_Par2I2S_2x4LanesII-Behavioral
+    Info: Found entity 1: F15_Par2I2S_2x4LanesII
+Info: Found 2 design units, including 1 entities, in source file f16_i2s2par_2x4lanes.vhd
+    Info: Found design unit 1: F16_I2S2Par_2x4Lanes-Behavioral
+    Info: Found entity 1: F16_I2S2Par_2x4Lanes
+Info: Found 1 design units, including 1 entities, in source file 4lanesrxtx.bdf
+    Info: Found entity 1: 4LanesRXTX
+Info: Found 2 design units, including 1 entities, in source file f0_clockenable_beta2.vhd
+    Info: Found design unit 1: F0_ClockEnable_BETA2-DESCRIPTION
+    Info: Found entity 1: F0_ClockEnable_BETA2
+Info: Found 2 design units, including 1 entities, in source file f0_ctrl_encoder_d.vhd
+    Info: Found design unit 1: F0_ctrl_encoder_D-select_mode
+    Info: Found entity 1: F0_ctrl_encoder_D
+Info: Found 2 design units, including 1 entities, in source file f00_spi_master.vhd
+    Info: Found design unit 1: F00_spi_master-RTL
+    Info: Found entity 1: F00_spi_master
+Info: Found 2 design units, including 1 entities, in source file spi_master.vhd
+    Info: Found design unit 1: spi_master-behavioural
+    Info: Found entity 1: spi_master
+Info: Found 2 design units, including 1 entities, in source file spi_slave.vhd
+    Info: Found design unit 1: spi_slave-behavioural
+    Info: Found entity 1: spi_slave
+Info: Found 1 design units, including 1 entities, in source file spi_in_out_test.bdf
+    Info: Found entity 1: SPI_in_out_test
+Info: Found 2 design units, including 1 entities, in source file pulseonchange.vhd
+    Info: Found design unit 1: PulseOnChange-Behavioral
+    Info: Found entity 1: PulseOnChange
+Info: Elaborating entity "4LanesRXTX" for the top level hierarchy
+Info: Elaborating entity "F15_Par2I2S_2x4LanesII" for hierarchy "F15_Par2I2S_2x4LanesII:inst1"
+Info: Elaborating entity "F16_I2S2Par_2x4Lanes" for hierarchy "F16_I2S2Par_2x4Lanes:inst"
+Warning (10631): VHDL Process Statement warning at F16_I2S2Par_2x4Lanes.vhd(72): inferring latch(es) for signal or variable "DATAL", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at F16_I2S2Par_2x4Lanes.vhd(72): inferring latch(es) for signal or variable "DATAR", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "DATAR[0]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[1]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[2]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[3]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[4]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[5]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[6]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[7]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[8]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[9]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[10]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[11]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[12]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[13]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[14]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[15]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[16]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[17]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[18]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[19]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[20]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[21]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[22]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAR[23]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[0]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[1]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[2]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[3]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[4]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[5]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[6]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[7]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[8]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[9]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[10]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[11]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[12]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[13]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[14]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[15]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[16]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[17]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[18]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[19]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[20]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[21]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[22]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Info (10041): Inferred latch for "DATAL[23]" at F16_I2S2Par_2x4Lanes.vhd(72)
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LANER[3]" is stuck at GND
+    Warning (13410): Pin "LANER[2]" is stuck at GND
+    Warning (13410): Pin "LANER[1]" is stuck at GND
+    Warning (13410): Pin "LANER[0]" is stuck at GND
+Info: Implemented 150 device resources after synthesis - the final resource count might be different
+    Info: Implemented 28 input pins
+    Info: Implemented 35 output pins
+    Info: Implemented 87 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 253 megabytes
+    Info: Processing ended: Thu Apr 03 14:12:49 2025
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
+
+

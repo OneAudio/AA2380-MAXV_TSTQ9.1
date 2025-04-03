@@ -1,0 +1,558 @@
+Classic Timing Analyzer report for LTC2380-24
+Thu Apr 03 14:12:53 2025
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'MCLKi2'
+  7. Clock Setup: 'MCLKi'
+  8. Clock Setup: 'CLK8FS'
+  9. tsu
+ 10. tco
+ 11. tpd
+ 12. th
+ 13. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                       ;
++------------------------------+-------+---------------+------------------------------------------------+-----------------------------------------+--------------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                                    ; From                                    ; To                                   ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+------------------------------------------------+-----------------------------------------+--------------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 4.336 ns                                       ; LRCK                                    ; F16_I2S2Par_2x4Lanes:inst|Lshift[20] ; --         ; CLK8FS   ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 9.332 ns                                       ; F16_I2S2Par_2x4Lanes:inst|DATAL[22]     ; DATALOUT[22]                         ; LRCK       ; --       ; 0            ;
+; Worst-case tpd               ; N/A   ; None          ; 5.953 ns                                       ; LRCK                                    ; Synch_outB                           ; --         ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -1.096 ns                                      ; LRCK                                    ; F15_Par2I2S_2x4LanesII:inst1|LRCKd1  ; --         ; MCLKi    ; 0            ;
+; Clock Setup: 'CLK8FS'        ; N/A   ; None          ; 223.91 MHz ( period = 4.466 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; F16_I2S2Par_2x4Lanes:inst|Lshift[21] ; CLK8FS     ; CLK8FS   ; 0            ;
+; Clock Setup: 'MCLKi'         ; N/A   ; None          ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|LRCKd1     ; F15_Par2I2S_2x4LanesII:inst1|LRCKd2  ; MCLKi      ; MCLKi    ; 0            ;
+; Clock Setup: 'MCLKi2'        ; N/A   ; None          ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|LRCKd1        ; F16_I2S2Par_2x4Lanes:inst|LRCKd2     ; MCLKi2     ; MCLKi2   ; 0            ;
+; Total number of failed paths ;       ;               ;                                                ;                                         ;                                      ;            ;          ; 0            ;
++------------------------------+-------+---------------+------------------------------------------------+-----------------------------------------+--------------------------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EPM570F256C3       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; Off                ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; MCLKi2          ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; MCLKi           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; CLK8FS          ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; LRCK            ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'MCLKi2'                                                                                                                                                                                                                    ;
++-------+------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                             ; To                               ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|LRCKd1 ; F16_I2S2Par_2x4Lanes:inst|LRCKd2 ; MCLKi2     ; MCLKi2   ; None                        ; None                      ; 0.766 ns                ;
++-------+------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'MCLKi'                                                                                                                                                                                                                           ;
++-------+------------------------------------------------+-------------------------------------+-------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                                ; To                                  ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+-------------------------------------+-------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|LRCKd1 ; F15_Par2I2S_2x4LanesII:inst1|LRCKd2 ; MCLKi      ; MCLKi    ; None                        ; None                      ; 0.767 ns                ;
++-------+------------------------------------------------+-------------------------------------+-------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'CLK8FS'                                                                                                                                                                                                                                  ;
++-------+------------------------------------------------+-----------------------------------------+-----------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                                    ; To                                      ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+-----------------------------------------+-----------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; 223.91 MHz ( period = 4.466 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; F16_I2S2Par_2x4Lanes:inst|Lshift[21]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.790 ns                ;
+; N/A   ; 226.55 MHz ( period = 4.414 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; F16_I2S2Par_2x4Lanes:inst|Lshift[13]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.764 ns                ;
+; N/A   ; 226.65 MHz ( period = 4.412 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; F16_I2S2Par_2x4Lanes:inst|Lshift[17]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.763 ns                ;
+; N/A   ; 234.85 MHz ( period = 4.258 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; F16_I2S2Par_2x4Lanes:inst|Lshift[23]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.686 ns                ;
+; N/A   ; 235.63 MHz ( period = 4.244 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; F16_I2S2Par_2x4Lanes:inst|Lshift[19]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.679 ns                ;
+; N/A   ; 255.36 MHz ( period = 3.916 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; F16_I2S2Par_2x4Lanes:inst|Lshift[16]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.515 ns                ;
+; N/A   ; 262.74 MHz ( period = 3.806 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; F16_I2S2Par_2x4Lanes:inst|Lshift[18]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.460 ns                ;
+; N/A   ; 262.88 MHz ( period = 3.804 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; F16_I2S2Par_2x4Lanes:inst|Lshift[14]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.459 ns                ;
+; N/A   ; 267.45 MHz ( period = 3.739 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[19]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.296 ns                ;
+; N/A   ; 275.18 MHz ( period = 3.634 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[19]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.191 ns                ;
+; N/A   ; 275.94 MHz ( period = 3.624 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; F16_I2S2Par_2x4Lanes:inst|Lshift[22]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.369 ns                ;
+; N/A   ; 276.70 MHz ( period = 3.614 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; F16_I2S2Par_2x4Lanes:inst|Lshift[20]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.364 ns                ;
+; N/A   ; 277.93 MHz ( period = 3.598 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; F16_I2S2Par_2x4Lanes:inst|Lshift[1]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.356 ns                ;
+; N/A   ; 282.25 MHz ( period = 3.543 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[19]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.100 ns                ;
+; N/A   ; 284.50 MHz ( period = 3.515 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[23]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.072 ns                ;
+; N/A   ; 284.50 MHz ( period = 3.515 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[22]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.072 ns                ;
+; N/A   ; 284.50 MHz ( period = 3.515 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[21]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.072 ns                ;
+; N/A   ; 284.50 MHz ( period = 3.515 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[20]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.072 ns                ;
+; N/A   ; 289.94 MHz ( period = 3.449 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[23]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.006 ns                ;
+; N/A   ; 289.94 MHz ( period = 3.449 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[22]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.006 ns                ;
+; N/A   ; 289.94 MHz ( period = 3.449 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[21]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.006 ns                ;
+; N/A   ; 289.94 MHz ( period = 3.449 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[20]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 3.006 ns                ;
+; N/A   ; 291.72 MHz ( period = 3.428 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; F16_I2S2Par_2x4Lanes:inst|Lshift[11]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.271 ns                ;
+; N/A   ; 292.06 MHz ( period = 3.424 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; F16_I2S2Par_2x4Lanes:inst|Lshift[15]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.269 ns                ;
+; N/A   ; 293.69 MHz ( period = 3.405 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[15]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.962 ns                ;
+; N/A   ; 293.69 MHz ( period = 3.405 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[12]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.962 ns                ;
+; N/A   ; 299.22 MHz ( period = 3.342 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[11]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.899 ns                ;
+; N/A   ; 299.22 MHz ( period = 3.342 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[10]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.899 ns                ;
+; N/A   ; 299.22 MHz ( period = 3.342 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[9]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.899 ns                ;
+; N/A   ; 299.22 MHz ( period = 3.342 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[8]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.899 ns                ;
+; N/A   ; 300.66 MHz ( period = 3.326 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; F16_I2S2Par_2x4Lanes:inst|Lshift[8]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.220 ns                ;
+; N/A   ; 301.02 MHz ( period = 3.322 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; F16_I2S2Par_2x4Lanes:inst|Lshift[10]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.218 ns                ;
+; N/A   ; 301.57 MHz ( period = 3.316 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; F16_I2S2Par_2x4Lanes:inst|Lshift[2]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.215 ns                ;
+; N/A   ; 301.93 MHz ( period = 3.312 ns )               ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; F16_I2S2Par_2x4Lanes:inst|Lshift[12]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.213 ns                ;
+; N/A   ; 303.67 MHz ( period = 3.293 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[15]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.850 ns                ;
+; N/A   ; 303.67 MHz ( period = 3.293 ns )               ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[12]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.850 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; F16_I2S2Par_2x4Lanes:inst|Lshift[3]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.196 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[11]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.817 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[10]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.817 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[9]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.817 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[8]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.817 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[15]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.762 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[12]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.762 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[23]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.734 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[22]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.734 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[21]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.734 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[20]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.734 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[7]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.643 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[6]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.643 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[5]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.643 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[4]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.643 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[18]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.616 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[17]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.616 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[16]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.616 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[14]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.601 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[13]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.601 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[3]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.568 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[2]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.568 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[1]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.568 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[0]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.568 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[11]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.553 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[10]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.553 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[9]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.553 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[8]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.553 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[18]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.511 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[17]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.511 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[16]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.511 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[7]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.498 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[6]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.498 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[5]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.498 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[4]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.498 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[14]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.489 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[13]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.489 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; F16_I2S2Par_2x4Lanes:inst|Lshift[0]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.019 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; F16_I2S2Par_2x4Lanes:inst|Lshift[9]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.011 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[18]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.420 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[17]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.420 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[16]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.420 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[14]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.401 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[13]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.401 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[3]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.363 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[2]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.363 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[1]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.363 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[0]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.363 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; F16_I2S2Par_2x4Lanes:inst|Lshift[4]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.928 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[3]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.221 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[2]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.221 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[1]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.221 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[0]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.221 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[7]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.158 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[6]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.158 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[5]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.158 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|Lshift[4]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 2.158 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; F16_I2S2Par_2x4Lanes:inst|Lshift[7]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.780 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; F16_I2S2Par_2x4Lanes:inst|Lshift[5]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.778 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; F16_I2S2Par_2x4Lanes:inst|Lshift[6]     ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.764 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[19] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.706 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[16] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.702 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[17] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.606 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[18] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.567 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.553 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.551 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[12] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[16] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.294 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[14] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[18] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.293 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[13] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[17] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.293 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[15] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[19] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.291 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.268 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; F16_I2S2Par_2x4Lanes:inst|counter[1]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.262 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; F16_I2S2Par_2x4Lanes:inst|counter[0]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.253 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[9]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[13] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.238 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[8]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[12] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.235 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[11] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[15] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.221 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; F16_I2S2Par_2x4Lanes:inst|counter[2]    ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 1.126 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[0]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[4]  ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.942 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[10] ; F15_Par2I2S_2x4LanesII:inst1|Lshift[14] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.941 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[5]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[9]  ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.940 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[3]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[7]  ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.940 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[2]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[6]  ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.940 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[1]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[5]  ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.940 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[7]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[11] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.934 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[6]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[10] ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.934 ns                ;
+; N/A   ; Restricted to 304.04 MHz ( period = 3.289 ns ) ; F15_Par2I2S_2x4LanesII:inst1|Lshift[4]  ; F15_Par2I2S_2x4LanesII:inst1|Lshift[8]  ; CLK8FS     ; CLK8FS   ; None                        ; None                      ; 0.930 ns                ;
++-------+------------------------------------------------+-----------------------------------------+-----------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; tsu                                                                                        ;
++-------+--------------+------------+------+--------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From ; To                                   ; To Clock ;
++-------+--------------+------------+------+--------------------------------------+----------+
+; N/A   ; None         ; 4.336 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[23] ; CLK8FS   ;
+; N/A   ; None         ; 4.336 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[22] ; CLK8FS   ;
+; N/A   ; None         ; 4.336 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[21] ; CLK8FS   ;
+; N/A   ; None         ; 4.336 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[20] ; CLK8FS   ;
+; N/A   ; None         ; 4.290 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[19] ; CLK8FS   ;
+; N/A   ; None         ; 4.115 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[11] ; CLK8FS   ;
+; N/A   ; None         ; 4.115 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[10] ; CLK8FS   ;
+; N/A   ; None         ; 4.115 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[9]  ; CLK8FS   ;
+; N/A   ; None         ; 4.115 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[8]  ; CLK8FS   ;
+; N/A   ; None         ; 3.952 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[15] ; CLK8FS   ;
+; N/A   ; None         ; 3.952 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[12] ; CLK8FS   ;
+; N/A   ; None         ; 3.610 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[18] ; CLK8FS   ;
+; N/A   ; None         ; 3.610 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[17] ; CLK8FS   ;
+; N/A   ; None         ; 3.610 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[16] ; CLK8FS   ;
+; N/A   ; None         ; 3.591 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[14] ; CLK8FS   ;
+; N/A   ; None         ; 3.591 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[13] ; CLK8FS   ;
+; N/A   ; None         ; 3.567 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[3]  ; CLK8FS   ;
+; N/A   ; None         ; 3.567 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[2]  ; CLK8FS   ;
+; N/A   ; None         ; 3.567 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[1]  ; CLK8FS   ;
+; N/A   ; None         ; 3.567 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[0]  ; CLK8FS   ;
+; N/A   ; None         ; 3.549 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[7]  ; CLK8FS   ;
+; N/A   ; None         ; 3.549 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[6]  ; CLK8FS   ;
+; N/A   ; None         ; 3.549 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[5]  ; CLK8FS   ;
+; N/A   ; None         ; 3.549 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[4]  ; CLK8FS   ;
+; N/A   ; None         ; 1.532 ns   ; LRCK ; F16_I2S2Par_2x4Lanes:inst|LRCKd1     ; MCLKi2   ;
+; N/A   ; None         ; 1.442 ns   ; LRCK ; F15_Par2I2S_2x4LanesII:inst1|LRCKd1  ; MCLKi    ;
++-------+--------------+------------+------+--------------------------------------+----------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; tco                                                                                                     ;
++-------+--------------+------------+-----------------------------------------+--------------+------------+
+; Slack ; Required tco ; Actual tco ; From                                    ; To           ; From Clock ;
++-------+--------------+------------+-----------------------------------------+--------------+------------+
+; N/A   ; None         ; 9.332 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[22]     ; DATALOUT[22] ; LRCK       ;
+; N/A   ; None         ; 9.241 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[22]     ; DATALOUT[22] ; MCLKi2     ;
+; N/A   ; None         ; 9.139 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[14]     ; DATALOUT[14] ; LRCK       ;
+; N/A   ; None         ; 9.048 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[14]     ; DATALOUT[14] ; MCLKi2     ;
+; N/A   ; None         ; 9.048 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[20]     ; DATALOUT[20] ; LRCK       ;
+; N/A   ; None         ; 8.957 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[20]     ; DATALOUT[20] ; MCLKi2     ;
+; N/A   ; None         ; 8.948 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[13]     ; DATALOUT[13] ; LRCK       ;
+; N/A   ; None         ; 8.858 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[18]     ; DATALOUT[18] ; LRCK       ;
+; N/A   ; None         ; 8.857 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[13]     ; DATALOUT[13] ; MCLKi2     ;
+; N/A   ; None         ; 8.842 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[15]     ; DATALOUT[15] ; LRCK       ;
+; N/A   ; None         ; 8.839 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[17]     ; DATALOUT[17] ; LRCK       ;
+; N/A   ; None         ; 8.810 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[5]      ; DATALOUT[5]  ; LRCK       ;
+; N/A   ; None         ; 8.767 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[18]     ; DATALOUT[18] ; MCLKi2     ;
+; N/A   ; None         ; 8.751 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[15]     ; DATALOUT[15] ; MCLKi2     ;
+; N/A   ; None         ; 8.748 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[17]     ; DATALOUT[17] ; MCLKi2     ;
+; N/A   ; None         ; 8.745 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[11]     ; DATALOUT[11] ; LRCK       ;
+; N/A   ; None         ; 8.730 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[1]      ; DATALOUT[1]  ; LRCK       ;
+; N/A   ; None         ; 8.719 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[5]      ; DATALOUT[5]  ; MCLKi2     ;
+; N/A   ; None         ; 8.654 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[11]     ; DATALOUT[11] ; MCLKi2     ;
+; N/A   ; None         ; 8.639 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[1]      ; DATALOUT[1]  ; MCLKi2     ;
+; N/A   ; None         ; 8.629 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[23]     ; DATALOUT[23] ; LRCK       ;
+; N/A   ; None         ; 8.568 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[16]     ; DATALOUT[16] ; LRCK       ;
+; N/A   ; None         ; 8.542 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[12]     ; DATALOUT[12] ; LRCK       ;
+; N/A   ; None         ; 8.538 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[23]     ; DATALOUT[23] ; MCLKi2     ;
+; N/A   ; None         ; 8.489 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[9]      ; DATALOUT[9]  ; LRCK       ;
+; N/A   ; None         ; 8.477 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[16]     ; DATALOUT[16] ; MCLKi2     ;
+; N/A   ; None         ; 8.451 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[12]     ; DATALOUT[12] ; MCLKi2     ;
+; N/A   ; None         ; 8.398 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[9]      ; DATALOUT[9]  ; MCLKi2     ;
+; N/A   ; None         ; 8.124 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[21]     ; DATALOUT[21] ; LRCK       ;
+; N/A   ; None         ; 8.033 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[21]     ; DATALOUT[21] ; MCLKi2     ;
+; N/A   ; None         ; 8.022 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[8]      ; DATALOUT[8]  ; LRCK       ;
+; N/A   ; None         ; 8.022 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[10]     ; DATALOUT[10] ; LRCK       ;
+; N/A   ; None         ; 8.012 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[0]      ; DATALOUT[0]  ; LRCK       ;
+; N/A   ; None         ; 8.012 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[3]      ; DATALOUT[3]  ; LRCK       ;
+; N/A   ; None         ; 8.010 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[4]      ; DATALOUT[4]  ; LRCK       ;
+; N/A   ; None         ; 8.010 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[6]      ; DATALOUT[6]  ; LRCK       ;
+; N/A   ; None         ; 8.007 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[2]      ; DATALOUT[2]  ; LRCK       ;
+; N/A   ; None         ; 7.931 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[8]      ; DATALOUT[8]  ; MCLKi2     ;
+; N/A   ; None         ; 7.931 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[10]     ; DATALOUT[10] ; MCLKi2     ;
+; N/A   ; None         ; 7.921 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[0]      ; DATALOUT[0]  ; MCLKi2     ;
+; N/A   ; None         ; 7.921 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[3]      ; DATALOUT[3]  ; MCLKi2     ;
+; N/A   ; None         ; 7.919 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[4]      ; DATALOUT[4]  ; MCLKi2     ;
+; N/A   ; None         ; 7.919 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[6]      ; DATALOUT[6]  ; MCLKi2     ;
+; N/A   ; None         ; 7.916 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[2]      ; DATALOUT[2]  ; MCLKi2     ;
+; N/A   ; None         ; 7.782 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[19]     ; DATALOUT[19] ; LRCK       ;
+; N/A   ; None         ; 7.691 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[19]     ; DATALOUT[19] ; MCLKi2     ;
+; N/A   ; None         ; 7.672 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[7]      ; DATALOUT[7]  ; LRCK       ;
+; N/A   ; None         ; 7.581 ns   ; F16_I2S2Par_2x4Lanes:inst|DATAL[7]      ; DATALOUT[7]  ; MCLKi2     ;
+; N/A   ; None         ; 5.862 ns   ; F16_I2S2Par_2x4Lanes:inst|LRCKd2        ; Synch_outB   ; MCLKi2     ;
+; N/A   ; None         ; 5.457 ns   ; F15_Par2I2S_2x4LanesII:inst1|LRCKd2     ; Synch_outA   ; MCLKi      ;
+; N/A   ; None         ; 5.303 ns   ; F15_Par2I2S_2x4LanesII:inst1|Lshift[21] ; LANEL[1]     ; CLK8FS     ;
+; N/A   ; None         ; 5.293 ns   ; F15_Par2I2S_2x4LanesII:inst1|Lshift[23] ; LANEL[3]     ; CLK8FS     ;
+; N/A   ; None         ; 5.279 ns   ; F15_Par2I2S_2x4LanesII:inst1|Lshift[22] ; LANEL[2]     ; CLK8FS     ;
+; N/A   ; None         ; 5.231 ns   ; F15_Par2I2S_2x4LanesII:inst1|Lshift[20] ; LANEL[0]     ; CLK8FS     ;
++-------+--------------+------------+-----------------------------------------+--------------+------------+
+
+
++-----------------------------------------------------------------+
+; tpd                                                             ;
++-------+-------------------+-----------------+------+------------+
+; Slack ; Required P2P Time ; Actual P2P Time ; From ; To         ;
++-------+-------------------+-----------------+------+------------+
+; N/A   ; None              ; 5.953 ns        ; LRCK ; Synch_outB ;
+; N/A   ; None              ; 5.889 ns        ; LRCK ; Synch_outA ;
+; N/A   ; None              ; 3.734 ns        ; LRCK ; LRCKO      ;
++-------+-------------------+-----------------+------+------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; th                                                                                               ;
++---------------+-------------+-----------+------+--------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From ; To                                   ; To Clock ;
++---------------+-------------+-----------+------+--------------------------------------+----------+
+; N/A           ; None        ; -1.096 ns ; LRCK ; F15_Par2I2S_2x4LanesII:inst1|LRCKd1  ; MCLKi    ;
+; N/A           ; None        ; -1.186 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|LRCKd1     ; MCLKi2   ;
+; N/A           ; None        ; -3.203 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[7]  ; CLK8FS   ;
+; N/A           ; None        ; -3.203 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[6]  ; CLK8FS   ;
+; N/A           ; None        ; -3.203 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[5]  ; CLK8FS   ;
+; N/A           ; None        ; -3.203 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[4]  ; CLK8FS   ;
+; N/A           ; None        ; -3.221 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[3]  ; CLK8FS   ;
+; N/A           ; None        ; -3.221 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[2]  ; CLK8FS   ;
+; N/A           ; None        ; -3.221 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[1]  ; CLK8FS   ;
+; N/A           ; None        ; -3.221 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[0]  ; CLK8FS   ;
+; N/A           ; None        ; -3.245 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[14] ; CLK8FS   ;
+; N/A           ; None        ; -3.245 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[13] ; CLK8FS   ;
+; N/A           ; None        ; -3.264 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[18] ; CLK8FS   ;
+; N/A           ; None        ; -3.264 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[17] ; CLK8FS   ;
+; N/A           ; None        ; -3.264 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[16] ; CLK8FS   ;
+; N/A           ; None        ; -3.606 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[15] ; CLK8FS   ;
+; N/A           ; None        ; -3.606 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[12] ; CLK8FS   ;
+; N/A           ; None        ; -3.769 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[11] ; CLK8FS   ;
+; N/A           ; None        ; -3.769 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[10] ; CLK8FS   ;
+; N/A           ; None        ; -3.769 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[9]  ; CLK8FS   ;
+; N/A           ; None        ; -3.769 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[8]  ; CLK8FS   ;
+; N/A           ; None        ; -3.944 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[19] ; CLK8FS   ;
+; N/A           ; None        ; -3.990 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[23] ; CLK8FS   ;
+; N/A           ; None        ; -3.990 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[22] ; CLK8FS   ;
+; N/A           ; None        ; -3.990 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[21] ; CLK8FS   ;
+; N/A           ; None        ; -3.990 ns ; LRCK ; F16_I2S2Par_2x4Lanes:inst|Lshift[20] ; CLK8FS   ;
++---------------+-------------+-----------+------+--------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Thu Apr 03 14:12:53 2025
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off LTC2380-24 -c LTC2380-24
+Info: Started post-fitting delay annotation
+Info: Delay annotation completed successfully
+Warning: Timing Analysis is analyzing one or more combinational loops as latches
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[23]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[22]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[21]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[20]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[19]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[18]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[17]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[16]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[15]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[14]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[13]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[12]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[11]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[10]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[9]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[8]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[7]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[6]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[5]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[4]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[3]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[2]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[1]" is a latch
+    Warning: Node "F16_I2S2Par_2x4Lanes:inst|DATAL[0]" is a latch
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "MCLKi2" is an undefined clock
+    Info: Assuming node "MCLKi" is an undefined clock
+    Info: Assuming node "CLK8FS" is an undefined clock
+    Info: Assuming node "LRCK" is a latch enable. Will not compute fmax for this pin.
+Warning: Found 2 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "F16_I2S2Par_2x4Lanes:inst|LRCKd2" as buffer
+    Info: Detected gated clock "F16_I2S2Par_2x4Lanes:inst|Synchpulse" as buffer
+Info: Clock "MCLKi2" Internal fmax is restricted to 304.04 MHz between source register "F16_I2S2Par_2x4Lanes:inst|LRCKd1" and destination register "F16_I2S2Par_2x4Lanes:inst|LRCKd2"
+    Info: fmax restricted to clock pin edge rate 3.289 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 0.766 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X10_Y6_N5; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|LRCKd1'
+            Info: 2: + IC(0.591 ns) + CELL(0.175 ns) = 0.766 ns; Loc. = LC_X10_Y6_N2; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|LRCKd2'
+            Info: Total cell delay = 0.175 ns ( 22.85 % )
+            Info: Total interconnect delay = 0.591 ns ( 77.15 % )
+        Info: - Smallest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "MCLKi2" to destination register is 2.218 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_H12; Fanout = 2; CLK Node = 'MCLKi2'
+                Info: 2: + IC(0.917 ns) + CELL(0.574 ns) = 2.218 ns; Loc. = LC_X10_Y6_N2; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|LRCKd2'
+                Info: Total cell delay = 1.301 ns ( 58.66 % )
+                Info: Total interconnect delay = 0.917 ns ( 41.34 % )
+            Info: - Longest clock path from clock "MCLKi2" to source register is 2.218 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_H12; Fanout = 2; CLK Node = 'MCLKi2'
+                Info: 2: + IC(0.917 ns) + CELL(0.574 ns) = 2.218 ns; Loc. = LC_X10_Y6_N5; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|LRCKd1'
+                Info: Total cell delay = 1.301 ns ( 58.66 % )
+                Info: Total interconnect delay = 0.917 ns ( 41.34 % )
+        Info: + Micro clock to output delay of source is 0.235 ns
+        Info: + Micro setup delay of destination is 0.208 ns
+Info: Clock "MCLKi" Internal fmax is restricted to 304.04 MHz between source register "F15_Par2I2S_2x4LanesII:inst1|LRCKd1" and destination register "F15_Par2I2S_2x4LanesII:inst1|LRCKd2"
+    Info: fmax restricted to clock pin edge rate 3.289 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 0.767 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X10_Y6_N0; Fanout = 1; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|LRCKd1'
+            Info: 2: + IC(0.592 ns) + CELL(0.175 ns) = 0.767 ns; Loc. = LC_X10_Y6_N6; Fanout = 1; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|LRCKd2'
+            Info: Total cell delay = 0.175 ns ( 22.82 % )
+            Info: Total interconnect delay = 0.592 ns ( 77.18 % )
+        Info: - Smallest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "MCLKi" to destination register is 2.302 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J5; Fanout = 2; CLK Node = 'MCLKi'
+                Info: 2: + IC(1.001 ns) + CELL(0.574 ns) = 2.302 ns; Loc. = LC_X10_Y6_N6; Fanout = 1; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|LRCKd2'
+                Info: Total cell delay = 1.301 ns ( 56.52 % )
+                Info: Total interconnect delay = 1.001 ns ( 43.48 % )
+            Info: - Longest clock path from clock "MCLKi" to source register is 2.302 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J5; Fanout = 2; CLK Node = 'MCLKi'
+                Info: 2: + IC(1.001 ns) + CELL(0.574 ns) = 2.302 ns; Loc. = LC_X10_Y6_N0; Fanout = 1; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|LRCKd1'
+                Info: Total cell delay = 1.301 ns ( 56.52 % )
+                Info: Total interconnect delay = 1.001 ns ( 43.48 % )
+        Info: + Micro clock to output delay of source is 0.235 ns
+        Info: + Micro setup delay of destination is 0.208 ns
+Info: Clock "CLK8FS" has Internal fmax of 223.91 MHz between source register "F15_Par2I2S_2x4LanesII:inst1|Lshift[21]" and destination register "F16_I2S2Par_2x4Lanes:inst|Lshift[21]" (period= 4.466 ns)
+    Info: + Longest register to register delay is 1.790 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X5_Y6_N6; Fanout = 7; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|Lshift[21]'
+        Info: 2: + IC(1.615 ns) + CELL(0.175 ns) = 1.790 ns; Loc. = LC_X4_Y7_N7; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|Lshift[21]'
+        Info: Total cell delay = 0.175 ns ( 9.78 % )
+        Info: Total interconnect delay = 1.615 ns ( 90.22 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "CLK8FS" to destination register is 2.302 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_H5; Fanout = 51; CLK Node = 'CLK8FS'
+            Info: 2: + IC(1.001 ns) + CELL(0.574 ns) = 2.302 ns; Loc. = LC_X4_Y7_N7; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|Lshift[21]'
+            Info: Total cell delay = 1.301 ns ( 56.52 % )
+            Info: Total interconnect delay = 1.001 ns ( 43.48 % )
+        Info: - Longest clock path from clock "CLK8FS" to source register is 2.302 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_H5; Fanout = 51; CLK Node = 'CLK8FS'
+            Info: 2: + IC(1.001 ns) + CELL(0.574 ns) = 2.302 ns; Loc. = LC_X5_Y6_N6; Fanout = 7; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|Lshift[21]'
+            Info: Total cell delay = 1.301 ns ( 56.52 % )
+            Info: Total interconnect delay = 1.001 ns ( 43.48 % )
+    Info: + Micro clock to output delay of source is 0.235 ns
+    Info: + Micro setup delay of destination is 0.208 ns
+    Info: Delay path is controlled by inverted clocks -- if clock duty cycle is 50%, fmax is divided by two
+Info: tsu for register "F16_I2S2Par_2x4Lanes:inst|Lshift[23]" (data pin = "LRCK", clock pin = "CLK8FS") is 4.336 ns
+    Info: + Longest pin to register delay is 6.430 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_B11; Fanout = 5; CLK Node = 'LRCK'
+        Info: 2: + IC(1.637 ns) + CELL(0.571 ns) = 2.916 ns; Loc. = LC_X10_Y6_N2; Fanout = 34; COMB Node = 'F16_I2S2Par_2x4Lanes:inst|Synchpulse'
+        Info: 3: + IC(1.167 ns) + CELL(0.571 ns) = 4.654 ns; Loc. = LC_X5_Y6_N8; Fanout = 4; COMB Node = 'F16_I2S2Par_2x4Lanes:inst|Mux0~0'
+        Info: 4: + IC(0.999 ns) + CELL(0.777 ns) = 6.430 ns; Loc. = LC_X4_Y7_N3; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|Lshift[23]'
+        Info: Total cell delay = 2.627 ns ( 40.86 % )
+        Info: Total interconnect delay = 3.803 ns ( 59.14 % )
+    Info: + Micro setup delay of destination is 0.208 ns
+    Info: - Shortest clock path from clock "CLK8FS" to destination register is 2.302 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_H5; Fanout = 51; CLK Node = 'CLK8FS'
+        Info: 2: + IC(1.001 ns) + CELL(0.574 ns) = 2.302 ns; Loc. = LC_X4_Y7_N3; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|Lshift[23]'
+        Info: Total cell delay = 1.301 ns ( 56.52 % )
+        Info: Total interconnect delay = 1.001 ns ( 43.48 % )
+Info: tco from clock "LRCK" to destination pin "DATALOUT[22]" through register "F16_I2S2Par_2x4Lanes:inst|DATAL[22]" is 9.332 ns
+    Info: + Longest clock path from clock "LRCK" to source register is 5.953 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_B11; Fanout = 5; CLK Node = 'LRCK'
+        Info: 2: + IC(1.637 ns) + CELL(0.571 ns) = 2.916 ns; Loc. = LC_X10_Y6_N2; Fanout = 34; COMB Node = 'F16_I2S2Par_2x4Lanes:inst|Synchpulse'
+        Info: 3: + IC(2.912 ns) + CELL(0.125 ns) = 5.953 ns; Loc. = LC_X4_Y7_N9; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|DATAL[22]'
+        Info: Total cell delay = 1.404 ns ( 23.58 % )
+        Info: Total interconnect delay = 4.549 ns ( 76.42 % )
+    Info: + Micro clock to output delay of source is 0.000 ns
+    Info: + Longest register to pin delay is 3.379 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X4_Y7_N9; Fanout = 1; REG Node = 'F16_I2S2Par_2x4Lanes:inst|DATAL[22]'
+        Info: 2: + IC(1.925 ns) + CELL(1.454 ns) = 3.379 ns; Loc. = PIN_D14; Fanout = 0; PIN Node = 'DATALOUT[22]'
+        Info: Total cell delay = 1.454 ns ( 43.03 % )
+        Info: Total interconnect delay = 1.925 ns ( 56.97 % )
+Info: Longest tpd from source pin "LRCK" to destination pin "Synch_outB" is 5.953 ns
+    Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_B11; Fanout = 5; CLK Node = 'LRCK'
+    Info: 2: + IC(1.637 ns) + CELL(0.571 ns) = 2.916 ns; Loc. = LC_X10_Y6_N2; Fanout = 34; COMB Node = 'F16_I2S2Par_2x4Lanes:inst|Synchpulse'
+    Info: 3: + IC(1.583 ns) + CELL(1.454 ns) = 5.953 ns; Loc. = PIN_M8; Fanout = 0; PIN Node = 'Synch_outB'
+    Info: Total cell delay = 2.733 ns ( 45.91 % )
+    Info: Total interconnect delay = 3.220 ns ( 54.09 % )
+Info: th for register "F15_Par2I2S_2x4LanesII:inst1|LRCKd1" (data pin = "LRCK", clock pin = "MCLKi") is -1.096 ns
+    Info: + Longest clock path from clock "MCLKi" to destination register is 2.302 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J5; Fanout = 2; CLK Node = 'MCLKi'
+        Info: 2: + IC(1.001 ns) + CELL(0.574 ns) = 2.302 ns; Loc. = LC_X10_Y6_N0; Fanout = 1; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|LRCKd1'
+        Info: Total cell delay = 1.301 ns ( 56.52 % )
+        Info: Total interconnect delay = 1.001 ns ( 43.48 % )
+    Info: + Micro hold delay of destination is 0.138 ns
+    Info: - Shortest pin to register delay is 3.536 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_B11; Fanout = 5; CLK Node = 'LRCK'
+        Info: 2: + IC(2.165 ns) + CELL(0.663 ns) = 3.536 ns; Loc. = LC_X10_Y6_N0; Fanout = 1; REG Node = 'F15_Par2I2S_2x4LanesII:inst1|LRCKd1'
+        Info: Total cell delay = 1.371 ns ( 38.77 % )
+        Info: Total interconnect delay = 2.165 ns ( 61.23 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 27 warnings
+    Info: Peak virtual memory: 178 megabytes
+    Info: Processing ended: Thu Apr 03 14:12:53 2025
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+

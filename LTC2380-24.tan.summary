@@ -1,0 +1,86 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 4.336 ns
+From           : LRCK
+To             : F16_I2S2Par_2x4Lanes:inst|Lshift[20]
+From Clock     : --
+To Clock       : CLK8FS
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 9.332 ns
+From           : F16_I2S2Par_2x4Lanes:inst|DATAL[22]
+To             : DATALOUT[22]
+From Clock     : LRCK
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case tpd
+Slack          : N/A
+Required Time  : None
+Actual Time    : 5.953 ns
+From           : LRCK
+To             : Synch_outB
+From Clock     : --
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -1.096 ns
+From           : LRCK
+To             : F15_Par2I2S_2x4LanesII:inst1|LRCKd1
+From Clock     : --
+To Clock       : MCLKi
+Failed Paths   : 0
+
+Type           : Clock Setup: 'CLK8FS'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 223.91 MHz ( period = 4.466 ns )
+From           : F15_Par2I2S_2x4LanesII:inst1|Lshift[21]
+To             : F16_I2S2Par_2x4Lanes:inst|Lshift[21]
+From Clock     : CLK8FS
+To Clock       : CLK8FS
+Failed Paths   : 0
+
+Type           : Clock Setup: 'MCLKi'
+Slack          : N/A
+Required Time  : None
+Actual Time    : Restricted to 304.04 MHz ( period = 3.289 ns )
+From           : F15_Par2I2S_2x4LanesII:inst1|LRCKd1
+To             : F15_Par2I2S_2x4LanesII:inst1|LRCKd2
+From Clock     : MCLKi
+To Clock       : MCLKi
+Failed Paths   : 0
+
+Type           : Clock Setup: 'MCLKi2'
+Slack          : N/A
+Required Time  : None
+Actual Time    : Restricted to 304.04 MHz ( period = 3.289 ns )
+From           : F16_I2S2Par_2x4Lanes:inst|LRCKd1
+To             : F16_I2S2Par_2x4Lanes:inst|LRCKd2
+From Clock     : MCLKi2
+To Clock       : MCLKi2
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

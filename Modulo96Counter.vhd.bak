@@ -1,0 +1,30 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity Modulo96Counter is
+    Port (
+        clk : in  STD_LOGIC;
+        reset : in  STD_LOGIC;
+        count : out  STD_LOGIC_VECTOR (6 downto 0)
+    );
+end Modulo96Counter;
+
+architecture Behavioral of Modulo96Counter is
+    signal counter : unsigned (6 downto 0) := (others => '0');
+begin
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            counter <= (others => '0');
+        elsif rising_edge(clk) then
+            if counter = 95 then
+                counter <= (others => '0');
+            else
+                counter <= counter + 1;
+            end if;
+        end if;
+    end process;
+
+    count <= std_logic_vector(counter);
+end Behavioral;

@@ -1,0 +1,31 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity DynamicResize is
+    port (
+        A     : in  signed(7 downto 0);  -- Entrée signée sur 8 bits
+        SetD  : in  integer range 1 to 8; -- Nombre de bits à conserver
+        Y     : out signed(7 downto 0)   -- Sortie signée redimensionnée
+    );
+end entity DynamicResize;
+
+architecture Behavioral of DynamicResize is
+    signal Mask  : std_logic_vector(7 downto 0);  -- Masque binaire dynamique
+    signal A_std_logic : std_logic_vector(7 downto 0);  -- A converti en std_logic_vector
+begin
+    process(A, SetD)
+    begin
+        -- Convertir A en std_logic_vector
+        A_std_logic <= std_logic_vector(A);
+        
+        -- Créer le masque pour les bits à conserver
+        Mask <= (others => '0');
+        for i in 0 to SetD-1 loop
+            Mask(i) <= '1';  -- On met à 1 les bits à conserver
+        end loop;
+
+        -- Appliquer le masque et affecter la sortie
+        Y <= signed(A_std_logic(7 downto 8 - SetD) & (others => '0')); -- Concaténer les bits conservés avec des '0'
+    end process;
+end architecture Behavioral;

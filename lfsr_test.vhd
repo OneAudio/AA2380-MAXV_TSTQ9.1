@@ -1,0 +1,84 @@
+----------------------------------------------------------------------------
+---- Create Date:    13:06:08 07/28/2010 								----		
+---- Design Name: lfsr													----				
+---- Project Name: lfsr_randgen										   	----	
+---- Description: 														----	
+----  A random number generator based on linear feedback shift         	----
+----  register(LFSR).A LFSR is a shift register whose input bit is a    ----
+----  linear function of its previous state.The detailed documentation  ----	
+----  is available in the file named manual.pdf.   						----	
+---- This file is a part of the lfsr_randgen project at                 ----
+---- http://www.opencores.org/						                    ----
+---- Author(s):                                                         ----
+----   Vipin Lal, lalnitt@gmail.com                                     ----
+----                                                                    ----
+----------------------------------------------------------------------------
+--- Modified by ON the 22/06/17											----
+--- output is now signed 2's complement.								----
+----
+----------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+library work;
+use work.lfsr_pkg.ALL; 
+
+entity lfsr_test is
+generic ( Dit : integer :=6);
+
+   
+port (	
+	clk 		: in 	std_logic;
+	set_seed 	: in 	std_logic; 
+	seed 		: in 	std_logic_vector(23 downto 0);
+	--Set_Dither	: in 	integer range 0 to 7;
+	DATAin 		: in 	signed(23 downto 0);
+	DATAout		: buffer   signed(23 downto 0);
+	
+	--test outputs
+	rand_out 	: buffer signed(23 downto 0);
+	DATAoutLSB 	: buffer signed(Dit+4 downto 0)
+	--LSB_out 	: buffer std_logic_vector(Set_Dither-1 downto 0);
+	--MSB_out 	: buffer std_logic_vector(Set_Dither-1 downto 0)
+
+	);
+end lfsr_test;
+
+architecture Behavioral of lfsr_test is
+
+begin
+
+process(clk,DATAin,rand_out,DATAout)
+
+variable rand_temp : std_logic_vector (23 downto 0):=(0 => '1',others => '0');
+variable temp : std_logic := '0';
+
+begin
+
+if(rising_edge(clk)) then
+	--
+	if(set_seed = '1') then
+	rand_temp := seed;
+	end if;
+	--
+	temp := xor_gates(rand_temp);
+	rand_temp(23 downto 1) := rand_temp(22 downto 0);
+	rand_temp(0) := temp;
+end if;
+
+rand_out <= signed (not rand_temp(23) & rand_temp (22 downto 0)); -- offset binary to signed conversion
+-- Test signals
+-- NOTE :  the output random pattern is same for any contigus n-bits output word !
+--LSB_out <= rand_temp(DitherBit-1 downto 0);
+--MSB_out <= rand_temp(width-1 downto width-(DitherBit));
+
+DATAout <= signed(DATAin) + signed(rand_out(23 downto (24-Dit))) ; --adding n Bits of dither to NCO wave. 
+
+DATAoutLSB <= DATAout(Dit+4 downto 0);
+
+end process;
+
+end Behavioral;
+

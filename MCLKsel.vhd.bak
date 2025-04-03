@@ -1,0 +1,44 @@
+-----------------------------------------------------------------
+-- OnE Audio Projects
+-- O.N - 07/02/2025
+-- take 2 LE
+--
+-- MCLK selection
+-----------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.numeric_std.all;
+
+ entity MCLKsel_II is
+    Port (
+          MCLK_49M152  : in  std_logic; -- 49.152 MHz on board MCLK  for 48/96/192/384Hz sampling rates
+          MCLK_EXT     : in  std_logic; -- external input MCLK
+          MLCKSEL_EXT  : in  std_logic; -- sampling rate bit to select the right MCLK
+          MCLK         : buffer  std_logic;-- MCLK output
+          MCLKD2       : buffer  std_logic; -- MCLK/2 output
+          MCLKD3       : buffer  std_logic -- MCLK/3 output
+    );
+ end MCLKsel;
+
+architecture MCLKselect of MCLKsel is
+
+begin
+----------------------------------------------------------------------
+--  MCLK selection and divide by 2 the MCLKD2 output
+----------------------------------------------------------------------
+process(MLCKSEL_EXT,MCLK_49M152,MCLK_EXT,MCLKD2,MCLK)
+begin
+MCLKD3 <= MCLKD2;
+    --
+    if  MLCKSEL_EXT ='0' then
+        MCLK  <= MCLK_EXT   ;
+    else
+        MCLK  <= MCLK_49M152  ;
+    end if;
+    --
+    if  rising_edge(MCLK) then
+        MCLKD2 <= not MCLKD2 ;
+    end if;
+end process ;
+
+end architecture MCLKselect ;

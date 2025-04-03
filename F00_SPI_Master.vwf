@@ -1,0 +1,934 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+
+HEADER
+{
+	VERSION = 1;
+	TIME_UNIT = ns;
+	DATA_OFFSET = 0.0;
+	DATA_DURATION = 1000000.0;
+	SIMULATION_TIME = 1000000.0;
+	GRID_PHASE = 0.0;
+	GRID_PERIOD = 10.0;
+	GRID_DUTY_CYCLE = 50;
+}
+
+SIGNAL("clk")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("reset")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("Rx_Byte")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("Rx_Byte[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_Byte[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_Byte[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_Byte[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_Byte[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_Byte[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_Byte[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_Byte[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "Rx_Byte";
+}
+
+SIGNAL("Rx_DV")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("SPI_clk")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("SPI_CS")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("SPI_MISO")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("SPI_MOSI")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("Tx_Byte")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("Tx_Byte[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_Byte[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_Byte[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_Byte[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_Byte[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_Byte[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_Byte[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_Byte[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "Tx_Byte";
+}
+
+SIGNAL("Tx_DV")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("Tx_Ready")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+TRANSITION_LIST("clk")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1000;
+			LEVEL 0 FOR 500.0;
+			LEVEL 1 FOR 500.0;
+		}
+	}
+}
+
+TRANSITION_LIST("reset")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_Byte[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("Rx_DV")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 15500.0;
+		LEVEL 1 FOR 2000.0;
+		LEVEL 0 FOR 22000.0;
+		NODE
+		{
+			REPEAT = 8;
+			NODE
+			{
+				REPEAT = 5;
+				LEVEL 1 FOR 2000.0;
+				LEVEL 0 FOR 14000.0;
+			}
+			LEVEL 1 FOR 2000.0;
+			LEVEL 0 FOR 18000.0;
+		}
+		NODE
+		{
+			REPEAT = 5;
+			LEVEL 1 FOR 2000.0;
+			LEVEL 0 FOR 14000.0;
+		}
+		LEVEL 1 FOR 2000.0;
+		LEVEL 0 FOR 18000.0;
+		NODE
+		{
+			REPEAT = 3;
+			LEVEL 1 FOR 2000.0;
+			LEVEL 0 FOR 14000.0;
+		}
+		LEVEL 1 FOR 2000.0;
+		LEVEL 0 FOR 10500.0;
+	}
+}
+
+TRANSITION_LIST("SPI_clk")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 500.0;
+		NODE
+		{
+			REPEAT = 499;
+			LEVEL 1 FOR 1000.0;
+			LEVEL 0 FOR 1000.0;
+		}
+		LEVEL 1 FOR 1000.0;
+		LEVEL 0 FOR 500.0;
+	}
+}
+
+TRANSITION_LIST("SPI_CS")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 500.0;
+		LEVEL 1 FOR 25000.0;
+		NODE
+		{
+			REPEAT = 9;
+			LEVEL 0 FOR 15000.0;
+			LEVEL 1 FOR 85000.0;
+		}
+		LEVEL 0 FOR 15000.0;
+		LEVEL 1 FOR 59500.0;
+	}
+}
+
+TRANSITION_LIST("SPI_MISO")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000000.0;
+	}
+}
+
+TRANSITION_LIST("SPI_MOSI")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 125500.0;
+		LEVEL 1 FOR 2000.0;
+		LEVEL 0 FOR 2000.0;
+		LEVEL 1 FOR 6000.0;
+		LEVEL 0 FOR 2000.0;
+		LEVEL 1 FOR 2000.0;
+		LEVEL 0 FOR 386000.0;
+		LEVEL 1 FOR 16000.0;
+		LEVEL 0 FOR 458500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 75000.0;
+		LEVEL 1 FOR 94000.0;
+		LEVEL 0 FOR 317000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 486000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 75000.0;
+		LEVEL 1 FOR 94000.0;
+		LEVEL 0 FOR 317000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 75000.0;
+		LEVEL 1 FOR 94000.0;
+		LEVEL 0 FOR 317000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 75000.0;
+		LEVEL 1 FOR 94000.0;
+		LEVEL 0 FOR 317000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 486000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 75000.0;
+		LEVEL 1 FOR 94000.0;
+		LEVEL 0 FOR 317000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Byte[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 486000.0;
+		LEVEL 1 FOR 89500.0;
+		LEVEL 0 FOR 424500.0;
+	}
+}
+
+TRANSITION_LIST("Tx_DV")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 24000.0;
+		LEVEL 1 FOR 1000.0;
+		NODE
+		{
+			REPEAT = 9;
+			LEVEL 0 FOR 99000.0;
+			LEVEL 1 FOR 1000.0;
+		}
+		LEVEL 0 FOR 75000.0;
+	}
+}
+
+TRANSITION_LIST("Tx_Ready")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 24500.0;
+		NODE
+		{
+			REPEAT = 9;
+			LEVEL 0 FOR 15000.0;
+			LEVEL 1 FOR 85000.0;
+		}
+		LEVEL 0 FOR 15000.0;
+		LEVEL 1 FOR 60500.0;
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "clk";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 0;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SPI_MISO";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 1;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_DV";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 2;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "reset";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 3;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 4;
+	TREE_LEVEL = 0;
+	CHILDREN = 5, 6, 7, 8, 9, 10, 11, 12;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 5;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 6;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 7;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 8;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 9;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 10;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 11;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Byte[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 12;
+	TREE_LEVEL = 1;
+	PARENT = 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 13;
+	TREE_LEVEL = 0;
+	CHILDREN = 14, 15, 16, 17, 18, 19, 20, 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 14;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 15;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 16;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 17;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 18;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 19;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 20;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_Byte[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 21;
+	TREE_LEVEL = 1;
+	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Rx_DV";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 22;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SPI_clk";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 23;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SPI_CS";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 24;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SPI_MOSI";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 25;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "Tx_Ready";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 26;
+	TREE_LEVEL = 0;
+}
+
+TIME_BAR
+{
+	TIME = 29800;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 140500000;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 273500000;
+	MASTER = TRUE;
+}
+
+TIME_BAR
+{
+	TIME = 297500000;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 427500000;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 432000000;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 540000000;
+	MASTER = FALSE;
+}
+;
