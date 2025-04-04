@@ -940,26 +940,6 @@ a36c8ec425c8a2589af98b2d4daabc3
 
 # end
 # entity
-4LanesRXTX
-# storage
-db|AA2380-MAXV_TSTQ9.(20).cnf
-db|AA2380-MAXV_TSTQ9.(20).cnf
-# case_insensitive
-# source_file
-4lanesrxtx.bdf
-c86633d7a1f6a73dc4cde3a18f258899
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 F15_Par2I2S_2x4LanesII
 # storage
 db|AA2380-MAXV_TSTQ9.(21).cnf
@@ -982,9 +962,6 @@ AUTO_RAM_RECOGNITION
 ON
 AUTO_ROM_RECOGNITION
 ON
-}
-# hierarchies {
-F15_Par2I2S_2x4LanesII:inst1
 }
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
@@ -1016,8 +993,68 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+divider_by_64
+# storage
+db|AA2380-MAXV_TSTQ9.(20).cnf
+db|AA2380-MAXV_TSTQ9.(20).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+divider_by_64.vhd
+cc089c82e80b6aafdcaca34fc90ffda
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+F0_ctrl_encoder_E
+# storage
+db|AA2380-MAXV_TSTQ9.(23).cnf
+db|AA2380-MAXV_TSTQ9.(23).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f0_ctrl_encoder_e.vhd
+e93fb9869a217b5aae665e5bbbb03f8d
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
 # hierarchies {
-F16_I2S2Par_2x4Lanes:inst
+|
 }
 # lmf
 |altera|quartus|lmf|maxplus2.lmf

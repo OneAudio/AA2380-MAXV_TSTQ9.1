@@ -1,5 +1,5 @@
 Classic Timing Analyzer report for AA2380-MAXV_TSTQ9
-Fri Mar 08 10:33:10 2024
+Fri Apr 04 08:10:14 2025
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -11,12 +11,11 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   3. Timing Analyzer Settings
   4. Clock Settings Summary
   5. Parallel Compilation
-  6. Clock Setup: 'MCLK'
+  6. Clock Setup: 'clock'
   7. tsu
   8. tco
-  9. tpd
- 10. th
- 11. Timing Analyzer Messages
+  9. th
+ 10. Timing Analyzer Messages
 
 
 
@@ -39,18 +38,17 @@ applicable agreement for further details.
 
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Timing Analyzer Summary                                                                                                                                                                                        ;
-+------------------------------+-------+---------------+----------------------------------+------------------------------------+------------------------------------------+------------+----------+--------------+
-; Type                         ; Slack ; Required Time ; Actual Time                      ; From                               ; To                                       ; From Clock ; To Clock ; Failed Paths ;
-+------------------------------+-------+---------------+----------------------------------+------------------------------------+------------------------------------------+------------+----------+--------------+
-; Worst-case tsu               ; N/A   ; None          ; 11.134 ns                        ; SR[0]                              ; F0_ClockEnable_BETA2:inst|clken_ReadCLK  ; --         ; MCLK     ; 0            ;
-; Worst-case tco               ; N/A   ; None          ; 10.309 ns                        ; F0_ClockEnable_BETA2:inst|clearAll ; XclearAll                                ; MCLK       ; --       ; 0            ;
-; Worst-case tpd               ; N/A   ; None          ; 6.594 ns                         ; SR[0]                              ; OutOfRange                               ; --         ; --       ; 0            ;
-; Worst-case th                ; N/A   ; None          ; 4.328 ns                         ; AVG[1]                             ; F0_ClockEnable_BETA2:inst|AVGlatch[1]    ; --         ; MCLK     ; 0            ;
-; Clock Setup: 'MCLK'          ; N/A   ; None          ; 119.80 MHz ( period = 8.347 ns ) ; F0_ClockEnable_BETA2:inst|clearAll ; F0_ClockEnable_BETA2:inst|counter_Fso[9] ; MCLK       ; MCLK     ; 0            ;
-; Total number of failed paths ;       ;               ;                                  ;                                    ;                                          ;            ;          ; 0            ;
-+------------------------------+-------+---------------+----------------------------------+------------------------------------+------------------------------------------+------------+----------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                 ;
++------------------------------+-------+---------------+----------------------------------+-----------+------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From      ; To         ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+-----------+------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 2.241 ns                         ; direction ; count[2]   ; --         ; clock    ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 9.419 ns                         ; count[0]  ; outputs[2] ; clock      ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -1.726 ns                        ; direction ; count[2]   ; --         ; clock    ; 0            ;
+; Clock Setup: 'clock'         ; N/A   ; None          ; 196.89 MHz ( period = 5.079 ns ) ; count[1]  ; count[4]   ; clock      ; clock    ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;           ;            ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+-----------+------------+------------+----------+--------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -92,7 +90,7 @@ applicable agreement for further details.
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
 ; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
-; MCLK            ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; clock           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
 
 
@@ -107,667 +105,191 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clock Setup: 'MCLK'                                                                                                                                                                                                                                                                                       ;
-+-----------------------------------------+-----------------------------------------------------+-----------------------------------------------+-----------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
-; Slack                                   ; Actual fmax (period)                                ; From                                          ; To                                            ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
-+-----------------------------------------+-----------------------------------------------------+-----------------------------------------------+-----------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
-; N/A                                     ; 119.80 MHz ( period = 8.347 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.690 ns                ;
-; N/A                                     ; 119.88 MHz ( period = 8.342 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK       ; MCLK     ; None                        ; None                      ; 3.685 ns                ;
-; N/A                                     ; 123.14 MHz ( period = 8.121 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[0]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.464 ns                ;
-; N/A                                     ; 123.15 MHz ( period = 8.120 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[2]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.463 ns                ;
-; N/A                                     ; 123.15 MHz ( period = 8.120 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[1]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.463 ns                ;
-; N/A                                     ; 123.24 MHz ( period = 8.114 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[4]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.457 ns                ;
-; N/A                                     ; 123.67 MHz ( period = 8.086 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso128[3]   ; MCLK       ; MCLK     ; None                        ; None                      ; 3.429 ns                ;
-; N/A                                     ; 123.69 MHz ( period = 8.085 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso128[0]   ; MCLK       ; MCLK     ; None                        ; None                      ; 3.428 ns                ;
-; N/A                                     ; 123.70 MHz ( period = 8.084 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso128[5]   ; MCLK       ; MCLK     ; None                        ; None                      ; 3.427 ns                ;
-; N/A                                     ; 123.75 MHz ( period = 8.081 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso128[4]   ; MCLK       ; MCLK     ; None                        ; None                      ; 3.424 ns                ;
-; N/A                                     ; 123.75 MHz ( period = 8.081 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso128[6]   ; MCLK       ; MCLK     ; None                        ; None                      ; 3.424 ns                ;
-; N/A                                     ; 123.76 MHz ( period = 8.080 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso128[2]   ; MCLK       ; MCLK     ; None                        ; None                      ; 3.423 ns                ;
-; N/A                                     ; 123.78 MHz ( period = 8.079 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso128[1]   ; MCLK       ; MCLK     ; None                        ; None                      ; 3.422 ns                ;
-; N/A                                     ; 126.63 MHz ( period = 7.897 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.240 ns                ;
-; N/A                                     ; 126.65 MHz ( period = 7.896 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.239 ns                ;
-; N/A                                     ; 126.66 MHz ( period = 7.895 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.238 ns                ;
-; N/A                                     ; 126.68 MHz ( period = 7.894 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.237 ns                ;
-; N/A                                     ; 126.69 MHz ( period = 7.893 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.236 ns                ;
-; N/A                                     ; 126.79 MHz ( period = 7.887 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.230 ns                ;
-; N/A                                     ; 127.78 MHz ( period = 7.826 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK       ; MCLK     ; None                        ; None                      ; 3.169 ns                ;
-; N/A                                     ; 128.12 MHz ( period = 7.805 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.148 ns                ;
-; N/A                                     ; 128.14 MHz ( period = 7.804 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.147 ns                ;
-; N/A                                     ; 128.14 MHz ( period = 7.804 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK       ; MCLK     ; None                        ; None                      ; 3.147 ns                ;
-; N/A                                     ; 128.35 MHz ( period = 7.791 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK       ; MCLK     ; None                        ; None                      ; 3.134 ns                ;
-; N/A                                     ; 128.37 MHz ( period = 7.790 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK       ; MCLK     ; None                        ; None                      ; 3.133 ns                ;
-; N/A                                     ; 128.39 MHz ( period = 7.789 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK       ; MCLK     ; None                        ; None                      ; 3.132 ns                ;
-; N/A                                     ; 130.62 MHz ( period = 7.656 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; MCLK       ; MCLK     ; None                        ; None                      ; 2.999 ns                ;
-; N/A                                     ; 130.63 MHz ( period = 7.655 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[13]     ; MCLK       ; MCLK     ; None                        ; None                      ; 2.998 ns                ;
-; N/A                                     ; 130.63 MHz ( period = 7.655 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; MCLK       ; MCLK     ; None                        ; None                      ; 2.998 ns                ;
-; N/A                                     ; 131.39 MHz ( period = 7.611 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.954 ns                ;
-; N/A                                     ; 131.39 MHz ( period = 7.611 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.954 ns                ;
-; N/A                                     ; 131.42 MHz ( period = 7.609 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.952 ns                ;
-; N/A                                     ; 131.51 MHz ( period = 7.604 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.947 ns                ;
-; N/A                                     ; 131.53 MHz ( period = 7.603 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 2.946 ns                ;
-; N/A                                     ; 132.89 MHz ( period = 7.525 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.868 ns                ;
-; N/A                                     ; 132.89 MHz ( period = 7.525 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.868 ns                ;
-; N/A                                     ; 135.23 MHz ( period = 7.395 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[6]      ; MCLK       ; MCLK     ; None                        ; None                      ; 2.738 ns                ;
-; N/A                                     ; 135.24 MHz ( period = 7.394 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[8]      ; MCLK       ; MCLK     ; None                        ; None                      ; 2.737 ns                ;
-; N/A                                     ; 135.24 MHz ( period = 7.394 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[5]      ; MCLK       ; MCLK     ; None                        ; None                      ; 2.737 ns                ;
-; N/A                                     ; 135.26 MHz ( period = 7.393 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|clken_FSo           ; MCLK       ; MCLK     ; None                        ; None                      ; 2.736 ns                ;
-; N/A                                     ; 135.34 MHz ( period = 7.389 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[7]      ; MCLK       ; MCLK     ; None                        ; None                      ; 2.732 ns                ;
-; N/A                                     ; 135.50 MHz ( period = 7.380 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 2.723 ns                ;
-; N/A                                     ; 135.50 MHz ( period = 7.380 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 2.723 ns                ;
-; N/A                                     ; 135.54 MHz ( period = 7.378 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 2.721 ns                ;
-; N/A                                     ; 135.74 MHz ( period = 7.367 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.924 ns                ;
-; N/A                                     ; 136.18 MHz ( period = 7.343 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.900 ns                ;
-; N/A                                     ; 136.82 MHz ( period = 7.309 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.866 ns                ;
-; N/A                                     ; 137.19 MHz ( period = 7.289 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.632 ns                ;
-; N/A                                     ; 137.25 MHz ( period = 7.286 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.629 ns                ;
-; N/A                                     ; 137.38 MHz ( period = 7.279 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.836 ns                ;
-; N/A                                     ; 137.42 MHz ( period = 7.277 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.834 ns                ;
-; N/A                                     ; 137.42 MHz ( period = 7.277 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.834 ns                ;
-; N/A                                     ; 137.59 MHz ( period = 7.268 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.825 ns                ;
-; N/A                                     ; 137.59 MHz ( period = 7.268 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.825 ns                ;
-; N/A                                     ; 138.29 MHz ( period = 7.231 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.788 ns                ;
-; N/A                                     ; 138.43 MHz ( period = 7.224 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.781 ns                ;
-; N/A                                     ; 138.50 MHz ( period = 7.220 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.777 ns                ;
-; N/A                                     ; 138.52 MHz ( period = 7.219 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.776 ns                ;
-; N/A                                     ; 138.56 MHz ( period = 7.217 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.774 ns                ;
-; N/A                                     ; 138.64 MHz ( period = 7.213 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.770 ns                ;
-; N/A                                     ; 138.66 MHz ( period = 7.212 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.769 ns                ;
-; N/A                                     ; 138.73 MHz ( period = 7.208 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.765 ns                ;
-; N/A                                     ; 138.81 MHz ( period = 7.204 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.761 ns                ;
-; N/A                                     ; 138.97 MHz ( period = 7.196 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.753 ns                ;
-; N/A                                     ; 138.99 MHz ( period = 7.195 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.752 ns                ;
-; N/A                                     ; 139.02 MHz ( period = 7.193 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.750 ns                ;
-; N/A                                     ; 139.10 MHz ( period = 7.189 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.746 ns                ;
-; N/A                                     ; 139.12 MHz ( period = 7.188 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.745 ns                ;
-; N/A                                     ; 139.20 MHz ( period = 7.184 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.741 ns                ;
-; N/A                                     ; 139.24 MHz ( period = 7.182 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.525 ns                ;
-; N/A                                     ; 139.28 MHz ( period = 7.180 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.737 ns                ;
-; N/A                                     ; 139.63 MHz ( period = 7.162 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.719 ns                ;
-; N/A                                     ; 139.65 MHz ( period = 7.161 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.718 ns                ;
-; N/A                                     ; 139.68 MHz ( period = 7.159 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.716 ns                ;
-; N/A                                     ; 139.76 MHz ( period = 7.155 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.712 ns                ;
-; N/A                                     ; 139.78 MHz ( period = 7.154 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.711 ns                ;
-; N/A                                     ; 139.86 MHz ( period = 7.150 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.707 ns                ;
-; N/A                                     ; 139.94 MHz ( period = 7.146 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.703 ns                ;
-; N/A                                     ; 140.51 MHz ( period = 7.117 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.674 ns                ;
-; N/A                                     ; 140.53 MHz ( period = 7.116 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.673 ns                ;
-; N/A                                     ; 140.57 MHz ( period = 7.114 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.671 ns                ;
-; N/A                                     ; 140.63 MHz ( period = 7.111 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.668 ns                ;
-; N/A                                     ; 140.71 MHz ( period = 7.107 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.664 ns                ;
-; N/A                                     ; 140.73 MHz ( period = 7.106 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 2.449 ns                ;
-; N/A                                     ; 140.98 MHz ( period = 7.093 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.650 ns                ;
-; N/A                                     ; 141.04 MHz ( period = 7.090 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.647 ns                ;
-; N/A                                     ; 141.28 MHz ( period = 7.078 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_Fso[3]      ; MCLK       ; MCLK     ; None                        ; None                      ; 2.421 ns                ;
-; N/A                                     ; 141.30 MHz ( period = 7.077 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.634 ns                ;
-; N/A                                     ; 141.32 MHz ( period = 7.076 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.633 ns                ;
-; N/A                                     ; 141.36 MHz ( period = 7.074 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.631 ns                ;
-; N/A                                     ; 141.44 MHz ( period = 7.070 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.627 ns                ;
-; N/A                                     ; 141.46 MHz ( period = 7.069 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.626 ns                ;
-; N/A                                     ; 141.54 MHz ( period = 7.065 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.622 ns                ;
-; N/A                                     ; 141.62 MHz ( period = 7.061 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.618 ns                ;
-; N/A                                     ; 141.64 MHz ( period = 7.060 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK       ; MCLK     ; None                        ; None                      ; 2.403 ns                ;
-; N/A                                     ; 141.66 MHz ( period = 7.059 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.616 ns                ;
-; N/A                                     ; 141.70 MHz ( period = 7.057 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.614 ns                ;
-; N/A                                     ; 141.72 MHz ( period = 7.056 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.613 ns                ;
-; N/A                                     ; 141.72 MHz ( period = 7.056 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK       ; MCLK     ; None                        ; None                      ; 2.399 ns                ;
-; N/A                                     ; 141.74 MHz ( period = 7.055 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.612 ns                ;
-; N/A                                     ; 141.74 MHz ( period = 7.055 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.612 ns                ;
-; N/A                                     ; 141.92 MHz ( period = 7.046 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.603 ns                ;
-; N/A                                     ; 141.92 MHz ( period = 7.046 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.603 ns                ;
-; N/A                                     ; 142.21 MHz ( period = 7.032 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.589 ns                ;
-; N/A                                     ; 142.31 MHz ( period = 7.027 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.584 ns                ;
-; N/A                                     ; 142.67 MHz ( period = 7.009 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.566 ns                ;
-; N/A                                     ; 142.98 MHz ( period = 6.994 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.551 ns                ;
-; N/A                                     ; 143.02 MHz ( period = 6.992 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.549 ns                ;
-; N/A                                     ; 143.02 MHz ( period = 6.992 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.549 ns                ;
-; N/A                                     ; 143.20 MHz ( period = 6.983 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.540 ns                ;
-; N/A                                     ; 143.20 MHz ( period = 6.983 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.540 ns                ;
-; N/A                                     ; 143.39 MHz ( period = 6.974 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.531 ns                ;
-; N/A                                     ; 143.43 MHz ( period = 6.972 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK       ; MCLK     ; None                        ; None                      ; 2.315 ns                ;
-; N/A                                     ; 143.45 MHz ( period = 6.971 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.528 ns                ;
-; N/A                                     ; 143.68 MHz ( period = 6.960 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.517 ns                ;
-; N/A                                     ; 143.70 MHz ( period = 6.959 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.516 ns                ;
-; N/A                                     ; 143.74 MHz ( period = 6.957 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.514 ns                ;
-; N/A                                     ; 143.82 MHz ( period = 6.953 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.510 ns                ;
-; N/A                                     ; 143.84 MHz ( period = 6.952 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.509 ns                ;
-; N/A                                     ; 143.93 MHz ( period = 6.948 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.505 ns                ;
-; N/A                                     ; 143.97 MHz ( period = 6.946 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.503 ns                ;
-; N/A                                     ; 144.01 MHz ( period = 6.944 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.501 ns                ;
-; N/A                                     ; 145.14 MHz ( period = 6.890 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; F0_ClockEnable_BETA2:inst|counter_Fso[0]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.447 ns                ;
-; N/A                                     ; 145.16 MHz ( period = 6.889 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; F0_ClockEnable_BETA2:inst|counter_Fso[2]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.446 ns                ;
-; N/A                                     ; 145.16 MHz ( period = 6.889 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; F0_ClockEnable_BETA2:inst|counter_Fso[1]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.446 ns                ;
-; N/A                                     ; 145.29 MHz ( period = 6.883 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; F0_ClockEnable_BETA2:inst|counter_Fso[4]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.440 ns                ;
-; N/A                                     ; 145.65 MHz ( period = 6.866 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.423 ns                ;
-; N/A                                     ; 145.65 MHz ( period = 6.866 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.423 ns                ;
-; N/A                                     ; 145.69 MHz ( period = 6.864 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.421 ns                ;
-; N/A                                     ; 145.75 MHz ( period = 6.861 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.418 ns                ;
-; N/A                                     ; 145.79 MHz ( period = 6.859 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.416 ns                ;
-; N/A                                     ; 145.82 MHz ( period = 6.858 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.415 ns                ;
-; N/A                                     ; 145.82 MHz ( period = 6.858 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.415 ns                ;
-; N/A                                     ; 145.84 MHz ( period = 6.857 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.414 ns                ;
-; N/A                                     ; 145.90 MHz ( period = 6.854 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.411 ns                ;
-; N/A                                     ; 146.93 MHz ( period = 6.806 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; F0_ClockEnable_BETA2:inst|counter_Fso[0]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.363 ns                ;
-; N/A                                     ; 146.95 MHz ( period = 6.805 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; F0_ClockEnable_BETA2:inst|counter_Fso[2]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.362 ns                ;
-; N/A                                     ; 146.95 MHz ( period = 6.805 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; F0_ClockEnable_BETA2:inst|counter_Fso[1]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.362 ns                ;
-; N/A                                     ; 147.08 MHz ( period = 6.799 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; F0_ClockEnable_BETA2:inst|counter_Fso[4]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.356 ns                ;
-; N/A                                     ; 148.57 MHz ( period = 6.731 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[6]      ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.288 ns                ;
-; N/A                                     ; 148.68 MHz ( period = 6.726 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[6]      ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.283 ns                ;
-; N/A                                     ; 148.72 MHz ( period = 6.724 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK       ; MCLK     ; None                        ; None                      ; 6.281 ns                ;
-; N/A                                     ; 148.77 MHz ( period = 6.722 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.279 ns                ;
-; N/A                                     ; 148.77 MHz ( period = 6.722 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.279 ns                ;
-; N/A                                     ; 148.79 MHz ( period = 6.721 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.278 ns                ;
-; N/A                                     ; 149.08 MHz ( period = 6.708 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.265 ns                ;
-; N/A                                     ; 149.10 MHz ( period = 6.707 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.264 ns                ;
-; N/A                                     ; 149.12 MHz ( period = 6.706 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.263 ns                ;
-; N/A                                     ; 149.14 MHz ( period = 6.705 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.262 ns                ;
-; N/A                                     ; 149.16 MHz ( period = 6.704 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.261 ns                ;
-; N/A                                     ; 149.30 MHz ( period = 6.698 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.255 ns                ;
-; N/A                                     ; 149.30 MHz ( period = 6.698 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.255 ns                ;
-; N/A                                     ; 149.30 MHz ( period = 6.698 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.255 ns                ;
-; N/A                                     ; 149.32 MHz ( period = 6.697 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.254 ns                ;
-; N/A                                     ; 149.63 MHz ( period = 6.683 ns )                    ; F0_ClockEnable_BETA2:inst|clearAll            ; F0_ClockEnable_BETA2:inst|clken_Fso128        ; MCLK       ; MCLK     ; None                        ; None                      ; 2.026 ns                ;
-; N/A                                     ; 149.63 MHz ( period = 6.683 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.240 ns                ;
-; N/A                                     ; 149.66 MHz ( period = 6.682 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.239 ns                ;
-; N/A                                     ; 149.68 MHz ( period = 6.681 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.238 ns                ;
-; N/A                                     ; 149.70 MHz ( period = 6.680 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.237 ns                ;
-; N/A                                     ; 149.72 MHz ( period = 6.679 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.236 ns                ;
-; N/A                                     ; 149.86 MHz ( period = 6.673 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.230 ns                ;
-; N/A                                     ; 150.06 MHz ( period = 6.664 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.221 ns                ;
-; N/A                                     ; 150.06 MHz ( period = 6.664 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.221 ns                ;
-; N/A                                     ; 150.08 MHz ( period = 6.663 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.220 ns                ;
-; N/A                                     ; 150.51 MHz ( period = 6.644 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.201 ns                ;
-; N/A                                     ; 150.51 MHz ( period = 6.644 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.201 ns                ;
-; N/A                                     ; 150.56 MHz ( period = 6.642 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.199 ns                ;
-; N/A                                     ; 150.63 MHz ( period = 6.639 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.196 ns                ;
-; N/A                                     ; 150.67 MHz ( period = 6.637 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK       ; MCLK     ; None                        ; None                      ; 6.194 ns                ;
-; N/A                                     ; 150.67 MHz ( period = 6.637 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.194 ns                ;
-; N/A                                     ; 150.69 MHz ( period = 6.636 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.193 ns                ;
-; N/A                                     ; 150.69 MHz ( period = 6.636 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.193 ns                ;
-; N/A                                     ; 151.13 MHz ( period = 6.617 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.174 ns                ;
-; N/A                                     ; 151.15 MHz ( period = 6.616 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.173 ns                ;
-; N/A                                     ; 151.15 MHz ( period = 6.616 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.173 ns                ;
-; N/A                                     ; 151.17 MHz ( period = 6.615 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.172 ns                ;
-; N/A                                     ; 151.17 MHz ( period = 6.615 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.172 ns                ;
-; N/A                                     ; 151.17 MHz ( period = 6.615 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.172 ns                ;
-; N/A                                     ; 151.19 MHz ( period = 6.614 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.171 ns                ;
-; N/A                                     ; 151.22 MHz ( period = 6.613 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.170 ns                ;
-; N/A                                     ; 151.24 MHz ( period = 6.612 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK       ; MCLK     ; None                        ; None                      ; 6.169 ns                ;
-; N/A                                     ; 151.35 MHz ( period = 6.607 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.164 ns                ;
-; N/A                                     ; 151.47 MHz ( period = 6.602 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.159 ns                ;
-; N/A                                     ; 151.49 MHz ( period = 6.601 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.158 ns                ;
-; N/A                                     ; 151.52 MHz ( period = 6.600 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.157 ns                ;
-; N/A                                     ; 151.58 MHz ( period = 6.597 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[8]      ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.154 ns                ;
-; N/A                                     ; 151.70 MHz ( period = 6.592 ns )                    ; F0_ClockEnable_BETA2:inst|counter_Fso[8]      ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.149 ns                ;
-; N/A                                     ; 151.72 MHz ( period = 6.591 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.148 ns                ;
-; N/A                                     ; 151.75 MHz ( period = 6.590 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.147 ns                ;
-; N/A                                     ; 151.75 MHz ( period = 6.590 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK       ; MCLK     ; None                        ; None                      ; 6.147 ns                ;
-; N/A                                     ; 151.95 MHz ( period = 6.581 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.138 ns                ;
-; N/A                                     ; 151.95 MHz ( period = 6.581 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.138 ns                ;
-; N/A                                     ; 152.00 MHz ( period = 6.579 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.136 ns                ;
-; N/A                                     ; 152.00 MHz ( period = 6.579 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.136 ns                ;
-; N/A                                     ; 152.00 MHz ( period = 6.579 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.136 ns                ;
-; N/A                                     ; 152.02 MHz ( period = 6.578 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK       ; MCLK     ; None                        ; None                      ; 6.135 ns                ;
-; N/A                                     ; 152.05 MHz ( period = 6.577 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.134 ns                ;
-; N/A                                     ; 152.05 MHz ( period = 6.577 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.134 ns                ;
-; N/A                                     ; 152.07 MHz ( period = 6.576 ns )                    ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK       ; MCLK     ; None                        ; None                      ; 6.133 ns                ;
-; N/A                                     ; 152.07 MHz ( period = 6.576 ns )                    ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK       ; MCLK     ; None                        ; None                      ; 6.133 ns                ;
-; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                               ;                                               ;            ;          ;                             ;                           ;                         ;
-+-----------------------------------------+-----------------------------------------------------+-----------------------------------------------+-----------------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clock'                                                                                                                                                       ;
++-------+----------------------------------+----------+----------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)             ; From     ; To       ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+----------------------------------+----------+----------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; 196.89 MHz ( period = 5.079 ns ) ; count[1] ; count[4] ; clock      ; clock    ; None                        ; None                      ; 4.636 ns                ;
+; N/A   ; 199.04 MHz ( period = 5.024 ns ) ; count[0] ; count[4] ; clock      ; clock    ; None                        ; None                      ; 4.581 ns                ;
+; N/A   ; 203.13 MHz ( period = 4.923 ns ) ; count[3] ; count[4] ; clock      ; clock    ; None                        ; None                      ; 4.480 ns                ;
+; N/A   ; 203.62 MHz ( period = 4.911 ns ) ; count[1] ; count[2] ; clock      ; clock    ; None                        ; None                      ; 4.468 ns                ;
+; N/A   ; 205.93 MHz ( period = 4.856 ns ) ; count[0] ; count[2] ; clock      ; clock    ; None                        ; None                      ; 4.413 ns                ;
+; N/A   ; 216.83 MHz ( period = 4.612 ns ) ; count[2] ; count[4] ; clock      ; clock    ; None                        ; None                      ; 4.169 ns                ;
+; N/A   ; 219.01 MHz ( period = 4.566 ns ) ; count[3] ; count[0] ; clock      ; clock    ; None                        ; None                      ; 4.123 ns                ;
+; N/A   ; 219.01 MHz ( period = 4.566 ns ) ; count[3] ; count[3] ; clock      ; clock    ; None                        ; None                      ; 4.123 ns                ;
+; N/A   ; 219.01 MHz ( period = 4.566 ns ) ; count[3] ; count[1] ; clock      ; clock    ; None                        ; None                      ; 4.123 ns                ;
+; N/A   ; 219.01 MHz ( period = 4.566 ns ) ; count[3] ; count[2] ; clock      ; clock    ; None                        ; None                      ; 4.123 ns                ;
+; N/A   ; 219.35 MHz ( period = 4.559 ns ) ; count[0] ; count[0] ; clock      ; clock    ; None                        ; None                      ; 4.116 ns                ;
+; N/A   ; 219.35 MHz ( period = 4.559 ns ) ; count[0] ; count[3] ; clock      ; clock    ; None                        ; None                      ; 4.116 ns                ;
+; N/A   ; 219.35 MHz ( period = 4.559 ns ) ; count[0] ; count[1] ; clock      ; clock    ; None                        ; None                      ; 4.116 ns                ;
+; N/A   ; 223.66 MHz ( period = 4.471 ns ) ; count[1] ; count[3] ; clock      ; clock    ; None                        ; None                      ; 4.028 ns                ;
+; N/A   ; 227.63 MHz ( period = 4.393 ns ) ; count[1] ; count[0] ; clock      ; clock    ; None                        ; None                      ; 3.950 ns                ;
+; N/A   ; 227.63 MHz ( period = 4.393 ns ) ; count[1] ; count[1] ; clock      ; clock    ; None                        ; None                      ; 3.950 ns                ;
+; N/A   ; 230.20 MHz ( period = 4.344 ns ) ; count[2] ; count[0] ; clock      ; clock    ; None                        ; None                      ; 3.901 ns                ;
+; N/A   ; 230.20 MHz ( period = 4.344 ns ) ; count[2] ; count[3] ; clock      ; clock    ; None                        ; None                      ; 3.901 ns                ;
+; N/A   ; 230.20 MHz ( period = 4.344 ns ) ; count[2] ; count[1] ; clock      ; clock    ; None                        ; None                      ; 3.901 ns                ;
+; N/A   ; 230.20 MHz ( period = 4.344 ns ) ; count[2] ; count[2] ; clock      ; clock    ; None                        ; None                      ; 3.901 ns                ;
+; N/A   ; 236.07 MHz ( period = 4.236 ns ) ; count[4] ; count[0] ; clock      ; clock    ; None                        ; None                      ; 3.793 ns                ;
+; N/A   ; 236.07 MHz ( period = 4.236 ns ) ; count[4] ; count[4] ; clock      ; clock    ; None                        ; None                      ; 3.793 ns                ;
+; N/A   ; 236.07 MHz ( period = 4.236 ns ) ; count[4] ; count[3] ; clock      ; clock    ; None                        ; None                      ; 3.793 ns                ;
+; N/A   ; 236.07 MHz ( period = 4.236 ns ) ; count[4] ; count[1] ; clock      ; clock    ; None                        ; None                      ; 3.793 ns                ;
+; N/A   ; 236.07 MHz ( period = 4.236 ns ) ; count[4] ; count[2] ; clock      ; clock    ; None                        ; None                      ; 3.793 ns                ;
++-------+----------------------------------+----------+----------+------------+----------+-----------------------------+---------------------------+-------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; tsu                                                                                                                                                                            ;
-+-----------------------------------------+-----------------------------------------------------+------------+--------+-----------------------------------------------+----------+
-; Slack                                   ; Required tsu                                        ; Actual tsu ; From   ; To                                            ; To Clock ;
-+-----------------------------------------+-----------------------------------------------------+------------+--------+-----------------------------------------------+----------+
-; N/A                                     ; None                                                ; 11.134 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; 10.994 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; 10.987 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.986 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.984 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.980 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.979 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.975 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.971 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.944 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; 10.884 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.881 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.869 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; 10.847 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.846 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.844 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.840 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.839 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.835 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.831 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.797 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.796 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.794 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.790 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.789 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.785 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.781 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.744 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.741 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.722 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.721 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.719 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.715 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.714 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.710 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.706 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.694 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.691 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.619 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.616 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.489 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.489 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.488 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.349 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.349 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.348 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.305 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.299 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.299 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.298 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.224 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.224 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.223 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.200 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; 10.165 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.115 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.053 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.052 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.050 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.046 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.045 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; 10.041 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.040 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; 10.037 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.950 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.947 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.906 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; 9.890 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.759 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.758 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.756 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.752 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.751 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; 9.750 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.747 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.743 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.700 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.656 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.653 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.625 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.555 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; 9.555 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; 9.554 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; 9.371 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; 9.261 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; 9.261 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; 9.260 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; 9.077 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; 8.956 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; 8.662 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; 8.632 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.631 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.630 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.629 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.628 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.622 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.561 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; 8.540 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.539 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.539 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.526 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.525 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.524 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.492 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.491 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.490 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.489 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.488 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.482 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.442 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.441 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.440 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.439 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.438 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.432 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.421 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; 8.400 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.399 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.399 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.386 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.385 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.384 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.371 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; 8.367 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.366 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.365 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.364 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.363 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.357 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.350 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.349 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.349 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.336 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.335 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.334 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.296 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; 8.275 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.274 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.274 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; 8.261 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.260 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; 8.259 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.978 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; 7.831 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.830 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.828 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.824 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.823 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; 7.819 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.815 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.795 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.791 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.728 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.725 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.698 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.697 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.696 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.695 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.694 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.688 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.655 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.651 ns   ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.627 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; 7.606 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.605 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.605 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.605 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.601 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.592 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.591 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.590 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.530 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.526 ns   ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.476 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; 7.474 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; 7.474 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; 7.465 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.465 ns   ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; 7.404 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.403 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.402 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.401 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.400 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.394 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.333 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; 7.312 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.311 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.311 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; 7.298 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.297 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; 7.296 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; 6.861 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 6.857 ns   ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 6.567 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 6.563 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 6.192 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 6.187 ns   ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 6.177 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; 6.172 ns   ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; 6.065 ns   ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK     ;
-; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;            ;        ;                                               ;          ;
-+-----------------------------------------+-----------------------------------------------------+------------+--------+-----------------------------------------------+----------+
++---------------------------------------------------------------------+
+; tsu                                                                 ;
++-------+--------------+------------+-----------+----------+----------+
+; Slack ; Required tsu ; Actual tsu ; From      ; To       ; To Clock ;
++-------+--------------+------------+-----------+----------+----------+
+; N/A   ; None         ; 2.241 ns   ; direction ; count[0] ; clock    ;
+; N/A   ; None         ; 2.241 ns   ; direction ; count[4] ; clock    ;
+; N/A   ; None         ; 2.241 ns   ; direction ; count[3] ; clock    ;
+; N/A   ; None         ; 2.241 ns   ; direction ; count[1] ; clock    ;
+; N/A   ; None         ; 2.241 ns   ; direction ; count[2] ; clock    ;
++-------+--------------+------------+-----------+----------+----------+
 
 
-+-------------------------------------------------------------------------------------------------+
-; tco                                                                                             ;
-+-------+--------------+------------+------------------------------------+-----------+------------+
-; Slack ; Required tco ; Actual tco ; From                               ; To        ; From Clock ;
-+-------+--------------+------------+------------------------------------+-----------+------------+
-; N/A   ; None         ; 10.309 ns  ; F0_ClockEnable_BETA2:inst|clearAll ; XclearAll ; MCLK       ;
-; N/A   ; None         ; 9.176 ns   ; F7_Ready:inst2|READY               ; READY     ; MCLK       ;
-; N/A   ; None         ; 5.811 ns   ; F0_ClockEnable_BETA2:inst|nFS      ; nFS       ; MCLK       ;
-; N/A   ; None         ; 5.422 ns   ; F7_Ready:inst2|CLKSLOW             ; CLKSLOW   ; MCLK       ;
-; N/A   ; None         ; 5.385 ns   ; F0_ClockEnable_BETA2:inst|Fso      ; FSo       ; MCLK       ;
-; N/A   ; None         ; 4.920 ns   ; F0_ClockEnable_BETA2:inst|zReadCLK ; ReadCLK   ; MCLK       ;
-; N/A   ; None         ; 4.641 ns   ; F0_ClockEnable_BETA2:inst|Fso128   ; Fso128    ; MCLK       ;
-+-------+--------------+------------+------------------------------------+-----------+------------+
++-------------------------------------------------------------------------+
+; tco                                                                     ;
++-------+--------------+------------+----------+-------------+------------+
+; Slack ; Required tco ; Actual tco ; From     ; To          ; From Clock ;
++-------+--------------+------------+----------+-------------+------------+
+; N/A   ; None         ; 9.419 ns   ; count[0] ; outputs[2]  ; clock      ;
+; N/A   ; None         ; 9.363 ns   ; count[0] ; outputs[21] ; clock      ;
+; N/A   ; None         ; 9.210 ns   ; count[1] ; outputs[2]  ; clock      ;
+; N/A   ; None         ; 9.199 ns   ; count[2] ; outputs[2]  ; clock      ;
+; N/A   ; None         ; 9.190 ns   ; count[3] ; outputs[2]  ; clock      ;
+; N/A   ; None         ; 9.153 ns   ; count[1] ; outputs[21] ; clock      ;
+; N/A   ; None         ; 9.142 ns   ; count[2] ; outputs[21] ; clock      ;
+; N/A   ; None         ; 9.133 ns   ; count[3] ; outputs[21] ; clock      ;
+; N/A   ; None         ; 9.122 ns   ; count[3] ; outputs[3]  ; clock      ;
+; N/A   ; None         ; 8.930 ns   ; count[1] ; outputs[3]  ; clock      ;
+; N/A   ; None         ; 8.877 ns   ; count[3] ; outputs[16] ; clock      ;
+; N/A   ; None         ; 8.856 ns   ; count[2] ; outputs[3]  ; clock      ;
+; N/A   ; None         ; 8.810 ns   ; count[0] ; outputs[3]  ; clock      ;
+; N/A   ; None         ; 8.787 ns   ; count[2] ; outputs[16] ; clock      ;
+; N/A   ; None         ; 8.661 ns   ; count[0] ; outputs[16] ; clock      ;
+; N/A   ; None         ; 8.655 ns   ; count[0] ; outputs[5]  ; clock      ;
+; N/A   ; None         ; 8.655 ns   ; count[3] ; outputs[0]  ; clock      ;
+; N/A   ; None         ; 8.640 ns   ; count[4] ; outputs[16] ; clock      ;
+; N/A   ; None         ; 8.638 ns   ; count[4] ; outputs[2]  ; clock      ;
+; N/A   ; None         ; 8.620 ns   ; count[4] ; outputs[21] ; clock      ;
+; N/A   ; None         ; 8.583 ns   ; count[1] ; outputs[9]  ; clock      ;
+; N/A   ; None         ; 8.571 ns   ; count[0] ; outputs[9]  ; clock      ;
+; N/A   ; None         ; 8.565 ns   ; count[2] ; outputs[0]  ; clock      ;
+; N/A   ; None         ; 8.459 ns   ; count[1] ; outputs[16] ; clock      ;
+; N/A   ; None         ; 8.455 ns   ; count[4] ; outputs[6]  ; clock      ;
+; N/A   ; None         ; 8.445 ns   ; count[1] ; outputs[5]  ; clock      ;
+; N/A   ; None         ; 8.439 ns   ; count[0] ; outputs[0]  ; clock      ;
+; N/A   ; None         ; 8.434 ns   ; count[2] ; outputs[5]  ; clock      ;
+; N/A   ; None         ; 8.425 ns   ; count[3] ; outputs[5]  ; clock      ;
+; N/A   ; None         ; 8.418 ns   ; count[3] ; outputs[9]  ; clock      ;
+; N/A   ; None         ; 8.414 ns   ; count[4] ; outputs[13] ; clock      ;
+; N/A   ; None         ; 8.409 ns   ; count[0] ; outputs[13] ; clock      ;
+; N/A   ; None         ; 8.402 ns   ; count[2] ; outputs[6]  ; clock      ;
+; N/A   ; None         ; 8.390 ns   ; count[3] ; outputs[6]  ; clock      ;
+; N/A   ; None         ; 8.387 ns   ; count[2] ; outputs[22] ; clock      ;
+; N/A   ; None         ; 8.375 ns   ; count[3] ; outputs[22] ; clock      ;
+; N/A   ; None         ; 8.365 ns   ; count[3] ; outputs[8]  ; clock      ;
+; N/A   ; None         ; 8.358 ns   ; count[2] ; outputs[9]  ; clock      ;
+; N/A   ; None         ; 8.348 ns   ; count[0] ; outputs[6]  ; clock      ;
+; N/A   ; None         ; 8.343 ns   ; count[4] ; outputs[23] ; clock      ;
+; N/A   ; None         ; 8.333 ns   ; count[0] ; outputs[22] ; clock      ;
+; N/A   ; None         ; 8.308 ns   ; count[4] ; outputs[10] ; clock      ;
+; N/A   ; None         ; 8.285 ns   ; count[3] ; outputs[23] ; clock      ;
+; N/A   ; None         ; 8.273 ns   ; count[2] ; outputs[23] ; clock      ;
+; N/A   ; None         ; 8.272 ns   ; count[4] ; outputs[0]  ; clock      ;
+; N/A   ; None         ; 8.268 ns   ; count[3] ; outputs[13] ; clock      ;
+; N/A   ; None         ; 8.244 ns   ; count[0] ; outputs[8]  ; clock      ;
+; N/A   ; None         ; 8.237 ns   ; count[0] ; outputs[23] ; clock      ;
+; N/A   ; None         ; 8.237 ns   ; count[1] ; outputs[0]  ; clock      ;
+; N/A   ; None         ; 8.221 ns   ; count[0] ; outputs[10] ; clock      ;
+; N/A   ; None         ; 8.209 ns   ; count[3] ; outputs[10] ; clock      ;
+; N/A   ; None         ; 8.208 ns   ; count[2] ; outputs[13] ; clock      ;
+; N/A   ; None         ; 8.185 ns   ; count[4] ; outputs[3]  ; clock      ;
+; N/A   ; None         ; 8.181 ns   ; count[4] ; outputs[12] ; clock      ;
+; N/A   ; None         ; 8.175 ns   ; count[4] ; outputs[15] ; clock      ;
+; N/A   ; None         ; 8.162 ns   ; count[0] ; outputs[11] ; clock      ;
+; N/A   ; None         ; 8.136 ns   ; count[0] ; outputs[18] ; clock      ;
+; N/A   ; None         ; 8.134 ns   ; count[3] ; outputs[17] ; clock      ;
+; N/A   ; None         ; 8.117 ns   ; count[3] ; outputs[7]  ; clock      ;
+; N/A   ; None         ; 8.105 ns   ; count[2] ; outputs[7]  ; clock      ;
+; N/A   ; None         ; 8.097 ns   ; count[2] ; outputs[10] ; clock      ;
+; N/A   ; None         ; 8.085 ns   ; count[1] ; outputs[8]  ; clock      ;
+; N/A   ; None         ; 8.081 ns   ; count[0] ; outputs[4]  ; clock      ;
+; N/A   ; None         ; 8.069 ns   ; count[0] ; outputs[7]  ; clock      ;
+; N/A   ; None         ; 8.044 ns   ; count[2] ; outputs[17] ; clock      ;
+; N/A   ; None         ; 8.035 ns   ; count[2] ; outputs[8]  ; clock      ;
+; N/A   ; None         ; 8.035 ns   ; count[1] ; outputs[6]  ; clock      ;
+; N/A   ; None         ; 8.022 ns   ; count[3] ; outputs[11] ; clock      ;
+; N/A   ; None         ; 8.020 ns   ; count[1] ; outputs[22] ; clock      ;
+; N/A   ; None         ; 7.994 ns   ; count[3] ; outputs[4]  ; clock      ;
+; N/A   ; None         ; 7.981 ns   ; count[1] ; outputs[12] ; clock      ;
+; N/A   ; None         ; 7.973 ns   ; count[1] ; outputs[15] ; clock      ;
+; N/A   ; None         ; 7.962 ns   ; count[2] ; outputs[11] ; clock      ;
+; N/A   ; None         ; 7.957 ns   ; count[1] ; outputs[13] ; clock      ;
+; N/A   ; None         ; 7.931 ns   ; count[1] ; outputs[23] ; clock      ;
+; N/A   ; None         ; 7.930 ns   ; count[4] ; outputs[22] ; clock      ;
+; N/A   ; None         ; 7.930 ns   ; count[4] ; outputs[5]  ; clock      ;
+; N/A   ; None         ; 7.929 ns   ; count[0] ; outputs[14] ; clock      ;
+; N/A   ; None         ; 7.928 ns   ; count[4] ; outputs[8]  ; clock      ;
+; N/A   ; None         ; 7.927 ns   ; count[1] ; outputs[18] ; clock      ;
+; N/A   ; None         ; 7.926 ns   ; count[4] ; outputs[7]  ; clock      ;
+; N/A   ; None         ; 7.919 ns   ; count[0] ; outputs[15] ; clock      ;
+; N/A   ; None         ; 7.917 ns   ; count[0] ; outputs[17] ; clock      ;
+; N/A   ; None         ; 7.916 ns   ; count[2] ; outputs[18] ; clock      ;
+; N/A   ; None         ; 7.910 ns   ; count[0] ; outputs[12] ; clock      ;
+; N/A   ; None         ; 7.907 ns   ; count[3] ; outputs[18] ; clock      ;
+; N/A   ; None         ; 7.847 ns   ; count[1] ; outputs[10] ; clock      ;
+; N/A   ; None         ; 7.819 ns   ; count[3] ; outputs[14] ; clock      ;
+; N/A   ; None         ; 7.804 ns   ; count[1] ; outputs[4]  ; clock      ;
+; N/A   ; None         ; 7.799 ns   ; count[2] ; outputs[12] ; clock      ;
+; N/A   ; None         ; 7.793 ns   ; count[2] ; outputs[15] ; clock      ;
+; N/A   ; None         ; 7.763 ns   ; count[1] ; outputs[7]  ; clock      ;
+; N/A   ; None         ; 7.714 ns   ; count[1] ; outputs[17] ; clock      ;
+; N/A   ; None         ; 7.712 ns   ; count[1] ; outputs[11] ; clock      ;
+; N/A   ; None         ; 7.705 ns   ; count[2] ; outputs[4]  ; clock      ;
+; N/A   ; None         ; 7.644 ns   ; count[2] ; outputs[14] ; clock      ;
+; N/A   ; None         ; 7.529 ns   ; count[3] ; outputs[12] ; clock      ;
+; N/A   ; None         ; 7.527 ns   ; count[3] ; outputs[15] ; clock      ;
+; N/A   ; None         ; 7.475 ns   ; count[4] ; outputs[14] ; clock      ;
+; N/A   ; None         ; 7.470 ns   ; count[4] ; outputs[9]  ; clock      ;
+; N/A   ; None         ; 7.454 ns   ; count[4] ; outputs[11] ; clock      ;
+; N/A   ; None         ; 7.425 ns   ; count[1] ; outputs[14] ; clock      ;
+; N/A   ; None         ; 7.378 ns   ; count[3] ; outputs[1]  ; clock      ;
+; N/A   ; None         ; 7.320 ns   ; count[4] ; outputs[17] ; clock      ;
+; N/A   ; None         ; 7.307 ns   ; count[4] ; outputs[4]  ; clock      ;
+; N/A   ; None         ; 7.288 ns   ; count[2] ; outputs[1]  ; clock      ;
+; N/A   ; None         ; 7.281 ns   ; count[0] ; outputs[20] ; clock      ;
+; N/A   ; None         ; 7.225 ns   ; count[4] ; outputs[18] ; clock      ;
+; N/A   ; None         ; 7.194 ns   ; count[3] ; outputs[20] ; clock      ;
+; N/A   ; None         ; 7.161 ns   ; count[0] ; outputs[1]  ; clock      ;
+; N/A   ; None         ; 7.004 ns   ; count[1] ; outputs[20] ; clock      ;
+; N/A   ; None         ; 6.958 ns   ; count[1] ; outputs[1]  ; clock      ;
+; N/A   ; None         ; 6.931 ns   ; count[3] ; outputs[19] ; clock      ;
+; N/A   ; None         ; 6.905 ns   ; count[2] ; outputs[20] ; clock      ;
+; N/A   ; None         ; 6.739 ns   ; count[1] ; outputs[19] ; clock      ;
+; N/A   ; None         ; 6.665 ns   ; count[2] ; outputs[19] ; clock      ;
+; N/A   ; None         ; 6.619 ns   ; count[0] ; outputs[19] ; clock      ;
+; N/A   ; None         ; 6.564 ns   ; count[4] ; outputs[1]  ; clock      ;
+; N/A   ; None         ; 6.250 ns   ; count[4] ; outputs[20] ; clock      ;
+; N/A   ; None         ; 6.243 ns   ; count[4] ; outputs[19] ; clock      ;
++-------+--------------+------------+----------+-------------+------------+
 
 
-+-------------------------------------------------------------------+
-; tpd                                                               ;
-+-------+-------------------+-----------------+--------+------------+
-; Slack ; Required P2P Time ; Actual P2P Time ; From   ; To         ;
-+-------+-------------------+-----------------+--------+------------+
-; N/A   ; None              ; 6.594 ns        ; SR[0]  ; OutOfRange ;
-; N/A   ; None              ; 6.454 ns        ; AVG[1] ; OutOfRange ;
-; N/A   ; None              ; 6.404 ns        ; SR[1]  ; OutOfRange ;
-; N/A   ; None              ; 6.329 ns        ; AVG[0] ; OutOfRange ;
-; N/A   ; None              ; 6.139 ns        ; SR[1]  ; ReadCLK    ;
-; N/A   ; None              ; 6.081 ns        ; SR[0]  ; ReadCLK    ;
-; N/A   ; None              ; 6.048 ns        ; SR[2]  ; ReadCLK    ;
-; N/A   ; None              ; 5.660 ns        ; AVG[2] ; OutOfRange ;
-; N/A   ; None              ; 5.463 ns        ; AVG[2] ; ReadCLK    ;
-; N/A   ; None              ; 5.366 ns        ; SR[2]  ; OutOfRange ;
-; N/A   ; None              ; 5.358 ns        ; AVG[1] ; ReadCLK    ;
-; N/A   ; None              ; 5.280 ns        ; AVG[0] ; ReadCLK    ;
-; N/A   ; None              ; 4.703 ns        ; MCLK   ; ReadCLK    ;
-+-------+-------------------+-----------------+--------+------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; th                                                                                                                                                                            ;
-+-----------------------------------------+-----------------------------------------------------+-----------+--------+-----------------------------------------------+----------+
-; Minimum Slack                           ; Required th                                         ; Actual th ; From   ; To                                            ; To Clock ;
-+-----------------------------------------+-----------------------------------------------------+-----------+--------+-----------------------------------------------+----------+
-; N/A                                     ; None                                                ; 4.328 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|AVGlatch[1]         ; MCLK     ;
-; N/A                                     ; None                                                ; 4.158 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|SRLatch[0]          ; MCLK     ;
-; N/A                                     ; None                                                ; 4.103 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|AVGlatch[2]         ; MCLK     ;
-; N/A                                     ; None                                                ; 4.065 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|AVGlatch[0]         ; MCLK     ;
-; N/A                                     ; None                                                ; 4.050 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|SRLatch[1]          ; MCLK     ;
-; N/A                                     ; None                                                ; 3.096 ns  ; AVG[1] ; F0_ClockEnable_BETA2:inst|clearAll            ; MCLK     ;
-; N/A                                     ; None                                                ; 2.921 ns  ; SR[0]  ; F0_ClockEnable_BETA2:inst|clearAll            ; MCLK     ;
-; N/A                                     ; None                                                ; 2.738 ns  ; AVG[0] ; F0_ClockEnable_BETA2:inst|clearAll            ; MCLK     ;
-; N/A                                     ; None                                                ; 2.576 ns  ; SR[1]  ; F0_ClockEnable_BETA2:inst|clearAll            ; MCLK     ;
-; N/A                                     ; None                                                ; 2.260 ns  ; SR[2]  ; F0_ClockEnable_BETA2:inst|SRLatch[2]          ; MCLK     ;
-; N/A                                     ; None                                                ; 1.863 ns  ; AVG[2] ; F0_ClockEnable_BETA2:inst|clearAll            ; MCLK     ;
-; N/A                                     ; None                                                ; 0.882 ns  ; SR[2]  ; F0_ClockEnable_BETA2:inst|clearAll            ; MCLK     ;
-; N/A                                     ; None                                                ; -1.758 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|clken_Fso128        ; MCLK     ;
-; N/A                                     ; None                                                ; -2.350 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|clken_Fso128        ; MCLK     ;
-; N/A                                     ; None                                                ; -2.567 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|clken_Fso128        ; MCLK     ;
-; N/A                                     ; None                                                ; -2.900 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.118 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.179 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.197 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[1]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.198 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[2]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.199 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[4]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.199 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[6]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.202 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[5]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.203 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[0]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.204 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[3]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.211 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.215 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|clken_FSo           ; MCLK     ;
-; N/A                                     ; None                                                ; -3.216 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.216 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.217 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.290 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; -3.294 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; -3.429 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.433 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|clken_FSo           ; MCLK     ;
-; N/A                                     ; None                                                ; -3.434 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.434 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.435 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.477 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.477 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.478 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.490 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.494 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|clken_FSo           ; MCLK     ;
-; N/A                                     ; None                                                ; -3.495 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.495 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.496 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.640 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; -3.644 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; -3.695 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.695 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.696 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.756 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.756 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.757 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; -3.807 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[1]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.808 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[2]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.809 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[4]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.809 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[6]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.812 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[5]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.813 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[0]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.814 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[3]   ; MCLK     ;
-; N/A                                     ; None                                                ; -3.936 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.942 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.942 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.943 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; -3.978 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; -3.980 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; -3.982 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; -3.984 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.024 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[1]   ; MCLK     ;
-; N/A                                     ; None                                                ; -4.025 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[2]   ; MCLK     ;
-; N/A                                     ; None                                                ; -4.026 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[4]   ; MCLK     ;
-; N/A                                     ; None                                                ; -4.026 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[6]   ; MCLK     ;
-; N/A                                     ; None                                                ; -4.029 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[5]   ; MCLK     ;
-; N/A                                     ; None                                                ; -4.030 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[0]   ; MCLK     ;
-; N/A                                     ; None                                                ; -4.031 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso128[3]   ; MCLK     ;
-; N/A                                     ; None                                                ; -4.067 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.067 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.068 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.070 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.073 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.075 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.075 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.154 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.160 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.160 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.161 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.164 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.169 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.215 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.221 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.221 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.222 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.222 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.226 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.298 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.302 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.382 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.387 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.417 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.417 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.418 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.420 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.423 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.425 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.425 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.440 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; -4.443 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.448 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_Fso[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.477 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.477 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.486 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.486 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.488 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.540 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.544 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.559 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.563 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.627 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.631 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.740 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.744 ns ; SR[2]  ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.755 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.755 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.756 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.757 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.757 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.758 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.758 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.760 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.761 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.763 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.763 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.763 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.765 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.765 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.790 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; -4.804 ns ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.808 ns ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.814 ns ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[6]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.818 ns ; AVG[1] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[4]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.827 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.827 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; -4.836 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.836 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.838 ns ; AQMODE ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; -4.955 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.956 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.957 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; -4.970 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.970 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.971 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; -4.992 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; -5.034 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[10]     ; MCLK     ;
-; N/A                                     ; None                                                ; -5.038 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_nFS[9]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.053 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.059 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.060 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.061 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.062 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.063 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.075 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[7]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.075 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[8]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.076 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[10] ; MCLK     ;
-; N/A                                     ; None                                                ; -5.078 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[5]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.081 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[2]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.083 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[9]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.083 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[3]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.128 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; -5.130 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|clken_ReadCLK       ; MCLK     ;
-; N/A                                     ; None                                                ; -5.165 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.165 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.167 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[1]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.167 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.174 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; -5.174 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; -5.176 ns ; SR[0]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; -5.176 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[12] ; MCLK     ;
-; N/A                                     ; None                                                ; -5.176 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[11] ; MCLK     ;
-; N/A                                     ; None                                                ; -5.178 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[13] ; MCLK     ;
-; N/A                                     ; None                                                ; -5.248 ns ; AVG[2] ; F0_ClockEnable_BETA2:inst|counter_ReadCLK[0]  ; MCLK     ;
-; N/A                                     ; None                                                ; -5.273 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; -5.274 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; -5.275 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; -5.288 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.288 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.289 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.292 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[11]     ; MCLK     ;
-; N/A                                     ; None                                                ; -5.293 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[13]     ; MCLK     ;
-; N/A                                     ; None                                                ; -5.294 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[12]     ; MCLK     ;
-; N/A                                     ; None                                                ; -5.307 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[0]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.307 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[1]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.308 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|counter_nFS[2]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.310 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; -5.329 ns ; AVG[0] ; F0_ClockEnable_BETA2:inst|clken_nFS           ; MCLK     ;
-; N/A                                     ; None                                                ; -5.371 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[3]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.377 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[8]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.378 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[5]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.379 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[7]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.380 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[4]      ; MCLK     ;
-; N/A                                     ; None                                                ; -5.381 ns ; SR[1]  ; F0_ClockEnable_BETA2:inst|counter_nFS[6]      ; MCLK     ;
-; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;           ;        ;                                               ;          ;
-+-----------------------------------------+-----------------------------------------------------+-----------+--------+-----------------------------------------------+----------+
++---------------------------------------------------------------------------+
+; th                                                                        ;
++---------------+-------------+-----------+-----------+----------+----------+
+; Minimum Slack ; Required th ; Actual th ; From      ; To       ; To Clock ;
++---------------+-------------+-----------+-----------+----------+----------+
+; N/A           ; None        ; -1.726 ns ; direction ; count[0] ; clock    ;
+; N/A           ; None        ; -1.726 ns ; direction ; count[4] ; clock    ;
+; N/A           ; None        ; -1.726 ns ; direction ; count[3] ; clock    ;
+; N/A           ; None        ; -1.726 ns ; direction ; count[1] ; clock    ;
+; N/A           ; None        ; -1.726 ns ; direction ; count[2] ; clock    ;
++---------------+-------------+-----------+-----------+----------+----------+
 
 
 +--------------------------+
@@ -776,93 +298,79 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II Classic Timing Analyzer
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Fri Mar 08 10:33:09 2024
+    Info: Processing started: Fri Apr 04 08:10:14 2025
 Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
 Info: Started post-fitting delay annotation
 Info: Delay annotation completed successfully
 Warning: Found pins functioning as undefined clocks and/or memory enables
-    Info: Assuming node "MCLK" is an undefined clock
-Warning: Found 2 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
-    Info: Detected ripple clock "F0_ClockEnable_BETA2:inst|clockDIV[3]" as buffer
-    Info: Detected ripple clock "F7_Ready:inst2|CLKSLOW" as buffer
-Info: Clock "MCLK" has Internal fmax of 119.8 MHz between source register "F0_ClockEnable_BETA2:inst|clearAll" and destination register "F0_ClockEnable_BETA2:inst|counter_Fso[9]" (period= 8.347 ns)
-    Info: + Longest register to register delay is 3.690 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X13_Y11_N0; Fanout = 20; REG Node = 'F0_ClockEnable_BETA2:inst|clearAll'
-        Info: 2: + IC(1.736 ns) + CELL(0.125 ns) = 1.861 ns; Loc. = LC_X18_Y12_N8; Fanout = 15; COMB Node = 'F0_ClockEnable_BETA2:inst|counter_Fso[1]~0'
-        Info: 3: + IC(1.460 ns) + CELL(0.369 ns) = 3.690 ns; Loc. = LC_X16_Y13_N1; Fanout = 5; REG Node = 'F0_ClockEnable_BETA2:inst|counter_Fso[9]'
-        Info: Total cell delay = 0.494 ns ( 13.39 % )
-        Info: Total interconnect delay = 3.196 ns ( 86.61 % )
-    Info: - Smallest clock skew is -4.214 ns
-        Info: + Shortest clock path from clock "MCLK" to destination register is 2.472 ns
-            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 90; CLK Node = 'MCLK'
-            Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X16_Y13_N1; Fanout = 5; REG Node = 'F0_ClockEnable_BETA2:inst|counter_Fso[9]'
+    Info: Assuming node "clock" is an undefined clock
+Info: Clock "clock" has Internal fmax of 196.89 MHz between source register "count[1]" and destination register "count[4]" (period= 5.079 ns)
+    Info: + Longest register to register delay is 4.636 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X14_Y12_N1; Fanout = 23; REG Node = 'count[1]'
+        Info: 2: + IC(1.626 ns) + CELL(0.467 ns) = 2.093 ns; Loc. = LC_X15_Y13_N1; Fanout = 2; COMB Node = 'Add1~7'
+        Info: 3: + IC(0.000 ns) + CELL(0.077 ns) = 2.170 ns; Loc. = LC_X15_Y13_N2; Fanout = 2; COMB Node = 'Add1~12'
+        Info: 4: + IC(0.000 ns) + CELL(0.077 ns) = 2.247 ns; Loc. = LC_X15_Y13_N3; Fanout = 1; COMB Node = 'Add1~17'
+        Info: 5: + IC(0.000 ns) + CELL(0.509 ns) = 2.756 ns; Loc. = LC_X15_Y13_N4; Fanout = 1; COMB Node = 'Add1~20'
+        Info: 6: + IC(1.705 ns) + CELL(0.175 ns) = 4.636 ns; Loc. = LC_X14_Y12_N4; Fanout = 28; REG Node = 'count[4]'
+        Info: Total cell delay = 1.305 ns ( 28.15 % )
+        Info: Total interconnect delay = 3.331 ns ( 71.85 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "clock" to destination register is 2.472 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 5; CLK Node = 'clock'
+            Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X14_Y12_N4; Fanout = 28; REG Node = 'count[4]'
             Info: Total cell delay = 1.301 ns ( 52.63 % )
             Info: Total interconnect delay = 1.171 ns ( 47.37 % )
-        Info: - Longest clock path from clock "MCLK" to source register is 6.686 ns
-            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 90; CLK Node = 'MCLK'
-            Info: 2: + IC(1.171 ns) + CELL(0.809 ns) = 2.707 ns; Loc. = LC_X10_Y10_N5; Fanout = 8; REG Node = 'F0_ClockEnable_BETA2:inst|clockDIV[3]'
-            Info: 3: + IC(3.405 ns) + CELL(0.574 ns) = 6.686 ns; Loc. = LC_X13_Y11_N0; Fanout = 20; REG Node = 'F0_ClockEnable_BETA2:inst|clearAll'
-            Info: Total cell delay = 2.110 ns ( 31.56 % )
-            Info: Total interconnect delay = 4.576 ns ( 68.44 % )
+        Info: - Longest clock path from clock "clock" to source register is 2.472 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 5; CLK Node = 'clock'
+            Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X14_Y12_N1; Fanout = 23; REG Node = 'count[1]'
+            Info: Total cell delay = 1.301 ns ( 52.63 % )
+            Info: Total interconnect delay = 1.171 ns ( 47.37 % )
     Info: + Micro clock to output delay of source is 0.235 ns
     Info: + Micro setup delay of destination is 0.208 ns
-Info: tsu for register "F0_ClockEnable_BETA2:inst|clken_ReadCLK" (data pin = "SR[0]", clock pin = "MCLK") is 11.134 ns
-    Info: + Longest pin to register delay is 13.398 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_F11; Fanout = 23; PIN Node = 'SR[0]'
-        Info: 2: + IC(1.814 ns) + CELL(0.319 ns) = 2.841 ns; Loc. = LC_X14_Y11_N4; Fanout = 2; COMB Node = 'F0_ClockEnable_BETA2:inst|Add1~0'
-        Info: 3: + IC(0.451 ns) + CELL(0.571 ns) = 3.863 ns; Loc. = LC_X14_Y11_N7; Fanout = 10; COMB Node = 'F0_ClockEnable_BETA2:inst|Add1~1'
-        Info: 4: + IC(1.214 ns) + CELL(0.462 ns) = 5.539 ns; Loc. = LC_X15_Y10_N4; Fanout = 2; COMB Node = 'F0_ClockEnable_BETA2:inst|Mux10~0'
-        Info: 5: + IC(1.515 ns) + CELL(0.319 ns) = 7.373 ns; Loc. = LC_X19_Y11_N4; Fanout = 3; COMB Node = 'F0_ClockEnable_BETA2:inst|SetCnt_ReadCLK[5]~8'
-        Info: 6: + IC(1.093 ns) + CELL(0.467 ns) = 8.933 ns; Loc. = LC_X15_Y11_N5; Fanout = 1; COMB Node = 'F0_ClockEnable_BETA2:inst|LessThan4~13'
-        Info: 7: + IC(0.000 ns) + CELL(0.077 ns) = 9.010 ns; Loc. = LC_X15_Y11_N6; Fanout = 1; COMB Node = 'F0_ClockEnable_BETA2:inst|LessThan4~8'
-        Info: 8: + IC(0.000 ns) + CELL(0.509 ns) = 9.519 ns; Loc. = LC_X15_Y11_N7; Fanout = 1; COMB Node = 'F0_ClockEnable_BETA2:inst|LessThan4~0'
-        Info: 9: + IC(1.950 ns) + CELL(0.125 ns) = 11.594 ns; Loc. = LC_X17_Y10_N0; Fanout = 15; COMB Node = 'F0_ClockEnable_BETA2:inst|LessThan4~5'
-        Info: 10: + IC(1.302 ns) + CELL(0.502 ns) = 13.398 ns; Loc. = LC_X17_Y13_N7; Fanout = 1; REG Node = 'F0_ClockEnable_BETA2:inst|clken_ReadCLK'
-        Info: Total cell delay = 4.059 ns ( 30.30 % )
-        Info: Total interconnect delay = 9.339 ns ( 69.70 % )
+Info: tsu for register "count[0]" (data pin = "direction", clock pin = "clock") is 2.241 ns
+    Info: + Longest pin to register delay is 4.505 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_E11; Fanout = 6; PIN Node = 'direction'
+        Info: 2: + IC(1.281 ns) + CELL(0.319 ns) = 2.308 ns; Loc. = LC_X15_Y13_N8; Fanout = 1; COMB Node = 'count[0]~10'
+        Info: 3: + IC(0.191 ns) + CELL(0.125 ns) = 2.624 ns; Loc. = LC_X15_Y13_N9; Fanout = 5; COMB Node = 'count[0]~11'
+        Info: 4: + IC(1.104 ns) + CELL(0.777 ns) = 4.505 ns; Loc. = LC_X14_Y12_N0; Fanout = 23; REG Node = 'count[0]'
+        Info: Total cell delay = 1.929 ns ( 42.82 % )
+        Info: Total interconnect delay = 2.576 ns ( 57.18 % )
     Info: + Micro setup delay of destination is 0.208 ns
-    Info: - Shortest clock path from clock "MCLK" to destination register is 2.472 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 90; CLK Node = 'MCLK'
-        Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X17_Y13_N7; Fanout = 1; REG Node = 'F0_ClockEnable_BETA2:inst|clken_ReadCLK'
+    Info: - Shortest clock path from clock "clock" to destination register is 2.472 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 5; CLK Node = 'clock'
+        Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X14_Y12_N0; Fanout = 23; REG Node = 'count[0]'
         Info: Total cell delay = 1.301 ns ( 52.63 % )
         Info: Total interconnect delay = 1.171 ns ( 47.37 % )
-Info: tco from clock "MCLK" to destination pin "XclearAll" through register "F0_ClockEnable_BETA2:inst|clearAll" is 10.309 ns
-    Info: + Longest clock path from clock "MCLK" to source register is 6.686 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 90; CLK Node = 'MCLK'
-        Info: 2: + IC(1.171 ns) + CELL(0.809 ns) = 2.707 ns; Loc. = LC_X10_Y10_N5; Fanout = 8; REG Node = 'F0_ClockEnable_BETA2:inst|clockDIV[3]'
-        Info: 3: + IC(3.405 ns) + CELL(0.574 ns) = 6.686 ns; Loc. = LC_X13_Y11_N0; Fanout = 20; REG Node = 'F0_ClockEnable_BETA2:inst|clearAll'
-        Info: Total cell delay = 2.110 ns ( 31.56 % )
-        Info: Total interconnect delay = 4.576 ns ( 68.44 % )
+Info: tco from clock "clock" to destination pin "outputs[2]" through register "count[0]" is 9.419 ns
+    Info: + Longest clock path from clock "clock" to source register is 2.472 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 5; CLK Node = 'clock'
+        Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X14_Y12_N0; Fanout = 23; REG Node = 'count[0]'
+        Info: Total cell delay = 1.301 ns ( 52.63 % )
+        Info: Total interconnect delay = 1.171 ns ( 47.37 % )
     Info: + Micro clock to output delay of source is 0.235 ns
-    Info: + Longest register to pin delay is 3.388 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X13_Y11_N0; Fanout = 20; REG Node = 'F0_ClockEnable_BETA2:inst|clearAll'
-        Info: 2: + IC(1.934 ns) + CELL(1.454 ns) = 3.388 ns; Loc. = PIN_R10; Fanout = 0; PIN Node = 'XclearAll'
-        Info: Total cell delay = 1.454 ns ( 42.92 % )
-        Info: Total interconnect delay = 1.934 ns ( 57.08 % )
-Info: Longest tpd from source pin "SR[0]" to destination pin "OutOfRange" is 6.594 ns
-    Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_F11; Fanout = 23; PIN Node = 'SR[0]'
-    Info: 2: + IC(1.814 ns) + CELL(0.319 ns) = 2.841 ns; Loc. = LC_X14_Y11_N4; Fanout = 2; COMB Node = 'F0_ClockEnable_BETA2:inst|Add1~0'
-    Info: 3: + IC(0.451 ns) + CELL(0.571 ns) = 3.863 ns; Loc. = LC_X14_Y11_N7; Fanout = 10; COMB Node = 'F0_ClockEnable_BETA2:inst|Add1~1'
-    Info: 4: + IC(1.277 ns) + CELL(1.454 ns) = 6.594 ns; Loc. = PIN_B12; Fanout = 0; PIN Node = 'OutOfRange'
-    Info: Total cell delay = 3.052 ns ( 46.28 % )
-    Info: Total interconnect delay = 3.542 ns ( 53.72 % )
-Info: th for register "F0_ClockEnable_BETA2:inst|AVGlatch[1]" (data pin = "AVG[1]", clock pin = "MCLK") is 4.328 ns
-    Info: + Longest clock path from clock "MCLK" to destination register is 6.686 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 90; CLK Node = 'MCLK'
-        Info: 2: + IC(1.171 ns) + CELL(0.809 ns) = 2.707 ns; Loc. = LC_X10_Y10_N5; Fanout = 8; REG Node = 'F0_ClockEnable_BETA2:inst|clockDIV[3]'
-        Info: 3: + IC(3.405 ns) + CELL(0.574 ns) = 6.686 ns; Loc. = LC_X13_Y11_N4; Fanout = 1; REG Node = 'F0_ClockEnable_BETA2:inst|AVGlatch[1]'
-        Info: Total cell delay = 2.110 ns ( 31.56 % )
-        Info: Total interconnect delay = 4.576 ns ( 68.44 % )
+    Info: + Longest register to pin delay is 6.712 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X14_Y12_N0; Fanout = 23; REG Node = 'count[0]'
+        Info: 2: + IC(1.693 ns) + CELL(0.319 ns) = 2.012 ns; Loc. = LC_X13_Y13_N4; Fanout = 2; COMB Node = 'Decoder0~4'
+        Info: 3: + IC(0.334 ns) + CELL(0.125 ns) = 2.471 ns; Loc. = LC_X13_Y13_N5; Fanout = 1; COMB Node = 'Decoder0~5'
+        Info: 4: + IC(2.787 ns) + CELL(1.454 ns) = 6.712 ns; Loc. = PIN_R8; Fanout = 0; PIN Node = 'outputs[2]'
+        Info: Total cell delay = 1.898 ns ( 28.28 % )
+        Info: Total interconnect delay = 4.814 ns ( 71.72 % )
+Info: th for register "count[0]" (data pin = "direction", clock pin = "clock") is -1.726 ns
+    Info: + Longest clock path from clock "clock" to destination register is 2.472 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 5; CLK Node = 'clock'
+        Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X14_Y12_N0; Fanout = 23; REG Node = 'count[0]'
+        Info: Total cell delay = 1.301 ns ( 52.63 % )
+        Info: Total interconnect delay = 1.171 ns ( 47.37 % )
     Info: + Micro hold delay of destination is 0.138 ns
-    Info: - Shortest pin to register delay is 2.496 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_C11; Fanout = 13; PIN Node = 'AVG[1]'
-        Info: 2: + IC(1.613 ns) + CELL(0.175 ns) = 2.496 ns; Loc. = LC_X13_Y11_N4; Fanout = 1; REG Node = 'F0_ClockEnable_BETA2:inst|AVGlatch[1]'
-        Info: Total cell delay = 0.883 ns ( 35.38 % )
-        Info: Total interconnect delay = 1.613 ns ( 64.62 % )
-Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 163 megabytes
-    Info: Processing ended: Fri Mar 08 10:33:10 2024
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: - Shortest pin to register delay is 4.336 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_E11; Fanout = 6; PIN Node = 'direction'
+        Info: 2: + IC(2.436 ns) + CELL(1.192 ns) = 4.336 ns; Loc. = LC_X14_Y12_N0; Fanout = 23; REG Node = 'count[0]'
+        Info: Total cell delay = 1.900 ns ( 43.82 % )
+        Info: Total interconnect delay = 2.436 ns ( 56.18 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 179 megabytes
+    Info: Processing ended: Fri Apr 04 08:10:14 2025
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
 
 

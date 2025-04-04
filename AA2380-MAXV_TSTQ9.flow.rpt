@@ -1,5 +1,5 @@
 Flow report for AA2380-MAXV_TSTQ9
-Thu Apr 03 14:25:23 2025
+Fri Apr 04 13:27:19 2025
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,16 +38,16 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; Flow Summary                                                           ;
 +-------------------------+----------------------------------------------+
-; Flow Status             ; Successful - Thu Apr 03 14:25:23 2025        ;
+; Flow Status             ; Successful - Fri Apr 04 13:27:19 2025        ;
 ; Quartus II Version      ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name           ; AA2380-MAXV_TSTQ9                            ;
-; Top-level Entity Name   ; 4LanesRXTX                                   ;
+; Top-level Entity Name   ; F0_ctrl_encoder_E                            ;
 ; Family                  ; MAX II                                       ;
 ; Device                  ; EPM2210F324C3                                ;
 ; Timing Models           ; Final                                        ;
 ; Met timing requirements ; N/A                                          ;
-; Total logic elements    ; 87                                           ;
-; Total pins              ; 63                                           ;
+; Total logic elements    ; 34                                           ;
+; Total pins              ; 24                                           ;
 ; Total virtual pins      ; 0                                            ;
 ; UFM blocks              ; 0 / 1 ( 0 % )                                ;
 +-------------------------+----------------------------------------------+
@@ -58,30 +58,30 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/03/2025 14:25:23 ;
+; Start date & time ; 04/04/2025 13:27:18 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; AA2380-MAXV_TSTQ9   ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                      ;
-+---------------------------------------+--------------------------------+-------------------+-------------+------------+
-; Assignment Name                       ; Value                          ; Default Value     ; Entity Name ; Section Id ;
-+---------------------------------------+--------------------------------+-------------------+-------------+------------+
-; COMPILER_SIGNATURE_ID                 ; 92668497786263.174368312301320 ; --                ; --          ; --         ;
-; IP_TOOL_NAME                          ; LPM_CONSTANT                   ; --                ; --          ; --         ;
-; IP_TOOL_VERSION                       ; 9.1                            ; --                ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP                ; 85                             ; --                ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP                ; 0                              ; --                ; --          ; --         ;
-; MISC_FILE                             ; CONSTVAL.bsf                   ; --                ; --          ; --         ;
-; MISC_FILE                             ; CONSTVAL_inst.vhd              ; --                ; --          ; --         ;
-; MISC_FILE                             ; CONSTVAL.cmp                   ; --                ; --          ; --         ;
-; PARTITION_COLOR                       ; 16764057                       ; --                ; 4LanesRXTX  ; Top        ;
-; PARTITION_NETLIST_TYPE                ; SOURCE                         ; --                ; 4LanesRXTX  ; Top        ;
-; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                           ; --                ; --          ; --         ;
-; TOP_LEVEL_ENTITY                      ; 4LanesRXTX                     ; AA2380-MAXV_TSTQ9 ; --          ; --         ;
-+---------------------------------------+--------------------------------+-------------------+-------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                            ;
++---------------------------------------+--------------------------------+-------------------+-------------------+------------+
+; Assignment Name                       ; Value                          ; Default Value     ; Entity Name       ; Section Id ;
++---------------------------------------+--------------------------------+-------------------+-------------------+------------+
+; COMPILER_SIGNATURE_ID                 ; 92668497786263.174376603819064 ; --                ; --                ; --         ;
+; IP_TOOL_NAME                          ; LPM_CONSTANT                   ; --                ; --                ; --         ;
+; IP_TOOL_VERSION                       ; 9.1                            ; --                ; --                ; --         ;
+; MAX_CORE_JUNCTION_TEMP                ; 85                             ; --                ; --                ; --         ;
+; MIN_CORE_JUNCTION_TEMP                ; 0                              ; --                ; --                ; --         ;
+; MISC_FILE                             ; CONSTVAL.bsf                   ; --                ; --                ; --         ;
+; MISC_FILE                             ; CONSTVAL_inst.vhd              ; --                ; --                ; --         ;
+; MISC_FILE                             ; CONSTVAL.cmp                   ; --                ; --                ; --         ;
+; PARTITION_COLOR                       ; 16764057                       ; --                ; F0_ctrl_encoder_E ; Top        ;
+; PARTITION_NETLIST_TYPE                ; SOURCE                         ; --                ; F0_ctrl_encoder_E ; Top        ;
+; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                           ; --                ; --                ; --         ;
+; TOP_LEVEL_ENTITY                      ; F0_ctrl_encoder_E              ; AA2380-MAXV_TSTQ9 ; --                ; --         ;
++---------------------------------------+--------------------------------+-------------------+-------------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -89,8 +89,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:00     ; 1.0                     ; 252 MB              ; 00:00:01                           ;
-; Total                ; 00:00:00     ; --                      ; --                  ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 252 MB              ; 00:00:02                           ;
+; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:02                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

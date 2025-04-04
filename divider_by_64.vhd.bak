@@ -1,0 +1,43 @@
+-- ============================================================================
+-- Fichier     : divider_by_64.vhd
+-- Fonction    : Diviseur de fréquence par 64
+-- Description : Produit un signal clk_out dont la fréquence est clk / 64.
+--               Le signal clk_out est une onde carrée avec un rapport cyclique de 50%.
+-- Auteur      : ChatGPT (OpenAI), à la demande de l'utilisateur
+-- Date        : 4 avril 2025
+-- take 8LE
+-- ============================================================================
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity divider_by_64 is
+    Port (
+        clk     : in  STD_LOGIC;
+        rst     : in  STD_LOGIC;
+        clk_out : out STD_LOGIC
+    );
+end divider_by_64;
+
+architecture Behavioral of divider_by_64 is
+    signal compteur : unsigned(5 downto 0) := (others => '0');  -- 6 bits
+    signal clk_div  : STD_LOGIC := '0';
+begin
+
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            compteur <= (others => '0');
+            clk_div  <= '0';
+        elsif rising_edge(clk) then
+            compteur <= compteur + 1;
+            if compteur = 31 then   -- bascule tous les 32 cycles
+                clk_div <= not clk_div;
+            end if;
+        end if;
+    end process;
+
+    clk_out <= clk_div;
+
+end Behavioral;
