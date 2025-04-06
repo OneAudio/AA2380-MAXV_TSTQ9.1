@@ -489,349 +489,6 @@ AUTO
 
 # end
 # entity
-lpm_divide
-# storage
-db|AA2380-MAXV_TSTQ9.(3).cnf
-db|AA2380-MAXV_TSTQ9.(3).cnf
-# case_insensitive
-# source_file
-|altera|quartus|libraries|megafunctions|lpm_divide.tdf
-54966f81ff8a917b1dc9b9ad1a09648
-7
-# user_parameter {
-LPM_WIDTHN
-5
-PARAMETER_UNKNOWN
-USR
-LPM_WIDTHD
-5
-PARAMETER_UNKNOWN
-USR
-LPM_NREPRESENTATION
-UNSIGNED
-PARAMETER_UNKNOWN
-USR
-LPM_DREPRESENTATION
-UNSIGNED
-PARAMETER_UNKNOWN
-USR
-LPM_PIPELINE
-0
-PARAMETER_UNKNOWN
-DEF
-LPM_REMAINDERPOSITIVE
-TRUE
-PARAMETER_UNKNOWN
-DEF
-MAXIMIZE_SPEED
-5
-PARAMETER_UNKNOWN
-DEF
-CBXI_PARAMETER
-lpm_divide_ovl
-PARAMETER_UNKNOWN
-USR
-CARRY_CHAIN
-MANUAL
-PARAMETER_UNKNOWN
-USR
-OPTIMIZE_FOR_SPEED
-5
-PARAMETER_UNKNOWN
-USR
-AUTO_CARRY_CHAINS
-ON
-AUTO_CARRY
-USR
-IGNORE_CARRY_BUFFERS
-OFF
-IGNORE_CARRY
-USR
-AUTO_CASCADE_CHAINS
-ON
-AUTO_CASCADE
-USR
-IGNORE_CASCADE_BUFFERS
-OFF
-IGNORE_CASCADE
-USR
-}
-# used_port {
-quotient4
--1
-3
-quotient3
--1
-3
-quotient2
--1
-3
-quotient1
--1
-3
-quotient0
--1
-3
-denom4
--1
-3
-denom3
--1
-3
-denom2
--1
-3
-denom1
--1
-3
-denom0
--1
-3
-numer2
--1
-1
-numer1
--1
-1
-numer0
--1
-1
-numer4
--1
-2
-numer3
--1
-2
-}
-# macro_sequence
-
-# end
-# entity
-F20_EmulateADCII
-# storage
-db|AA2380-MAXV_TSTQ9.(12).cnf
-db|AA2380-MAXV_TSTQ9.(12).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f20_emulateadcii.vhd
-8f50456cec71b59a85e6475b1b46229
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-CONSTVAL
-# storage
-db|AA2380-MAXV_TSTQ9.(16).cnf
-db|AA2380-MAXV_TSTQ9.(16).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-constval.vhd
-5fc4533e21c87cf1d6f6dd78859757b0
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-lpm_constant
-# storage
-db|AA2380-MAXV_TSTQ9.(17).cnf
-db|AA2380-MAXV_TSTQ9.(17).cnf
-# case_insensitive
-# source_file
-|altera|quartus|libraries|megafunctions|lpm_constant.tdf
-20a173884457e9df4e4d620451461d
-7
-# user_parameter {
-LPM_WIDTH
-24
-PARAMETER_SIGNED_DEC
-USR
-LPM_CVALUE
-10264397
-PARAMETER_SIGNED_DEC
-USR
-ENABLE_RUNTIME_MOD
-NO
-PARAMETER_UNKNOWN
-USR
-CBXI_PARAMETER
-lpm_constant_rs6
-PARAMETER_UNKNOWN
-USR
-}
-# used_port {
-result9
--1
-3
-result8
--1
-3
-result7
--1
-3
-result6
--1
-3
-result5
--1
-3
-result4
--1
-3
-result3
--1
-3
-result23
--1
-3
-result22
--1
-3
-result21
--1
-3
-result20
--1
-3
-result2
--1
-3
-result19
--1
-3
-result18
--1
-3
-result17
--1
-3
-result16
--1
-3
-result15
--1
-3
-result14
--1
-3
-result13
--1
-3
-result12
--1
-3
-result11
--1
-3
-result10
--1
-3
-result1
--1
-3
-result0
--1
-3
-}
-# macro_sequence
-
-# end
-# entity
-F1_readADCmulti_ExtClk
-# storage
-db|AA2380-MAXV_TSTQ9.(14).cnf
-db|AA2380-MAXV_TSTQ9.(14).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f1_readadcmulti_extclk.vhd
-891d72e089523deaf776a8eccdc387d9
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-F20_EmulateADC
-# storage
-db|AA2380-MAXV_TSTQ9.(15).cnf
-db|AA2380-MAXV_TSTQ9.(15).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f20_emulateadc.vhd
-33f6973fcb5c94458a2919ecd4ac37ad
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
 TEST_Multimodes_ExtClockEnable
 # storage
 db|AA2380-MAXV_TSTQ9.(2).cnf
@@ -866,51 +523,7 @@ AUTO
 
 # end
 # entity
-F7_Ready
-# storage
-db|AA2380-MAXV_TSTQ9.(19).cnf
-db|AA2380-MAXV_TSTQ9.(19).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f7_ready.vhd
-915ab08330923f7ee878e75f2396054
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-clkval
-98304000
-PARAMETER_SIGNED_DEC
-USR
-fslow
-50
-PARAMETER_SIGNED_DEC
-USR
-delay
-100
-PARAMETER_SIGNED_DEC
-USR
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-F7_ReadyII
+PulseOnChange
 # storage
 db|AA2380-MAXV_TSTQ9.(1).cnf
 db|AA2380-MAXV_TSTQ9.(1).cnf
@@ -920,128 +533,8 @@ ON
 }
 # case_insensitive
 # source_file
-f7_readyii.vhd
-916e34bc336eeb6c45f29e4b6e0384f
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-F15_Par2I2S_2x4LanesII
-# storage
-db|AA2380-MAXV_TSTQ9.(21).cnf
-db|AA2380-MAXV_TSTQ9.(21).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f15_par2i2s_2x4lanesii.vhd
-5b9d22f9a6785865c34896f4efc5e26
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-F16_I2S2Par_2x4Lanes
-# storage
-db|AA2380-MAXV_TSTQ9.(22).cnf
-db|AA2380-MAXV_TSTQ9.(22).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f16_i2s2par_2x4lanes.vhd
-fec455a3c12e9797b9709ccafa934a9e
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-divider_by_64
-# storage
-db|AA2380-MAXV_TSTQ9.(20).cnf
-db|AA2380-MAXV_TSTQ9.(20).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-divider_by_64.vhd
-cc089c82e80b6aafdcaca34fc90ffda
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-F0_ctrl_encoder_E
-# storage
-db|AA2380-MAXV_TSTQ9.(23).cnf
-db|AA2380-MAXV_TSTQ9.(23).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f0_ctrl_encoder_e.vhd
-e93fb9869a217b5aae665e5bbbb03f8d
+pulseonchange.vhd
+de11de736a15c0ef365f3a1eacc05d4e
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -1054,11 +547,109 @@ AUTO_ROM_RECOGNITION
 ON
 }
 # hierarchies {
-|
+PulseOnChange:inst2
 }
 # lmf
-|altera|quartus|lmf|maxplus2.lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+spi_slave
+# storage
+db|AA2380-MAXV_TSTQ9.(12).cnf
+db|AA2380-MAXV_TSTQ9.(12).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+spi_slave.vhd
+f287179f851373edff1112e44ac12f2
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+data_length
+24
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+spi_slave:inst1
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+spi_master
+# storage
+db|AA2380-MAXV_TSTQ9.(14).cnf
+db|AA2380-MAXV_TSTQ9.(14).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+spi_master.vhd
+b1eb334bb93764553726bf0b7a8f224
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+data_length
+24
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+spi_master:inst
+}
+# lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+SPI_in_out_test
+# storage
+db|AA2380-MAXV_TSTQ9.(3).cnf
+db|AA2380-MAXV_TSTQ9.(3).cnf
+# case_insensitive
+# source_file
+spi_in_out_test.bdf
+e5b0ed547fd282f5edf25d19989a9e2
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
 # macro_sequence
 
 # end

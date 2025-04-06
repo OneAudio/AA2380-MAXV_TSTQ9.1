@@ -1,12 +1,8 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="AA2380-MAXV_TSTQ9">
-		<CBX_INST_ENTRY INSTANCE_NAME="|F0_ctrl_encoder_E|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_rhh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F0_ctrl_encoder_E|lpm_add_sub:Add2" CBX_FILE_NAME="add_sub_elh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F0_ctrl_encoder_E|lpm_add_sub:Add4" CBX_FILE_NAME="add_sub_elh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F0_ctrl_encoder_E|lpm_mux:Mux1" CBX_FILE_NAME="mux_n9c.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F0_ctrl_encoder_E|lpm_add_sub:Add1" CBX_FILE_NAME="add_sub_flh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F0_ctrl_encoder_E|lpm_add_sub:Add3" CBX_FILE_NAME="add_sub_flh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F0_ctrl_encoder_E|lpm_mux:Mux0" CBX_FILE_NAME="mux_n9c.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|SPI_in_out_test|spi_master:inst|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_elh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|SPI_in_out_test|spi_master:inst|lpm_add_sub:Add1" CBX_FILE_NAME="add_sub_hlh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|SPI_in_out_test|spi_master:inst|lpm_add_sub:Add2" CBX_FILE_NAME="add_sub_ilh.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
