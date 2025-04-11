@@ -1,5 +1,5 @@
 Classic Timing Analyzer report for AA2380-MAXV_TSTQ9
-Sun Apr 06 17:43:28 2025
+Fri Apr 11 14:49:13 2025
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -11,12 +11,9 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   3. Timing Analyzer Settings
   4. Clock Settings Summary
   5. Parallel Compilation
-  6. Clock Setup: 'clock'
-  7. Clock Hold: 'clock'
-  8. tsu
-  9. tco
- 10. th
- 11. Timing Analyzer Messages
+  6. Clock Setup: 'CLKIN'
+  7. tco
+  8. Timing Analyzer Messages
 
 
 
@@ -39,18 +36,15 @@ applicable agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Timing Analyzer Summary                                                                                                                                                                                                     ;
-+------------------------------+------------------------------------------+---------------+----------------------------------+---------------------------+-----------------------------+------------+----------+--------------+
-; Type                         ; Slack                                    ; Required Time ; Actual Time                      ; From                      ; To                          ; From Clock ; To Clock ; Failed Paths ;
-+------------------------------+------------------------------------------+---------------+----------------------------------+---------------------------+-----------------------------+------------+----------+--------------+
-; Worst-case tsu               ; N/A                                      ; None          ; 3.660 ns                         ; TX[15]                    ; PulseOnChange:inst2|pulse   ; --         ; clock    ; 0            ;
-; Worst-case tco               ; N/A                                      ; None          ; 10.617 ns                        ; spi_slave:inst1|miso~reg0 ; SPI_miso                    ; clock      ; --       ; 0            ;
-; Worst-case th                ; N/A                                      ; None          ; -0.747 ns                        ; TX[6]                     ; spi_master:inst|txBuffer[6] ; --         ; clock    ; 0            ;
-; Clock Setup: 'clock'         ; N/A                                      ; None          ; 66.50 MHz ( period = 15.038 ns ) ; spi_slave:inst1|miso~reg0 ; spi_master:inst|rxBuffer[0] ; clock      ; clock    ; 0            ;
-; Clock Hold: 'clock'          ; Not operational: Clock Skew > Data Delay ; None          ; N/A                              ; spi_master:inst|mosi~en   ; spi_slave:inst1|rxBuffer[0] ; clock      ; clock    ; 15           ;
-; Total number of failed paths ;                                          ;               ;                                  ;                           ;                             ;            ;          ; 15           ;
-+------------------------------+------------------------------------------+---------------+----------------------------------+---------------------------+-----------------------------+------------+----------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                   ;
++------------------------------+-------+---------------+----------------------------------+------------+-------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From       ; To          ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+------------+-------------+------------+----------+--------------+
+; Worst-case tco               ; N/A   ; None          ; 8.351 ns                         ; READY~reg0 ; READY       ; CLKIN      ; --       ; 0            ;
+; Clock Setup: 'CLKIN'         ; N/A   ; None          ; 174.49 MHz ( period = 5.731 ns ) ; slowcnt[3] ; slowcnt[13] ; CLKIN      ; CLKIN    ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;            ;             ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+------------+-------------+------------+----------+--------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -92,8 +86,7 @@ applicable agreement for further details.
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
 ; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
-; clock           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
-; RXenable        ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; CLKIN           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
 +-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
 
 
@@ -108,611 +101,223 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clock Setup: 'clock'                                                                                                                                                                                                                                                        ;
-+-----------------------------------------+-----------------------------------------------------+--------------------------------+--------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
-; Slack                                   ; Actual fmax (period)                                ; From                           ; To                             ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
-+-----------------------------------------+-----------------------------------------------------+--------------------------------+--------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
-; N/A                                     ; 66.50 MHz ( period = 15.038 ns )                    ; spi_slave:inst1|miso~reg0      ; spi_master:inst|rxBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 1.103 ns                ;
-; N/A                                     ; 68.08 MHz ( period = 14.688 ns )                    ; spi_slave:inst1|miso~en        ; spi_master:inst|rxBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 0.928 ns                ;
-; N/A                                     ; 132.98 MHz ( period = 7.520 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|clk_toggles[0] ; clock      ; clock    ; None                        ; None                      ; 3.317 ns                ;
-; N/A                                     ; 132.98 MHz ( period = 7.520 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|clk_toggles[1] ; clock      ; clock    ; None                        ; None                      ; 3.317 ns                ;
-; N/A                                     ; 132.98 MHz ( period = 7.520 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|clk_toggles[3] ; clock      ; clock    ; None                        ; None                      ; 3.317 ns                ;
-; N/A                                     ; 132.98 MHz ( period = 7.520 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|clk_toggles[2] ; clock      ; clock    ; None                        ; None                      ; 3.317 ns                ;
-; N/A                                     ; 132.98 MHz ( period = 7.520 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|clk_toggles[4] ; clock      ; clock    ; None                        ; None                      ; 3.317 ns                ;
-; N/A                                     ; 132.98 MHz ( period = 7.520 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|clk_toggles[5] ; clock      ; clock    ; None                        ; None                      ; 3.317 ns                ;
-; N/A                                     ; 133.08 MHz ( period = 7.514 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|last_bit[5]    ; clock      ; clock    ; None                        ; None                      ; 3.314 ns                ;
-; N/A                                     ; 133.08 MHz ( period = 7.514 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|last_bit[3]    ; clock      ; clock    ; None                        ; None                      ; 3.314 ns                ;
-; N/A                                     ; 133.08 MHz ( period = 7.514 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|last_bit[4]    ; clock      ; clock    ; None                        ; None                      ; 3.314 ns                ;
-; N/A                                     ; 145.10 MHz ( period = 6.892 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[11]   ; clock      ; clock    ; None                        ; None                      ; 3.003 ns                ;
-; N/A                                     ; 145.10 MHz ( period = 6.892 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[10]   ; clock      ; clock    ; None                        ; None                      ; 3.003 ns                ;
-; N/A                                     ; 145.10 MHz ( period = 6.892 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[9]    ; clock      ; clock    ; None                        ; None                      ; 3.003 ns                ;
-; N/A                                     ; 145.10 MHz ( period = 6.892 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[8]    ; clock      ; clock    ; None                        ; None                      ; 3.003 ns                ;
-; N/A                                     ; 145.10 MHz ( period = 6.892 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[7]    ; clock      ; clock    ; None                        ; None                      ; 3.003 ns                ;
-; N/A                                     ; 145.82 MHz ( period = 6.858 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[23]   ; clock      ; clock    ; None                        ; None                      ; 2.986 ns                ;
-; N/A                                     ; 145.82 MHz ( period = 6.858 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[22]   ; clock      ; clock    ; None                        ; None                      ; 2.986 ns                ;
-; N/A                                     ; 145.82 MHz ( period = 6.858 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[21]   ; clock      ; clock    ; None                        ; None                      ; 2.986 ns                ;
-; N/A                                     ; 145.82 MHz ( period = 6.858 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[13]   ; clock      ; clock    ; None                        ; None                      ; 2.986 ns                ;
-; N/A                                     ; 145.82 MHz ( period = 6.858 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[12]   ; clock      ; clock    ; None                        ; None                      ; 2.986 ns                ;
-; N/A                                     ; 146.07 MHz ( period = 6.846 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[6]    ; clock      ; clock    ; None                        ; None                      ; 2.980 ns                ;
-; N/A                                     ; 146.07 MHz ( period = 6.846 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 2.980 ns                ;
-; N/A                                     ; 146.07 MHz ( period = 6.846 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 2.980 ns                ;
-; N/A                                     ; 146.07 MHz ( period = 6.846 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 2.980 ns                ;
-; N/A                                     ; 146.07 MHz ( period = 6.846 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 2.980 ns                ;
-; N/A                                     ; 146.07 MHz ( period = 6.846 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 2.980 ns                ;
-; N/A                                     ; 147.19 MHz ( period = 6.794 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[11]   ; clock      ; clock    ; None                        ; None                      ; 6.351 ns                ;
-; N/A                                     ; 147.19 MHz ( period = 6.794 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[10]   ; clock      ; clock    ; None                        ; None                      ; 6.351 ns                ;
-; N/A                                     ; 147.19 MHz ( period = 6.794 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[9]    ; clock      ; clock    ; None                        ; None                      ; 6.351 ns                ;
-; N/A                                     ; 147.19 MHz ( period = 6.794 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[8]    ; clock      ; clock    ; None                        ; None                      ; 6.351 ns                ;
-; N/A                                     ; 147.19 MHz ( period = 6.794 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[7]    ; clock      ; clock    ; None                        ; None                      ; 6.351 ns                ;
-; N/A                                     ; 147.56 MHz ( period = 6.777 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[23]   ; clock      ; clock    ; None                        ; None                      ; 6.334 ns                ;
-; N/A                                     ; 147.56 MHz ( period = 6.777 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[22]   ; clock      ; clock    ; None                        ; None                      ; 6.334 ns                ;
-; N/A                                     ; 147.56 MHz ( period = 6.777 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[21]   ; clock      ; clock    ; None                        ; None                      ; 6.334 ns                ;
-; N/A                                     ; 147.56 MHz ( period = 6.777 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[13]   ; clock      ; clock    ; None                        ; None                      ; 6.334 ns                ;
-; N/A                                     ; 147.56 MHz ( period = 6.777 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[12]   ; clock      ; clock    ; None                        ; None                      ; 6.334 ns                ;
-; N/A                                     ; 147.69 MHz ( period = 6.771 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[6]    ; clock      ; clock    ; None                        ; None                      ; 6.328 ns                ;
-; N/A                                     ; 147.69 MHz ( period = 6.771 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 6.328 ns                ;
-; N/A                                     ; 147.69 MHz ( period = 6.771 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 6.328 ns                ;
-; N/A                                     ; 147.69 MHz ( period = 6.771 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 6.328 ns                ;
-; N/A                                     ; 147.69 MHz ( period = 6.771 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 6.328 ns                ;
-; N/A                                     ; 147.69 MHz ( period = 6.771 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 6.328 ns                ;
-; N/A                                     ; 149.90 MHz ( period = 6.671 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[11]   ; clock      ; clock    ; None                        ; None                      ; 6.228 ns                ;
-; N/A                                     ; 149.90 MHz ( period = 6.671 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[10]   ; clock      ; clock    ; None                        ; None                      ; 6.228 ns                ;
-; N/A                                     ; 149.90 MHz ( period = 6.671 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[9]    ; clock      ; clock    ; None                        ; None                      ; 6.228 ns                ;
-; N/A                                     ; 149.90 MHz ( period = 6.671 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[8]    ; clock      ; clock    ; None                        ; None                      ; 6.228 ns                ;
-; N/A                                     ; 149.90 MHz ( period = 6.671 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[7]    ; clock      ; clock    ; None                        ; None                      ; 6.228 ns                ;
-; N/A                                     ; 150.29 MHz ( period = 6.654 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[23]   ; clock      ; clock    ; None                        ; None                      ; 6.211 ns                ;
-; N/A                                     ; 150.29 MHz ( period = 6.654 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[22]   ; clock      ; clock    ; None                        ; None                      ; 6.211 ns                ;
-; N/A                                     ; 150.29 MHz ( period = 6.654 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[21]   ; clock      ; clock    ; None                        ; None                      ; 6.211 ns                ;
-; N/A                                     ; 150.29 MHz ( period = 6.654 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[13]   ; clock      ; clock    ; None                        ; None                      ; 6.211 ns                ;
-; N/A                                     ; 150.29 MHz ( period = 6.654 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[12]   ; clock      ; clock    ; None                        ; None                      ; 6.211 ns                ;
-; N/A                                     ; 150.42 MHz ( period = 6.648 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[6]    ; clock      ; clock    ; None                        ; None                      ; 6.205 ns                ;
-; N/A                                     ; 150.42 MHz ( period = 6.648 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 6.205 ns                ;
-; N/A                                     ; 150.42 MHz ( period = 6.648 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 6.205 ns                ;
-; N/A                                     ; 150.42 MHz ( period = 6.648 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 6.205 ns                ;
-; N/A                                     ; 150.42 MHz ( period = 6.648 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 6.205 ns                ;
-; N/A                                     ; 150.42 MHz ( period = 6.648 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 6.205 ns                ;
-; N/A                                     ; 152.05 MHz ( period = 6.577 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[11]   ; clock      ; clock    ; None                        ; None                      ; 6.134 ns                ;
-; N/A                                     ; 152.05 MHz ( period = 6.577 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[10]   ; clock      ; clock    ; None                        ; None                      ; 6.134 ns                ;
-; N/A                                     ; 152.05 MHz ( period = 6.577 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[9]    ; clock      ; clock    ; None                        ; None                      ; 6.134 ns                ;
-; N/A                                     ; 152.05 MHz ( period = 6.577 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[8]    ; clock      ; clock    ; None                        ; None                      ; 6.134 ns                ;
-; N/A                                     ; 152.05 MHz ( period = 6.577 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[7]    ; clock      ; clock    ; None                        ; None                      ; 6.134 ns                ;
-; N/A                                     ; 152.44 MHz ( period = 6.560 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[23]   ; clock      ; clock    ; None                        ; None                      ; 6.117 ns                ;
-; N/A                                     ; 152.44 MHz ( period = 6.560 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[22]   ; clock      ; clock    ; None                        ; None                      ; 6.117 ns                ;
-; N/A                                     ; 152.44 MHz ( period = 6.560 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[21]   ; clock      ; clock    ; None                        ; None                      ; 6.117 ns                ;
-; N/A                                     ; 152.44 MHz ( period = 6.560 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[13]   ; clock      ; clock    ; None                        ; None                      ; 6.117 ns                ;
-; N/A                                     ; 152.44 MHz ( period = 6.560 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[12]   ; clock      ; clock    ; None                        ; None                      ; 6.117 ns                ;
-; N/A                                     ; 152.58 MHz ( period = 6.554 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[6]    ; clock      ; clock    ; None                        ; None                      ; 6.111 ns                ;
-; N/A                                     ; 152.58 MHz ( period = 6.554 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 6.111 ns                ;
-; N/A                                     ; 152.58 MHz ( period = 6.554 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 6.111 ns                ;
-; N/A                                     ; 152.58 MHz ( period = 6.554 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 6.111 ns                ;
-; N/A                                     ; 152.58 MHz ( period = 6.554 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 6.111 ns                ;
-; N/A                                     ; 152.58 MHz ( period = 6.554 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 6.111 ns                ;
-; N/A                                     ; 153.66 MHz ( period = 6.508 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|busy           ; clock      ; clock    ; None                        ; None                      ; 2.811 ns                ;
-; N/A                                     ; 154.97 MHz ( period = 6.453 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 6.010 ns                ;
-; N/A                                     ; 157.80 MHz ( period = 6.337 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[11]   ; clock      ; clock    ; None                        ; None                      ; 5.894 ns                ;
-; N/A                                     ; 157.80 MHz ( period = 6.337 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[10]   ; clock      ; clock    ; None                        ; None                      ; 5.894 ns                ;
-; N/A                                     ; 157.80 MHz ( period = 6.337 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[9]    ; clock      ; clock    ; None                        ; None                      ; 5.894 ns                ;
-; N/A                                     ; 157.80 MHz ( period = 6.337 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[8]    ; clock      ; clock    ; None                        ; None                      ; 5.894 ns                ;
-; N/A                                     ; 157.80 MHz ( period = 6.337 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[7]    ; clock      ; clock    ; None                        ; None                      ; 5.894 ns                ;
-; N/A                                     ; 157.98 MHz ( period = 6.330 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 5.887 ns                ;
-; N/A                                     ; 158.23 MHz ( period = 6.320 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[23]   ; clock      ; clock    ; None                        ; None                      ; 5.877 ns                ;
-; N/A                                     ; 158.23 MHz ( period = 6.320 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[22]   ; clock      ; clock    ; None                        ; None                      ; 5.877 ns                ;
-; N/A                                     ; 158.23 MHz ( period = 6.320 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[21]   ; clock      ; clock    ; None                        ; None                      ; 5.877 ns                ;
-; N/A                                     ; 158.23 MHz ( period = 6.320 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[13]   ; clock      ; clock    ; None                        ; None                      ; 5.877 ns                ;
-; N/A                                     ; 158.23 MHz ( period = 6.320 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[12]   ; clock      ; clock    ; None                        ; None                      ; 5.877 ns                ;
-; N/A                                     ; 158.35 MHz ( period = 6.315 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[20]   ; clock      ; clock    ; None                        ; None                      ; 5.872 ns                ;
-; N/A                                     ; 158.35 MHz ( period = 6.315 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[19]   ; clock      ; clock    ; None                        ; None                      ; 5.872 ns                ;
-; N/A                                     ; 158.35 MHz ( period = 6.315 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[18]   ; clock      ; clock    ; None                        ; None                      ; 5.872 ns                ;
-; N/A                                     ; 158.35 MHz ( period = 6.315 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[17]   ; clock      ; clock    ; None                        ; None                      ; 5.872 ns                ;
-; N/A                                     ; 158.35 MHz ( period = 6.315 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[16]   ; clock      ; clock    ; None                        ; None                      ; 5.872 ns                ;
-; N/A                                     ; 158.38 MHz ( period = 6.314 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[6]    ; clock      ; clock    ; None                        ; None                      ; 5.871 ns                ;
-; N/A                                     ; 158.38 MHz ( period = 6.314 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 5.871 ns                ;
-; N/A                                     ; 158.38 MHz ( period = 6.314 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 5.871 ns                ;
-; N/A                                     ; 158.38 MHz ( period = 6.314 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 5.871 ns                ;
-; N/A                                     ; 158.38 MHz ( period = 6.314 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 5.871 ns                ;
-; N/A                                     ; 158.38 MHz ( period = 6.314 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 5.871 ns                ;
-; N/A                                     ; 160.00 MHz ( period = 6.250 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[4]          ; clock      ; clock    ; None                        ; None                      ; 5.807 ns                ;
-; N/A                                     ; 160.00 MHz ( period = 6.250 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[3]          ; clock      ; clock    ; None                        ; None                      ; 5.807 ns                ;
-; N/A                                     ; 160.00 MHz ( period = 6.250 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[2]          ; clock      ; clock    ; None                        ; None                      ; 5.807 ns                ;
-; N/A                                     ; 160.00 MHz ( period = 6.250 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[1]          ; clock      ; clock    ; None                        ; None                      ; 5.807 ns                ;
-; N/A                                     ; 160.00 MHz ( period = 6.250 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[0]          ; clock      ; clock    ; None                        ; None                      ; 5.807 ns                ;
-; N/A                                     ; 160.36 MHz ( period = 6.236 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 5.793 ns                ;
-; N/A                                     ; 161.03 MHz ( period = 6.210 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 2.662 ns                ;
-; N/A                                     ; 161.50 MHz ( period = 6.192 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[20]   ; clock      ; clock    ; None                        ; None                      ; 5.749 ns                ;
-; N/A                                     ; 161.50 MHz ( period = 6.192 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[19]   ; clock      ; clock    ; None                        ; None                      ; 5.749 ns                ;
-; N/A                                     ; 161.50 MHz ( period = 6.192 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[18]   ; clock      ; clock    ; None                        ; None                      ; 5.749 ns                ;
-; N/A                                     ; 161.50 MHz ( period = 6.192 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[17]   ; clock      ; clock    ; None                        ; None                      ; 5.749 ns                ;
-; N/A                                     ; 161.50 MHz ( period = 6.192 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[16]   ; clock      ; clock    ; None                        ; None                      ; 5.749 ns                ;
-; N/A                                     ; 161.58 MHz ( period = 6.189 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[11]   ; clock      ; clock    ; None                        ; None                      ; 5.746 ns                ;
-; N/A                                     ; 161.58 MHz ( period = 6.189 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[10]   ; clock      ; clock    ; None                        ; None                      ; 5.746 ns                ;
-; N/A                                     ; 161.58 MHz ( period = 6.189 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[9]    ; clock      ; clock    ; None                        ; None                      ; 5.746 ns                ;
-; N/A                                     ; 161.58 MHz ( period = 6.189 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[8]    ; clock      ; clock    ; None                        ; None                      ; 5.746 ns                ;
-; N/A                                     ; 161.58 MHz ( period = 6.189 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[7]    ; clock      ; clock    ; None                        ; None                      ; 5.746 ns                ;
-; N/A                                     ; 162.02 MHz ( period = 6.172 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[23]   ; clock      ; clock    ; None                        ; None                      ; 5.729 ns                ;
-; N/A                                     ; 162.02 MHz ( period = 6.172 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[22]   ; clock      ; clock    ; None                        ; None                      ; 5.729 ns                ;
-; N/A                                     ; 162.02 MHz ( period = 6.172 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[21]   ; clock      ; clock    ; None                        ; None                      ; 5.729 ns                ;
-; N/A                                     ; 162.02 MHz ( period = 6.172 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[13]   ; clock      ; clock    ; None                        ; None                      ; 5.729 ns                ;
-; N/A                                     ; 162.02 MHz ( period = 6.172 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[12]   ; clock      ; clock    ; None                        ; None                      ; 5.729 ns                ;
-; N/A                                     ; 162.18 MHz ( period = 6.166 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[6]    ; clock      ; clock    ; None                        ; None                      ; 5.723 ns                ;
-; N/A                                     ; 162.18 MHz ( period = 6.166 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 5.723 ns                ;
-; N/A                                     ; 162.18 MHz ( period = 6.166 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 5.723 ns                ;
-; N/A                                     ; 162.18 MHz ( period = 6.166 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 5.723 ns                ;
-; N/A                                     ; 162.18 MHz ( period = 6.166 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 5.723 ns                ;
-; N/A                                     ; 162.18 MHz ( period = 6.166 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 5.723 ns                ;
-; N/A                                     ; 163.00 MHz ( period = 6.135 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|mosi~reg0      ; clock      ; clock    ; None                        ; None                      ; 5.692 ns                ;
-; N/A                                     ; 163.00 MHz ( period = 6.135 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|mosi~en        ; clock      ; clock    ; None                        ; None                      ; 5.692 ns                ;
-; N/A                                     ; 163.88 MHz ( period = 6.102 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[11]   ; clock      ; clock    ; None                        ; None                      ; 5.659 ns                ;
-; N/A                                     ; 163.88 MHz ( period = 6.102 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[10]   ; clock      ; clock    ; None                        ; None                      ; 5.659 ns                ;
-; N/A                                     ; 163.88 MHz ( period = 6.102 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[9]    ; clock      ; clock    ; None                        ; None                      ; 5.659 ns                ;
-; N/A                                     ; 163.88 MHz ( period = 6.102 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[8]    ; clock      ; clock    ; None                        ; None                      ; 5.659 ns                ;
-; N/A                                     ; 163.88 MHz ( period = 6.102 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[7]    ; clock      ; clock    ; None                        ; None                      ; 5.659 ns                ;
-; N/A                                     ; 163.99 MHz ( period = 6.098 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[20]   ; clock      ; clock    ; None                        ; None                      ; 5.655 ns                ;
-; N/A                                     ; 163.99 MHz ( period = 6.098 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[19]   ; clock      ; clock    ; None                        ; None                      ; 5.655 ns                ;
-; N/A                                     ; 163.99 MHz ( period = 6.098 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[18]   ; clock      ; clock    ; None                        ; None                      ; 5.655 ns                ;
-; N/A                                     ; 163.99 MHz ( period = 6.098 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[17]   ; clock      ; clock    ; None                        ; None                      ; 5.655 ns                ;
-; N/A                                     ; 163.99 MHz ( period = 6.098 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[16]   ; clock      ; clock    ; None                        ; None                      ; 5.655 ns                ;
-; N/A                                     ; 164.26 MHz ( period = 6.088 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|busy           ; clock      ; clock    ; None                        ; None                      ; 5.645 ns                ;
-; N/A                                     ; 164.34 MHz ( period = 6.085 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[23]   ; clock      ; clock    ; None                        ; None                      ; 5.642 ns                ;
-; N/A                                     ; 164.34 MHz ( period = 6.085 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[22]   ; clock      ; clock    ; None                        ; None                      ; 5.642 ns                ;
-; N/A                                     ; 164.34 MHz ( period = 6.085 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[21]   ; clock      ; clock    ; None                        ; None                      ; 5.642 ns                ;
-; N/A                                     ; 164.34 MHz ( period = 6.085 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[13]   ; clock      ; clock    ; None                        ; None                      ; 5.642 ns                ;
-; N/A                                     ; 164.34 MHz ( period = 6.085 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[12]   ; clock      ; clock    ; None                        ; None                      ; 5.642 ns                ;
-; N/A                                     ; 164.50 MHz ( period = 6.079 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[6]    ; clock      ; clock    ; None                        ; None                      ; 5.636 ns                ;
-; N/A                                     ; 164.50 MHz ( period = 6.079 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 5.636 ns                ;
-; N/A                                     ; 164.50 MHz ( period = 6.079 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 5.636 ns                ;
-; N/A                                     ; 164.50 MHz ( period = 6.079 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 5.636 ns                ;
-; N/A                                     ; 164.50 MHz ( period = 6.079 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 5.636 ns                ;
-; N/A                                     ; 164.50 MHz ( period = 6.079 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|txBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 5.636 ns                ;
-; N/A                                     ; 164.80 MHz ( period = 6.068 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|rx[4]          ; clock      ; clock    ; None                        ; None                      ; 5.625 ns                ;
-; N/A                                     ; 164.80 MHz ( period = 6.068 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|rx[3]          ; clock      ; clock    ; None                        ; None                      ; 5.625 ns                ;
-; N/A                                     ; 164.80 MHz ( period = 6.068 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|rx[2]          ; clock      ; clock    ; None                        ; None                      ; 5.625 ns                ;
-; N/A                                     ; 164.80 MHz ( period = 6.068 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|rx[1]          ; clock      ; clock    ; None                        ; None                      ; 5.625 ns                ;
-; N/A                                     ; 164.80 MHz ( period = 6.068 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|rx[0]          ; clock      ; clock    ; None                        ; None                      ; 5.625 ns                ;
-; N/A                                     ; 165.54 MHz ( period = 6.041 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[15]   ; clock      ; clock    ; None                        ; None                      ; 5.598 ns                ;
-; N/A                                     ; 165.54 MHz ( period = 6.041 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|txBuffer[14]   ; clock      ; clock    ; None                        ; None                      ; 5.598 ns                ;
-; N/A                                     ; 166.78 MHz ( period = 5.996 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 5.553 ns                ;
-; N/A                                     ; 167.00 MHz ( period = 5.988 ns )                    ; spi_master:inst|clk_toggles[5] ; spi_master:inst|INT_sclk       ; clock      ; clock    ; None                        ; None                      ; 5.545 ns                ;
-; N/A                                     ; 167.50 MHz ( period = 5.970 ns )                    ; spi_master:inst|clk_toggles[4] ; spi_master:inst|INT_sclk       ; clock      ; clock    ; None                        ; None                      ; 5.527 ns                ;
-; N/A                                     ; 167.98 MHz ( period = 5.953 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|mosi~reg0      ; clock      ; clock    ; None                        ; None                      ; 5.510 ns                ;
-; N/A                                     ; 167.98 MHz ( period = 5.953 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|mosi~en        ; clock      ; clock    ; None                        ; None                      ; 5.510 ns                ;
-; N/A                                     ; 168.27 MHz ( period = 5.943 ns )                    ; spi_master:inst|state          ; spi_master:inst|rx[4]          ; clock      ; clock    ; None                        ; None                      ; 5.500 ns                ;
-; N/A                                     ; 168.27 MHz ( period = 5.943 ns )                    ; spi_master:inst|state          ; spi_master:inst|rx[3]          ; clock      ; clock    ; None                        ; None                      ; 5.500 ns                ;
-; N/A                                     ; 168.27 MHz ( period = 5.943 ns )                    ; spi_master:inst|state          ; spi_master:inst|rx[2]          ; clock      ; clock    ; None                        ; None                      ; 5.500 ns                ;
-; N/A                                     ; 168.27 MHz ( period = 5.943 ns )                    ; spi_master:inst|state          ; spi_master:inst|rx[1]          ; clock      ; clock    ; None                        ; None                      ; 5.500 ns                ;
-; N/A                                     ; 168.27 MHz ( period = 5.943 ns )                    ; spi_master:inst|state          ; spi_master:inst|rx[0]          ; clock      ; clock    ; None                        ; None                      ; 5.500 ns                ;
-; N/A                                     ; 168.52 MHz ( period = 5.934 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[20]   ; clock      ; clock    ; None                        ; None                      ; 2.524 ns                ;
-; N/A                                     ; 168.52 MHz ( period = 5.934 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[19]   ; clock      ; clock    ; None                        ; None                      ; 2.524 ns                ;
-; N/A                                     ; 168.52 MHz ( period = 5.934 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[18]   ; clock      ; clock    ; None                        ; None                      ; 2.524 ns                ;
-; N/A                                     ; 168.52 MHz ( period = 5.934 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[17]   ; clock      ; clock    ; None                        ; None                      ; 2.524 ns                ;
-; N/A                                     ; 168.52 MHz ( period = 5.934 ns )                    ; PulseOnChange:inst2|pulse      ; spi_master:inst|txBuffer[16]   ; clock      ; clock    ; None                        ; None                      ; 2.524 ns                ;
-; N/A                                     ; 168.98 MHz ( period = 5.918 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[15]   ; clock      ; clock    ; None                        ; None                      ; 5.475 ns                ;
-; N/A                                     ; 168.98 MHz ( period = 5.918 ns )                    ; spi_master:inst|clk_toggles[0] ; spi_master:inst|txBuffer[14]   ; clock      ; clock    ; None                        ; None                      ; 5.475 ns                ;
-; N/A                                     ; 169.32 MHz ( period = 5.906 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|busy           ; clock      ; clock    ; None                        ; None                      ; 5.463 ns                ;
-; N/A                                     ; 170.07 MHz ( period = 5.880 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rxBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 5.437 ns                ;
-; N/A                                     ; 170.13 MHz ( period = 5.878 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rxBuffer[5]    ; clock      ; clock    ; None                        ; None                      ; 5.435 ns                ;
-; N/A                                     ; 170.13 MHz ( period = 5.878 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rxBuffer[4]    ; clock      ; clock    ; None                        ; None                      ; 5.435 ns                ;
-; N/A                                     ; 170.13 MHz ( period = 5.878 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rxBuffer[3]    ; clock      ; clock    ; None                        ; None                      ; 5.435 ns                ;
-; N/A                                     ; 170.13 MHz ( period = 5.878 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rxBuffer[2]    ; clock      ; clock    ; None                        ; None                      ; 5.435 ns                ;
-; N/A                                     ; 170.13 MHz ( period = 5.878 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rxBuffer[1]    ; clock      ; clock    ; None                        ; None                      ; 5.435 ns                ;
-; N/A                                     ; 170.71 MHz ( period = 5.858 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[20]   ; clock      ; clock    ; None                        ; None                      ; 5.415 ns                ;
-; N/A                                     ; 170.71 MHz ( period = 5.858 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[19]   ; clock      ; clock    ; None                        ; None                      ; 5.415 ns                ;
-; N/A                                     ; 170.71 MHz ( period = 5.858 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[18]   ; clock      ; clock    ; None                        ; None                      ; 5.415 ns                ;
-; N/A                                     ; 170.71 MHz ( period = 5.858 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[17]   ; clock      ; clock    ; None                        ; None                      ; 5.415 ns                ;
-; N/A                                     ; 170.71 MHz ( period = 5.858 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|txBuffer[16]   ; clock      ; clock    ; None                        ; None                      ; 5.415 ns                ;
-; N/A                                     ; 170.77 MHz ( period = 5.856 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|mosi~reg0      ; clock      ; clock    ; None                        ; None                      ; 5.413 ns                ;
-; N/A                                     ; 170.77 MHz ( period = 5.856 ns )                    ; spi_master:inst|clk_toggles[3] ; spi_master:inst|mosi~en        ; clock      ; clock    ; None                        ; None                      ; 5.413 ns                ;
-; N/A                                     ; 171.00 MHz ( period = 5.848 ns )                    ; spi_master:inst|last_bit[3]    ; spi_master:inst|txBuffer[0]    ; clock      ; clock    ; None                        ; None                      ; 5.405 ns                ;
-; N/A                                     ; 171.70 MHz ( period = 5.824 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[15]   ; clock      ; clock    ; None                        ; None                      ; 5.381 ns                ;
-; N/A                                     ; 171.70 MHz ( period = 5.824 ns )                    ; spi_master:inst|clk_toggles[2] ; spi_master:inst|txBuffer[14]   ; clock      ; clock    ; None                        ; None                      ; 5.381 ns                ;
-; N/A                                     ; 171.85 MHz ( period = 5.819 ns )                    ; spi_master:inst|state          ; spi_master:inst|mosi~reg0      ; clock      ; clock    ; None                        ; None                      ; 5.376 ns                ;
-; N/A                                     ; 171.85 MHz ( period = 5.819 ns )                    ; spi_master:inst|state          ; spi_master:inst|mosi~en        ; clock      ; clock    ; None                        ; None                      ; 5.376 ns                ;
-; N/A                                     ; 173.04 MHz ( period = 5.779 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[14]         ; clock      ; clock    ; None                        ; None                      ; 5.336 ns                ;
-; N/A                                     ; 173.04 MHz ( period = 5.779 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[13]         ; clock      ; clock    ; None                        ; None                      ; 5.336 ns                ;
-; N/A                                     ; 173.04 MHz ( period = 5.779 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[12]         ; clock      ; clock    ; None                        ; None                      ; 5.336 ns                ;
-; N/A                                     ; 173.04 MHz ( period = 5.779 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[11]         ; clock      ; clock    ; None                        ; None                      ; 5.336 ns                ;
-; N/A                                     ; 173.04 MHz ( period = 5.779 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[10]         ; clock      ; clock    ; None                        ; None                      ; 5.336 ns                ;
-; N/A                                     ; 173.10 MHz ( period = 5.777 ns )                    ; spi_master:inst|clk_toggles[1] ; spi_master:inst|rx[6]          ; clock      ; clock    ; None                        ; None                      ; 5.334 ns                ;
-; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                ;                                ;            ;          ;                             ;                           ;                         ;
-+-----------------------------------------+-----------------------------------------------------+--------------------------------+--------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'CLKIN'                                                                                                                                                                                                                   ;
++-----------------------------------------+-----------------------------------------------------+-------------+--------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From        ; To           ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+-------------+--------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 174.49 MHz ( period = 5.731 ns )                    ; slowcnt[3]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.288 ns                ;
+; N/A                                     ; 177.09 MHz ( period = 5.647 ns )                    ; slowcnt[14] ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.204 ns                ;
+; N/A                                     ; 178.16 MHz ( period = 5.613 ns )                    ; slowcnt[13] ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.170 ns                ;
+; N/A                                     ; 178.51 MHz ( period = 5.602 ns )                    ; slowcnt[0]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.159 ns                ;
+; N/A                                     ; 179.63 MHz ( period = 5.567 ns )                    ; slowcnt[6]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.124 ns                ;
+; N/A                                     ; 180.54 MHz ( period = 5.539 ns )                    ; slowcnt[6]  ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.096 ns                ;
+; N/A                                     ; 181.65 MHz ( period = 5.505 ns )                    ; slowcnt[1]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.062 ns                ;
+; N/A                                     ; 182.48 MHz ( period = 5.480 ns )                    ; slowcnt[3]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.037 ns                ;
+; N/A                                     ; 183.49 MHz ( period = 5.450 ns )                    ; slowcnt[2]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.007 ns                ;
+; N/A                                     ; 183.72 MHz ( period = 5.443 ns )                    ; slowcnt[5]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 5.000 ns                ;
+; N/A                                     ; 184.13 MHz ( period = 5.431 ns )                    ; slowcnt[8]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.988 ns                ;
+; N/A                                     ; 184.43 MHz ( period = 5.422 ns )                    ; slowcnt[0]  ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.979 ns                ;
+; N/A                                     ; 185.05 MHz ( period = 5.404 ns )                    ; slowcnt[7]  ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.961 ns                ;
+; N/A                                     ; 185.53 MHz ( period = 5.390 ns )                    ; slowcnt[3]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.947 ns                ;
+; N/A                                     ; 186.78 MHz ( period = 5.354 ns )                    ; slowcnt[3]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.911 ns                ;
+; N/A                                     ; 186.88 MHz ( period = 5.351 ns )                    ; slowcnt[0]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.908 ns                ;
+; N/A                                     ; 188.04 MHz ( period = 5.318 ns )                    ; slowcnt[3]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.875 ns                ;
+; N/A                                     ; 188.11 MHz ( period = 5.316 ns )                    ; slowcnt[6]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.873 ns                ;
+; N/A                                     ; 188.39 MHz ( period = 5.308 ns )                    ; slowcnt[4]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.865 ns                ;
+; N/A                                     ; 188.96 MHz ( period = 5.292 ns )                    ; slowcnt[14] ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.849 ns                ;
+; N/A                                     ; 188.96 MHz ( period = 5.292 ns )                    ; slowcnt[14] ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.849 ns                ;
+; N/A                                     ; 189.11 MHz ( period = 5.288 ns )                    ; slowcnt[7]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.845 ns                ;
+; N/A                                     ; 189.18 MHz ( period = 5.286 ns )                    ; slowcnt[9]  ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.843 ns                ;
+; N/A                                     ; 189.21 MHz ( period = 5.285 ns )                    ; slowcnt[14] ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.842 ns                ;
+; N/A                                     ; 189.25 MHz ( period = 5.284 ns )                    ; slowcnt[14] ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.841 ns                ;
+; N/A                                     ; 189.29 MHz ( period = 5.283 ns )                    ; slowcnt[14] ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.840 ns                ;
+; N/A                                     ; 190.08 MHz ( period = 5.261 ns )                    ; slowcnt[0]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.818 ns                ;
+; N/A                                     ; 190.19 MHz ( period = 5.258 ns )                    ; slowcnt[13] ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.815 ns                ;
+; N/A                                     ; 190.19 MHz ( period = 5.258 ns )                    ; slowcnt[13] ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.815 ns                ;
+; N/A                                     ; 190.33 MHz ( period = 5.254 ns )                    ; slowcnt[1]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.811 ns                ;
+; N/A                                     ; 190.44 MHz ( period = 5.251 ns )                    ; slowcnt[13] ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.808 ns                ;
+; N/A                                     ; 190.48 MHz ( period = 5.250 ns )                    ; slowcnt[13] ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.807 ns                ;
+; N/A                                     ; 190.51 MHz ( period = 5.249 ns )                    ; slowcnt[13] ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.806 ns                ;
+; N/A                                     ; 190.62 MHz ( period = 5.246 ns )                    ; slowcnt[3]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.803 ns                ;
+; N/A                                     ; 191.35 MHz ( period = 5.226 ns )                    ; slowcnt[6]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.783 ns                ;
+; N/A                                     ; 191.39 MHz ( period = 5.225 ns )                    ; slowcnt[0]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.782 ns                ;
+; N/A                                     ; 192.05 MHz ( period = 5.207 ns )                    ; slowcnt[15] ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.764 ns                ;
+; N/A                                     ; 192.09 MHz ( period = 5.206 ns )                    ; slowcnt[13] ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.763 ns                ;
+; N/A                                     ; 192.23 MHz ( period = 5.202 ns )                    ; slowcnt[11] ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.759 ns                ;
+; N/A                                     ; 192.34 MHz ( period = 5.199 ns )                    ; slowcnt[2]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.756 ns                ;
+; N/A                                     ; 192.46 MHz ( period = 5.196 ns )                    ; slowcnt[14] ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.753 ns                ;
+; N/A                                     ; 192.60 MHz ( period = 5.192 ns )                    ; slowcnt[5]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.749 ns                ;
+; N/A                                     ; 192.68 MHz ( period = 5.190 ns )                    ; slowcnt[6]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.747 ns                ;
+; N/A                                     ; 192.72 MHz ( period = 5.189 ns )                    ; slowcnt[0]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.746 ns                ;
+; N/A                                     ; 192.90 MHz ( period = 5.184 ns )                    ; slowcnt[6]  ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.741 ns                ;
+; N/A                                     ; 192.90 MHz ( period = 5.184 ns )                    ; slowcnt[6]  ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.741 ns                ;
+; N/A                                     ; 193.05 MHz ( period = 5.180 ns )                    ; slowcnt[8]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.737 ns                ;
+; N/A                                     ; 193.16 MHz ( period = 5.177 ns )                    ; slowcnt[6]  ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.734 ns                ;
+; N/A                                     ; 193.20 MHz ( period = 5.176 ns )                    ; slowcnt[6]  ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.733 ns                ;
+; N/A                                     ; 193.24 MHz ( period = 5.175 ns )                    ; slowcnt[6]  ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.732 ns                ;
+; N/A                                     ; 193.39 MHz ( period = 5.171 ns )                    ; slowcnt[10] ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.728 ns                ;
+; N/A                                     ; 193.65 MHz ( period = 5.164 ns )                    ; slowcnt[1]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.721 ns                ;
+; N/A                                     ; 194.02 MHz ( period = 5.154 ns )                    ; slowcnt[6]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.711 ns                ;
+; N/A                                     ; 195.01 MHz ( period = 5.128 ns )                    ; slowcnt[1]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.685 ns                ;
+; N/A                                     ; 195.12 MHz ( period = 5.125 ns )                    ; slowcnt[3]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.682 ns                ;
+; N/A                                     ; 195.27 MHz ( period = 5.121 ns )                    ; slowcnt[3]  ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.678 ns                ;
+; N/A                                     ; 195.43 MHz ( period = 5.117 ns )                    ; slowcnt[0]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.674 ns                ;
+; N/A                                     ; 195.62 MHz ( period = 5.112 ns )                    ; slowcnt[10] ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.669 ns                ;
+; N/A                                     ; 195.73 MHz ( period = 5.109 ns )                    ; slowcnt[2]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.666 ns                ;
+; N/A                                     ; 195.92 MHz ( period = 5.104 ns )                    ; slowcnt[11] ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.661 ns                ;
+; N/A                                     ; 196.00 MHz ( period = 5.102 ns )                    ; slowcnt[5]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.659 ns                ;
+; N/A                                     ; 196.08 MHz ( period = 5.100 ns )                    ; slowcnt[3]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.657 ns                ;
+; N/A                                     ; 196.39 MHz ( period = 5.092 ns )                    ; slowcnt[1]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.649 ns                ;
+; N/A                                     ; 196.46 MHz ( period = 5.090 ns )                    ; slowcnt[8]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.647 ns                ;
+; N/A                                     ; 196.77 MHz ( period = 5.082 ns )                    ; slowcnt[6]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.639 ns                ;
+; N/A                                     ; 197.12 MHz ( period = 5.073 ns )                    ; slowcnt[2]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.630 ns                ;
+; N/A                                     ; 197.36 MHz ( period = 5.067 ns )                    ; slowcnt[0]  ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.624 ns                ;
+; N/A                                     ; 197.36 MHz ( period = 5.067 ns )                    ; slowcnt[0]  ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.624 ns                ;
+; N/A                                     ; 197.39 MHz ( period = 5.066 ns )                    ; slowcnt[5]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.623 ns                ;
+; N/A                                     ; 197.63 MHz ( period = 5.060 ns )                    ; slowcnt[0]  ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.617 ns                ;
+; N/A                                     ; 197.67 MHz ( period = 5.059 ns )                    ; slowcnt[0]  ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.616 ns                ;
+; N/A                                     ; 197.71 MHz ( period = 5.058 ns )                    ; slowcnt[0]  ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.615 ns                ;
+; N/A                                     ; 197.75 MHz ( period = 5.057 ns )                    ; slowcnt[4]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.614 ns                ;
+; N/A                                     ; 197.86 MHz ( period = 5.054 ns )                    ; slowcnt[8]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.611 ns                ;
+; N/A                                     ; 198.02 MHz ( period = 5.050 ns )                    ; slowcnt[3]  ; slowcnt[11]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.607 ns                ;
+; N/A                                     ; 198.06 MHz ( period = 5.049 ns )                    ; slowcnt[7]  ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.606 ns                ;
+; N/A                                     ; 198.06 MHz ( period = 5.049 ns )                    ; slowcnt[11] ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.606 ns                ;
+; N/A                                     ; 198.06 MHz ( period = 5.049 ns )                    ; slowcnt[7]  ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.606 ns                ;
+; N/A                                     ; 198.26 MHz ( period = 5.044 ns )                    ; slowcnt[13] ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.601 ns                ;
+; N/A                                     ; 198.29 MHz ( period = 5.043 ns )                    ; slowcnt[3]  ; slowcnt[4]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.600 ns                ;
+; N/A                                     ; 198.33 MHz ( period = 5.042 ns )                    ; slowcnt[7]  ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.599 ns                ;
+; N/A                                     ; 198.37 MHz ( period = 5.041 ns )                    ; slowcnt[7]  ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.598 ns                ;
+; N/A                                     ; 198.41 MHz ( period = 5.040 ns )                    ; slowcnt[7]  ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.597 ns                ;
+; N/A                                     ; 198.41 MHz ( period = 5.040 ns )                    ; slowcnt[11] ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.597 ns                ;
+; N/A                                     ; 198.53 MHz ( period = 5.037 ns )                    ; slowcnt[7]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.594 ns                ;
+; N/A                                     ; 198.53 MHz ( period = 5.037 ns )                    ; slowcnt[2]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.594 ns                ;
+; N/A                                     ; 198.61 MHz ( period = 5.035 ns )                    ; slowcnt[9]  ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.592 ns                ;
+; N/A                                     ; 198.65 MHz ( period = 5.034 ns )                    ; slowcnt[14] ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.591 ns                ;
+; N/A                                     ; 198.81 MHz ( period = 5.030 ns )                    ; slowcnt[5]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.587 ns                ;
+; N/A                                     ; 198.89 MHz ( period = 5.028 ns )                    ; slowcnt[12] ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.585 ns                ;
+; N/A                                     ; 199.20 MHz ( period = 5.020 ns )                    ; slowcnt[1]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.577 ns                ;
+; N/A                                     ; 199.28 MHz ( period = 5.018 ns )                    ; slowcnt[3]  ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.575 ns                ;
+; N/A                                     ; 199.28 MHz ( period = 5.018 ns )                    ; slowcnt[8]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.575 ns                ;
+; N/A                                     ; 199.44 MHz ( period = 5.014 ns )                    ; slowcnt[10] ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.571 ns                ;
+; N/A                                     ; 200.16 MHz ( period = 4.996 ns )                    ; slowcnt[0]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.553 ns                ;
+; N/A                                     ; 200.84 MHz ( period = 4.979 ns )                    ; slowcnt[3]  ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.536 ns                ;
+; N/A                                     ; 201.13 MHz ( period = 4.972 ns )                    ; slowcnt[13] ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.529 ns                ;
+; N/A                                     ; 201.17 MHz ( period = 4.971 ns )                    ; slowcnt[0]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.528 ns                ;
+; N/A                                     ; 201.29 MHz ( period = 4.968 ns )                    ; slowcnt[11] ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.525 ns                ;
+; N/A                                     ; 201.33 MHz ( period = 4.967 ns )                    ; slowcnt[4]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.524 ns                ;
+; N/A                                     ; 201.41 MHz ( period = 4.965 ns )                    ; slowcnt[2]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.522 ns                ;
+; N/A                                     ; 201.53 MHz ( period = 4.962 ns )                    ; slowcnt[14] ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.519 ns                ;
+; N/A                                     ; 201.57 MHz ( period = 4.961 ns )                    ; slowcnt[5]  ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.518 ns                ;
+; N/A                                     ; 201.57 MHz ( period = 4.961 ns )                    ; slowcnt[6]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.518 ns                ;
+; N/A                                     ; 201.69 MHz ( period = 4.958 ns )                    ; slowcnt[5]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.515 ns                ;
+; N/A                                     ; 202.02 MHz ( period = 4.950 ns )                    ; slowcnt[10] ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.507 ns                ;
+; N/A                                     ; 202.14 MHz ( period = 4.947 ns )                    ; slowcnt[7]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.504 ns                ;
+; N/A                                     ; 202.18 MHz ( period = 4.946 ns )                    ; slowcnt[8]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.503 ns                ;
+; N/A                                     ; 202.22 MHz ( period = 4.945 ns )                    ; slowcnt[9]  ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.502 ns                ;
+; N/A                                     ; 202.59 MHz ( period = 4.936 ns )                    ; slowcnt[6]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.493 ns                ;
+; N/A                                     ; 202.80 MHz ( period = 4.931 ns )                    ; slowcnt[4]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.488 ns                ;
+; N/A                                     ; 202.84 MHz ( period = 4.930 ns )                    ; slowcnt[12] ; slowcnt[13]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.487 ns                ;
+; N/A                                     ; 203.21 MHz ( period = 4.921 ns )                    ; slowcnt[0]  ; slowcnt[11]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.478 ns                ;
+; N/A                                     ; 203.25 MHz ( period = 4.920 ns )                    ; slowcnt[3]  ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.477 ns                ;
+; N/A                                     ; 203.29 MHz ( period = 4.919 ns )                    ; slowcnt[8]  ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.476 ns                ;
+; N/A                                     ; 203.33 MHz ( period = 4.918 ns )                    ; slowcnt[3]  ; slowcnt[9]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.475 ns                ;
+; N/A                                     ; 203.50 MHz ( period = 4.914 ns )                    ; slowcnt[0]  ; slowcnt[4]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.471 ns                ;
+; N/A                                     ; 203.58 MHz ( period = 4.912 ns )                    ; slowcnt[3]  ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.469 ns                ;
+; N/A                                     ; 203.62 MHz ( period = 4.911 ns )                    ; slowcnt[7]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.468 ns                ;
+; N/A                                     ; 203.71 MHz ( period = 4.909 ns )                    ; slowcnt[9]  ; slowcnt[10]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.466 ns                ;
+; N/A                                     ; 204.12 MHz ( period = 4.899 ns )                    ; slowcnt[1]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.456 ns                ;
+; N/A                                     ; 204.29 MHz ( period = 4.895 ns )                    ; slowcnt[4]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.452 ns                ;
+; N/A                                     ; 204.54 MHz ( period = 4.889 ns )                    ; slowcnt[0]  ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.446 ns                ;
+; N/A                                     ; 204.67 MHz ( period = 4.886 ns )                    ; slowcnt[6]  ; slowcnt[11]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.443 ns                ;
+; N/A                                     ; 205.00 MHz ( period = 4.878 ns )                    ; slowcnt[10] ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.435 ns                ;
+; N/A                                     ; 205.13 MHz ( period = 4.875 ns )                    ; slowcnt[7]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.432 ns                ;
+; N/A                                     ; 205.17 MHz ( period = 4.874 ns )                    ; slowcnt[1]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.431 ns                ;
+; N/A                                     ; 205.21 MHz ( period = 4.873 ns )                    ; slowcnt[9]  ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.430 ns                ;
+; N/A                                     ; 205.51 MHz ( period = 4.866 ns )                    ; slowcnt[12] ; slowcnt[15]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.423 ns                ;
+; N/A                                     ; 206.02 MHz ( period = 4.854 ns )                    ; slowcnt[6]  ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.411 ns                ;
+; N/A                                     ; 206.10 MHz ( period = 4.852 ns )                    ; slowcnt[15] ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.409 ns                ;
+; N/A                                     ; 206.10 MHz ( period = 4.852 ns )                    ; slowcnt[15] ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.409 ns                ;
+; N/A                                     ; 206.40 MHz ( period = 4.845 ns )                    ; slowcnt[15] ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.402 ns                ;
+; N/A                                     ; 206.44 MHz ( period = 4.844 ns )                    ; slowcnt[15] ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.401 ns                ;
+; N/A                                     ; 206.44 MHz ( period = 4.844 ns )                    ; slowcnt[13] ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.401 ns                ;
+; N/A                                     ; 206.44 MHz ( period = 4.844 ns )                    ; slowcnt[2]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.401 ns                ;
+; N/A                                     ; 206.48 MHz ( period = 4.843 ns )                    ; slowcnt[15] ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.400 ns                ;
+; N/A                                     ; 206.61 MHz ( period = 4.840 ns )                    ; slowcnt[11] ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.397 ns                ;
+; N/A                                     ; 206.74 MHz ( period = 4.837 ns )                    ; slowcnt[5]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.394 ns                ;
+; N/A                                     ; 207.17 MHz ( period = 4.827 ns )                    ; slowcnt[15] ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.384 ns                ;
+; N/A                                     ; 207.21 MHz ( period = 4.826 ns )                    ; slowcnt[13] ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.383 ns                ;
+; N/A                                     ; 207.25 MHz ( period = 4.825 ns )                    ; slowcnt[8]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.382 ns                ;
+; N/A                                     ; 207.30 MHz ( period = 4.824 ns )                    ; slowcnt[1]  ; slowcnt[11]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.381 ns                ;
+; N/A                                     ; 207.34 MHz ( period = 4.823 ns )                    ; slowcnt[4]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.380 ns                ;
+; N/A                                     ; 207.38 MHz ( period = 4.822 ns )                    ; slowcnt[11] ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.379 ns                ;
+; N/A                                     ; 207.51 MHz ( period = 4.819 ns )                    ; slowcnt[2]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.376 ns                ;
+; N/A                                     ; 207.60 MHz ( period = 4.817 ns )                    ; slowcnt[1]  ; slowcnt[4]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.374 ns                ;
+; N/A                                     ; 207.64 MHz ( period = 4.816 ns )                    ; slowcnt[14] ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.373 ns                ;
+; N/A                                     ; 207.64 MHz ( period = 4.816 ns )                    ; slowcnt[10] ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.373 ns                ;
+; N/A                                     ; 207.64 MHz ( period = 4.816 ns )                    ; slowcnt[10] ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.373 ns                ;
+; N/A                                     ; 207.81 MHz ( period = 4.812 ns )                    ; slowcnt[5]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.369 ns                ;
+; N/A                                     ; 207.94 MHz ( period = 4.809 ns )                    ; slowcnt[10] ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.366 ns                ;
+; N/A                                     ; 207.99 MHz ( period = 4.808 ns )                    ; slowcnt[10] ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.365 ns                ;
+; N/A                                     ; 208.03 MHz ( period = 4.807 ns )                    ; slowcnt[10] ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.364 ns                ;
+; N/A                                     ; 208.20 MHz ( period = 4.803 ns )                    ; slowcnt[7]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.360 ns                ;
+; N/A                                     ; 208.29 MHz ( period = 4.801 ns )                    ; slowcnt[9]  ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.358 ns                ;
+; N/A                                     ; 208.33 MHz ( period = 4.800 ns )                    ; slowcnt[8]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.357 ns                ;
+; N/A                                     ; 208.59 MHz ( period = 4.794 ns )                    ; slowcnt[12] ; slowcnt[17]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.351 ns                ;
+; N/A                                     ; 208.59 MHz ( period = 4.794 ns )                    ; slowcnt[16] ; slowcnt[19]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.351 ns                ;
+; N/A                                     ; 208.68 MHz ( period = 4.792 ns )                    ; slowcnt[1]  ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.349 ns                ;
+; N/A                                     ; 208.81 MHz ( period = 4.789 ns )                    ; slowcnt[0]  ; slowcnt[9]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.346 ns                ;
+; N/A                                     ; 209.07 MHz ( period = 4.783 ns )                    ; slowcnt[14] ; CLKSLOW~reg0 ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.340 ns                ;
+; N/A                                     ; 209.16 MHz ( period = 4.781 ns )                    ; slowcnt[14] ; slowcnt[4]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.338 ns                ;
+; N/A                                     ; 209.69 MHz ( period = 4.769 ns )                    ; slowcnt[2]  ; slowcnt[11]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.326 ns                ;
+; N/A                                     ; 209.95 MHz ( period = 4.763 ns )                    ; slowcnt[2]  ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.320 ns                ;
+; N/A                                     ; 210.00 MHz ( period = 4.762 ns )                    ; slowcnt[2]  ; slowcnt[4]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.319 ns                ;
+; N/A                                     ; 210.00 MHz ( period = 4.762 ns )                    ; slowcnt[5]  ; slowcnt[11]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.319 ns                ;
+; N/A                                     ; 210.13 MHz ( period = 4.759 ns )                    ; slowcnt[3]  ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.316 ns                ;
+; N/A                                     ; 210.22 MHz ( period = 4.757 ns )                    ; slowcnt[3]  ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.314 ns                ;
+; N/A                                     ; 210.39 MHz ( period = 4.753 ns )                    ; slowcnt[1]  ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.310 ns                ;
+; N/A                                     ; 210.53 MHz ( period = 4.750 ns )                    ; slowcnt[8]  ; slowcnt[11]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.307 ns                ;
+; N/A                                     ; 210.53 MHz ( period = 4.750 ns )                    ; slowcnt[10] ; slowcnt[14]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.307 ns                ;
+; N/A                                     ; 210.57 MHz ( period = 4.749 ns )                    ; slowcnt[13] ; CLKSLOW~reg0 ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.306 ns                ;
+; N/A                                     ; 210.66 MHz ( period = 4.747 ns )                    ; slowcnt[13] ; slowcnt[4]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.304 ns                ;
+; N/A                                     ; 210.79 MHz ( period = 4.744 ns )                    ; slowcnt[13] ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.301 ns                ;
+; N/A                                     ; 210.97 MHz ( period = 4.740 ns )                    ; slowcnt[11] ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.297 ns                ;
+; N/A                                     ; 211.10 MHz ( period = 4.737 ns )                    ; slowcnt[2]  ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.294 ns                ;
+; N/A                                     ; 211.24 MHz ( period = 4.734 ns )                    ; slowcnt[14] ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.291 ns                ;
+; N/A                                     ; 211.33 MHz ( period = 4.732 ns )                    ; slowcnt[10] ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.289 ns                ;
+; N/A                                     ; 211.42 MHz ( period = 4.730 ns )                    ; slowcnt[5]  ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.287 ns                ;
+; N/A                                     ; 211.95 MHz ( period = 4.718 ns )                    ; slowcnt[8]  ; slowcnt[18]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.275 ns                ;
+; N/A                                     ; 211.95 MHz ( period = 4.718 ns )                    ; slowcnt[17] ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.275 ns                ;
+; N/A                                     ; 211.95 MHz ( period = 4.718 ns )                    ; slowcnt[17] ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.275 ns                ;
+; N/A                                     ; 212.04 MHz ( period = 4.716 ns )                    ; slowcnt[17] ; slowcnt[6]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.273 ns                ;
+; N/A                                     ; 212.22 MHz ( period = 4.712 ns )                    ; slowcnt[17] ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.269 ns                ;
+; N/A                                     ; 212.22 MHz ( period = 4.712 ns )                    ; slowcnt[17] ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.269 ns                ;
+; N/A                                     ; 212.27 MHz ( period = 4.711 ns )                    ; slowcnt[17] ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.268 ns                ;
+; N/A                                     ; 212.68 MHz ( period = 4.702 ns )                    ; slowcnt[4]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.259 ns                ;
+; N/A                                     ; 212.86 MHz ( period = 4.698 ns )                    ; slowcnt[2]  ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.255 ns                ;
+; N/A                                     ; 213.04 MHz ( period = 4.694 ns )                    ; slowcnt[11] ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.251 ns                ;
+; N/A                                     ; 213.04 MHz ( period = 4.694 ns )                    ; slowcnt[1]  ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.251 ns                ;
+; N/A                                     ; 213.04 MHz ( period = 4.694 ns )                    ; slowcnt[11] ; slowcnt[7]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.251 ns                ;
+; N/A                                     ; 213.13 MHz ( period = 4.692 ns )                    ; slowcnt[1]  ; slowcnt[9]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.249 ns                ;
+; N/A                                     ; 213.36 MHz ( period = 4.687 ns )                    ; slowcnt[11] ; slowcnt[0]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.244 ns                ;
+; N/A                                     ; 213.40 MHz ( period = 4.686 ns )                    ; slowcnt[1]  ; slowcnt[5]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.243 ns                ;
+; N/A                                     ; 213.40 MHz ( period = 4.686 ns )                    ; slowcnt[11] ; slowcnt[8]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.243 ns                ;
+; N/A                                     ; 213.45 MHz ( period = 4.685 ns )                    ; slowcnt[11] ; slowcnt[2]   ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.242 ns                ;
+; N/A                                     ; 213.58 MHz ( period = 4.682 ns )                    ; slowcnt[7]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.239 ns                ;
+; N/A                                     ; 213.68 MHz ( period = 4.680 ns )                    ; slowcnt[9]  ; slowcnt[12]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.237 ns                ;
+; N/A                                     ; 213.81 MHz ( period = 4.677 ns )                    ; slowcnt[4]  ; slowcnt[16]  ; CLKIN      ; CLKIN    ; None                        ; None                      ; 4.234 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;             ;              ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+-------------+--------------+------------+----------+-----------------------------+---------------------------+-------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clock Hold: 'clock'                                                                                                                                                                                                       ;
-+------------------------------------------+---------------------------------+---------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
-; Minimum Slack                            ; From                            ; To                              ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
-+------------------------------------------+---------------------------------+---------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
-; Not operational: Clock Skew > Data Delay ; spi_master:inst|mosi~en         ; spi_slave:inst1|rxBuffer[0]     ; clock      ; clock    ; None                       ; None                       ; 2.606 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_master:inst|mosi~reg0       ; spi_slave:inst1|rxBuffer[0]     ; clock      ; clock    ; None                       ; None                       ; 2.845 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[5]  ; spi_slave:inst1|bit_counter[6]  ; clock      ; clock    ; None                       ; None                       ; 0.766 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[16] ; spi_slave:inst1|bit_counter[17] ; clock      ; clock    ; None                       ; None                       ; 0.767 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[14] ; spi_slave:inst1|bit_counter[15] ; clock      ; clock    ; None                       ; None                       ; 0.770 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[13] ; spi_slave:inst1|bit_counter[14] ; clock      ; clock    ; None                       ; None                       ; 0.771 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[9]  ; spi_slave:inst1|bit_counter[10] ; clock      ; clock    ; None                       ; None                       ; 0.774 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[4]  ; spi_slave:inst1|bit_counter[5]  ; clock      ; clock    ; None                       ; None                       ; 0.774 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[3]  ; spi_slave:inst1|bit_counter[4]  ; clock      ; clock    ; None                       ; None                       ; 0.774 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[19] ; spi_slave:inst1|bit_counter[20] ; clock      ; clock    ; None                       ; None                       ; 0.775 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[11] ; spi_slave:inst1|bit_counter[12] ; clock      ; clock    ; None                       ; None                       ; 0.775 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[18] ; spi_slave:inst1|bit_counter[19] ; clock      ; clock    ; None                       ; None                       ; 0.777 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[17] ; spi_slave:inst1|bit_counter[18] ; clock      ; clock    ; None                       ; None                       ; 0.778 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|bit_counter[10] ; spi_slave:inst1|bit_counter[11] ; clock      ; clock    ; None                       ; None                       ; 0.778 ns                 ;
-; Not operational: Clock Skew > Data Delay ; spi_slave:inst1|rxBuffer[6]     ; spi_slave:inst1|rxBuffer[7]     ; clock      ; clock    ; None                       ; None                       ; 0.780 ns                 ;
-+------------------------------------------+---------------------------------+---------------------------------+------------+----------+----------------------------+----------------------------+--------------------------+
-
-
-+----------------------------------------------------------------------------------------------+
-; tsu                                                                                          ;
-+-------+--------------+------------+-----------+-----------------------------------+----------+
-; Slack ; Required tsu ; Actual tsu ; From      ; To                                ; To Clock ;
-+-------+--------------+------------+-----------+-----------------------------------+----------+
-; N/A   ; None         ; 3.660 ns   ; TX[15]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.643 ns   ; TX[10]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.610 ns   ; TX[0]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.558 ns   ; TX[11]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.553 ns   ; TX[23]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.507 ns   ; TX[1]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.504 ns   ; TX[2]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.483 ns   ; TX[20]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.426 ns   ; TXreset_n ; spi_master:inst|rxBuffer[0]       ; clock    ;
-; N/A   ; None         ; 3.425 ns   ; TX[21]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.424 ns   ; TXreset_n ; spi_master:inst|rxBuffer[5]       ; clock    ;
-; N/A   ; None         ; 3.424 ns   ; TXreset_n ; spi_master:inst|rxBuffer[4]       ; clock    ;
-; N/A   ; None         ; 3.424 ns   ; TXreset_n ; spi_master:inst|rxBuffer[3]       ; clock    ;
-; N/A   ; None         ; 3.424 ns   ; TXreset_n ; spi_master:inst|rxBuffer[2]       ; clock    ;
-; N/A   ; None         ; 3.424 ns   ; TXreset_n ; spi_master:inst|rxBuffer[1]       ; clock    ;
-; N/A   ; None         ; 3.417 ns   ; TX[12]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.383 ns   ; TX[22]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.334 ns   ; TX[13]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.318 ns   ; TXreset_n ; spi_master:inst|rxBuffer[15]      ; clock    ;
-; N/A   ; None         ; 3.318 ns   ; TXreset_n ; spi_master:inst|rxBuffer[14]      ; clock    ;
-; N/A   ; None         ; 3.318 ns   ; TXreset_n ; spi_master:inst|rxBuffer[13]      ; clock    ;
-; N/A   ; None         ; 3.318 ns   ; TXreset_n ; spi_master:inst|rxBuffer[12]      ; clock    ;
-; N/A   ; None         ; 3.318 ns   ; TXreset_n ; spi_master:inst|rxBuffer[11]      ; clock    ;
-; N/A   ; None         ; 3.296 ns   ; TX[7]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.295 ns   ; TX[6]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.291 ns   ; TX[17]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.238 ns   ; TXreset_n ; spi_master:inst|txBuffer[11]      ; clock    ;
-; N/A   ; None         ; 3.238 ns   ; TXreset_n ; spi_master:inst|txBuffer[10]      ; clock    ;
-; N/A   ; None         ; 3.238 ns   ; TXreset_n ; spi_master:inst|txBuffer[9]       ; clock    ;
-; N/A   ; None         ; 3.238 ns   ; TXreset_n ; spi_master:inst|txBuffer[8]       ; clock    ;
-; N/A   ; None         ; 3.238 ns   ; TXreset_n ; spi_master:inst|txBuffer[7]       ; clock    ;
-; N/A   ; None         ; 3.231 ns   ; TX[3]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.221 ns   ; TXreset_n ; spi_master:inst|txBuffer[23]      ; clock    ;
-; N/A   ; None         ; 3.221 ns   ; TXreset_n ; spi_master:inst|txBuffer[22]      ; clock    ;
-; N/A   ; None         ; 3.221 ns   ; TXreset_n ; spi_master:inst|txBuffer[21]      ; clock    ;
-; N/A   ; None         ; 3.221 ns   ; TXreset_n ; spi_master:inst|txBuffer[13]      ; clock    ;
-; N/A   ; None         ; 3.221 ns   ; TXreset_n ; spi_master:inst|txBuffer[12]      ; clock    ;
-; N/A   ; None         ; 3.215 ns   ; TXreset_n ; spi_master:inst|txBuffer[6]       ; clock    ;
-; N/A   ; None         ; 3.215 ns   ; TXreset_n ; spi_master:inst|txBuffer[5]       ; clock    ;
-; N/A   ; None         ; 3.215 ns   ; TXreset_n ; spi_master:inst|txBuffer[4]       ; clock    ;
-; N/A   ; None         ; 3.215 ns   ; TXreset_n ; spi_master:inst|txBuffer[3]       ; clock    ;
-; N/A   ; None         ; 3.215 ns   ; TXreset_n ; spi_master:inst|txBuffer[2]       ; clock    ;
-; N/A   ; None         ; 3.215 ns   ; TXreset_n ; spi_master:inst|txBuffer[1]       ; clock    ;
-; N/A   ; None         ; 3.199 ns   ; TX[19]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.172 ns   ; TX[5]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.166 ns   ; TX[8]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.151 ns   ; TX[18]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.123 ns   ; TXreset_n ; spi_master:inst|clk_toggles[0]    ; clock    ;
-; N/A   ; None         ; 3.123 ns   ; TXreset_n ; spi_master:inst|clk_toggles[1]    ; clock    ;
-; N/A   ; None         ; 3.123 ns   ; TXreset_n ; spi_master:inst|clk_toggles[3]    ; clock    ;
-; N/A   ; None         ; 3.123 ns   ; TXreset_n ; spi_master:inst|clk_toggles[2]    ; clock    ;
-; N/A   ; None         ; 3.123 ns   ; TXreset_n ; spi_master:inst|clk_toggles[4]    ; clock    ;
-; N/A   ; None         ; 3.123 ns   ; TXreset_n ; spi_master:inst|clk_toggles[5]    ; clock    ;
-; N/A   ; None         ; 3.117 ns   ; TX[4]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.116 ns   ; TXreset_n ; spi_master:inst|last_bit[5]       ; clock    ;
-; N/A   ; None         ; 3.116 ns   ; TXreset_n ; spi_master:inst|last_bit[3]       ; clock    ;
-; N/A   ; None         ; 3.116 ns   ; TXreset_n ; spi_master:inst|last_bit[4]       ; clock    ;
-; N/A   ; None         ; 3.099 ns   ; TX[16]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.078 ns   ; TX[14]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.066 ns   ; TX[9]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A   ; None         ; 3.047 ns   ; TXreset_n ; spi_master:inst|rxBuffer[17]      ; clock    ;
-; N/A   ; None         ; 3.047 ns   ; TXreset_n ; spi_master:inst|rxBuffer[16]      ; clock    ;
-; N/A   ; None         ; 2.973 ns   ; TXreset_n ; spi_master:inst|rxBuffer[10]      ; clock    ;
-; N/A   ; None         ; 2.973 ns   ; TXreset_n ; spi_master:inst|rxBuffer[9]       ; clock    ;
-; N/A   ; None         ; 2.973 ns   ; TXreset_n ; spi_master:inst|rxBuffer[8]       ; clock    ;
-; N/A   ; None         ; 2.973 ns   ; TXreset_n ; spi_master:inst|rxBuffer[7]       ; clock    ;
-; N/A   ; None         ; 2.973 ns   ; TXreset_n ; spi_master:inst|rxBuffer[6]       ; clock    ;
-; N/A   ; None         ; 2.897 ns   ; TXreset_n ; spi_master:inst|txBuffer[0]       ; clock    ;
-; N/A   ; None         ; 2.759 ns   ; TXreset_n ; spi_master:inst|txBuffer[20]      ; clock    ;
-; N/A   ; None         ; 2.759 ns   ; TXreset_n ; spi_master:inst|txBuffer[19]      ; clock    ;
-; N/A   ; None         ; 2.759 ns   ; TXreset_n ; spi_master:inst|txBuffer[18]      ; clock    ;
-; N/A   ; None         ; 2.759 ns   ; TXreset_n ; spi_master:inst|txBuffer[17]      ; clock    ;
-; N/A   ; None         ; 2.759 ns   ; TXreset_n ; spi_master:inst|txBuffer[16]      ; clock    ;
-; N/A   ; None         ; 2.485 ns   ; TXreset_n ; spi_master:inst|txBuffer[15]      ; clock    ;
-; N/A   ; None         ; 2.485 ns   ; TXreset_n ; spi_master:inst|txBuffer[14]      ; clock    ;
-; N/A   ; None         ; 2.319 ns   ; TXreset_n ; spi_master:inst|rxBuffer[23]      ; clock    ;
-; N/A   ; None         ; 2.319 ns   ; TXreset_n ; spi_master:inst|rxBuffer[22]      ; clock    ;
-; N/A   ; None         ; 2.319 ns   ; TXreset_n ; spi_master:inst|rxBuffer[21]      ; clock    ;
-; N/A   ; None         ; 2.319 ns   ; TXreset_n ; spi_master:inst|rxBuffer[20]      ; clock    ;
-; N/A   ; None         ; 2.319 ns   ; TXreset_n ; spi_master:inst|rxBuffer[19]      ; clock    ;
-; N/A   ; None         ; 2.319 ns   ; TXreset_n ; spi_master:inst|rxBuffer[18]      ; clock    ;
-; N/A   ; None         ; 1.969 ns   ; TX[1]     ; spi_master:inst|txBuffer[1]       ; clock    ;
-; N/A   ; None         ; 1.847 ns   ; TXreset_n ; spi_master:inst|INT_sclk          ; clock    ;
-; N/A   ; None         ; 1.847 ns   ; TXreset_n ; spi_master:inst|receive_transmit  ; clock    ;
-; N/A   ; None         ; 1.813 ns   ; TX[11]    ; spi_master:inst|txBuffer[11]      ; clock    ;
-; N/A   ; None         ; 1.682 ns   ; TX[3]     ; spi_master:inst|txBuffer[3]       ; clock    ;
-; N/A   ; None         ; 1.649 ns   ; cpha      ; spi_master:inst|last_bit[3]       ; clock    ;
-; N/A   ; None         ; 1.621 ns   ; TX[5]     ; spi_master:inst|txBuffer[5]       ; clock    ;
-; N/A   ; None         ; 1.580 ns   ; TX[4]     ; spi_master:inst|txBuffer[4]       ; clock    ;
-; N/A   ; None         ; 1.499 ns   ; TX[2]     ; PulseOnChange:inst2|prev_data[2]  ; clock    ;
-; N/A   ; None         ; 1.499 ns   ; TX[2]     ; spi_master:inst|txBuffer[2]       ; clock    ;
-; N/A   ; None         ; 1.473 ns   ; cpha      ; spi_master:inst|receive_transmit  ; clock    ;
-; N/A   ; None         ; 1.449 ns   ; TX[5]     ; PulseOnChange:inst2|prev_data[5]  ; clock    ;
-; N/A   ; None         ; 1.440 ns   ; TX[16]    ; spi_master:inst|txBuffer[16]      ; clock    ;
-; N/A   ; None         ; 1.437 ns   ; TX[12]    ; PulseOnChange:inst2|prev_data[12] ; clock    ;
-; N/A   ; None         ; 1.436 ns   ; TX[7]     ; PulseOnChange:inst2|prev_data[7]  ; clock    ;
-; N/A   ; None         ; 1.433 ns   ; TX[1]     ; PulseOnChange:inst2|prev_data[1]  ; clock    ;
-; N/A   ; None         ; 1.416 ns   ; TX[22]    ; PulseOnChange:inst2|prev_data[22] ; clock    ;
-; N/A   ; None         ; 1.409 ns   ; TX[10]    ; PulseOnChange:inst2|prev_data[10] ; clock    ;
-; N/A   ; None         ; 1.404 ns   ; TX[15]    ; PulseOnChange:inst2|prev_data[15] ; clock    ;
-; N/A   ; None         ; 1.400 ns   ; cpol      ; spi_master:inst|INT_sclk          ; clock    ;
-; N/A   ; None         ; 1.397 ns   ; TX[19]    ; spi_master:inst|txBuffer[19]      ; clock    ;
-; N/A   ; None         ; 1.389 ns   ; TX[18]    ; spi_master:inst|txBuffer[18]      ; clock    ;
-; N/A   ; None         ; 1.387 ns   ; TX[13]    ; spi_master:inst|txBuffer[13]      ; clock    ;
-; N/A   ; None         ; 1.384 ns   ; TX[18]    ; PulseOnChange:inst2|prev_data[18] ; clock    ;
-; N/A   ; None         ; 1.354 ns   ; TX[11]    ; PulseOnChange:inst2|prev_data[11] ; clock    ;
-; N/A   ; None         ; 1.352 ns   ; TX[3]     ; PulseOnChange:inst2|prev_data[3]  ; clock    ;
-; N/A   ; None         ; 1.342 ns   ; TX[21]    ; spi_master:inst|txBuffer[21]      ; clock    ;
-; N/A   ; None         ; 1.330 ns   ; TX[9]     ; PulseOnChange:inst2|prev_data[9]  ; clock    ;
-; N/A   ; None         ; 1.326 ns   ; TX[10]    ; spi_master:inst|txBuffer[10]      ; clock    ;
-; N/A   ; None         ; 1.325 ns   ; cpha      ; spi_master:inst|last_bit[4]       ; clock    ;
-; N/A   ; None         ; 1.316 ns   ; TX[23]    ; spi_master:inst|txBuffer[23]      ; clock    ;
-; N/A   ; None         ; 1.303 ns   ; TX[13]    ; PulseOnChange:inst2|prev_data[13] ; clock    ;
-; N/A   ; None         ; 1.285 ns   ; TX[4]     ; PulseOnChange:inst2|prev_data[4]  ; clock    ;
-; N/A   ; None         ; 1.248 ns   ; TX[14]    ; spi_master:inst|txBuffer[14]      ; clock    ;
-; N/A   ; None         ; 1.244 ns   ; TX[12]    ; spi_master:inst|txBuffer[12]      ; clock    ;
-; N/A   ; None         ; 1.224 ns   ; TX[20]    ; spi_master:inst|txBuffer[20]      ; clock    ;
-; N/A   ; None         ; 1.222 ns   ; TX[23]    ; PulseOnChange:inst2|prev_data[23] ; clock    ;
-; N/A   ; None         ; 1.220 ns   ; TX[20]    ; PulseOnChange:inst2|prev_data[20] ; clock    ;
-; N/A   ; None         ; 1.209 ns   ; TX[21]    ; PulseOnChange:inst2|prev_data[21] ; clock    ;
-; N/A   ; None         ; 1.191 ns   ; TX[15]    ; spi_master:inst|txBuffer[15]      ; clock    ;
-; N/A   ; None         ; 1.189 ns   ; TX[0]     ; PulseOnChange:inst2|prev_data[0]  ; clock    ;
-; N/A   ; None         ; 1.176 ns   ; TX[19]    ; PulseOnChange:inst2|prev_data[19] ; clock    ;
-; N/A   ; None         ; 1.170 ns   ; TX[8]     ; spi_master:inst|txBuffer[8]       ; clock    ;
-; N/A   ; None         ; 1.167 ns   ; TX[8]     ; PulseOnChange:inst2|prev_data[8]  ; clock    ;
-; N/A   ; None         ; 1.163 ns   ; TX[6]     ; PulseOnChange:inst2|prev_data[6]  ; clock    ;
-; N/A   ; None         ; 1.160 ns   ; TX[17]    ; spi_master:inst|txBuffer[17]      ; clock    ;
-; N/A   ; None         ; 1.157 ns   ; TX[22]    ; spi_master:inst|txBuffer[22]      ; clock    ;
-; N/A   ; None         ; 1.154 ns   ; TX[9]     ; spi_master:inst|txBuffer[9]       ; clock    ;
-; N/A   ; None         ; 1.151 ns   ; TX[17]    ; PulseOnChange:inst2|prev_data[17] ; clock    ;
-; N/A   ; None         ; 1.149 ns   ; TX[7]     ; spi_master:inst|txBuffer[7]       ; clock    ;
-; N/A   ; None         ; 1.146 ns   ; TX[16]    ; PulseOnChange:inst2|prev_data[16] ; clock    ;
-; N/A   ; None         ; 1.136 ns   ; TX[14]    ; PulseOnChange:inst2|prev_data[14] ; clock    ;
-; N/A   ; None         ; 1.126 ns   ; TX[0]     ; spi_master:inst|txBuffer[0]       ; clock    ;
-; N/A   ; None         ; 1.093 ns   ; TX[6]     ; spi_master:inst|txBuffer[6]       ; clock    ;
-+-------+--------------+------------+-----------+-----------------------------------+----------+
-
-
-+------------------------------------------------------------------------------------------+
-; tco                                                                                      ;
-+-------+--------------+------------+---------------------------+-------------+------------+
-; Slack ; Required tco ; Actual tco ; From                      ; To          ; From Clock ;
-+-------+--------------+------------+---------------------------+-------------+------------+
-; N/A   ; None         ; 10.617 ns  ; spi_slave:inst1|miso~reg0 ; SPI_miso    ; clock      ;
-; N/A   ; None         ; 10.317 ns  ; spi_slave:inst1|miso~en   ; SPI_miso    ; clock      ;
-; N/A   ; None         ; 10.302 ns  ; spi_slave:inst1|rx[14]    ; RXout[14]   ; clock      ;
-; N/A   ; None         ; 10.298 ns  ; spi_slave:inst1|rx[21]    ; RXout[21]   ; clock      ;
-; N/A   ; None         ; 10.290 ns  ; spi_slave:inst1|rx[2]     ; RXout[2]    ; clock      ;
-; N/A   ; None         ; 10.290 ns  ; spi_slave:inst1|rx[4]     ; RXout[4]    ; clock      ;
-; N/A   ; None         ; 10.288 ns  ; spi_slave:inst1|rx[9]     ; RXout[9]    ; clock      ;
-; N/A   ; None         ; 10.264 ns  ; spi_slave:inst1|rx[18]    ; RXout[18]   ; clock      ;
-; N/A   ; None         ; 10.263 ns  ; spi_slave:inst1|rx[15]    ; RXout[15]   ; clock      ;
-; N/A   ; None         ; 9.970 ns   ; spi_slave:inst1|rx[11]    ; RXout[11]   ; clock      ;
-; N/A   ; None         ; 9.968 ns   ; spi_slave:inst1|rx[23]    ; RXout[23]   ; clock      ;
-; N/A   ; None         ; 9.967 ns   ; spi_slave:inst1|rx[19]    ; RXout[19]   ; clock      ;
-; N/A   ; None         ; 9.966 ns   ; spi_slave:inst1|rx[22]    ; RXout[22]   ; clock      ;
-; N/A   ; None         ; 9.961 ns   ; spi_slave:inst1|rx[20]    ; RXout[20]   ; clock      ;
-; N/A   ; None         ; 9.957 ns   ; spi_slave:inst1|rx[12]    ; RXout[12]   ; clock      ;
-; N/A   ; None         ; 9.955 ns   ; spi_slave:inst1|rx[5]     ; RXout[5]    ; clock      ;
-; N/A   ; None         ; 9.955 ns   ; spi_slave:inst1|rx[6]     ; RXout[6]    ; clock      ;
-; N/A   ; None         ; 9.952 ns   ; spi_slave:inst1|rx[10]    ; RXout[10]   ; clock      ;
-; N/A   ; None         ; 9.950 ns   ; spi_slave:inst1|rx[8]     ; RXout[8]    ; clock      ;
-; N/A   ; None         ; 9.950 ns   ; spi_slave:inst1|rx[13]    ; RXout[13]   ; clock      ;
-; N/A   ; None         ; 9.949 ns   ; spi_slave:inst1|rx[7]     ; RXout[7]    ; clock      ;
-; N/A   ; None         ; 9.948 ns   ; spi_slave:inst1|rx[0]     ; RXout[0]    ; clock      ;
-; N/A   ; None         ; 9.948 ns   ; spi_slave:inst1|rx[1]     ; RXout[1]    ; clock      ;
-; N/A   ; None         ; 9.946 ns   ; spi_slave:inst1|rx[3]     ; RXout[3]    ; clock      ;
-; N/A   ; None         ; 9.932 ns   ; spi_slave:inst1|rx[17]    ; RXout[17]   ; clock      ;
-; N/A   ; None         ; 9.924 ns   ; spi_slave:inst1|rx[16]    ; RXout[16]   ; clock      ;
-; N/A   ; None         ; 7.992 ns   ; spi_slave:inst1|rx[14]    ; RXout[14]   ; RXenable   ;
-; N/A   ; None         ; 7.988 ns   ; spi_slave:inst1|rx[21]    ; RXout[21]   ; RXenable   ;
-; N/A   ; None         ; 7.980 ns   ; spi_slave:inst1|rx[2]     ; RXout[2]    ; RXenable   ;
-; N/A   ; None         ; 7.980 ns   ; spi_slave:inst1|rx[4]     ; RXout[4]    ; RXenable   ;
-; N/A   ; None         ; 7.978 ns   ; spi_slave:inst1|rx[9]     ; RXout[9]    ; RXenable   ;
-; N/A   ; None         ; 7.954 ns   ; spi_slave:inst1|rx[18]    ; RXout[18]   ; RXenable   ;
-; N/A   ; None         ; 7.953 ns   ; spi_slave:inst1|rx[15]    ; RXout[15]   ; RXenable   ;
-; N/A   ; None         ; 7.660 ns   ; spi_slave:inst1|rx[11]    ; RXout[11]   ; RXenable   ;
-; N/A   ; None         ; 7.658 ns   ; spi_slave:inst1|rx[23]    ; RXout[23]   ; RXenable   ;
-; N/A   ; None         ; 7.657 ns   ; spi_slave:inst1|rx[19]    ; RXout[19]   ; RXenable   ;
-; N/A   ; None         ; 7.656 ns   ; spi_slave:inst1|rx[22]    ; RXout[22]   ; RXenable   ;
-; N/A   ; None         ; 7.651 ns   ; spi_slave:inst1|rx[20]    ; RXout[20]   ; RXenable   ;
-; N/A   ; None         ; 7.647 ns   ; spi_slave:inst1|rx[12]    ; RXout[12]   ; RXenable   ;
-; N/A   ; None         ; 7.645 ns   ; spi_slave:inst1|rx[5]     ; RXout[5]    ; RXenable   ;
-; N/A   ; None         ; 7.645 ns   ; spi_slave:inst1|rx[6]     ; RXout[6]    ; RXenable   ;
-; N/A   ; None         ; 7.642 ns   ; spi_slave:inst1|rx[10]    ; RXout[10]   ; RXenable   ;
-; N/A   ; None         ; 7.640 ns   ; spi_slave:inst1|rx[8]     ; RXout[8]    ; RXenable   ;
-; N/A   ; None         ; 7.640 ns   ; spi_slave:inst1|rx[13]    ; RXout[13]   ; RXenable   ;
-; N/A   ; None         ; 7.639 ns   ; spi_slave:inst1|rx[7]     ; RXout[7]    ; RXenable   ;
-; N/A   ; None         ; 7.638 ns   ; spi_slave:inst1|rx[0]     ; RXout[0]    ; RXenable   ;
-; N/A   ; None         ; 7.638 ns   ; spi_slave:inst1|rx[1]     ; RXout[1]    ; RXenable   ;
-; N/A   ; None         ; 7.636 ns   ; spi_slave:inst1|rx[3]     ; RXout[3]    ; RXenable   ;
-; N/A   ; None         ; 7.622 ns   ; spi_slave:inst1|rx[17]    ; RXout[17]   ; RXenable   ;
-; N/A   ; None         ; 7.614 ns   ; spi_slave:inst1|rx[16]    ; RXout[16]   ; RXenable   ;
-; N/A   ; None         ; 6.745 ns   ; spi_master:inst|rx[13]    ; TXout[13]   ; clock      ;
-; N/A   ; None         ; 5.983 ns   ; spi_master:inst|INT_ss_n  ; SPI_nCS     ; clock      ;
-; N/A   ; None         ; 5.983 ns   ; spi_master:inst|INT_ss_n  ; slave_busy  ; clock      ;
-; N/A   ; None         ; 5.864 ns   ; spi_master:inst|rx[18]    ; TXout[18]   ; clock      ;
-; N/A   ; None         ; 5.862 ns   ; spi_master:inst|rx[7]     ; TXout[7]    ; clock      ;
-; N/A   ; None         ; 5.745 ns   ; spi_master:inst|rx[23]    ; TXout[23]   ; clock      ;
-; N/A   ; None         ; 5.528 ns   ; spi_master:inst|INT_sclk  ; SPI_clock   ; clock      ;
-; N/A   ; None         ; 5.493 ns   ; spi_master:inst|busy      ; master_busy ; clock      ;
-; N/A   ; None         ; 5.486 ns   ; spi_master:inst|rx[22]    ; TXout[22]   ; clock      ;
-; N/A   ; None         ; 5.484 ns   ; spi_master:inst|rx[5]     ; TXout[5]    ; clock      ;
-; N/A   ; None         ; 5.483 ns   ; spi_master:inst|rx[20]    ; TXout[20]   ; clock      ;
-; N/A   ; None         ; 5.481 ns   ; spi_master:inst|rx[17]    ; TXout[17]   ; clock      ;
-; N/A   ; None         ; 5.477 ns   ; spi_master:inst|rx[21]    ; TXout[21]   ; clock      ;
-; N/A   ; None         ; 5.475 ns   ; spi_master:inst|rx[19]    ; TXout[19]   ; clock      ;
-; N/A   ; None         ; 5.464 ns   ; spi_master:inst|rx[12]    ; TXout[12]   ; clock      ;
-; N/A   ; None         ; 5.428 ns   ; spi_master:inst|mosi~reg0 ; SPI_mosi    ; clock      ;
-; N/A   ; None         ; 5.337 ns   ; spi_master:inst|rx[6]     ; TXout[6]    ; clock      ;
-; N/A   ; None         ; 5.337 ns   ; spi_master:inst|rx[9]     ; TXout[9]    ; clock      ;
-; N/A   ; None         ; 5.333 ns   ; spi_master:inst|rx[8]     ; TXout[8]    ; clock      ;
-; N/A   ; None         ; 4.728 ns   ; spi_master:inst|mosi~en   ; SPI_mosi    ; clock      ;
-; N/A   ; None         ; 4.663 ns   ; PulseOnChange:inst2|pulse ; TXenable    ; clock      ;
-; N/A   ; None         ; 4.652 ns   ; spi_master:inst|rx[4]     ; TXout[4]    ; clock      ;
-; N/A   ; None         ; 4.647 ns   ; spi_master:inst|rx[0]     ; TXout[0]    ; clock      ;
-; N/A   ; None         ; 4.647 ns   ; spi_master:inst|rx[1]     ; TXout[1]    ; clock      ;
-; N/A   ; None         ; 4.647 ns   ; spi_master:inst|rx[2]     ; TXout[2]    ; clock      ;
-; N/A   ; None         ; 4.647 ns   ; spi_master:inst|rx[10]    ; TXout[10]   ; clock      ;
-; N/A   ; None         ; 4.647 ns   ; spi_master:inst|rx[11]    ; TXout[11]   ; clock      ;
-; N/A   ; None         ; 4.645 ns   ; spi_master:inst|rx[16]    ; TXout[16]   ; clock      ;
-; N/A   ; None         ; 4.644 ns   ; spi_master:inst|rx[3]     ; TXout[3]    ; clock      ;
-; N/A   ; None         ; 4.644 ns   ; spi_master:inst|rx[14]    ; TXout[14]   ; clock      ;
-; N/A   ; None         ; 4.641 ns   ; spi_master:inst|rx[15]    ; TXout[15]   ; clock      ;
-+-------+--------------+------------+---------------------------+-------------+------------+
-
-
-+----------------------------------------------------------------------------------------------------+
-; th                                                                                                 ;
-+---------------+-------------+-----------+-----------+-----------------------------------+----------+
-; Minimum Slack ; Required th ; Actual th ; From      ; To                                ; To Clock ;
-+---------------+-------------+-----------+-----------+-----------------------------------+----------+
-; N/A           ; None        ; -0.747 ns ; TX[6]     ; spi_master:inst|txBuffer[6]       ; clock    ;
-; N/A           ; None        ; -0.780 ns ; TX[0]     ; spi_master:inst|txBuffer[0]       ; clock    ;
-; N/A           ; None        ; -0.790 ns ; TX[14]    ; PulseOnChange:inst2|prev_data[14] ; clock    ;
-; N/A           ; None        ; -0.800 ns ; TX[16]    ; PulseOnChange:inst2|prev_data[16] ; clock    ;
-; N/A           ; None        ; -0.803 ns ; TX[7]     ; spi_master:inst|txBuffer[7]       ; clock    ;
-; N/A           ; None        ; -0.805 ns ; TX[17]    ; PulseOnChange:inst2|prev_data[17] ; clock    ;
-; N/A           ; None        ; -0.808 ns ; TX[9]     ; spi_master:inst|txBuffer[9]       ; clock    ;
-; N/A           ; None        ; -0.811 ns ; TX[22]    ; spi_master:inst|txBuffer[22]      ; clock    ;
-; N/A           ; None        ; -0.814 ns ; TX[17]    ; spi_master:inst|txBuffer[17]      ; clock    ;
-; N/A           ; None        ; -0.817 ns ; TX[6]     ; PulseOnChange:inst2|prev_data[6]  ; clock    ;
-; N/A           ; None        ; -0.821 ns ; TX[8]     ; PulseOnChange:inst2|prev_data[8]  ; clock    ;
-; N/A           ; None        ; -0.824 ns ; TX[8]     ; spi_master:inst|txBuffer[8]       ; clock    ;
-; N/A           ; None        ; -0.830 ns ; TX[19]    ; PulseOnChange:inst2|prev_data[19] ; clock    ;
-; N/A           ; None        ; -0.843 ns ; TX[0]     ; PulseOnChange:inst2|prev_data[0]  ; clock    ;
-; N/A           ; None        ; -0.845 ns ; TX[15]    ; spi_master:inst|txBuffer[15]      ; clock    ;
-; N/A           ; None        ; -0.863 ns ; TX[21]    ; PulseOnChange:inst2|prev_data[21] ; clock    ;
-; N/A           ; None        ; -0.874 ns ; TX[20]    ; PulseOnChange:inst2|prev_data[20] ; clock    ;
-; N/A           ; None        ; -0.876 ns ; TX[23]    ; PulseOnChange:inst2|prev_data[23] ; clock    ;
-; N/A           ; None        ; -0.878 ns ; TX[20]    ; spi_master:inst|txBuffer[20]      ; clock    ;
-; N/A           ; None        ; -0.898 ns ; TX[12]    ; spi_master:inst|txBuffer[12]      ; clock    ;
-; N/A           ; None        ; -0.902 ns ; TX[14]    ; spi_master:inst|txBuffer[14]      ; clock    ;
-; N/A           ; None        ; -0.939 ns ; TX[4]     ; PulseOnChange:inst2|prev_data[4]  ; clock    ;
-; N/A           ; None        ; -0.957 ns ; TX[13]    ; PulseOnChange:inst2|prev_data[13] ; clock    ;
-; N/A           ; None        ; -0.970 ns ; TX[23]    ; spi_master:inst|txBuffer[23]      ; clock    ;
-; N/A           ; None        ; -0.979 ns ; cpha      ; spi_master:inst|last_bit[4]       ; clock    ;
-; N/A           ; None        ; -0.980 ns ; TX[10]    ; spi_master:inst|txBuffer[10]      ; clock    ;
-; N/A           ; None        ; -0.984 ns ; TX[9]     ; PulseOnChange:inst2|prev_data[9]  ; clock    ;
-; N/A           ; None        ; -0.996 ns ; TX[21]    ; spi_master:inst|txBuffer[21]      ; clock    ;
-; N/A           ; None        ; -1.006 ns ; TX[3]     ; PulseOnChange:inst2|prev_data[3]  ; clock    ;
-; N/A           ; None        ; -1.008 ns ; TX[11]    ; PulseOnChange:inst2|prev_data[11] ; clock    ;
-; N/A           ; None        ; -1.038 ns ; TX[18]    ; PulseOnChange:inst2|prev_data[18] ; clock    ;
-; N/A           ; None        ; -1.041 ns ; TX[13]    ; spi_master:inst|txBuffer[13]      ; clock    ;
-; N/A           ; None        ; -1.043 ns ; TX[18]    ; spi_master:inst|txBuffer[18]      ; clock    ;
-; N/A           ; None        ; -1.051 ns ; TX[19]    ; spi_master:inst|txBuffer[19]      ; clock    ;
-; N/A           ; None        ; -1.054 ns ; cpol      ; spi_master:inst|INT_sclk          ; clock    ;
-; N/A           ; None        ; -1.058 ns ; TX[15]    ; PulseOnChange:inst2|prev_data[15] ; clock    ;
-; N/A           ; None        ; -1.063 ns ; TX[10]    ; PulseOnChange:inst2|prev_data[10] ; clock    ;
-; N/A           ; None        ; -1.070 ns ; TX[22]    ; PulseOnChange:inst2|prev_data[22] ; clock    ;
-; N/A           ; None        ; -1.087 ns ; TX[1]     ; PulseOnChange:inst2|prev_data[1]  ; clock    ;
-; N/A           ; None        ; -1.090 ns ; TX[7]     ; PulseOnChange:inst2|prev_data[7]  ; clock    ;
-; N/A           ; None        ; -1.091 ns ; TX[12]    ; PulseOnChange:inst2|prev_data[12] ; clock    ;
-; N/A           ; None        ; -1.094 ns ; TX[16]    ; spi_master:inst|txBuffer[16]      ; clock    ;
-; N/A           ; None        ; -1.103 ns ; TX[5]     ; PulseOnChange:inst2|prev_data[5]  ; clock    ;
-; N/A           ; None        ; -1.127 ns ; cpha      ; spi_master:inst|receive_transmit  ; clock    ;
-; N/A           ; None        ; -1.153 ns ; TX[2]     ; PulseOnChange:inst2|prev_data[2]  ; clock    ;
-; N/A           ; None        ; -1.153 ns ; TX[2]     ; spi_master:inst|txBuffer[2]       ; clock    ;
-; N/A           ; None        ; -1.234 ns ; TX[4]     ; spi_master:inst|txBuffer[4]       ; clock    ;
-; N/A           ; None        ; -1.275 ns ; TX[5]     ; spi_master:inst|txBuffer[5]       ; clock    ;
-; N/A           ; None        ; -1.303 ns ; cpha      ; spi_master:inst|last_bit[3]       ; clock    ;
-; N/A           ; None        ; -1.336 ns ; TX[3]     ; spi_master:inst|txBuffer[3]       ; clock    ;
-; N/A           ; None        ; -1.467 ns ; TX[11]    ; spi_master:inst|txBuffer[11]      ; clock    ;
-; N/A           ; None        ; -1.501 ns ; TXreset_n ; spi_master:inst|INT_sclk          ; clock    ;
-; N/A           ; None        ; -1.501 ns ; TXreset_n ; spi_master:inst|receive_transmit  ; clock    ;
-; N/A           ; None        ; -1.623 ns ; TX[1]     ; spi_master:inst|txBuffer[1]       ; clock    ;
-; N/A           ; None        ; -1.973 ns ; TXreset_n ; spi_master:inst|rxBuffer[23]      ; clock    ;
-; N/A           ; None        ; -1.973 ns ; TXreset_n ; spi_master:inst|rxBuffer[22]      ; clock    ;
-; N/A           ; None        ; -1.973 ns ; TXreset_n ; spi_master:inst|rxBuffer[21]      ; clock    ;
-; N/A           ; None        ; -1.973 ns ; TXreset_n ; spi_master:inst|rxBuffer[20]      ; clock    ;
-; N/A           ; None        ; -1.973 ns ; TXreset_n ; spi_master:inst|rxBuffer[19]      ; clock    ;
-; N/A           ; None        ; -1.973 ns ; TXreset_n ; spi_master:inst|rxBuffer[18]      ; clock    ;
-; N/A           ; None        ; -2.139 ns ; TXreset_n ; spi_master:inst|txBuffer[15]      ; clock    ;
-; N/A           ; None        ; -2.139 ns ; TXreset_n ; spi_master:inst|txBuffer[14]      ; clock    ;
-; N/A           ; None        ; -2.413 ns ; TXreset_n ; spi_master:inst|txBuffer[20]      ; clock    ;
-; N/A           ; None        ; -2.413 ns ; TXreset_n ; spi_master:inst|txBuffer[19]      ; clock    ;
-; N/A           ; None        ; -2.413 ns ; TXreset_n ; spi_master:inst|txBuffer[18]      ; clock    ;
-; N/A           ; None        ; -2.413 ns ; TXreset_n ; spi_master:inst|txBuffer[17]      ; clock    ;
-; N/A           ; None        ; -2.413 ns ; TXreset_n ; spi_master:inst|txBuffer[16]      ; clock    ;
-; N/A           ; None        ; -2.551 ns ; TXreset_n ; spi_master:inst|txBuffer[0]       ; clock    ;
-; N/A           ; None        ; -2.627 ns ; TXreset_n ; spi_master:inst|rxBuffer[10]      ; clock    ;
-; N/A           ; None        ; -2.627 ns ; TXreset_n ; spi_master:inst|rxBuffer[9]       ; clock    ;
-; N/A           ; None        ; -2.627 ns ; TXreset_n ; spi_master:inst|rxBuffer[8]       ; clock    ;
-; N/A           ; None        ; -2.627 ns ; TXreset_n ; spi_master:inst|rxBuffer[7]       ; clock    ;
-; N/A           ; None        ; -2.627 ns ; TXreset_n ; spi_master:inst|rxBuffer[6]       ; clock    ;
-; N/A           ; None        ; -2.701 ns ; TXreset_n ; spi_master:inst|rxBuffer[17]      ; clock    ;
-; N/A           ; None        ; -2.701 ns ; TXreset_n ; spi_master:inst|rxBuffer[16]      ; clock    ;
-; N/A           ; None        ; -2.720 ns ; TX[9]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.732 ns ; TX[14]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.753 ns ; TX[16]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.770 ns ; TXreset_n ; spi_master:inst|last_bit[5]       ; clock    ;
-; N/A           ; None        ; -2.770 ns ; TXreset_n ; spi_master:inst|last_bit[3]       ; clock    ;
-; N/A           ; None        ; -2.770 ns ; TXreset_n ; spi_master:inst|last_bit[4]       ; clock    ;
-; N/A           ; None        ; -2.771 ns ; TX[4]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.777 ns ; TXreset_n ; spi_master:inst|clk_toggles[0]    ; clock    ;
-; N/A           ; None        ; -2.777 ns ; TXreset_n ; spi_master:inst|clk_toggles[1]    ; clock    ;
-; N/A           ; None        ; -2.777 ns ; TXreset_n ; spi_master:inst|clk_toggles[3]    ; clock    ;
-; N/A           ; None        ; -2.777 ns ; TXreset_n ; spi_master:inst|clk_toggles[2]    ; clock    ;
-; N/A           ; None        ; -2.777 ns ; TXreset_n ; spi_master:inst|clk_toggles[4]    ; clock    ;
-; N/A           ; None        ; -2.777 ns ; TXreset_n ; spi_master:inst|clk_toggles[5]    ; clock    ;
-; N/A           ; None        ; -2.805 ns ; TX[18]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.820 ns ; TX[8]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.826 ns ; TX[5]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.853 ns ; TX[19]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.869 ns ; TXreset_n ; spi_master:inst|txBuffer[6]       ; clock    ;
-; N/A           ; None        ; -2.869 ns ; TXreset_n ; spi_master:inst|txBuffer[5]       ; clock    ;
-; N/A           ; None        ; -2.869 ns ; TXreset_n ; spi_master:inst|txBuffer[4]       ; clock    ;
-; N/A           ; None        ; -2.869 ns ; TXreset_n ; spi_master:inst|txBuffer[3]       ; clock    ;
-; N/A           ; None        ; -2.869 ns ; TXreset_n ; spi_master:inst|txBuffer[2]       ; clock    ;
-; N/A           ; None        ; -2.869 ns ; TXreset_n ; spi_master:inst|txBuffer[1]       ; clock    ;
-; N/A           ; None        ; -2.875 ns ; TXreset_n ; spi_master:inst|txBuffer[23]      ; clock    ;
-; N/A           ; None        ; -2.875 ns ; TXreset_n ; spi_master:inst|txBuffer[22]      ; clock    ;
-; N/A           ; None        ; -2.875 ns ; TXreset_n ; spi_master:inst|txBuffer[21]      ; clock    ;
-; N/A           ; None        ; -2.875 ns ; TXreset_n ; spi_master:inst|txBuffer[13]      ; clock    ;
-; N/A           ; None        ; -2.875 ns ; TXreset_n ; spi_master:inst|txBuffer[12]      ; clock    ;
-; N/A           ; None        ; -2.885 ns ; TX[3]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.892 ns ; TXreset_n ; spi_master:inst|txBuffer[11]      ; clock    ;
-; N/A           ; None        ; -2.892 ns ; TXreset_n ; spi_master:inst|txBuffer[10]      ; clock    ;
-; N/A           ; None        ; -2.892 ns ; TXreset_n ; spi_master:inst|txBuffer[9]       ; clock    ;
-; N/A           ; None        ; -2.892 ns ; TXreset_n ; spi_master:inst|txBuffer[8]       ; clock    ;
-; N/A           ; None        ; -2.892 ns ; TXreset_n ; spi_master:inst|txBuffer[7]       ; clock    ;
-; N/A           ; None        ; -2.945 ns ; TX[17]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.949 ns ; TX[6]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.950 ns ; TX[7]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -2.972 ns ; TXreset_n ; spi_master:inst|rxBuffer[15]      ; clock    ;
-; N/A           ; None        ; -2.972 ns ; TXreset_n ; spi_master:inst|rxBuffer[14]      ; clock    ;
-; N/A           ; None        ; -2.972 ns ; TXreset_n ; spi_master:inst|rxBuffer[13]      ; clock    ;
-; N/A           ; None        ; -2.972 ns ; TXreset_n ; spi_master:inst|rxBuffer[12]      ; clock    ;
-; N/A           ; None        ; -2.972 ns ; TXreset_n ; spi_master:inst|rxBuffer[11]      ; clock    ;
-; N/A           ; None        ; -2.988 ns ; TX[13]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.037 ns ; TX[22]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.071 ns ; TX[12]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.078 ns ; TXreset_n ; spi_master:inst|rxBuffer[5]       ; clock    ;
-; N/A           ; None        ; -3.078 ns ; TXreset_n ; spi_master:inst|rxBuffer[4]       ; clock    ;
-; N/A           ; None        ; -3.078 ns ; TXreset_n ; spi_master:inst|rxBuffer[3]       ; clock    ;
-; N/A           ; None        ; -3.078 ns ; TXreset_n ; spi_master:inst|rxBuffer[2]       ; clock    ;
-; N/A           ; None        ; -3.078 ns ; TXreset_n ; spi_master:inst|rxBuffer[1]       ; clock    ;
-; N/A           ; None        ; -3.079 ns ; TX[21]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.080 ns ; TXreset_n ; spi_master:inst|rxBuffer[0]       ; clock    ;
-; N/A           ; None        ; -3.137 ns ; TX[20]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.158 ns ; TX[2]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.161 ns ; TX[1]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.207 ns ; TX[23]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.212 ns ; TX[11]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.264 ns ; TX[0]     ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.297 ns ; TX[10]    ; PulseOnChange:inst2|pulse         ; clock    ;
-; N/A           ; None        ; -3.314 ns ; TX[15]    ; PulseOnChange:inst2|pulse         ; clock    ;
-+---------------+-------------+-----------+-----------+-----------------------------------+----------+
++-------------------------------------------------------------------------+
+; tco                                                                     ;
++-------+--------------+------------+--------------+---------+------------+
+; Slack ; Required tco ; Actual tco ; From         ; To      ; From Clock ;
++-------+--------------+------------+--------------+---------+------------+
+; N/A   ; None         ; 8.351 ns   ; READY~reg0   ; READY   ; CLKIN      ;
+; N/A   ; None         ; 6.175 ns   ; CLKSLOW~reg0 ; CLKSLOW ; CLKIN      ;
++-------+--------------+------------+--------------+---------+------------+
 
 
 +--------------------------+
@@ -721,131 +326,54 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II Classic Timing Analyzer
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sun Apr 06 17:43:28 2025
+    Info: Processing started: Fri Apr 11 14:49:12 2025
 Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
 Info: Started post-fitting delay annotation
 Info: Delay annotation completed successfully
-Warning: Timing Analysis is analyzing one or more combinational loops as latches
-    Warning: Node "spi_slave:inst1|rx[23]" is a latch
-    Warning: Node "spi_slave:inst1|rx[22]" is a latch
-    Warning: Node "spi_slave:inst1|rx[21]" is a latch
-    Warning: Node "spi_slave:inst1|rx[20]" is a latch
-    Warning: Node "spi_slave:inst1|rx[19]" is a latch
-    Warning: Node "spi_slave:inst1|rx[18]" is a latch
-    Warning: Node "spi_slave:inst1|rx[17]" is a latch
-    Warning: Node "spi_slave:inst1|rx[16]" is a latch
-    Warning: Node "spi_slave:inst1|rx[15]" is a latch
-    Warning: Node "spi_slave:inst1|rx[14]" is a latch
-    Warning: Node "spi_slave:inst1|rx[13]" is a latch
-    Warning: Node "spi_slave:inst1|rx[12]" is a latch
-    Warning: Node "spi_slave:inst1|rx[11]" is a latch
-    Warning: Node "spi_slave:inst1|rx[10]" is a latch
-    Warning: Node "spi_slave:inst1|rx[9]" is a latch
-    Warning: Node "spi_slave:inst1|rx[8]" is a latch
-    Warning: Node "spi_slave:inst1|rx[7]" is a latch
-    Warning: Node "spi_slave:inst1|rx[6]" is a latch
-    Warning: Node "spi_slave:inst1|rx[5]" is a latch
-    Warning: Node "spi_slave:inst1|rx[4]" is a latch
-    Warning: Node "spi_slave:inst1|rx[3]" is a latch
-    Warning: Node "spi_slave:inst1|rx[2]" is a latch
-    Warning: Node "spi_slave:inst1|rx[1]" is a latch
-    Warning: Node "spi_slave:inst1|rx[0]" is a latch
 Warning: Found pins functioning as undefined clocks and/or memory enables
-    Info: Assuming node "clock" is an undefined clock
-    Info: Assuming node "RXenable" is a latch enable. Will not compute fmax for this pin.
-Warning: Found 4 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
-    Info: Detected gated clock "spi_slave:inst1|process_2~0" as buffer
-    Info: Detected gated clock "spi_slave:inst1|clk" as buffer
-    Info: Detected ripple clock "spi_master:inst|INT_sclk" as buffer
-    Info: Detected ripple clock "spi_master:inst|INT_ss_n" as buffer
-Info: Clock "clock" has Internal fmax of 66.5 MHz between source register "spi_slave:inst1|miso~reg0" and destination register "spi_master:inst|rxBuffer[0]" (period= 15.038 ns)
-    Info: + Longest register to register delay is 1.103 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X1_Y12_N4; Fanout = 2; REG Node = 'spi_slave:inst1|miso~reg0'
-        Info: 2: + IC(0.601 ns) + CELL(0.502 ns) = 1.103 ns; Loc. = LC_X1_Y12_N0; Fanout = 2; REG Node = 'spi_master:inst|rxBuffer[0]'
-        Info: Total cell delay = 0.502 ns ( 45.51 % )
-        Info: Total interconnect delay = 0.601 ns ( 54.49 % )
-    Info: - Smallest clock skew is -5.973 ns
-        Info: + Shortest clock path from clock "clock" to destination register is 2.472 ns
-            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 113; CLK Node = 'clock'
-            Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X1_Y12_N0; Fanout = 2; REG Node = 'spi_master:inst|rxBuffer[0]'
+    Info: Assuming node "CLKIN" is an undefined clock
+Warning: Found 1 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "CLKSLOW~reg0" as buffer
+Info: Clock "CLKIN" has Internal fmax of 174.49 MHz between source register "slowcnt[3]" and destination register "slowcnt[13]" (period= 5.731 ns)
+    Info: + Longest register to register delay is 5.288 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X11_Y7_N5; Fanout = 4; REG Node = 'slowcnt[3]'
+        Info: 2: + IC(1.613 ns) + CELL(0.467 ns) = 2.080 ns; Loc. = LC_X8_Y6_N3; Fanout = 2; COMB Node = 'Add0~37'
+        Info: 3: + IC(0.000 ns) + CELL(0.163 ns) = 2.243 ns; Loc. = LC_X8_Y6_N4; Fanout = 6; COMB Node = 'Add0~42'
+        Info: 4: + IC(0.000 ns) + CELL(0.218 ns) = 2.461 ns; Loc. = LC_X8_Y6_N9; Fanout = 6; COMB Node = 'Add0~67'
+        Info: 5: + IC(0.000 ns) + CELL(0.771 ns) = 3.232 ns; Loc. = LC_X9_Y6_N3; Fanout = 1; COMB Node = 'Add0~85'
+        Info: 6: + IC(1.881 ns) + CELL(0.175 ns) = 5.288 ns; Loc. = LC_X13_Y5_N2; Fanout = 4; REG Node = 'slowcnt[13]'
+        Info: Total cell delay = 1.794 ns ( 33.93 % )
+        Info: Total interconnect delay = 3.494 ns ( 66.07 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "CLKIN" to destination register is 2.472 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 21; CLK Node = 'CLKIN'
+            Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X13_Y5_N2; Fanout = 4; REG Node = 'slowcnt[13]'
             Info: Total cell delay = 1.301 ns ( 52.63 % )
             Info: Total interconnect delay = 1.171 ns ( 47.37 % )
-        Info: - Longest clock path from clock "clock" to source register is 8.445 ns
-            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 113; CLK Node = 'clock'
-            Info: 2: + IC(1.171 ns) + CELL(0.809 ns) = 2.707 ns; Loc. = LC_X5_Y12_N5; Fanout = 4; REG Node = 'spi_master:inst|INT_sclk'
-            Info: 3: + IC(2.941 ns) + CELL(0.319 ns) = 5.967 ns; Loc. = LC_X14_Y3_N9; Fanout = 73; COMB Node = 'spi_slave:inst1|clk'
-            Info: 4: + IC(1.904 ns) + CELL(0.574 ns) = 8.445 ns; Loc. = LC_X1_Y12_N4; Fanout = 2; REG Node = 'spi_slave:inst1|miso~reg0'
-            Info: Total cell delay = 2.429 ns ( 28.76 % )
-            Info: Total interconnect delay = 6.016 ns ( 71.24 % )
-    Info: + Micro clock to output delay of source is 0.235 ns
-    Info: + Micro setup delay of destination is 0.208 ns
-    Info: Delay path is controlled by inverted clocks -- if clock duty cycle is 50%, fmax is divided by two
-Warning: Circuit may not operate. Detected 15 non-operational path(s) clocked by clock "clock" with clock skew larger than data delay. See Compilation Report for details.
-Info: Found hold time violation between source  pin or register "spi_master:inst|mosi~en" and destination pin or register "spi_slave:inst1|rxBuffer[0]" for clock "clock" (Hold time is 3.27 ns)
-    Info: + Largest clock skew is 5.973 ns
-        Info: + Longest clock path from clock "clock" to destination register is 8.445 ns
-            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 113; CLK Node = 'clock'
-            Info: 2: + IC(1.171 ns) + CELL(0.809 ns) = 2.707 ns; Loc. = LC_X5_Y12_N5; Fanout = 4; REG Node = 'spi_master:inst|INT_sclk'
-            Info: 3: + IC(2.941 ns) + CELL(0.319 ns) = 5.967 ns; Loc. = LC_X14_Y3_N9; Fanout = 73; COMB Node = 'spi_slave:inst1|clk'
-            Info: 4: + IC(1.904 ns) + CELL(0.574 ns) = 8.445 ns; Loc. = LC_X1_Y6_N1; Fanout = 2; REG Node = 'spi_slave:inst1|rxBuffer[0]'
-            Info: Total cell delay = 2.429 ns ( 28.76 % )
-            Info: Total interconnect delay = 6.016 ns ( 71.24 % )
-        Info: - Shortest clock path from clock "clock" to source register is 2.472 ns
-            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 113; CLK Node = 'clock'
-            Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X5_Y11_N1; Fanout = 2; REG Node = 'spi_master:inst|mosi~en'
+        Info: - Longest clock path from clock "CLKIN" to source register is 2.472 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 21; CLK Node = 'CLKIN'
+            Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X11_Y7_N5; Fanout = 4; REG Node = 'slowcnt[3]'
             Info: Total cell delay = 1.301 ns ( 52.63 % )
             Info: Total interconnect delay = 1.171 ns ( 47.37 % )
-    Info: - Micro clock to output delay of source is 0.235 ns
-    Info: - Shortest register to register delay is 2.606 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X5_Y11_N1; Fanout = 2; REG Node = 'spi_master:inst|mosi~en'
-        Info: 2: + IC(2.104 ns) + CELL(0.502 ns) = 2.606 ns; Loc. = LC_X1_Y6_N1; Fanout = 2; REG Node = 'spi_slave:inst1|rxBuffer[0]'
-        Info: Total cell delay = 0.502 ns ( 19.26 % )
-        Info: Total interconnect delay = 2.104 ns ( 80.74 % )
-    Info: + Micro hold delay of destination is 0.138 ns
-Info: tsu for register "PulseOnChange:inst2|pulse" (data pin = "TX[15]", clock pin = "clock") is 3.660 ns
-    Info: + Longest pin to register delay is 5.924 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_B9; Fanout = 3; PIN Node = 'TX[15]'
-        Info: 2: + IC(2.755 ns) + CELL(0.462 ns) = 3.925 ns; Loc. = LC_X9_Y13_N4; Fanout = 1; COMB Node = 'PulseOnChange:inst2|Equal0~8'
-        Info: 3: + IC(0.439 ns) + CELL(0.571 ns) = 4.935 ns; Loc. = LC_X9_Y13_N7; Fanout = 1; COMB Node = 'PulseOnChange:inst2|Equal0~9'
-        Info: 4: + IC(0.487 ns) + CELL(0.502 ns) = 5.924 ns; Loc. = LC_X9_Y13_N2; Fanout = 8; REG Node = 'PulseOnChange:inst2|pulse'
-        Info: Total cell delay = 2.243 ns ( 37.86 % )
-        Info: Total interconnect delay = 3.681 ns ( 62.14 % )
-    Info: + Micro setup delay of destination is 0.208 ns
-    Info: - Shortest clock path from clock "clock" to destination register is 2.472 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 113; CLK Node = 'clock'
-        Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X9_Y13_N2; Fanout = 8; REG Node = 'PulseOnChange:inst2|pulse'
-        Info: Total cell delay = 1.301 ns ( 52.63 % )
-        Info: Total interconnect delay = 1.171 ns ( 47.37 % )
-Info: tco from clock "clock" to destination pin "SPI_miso" through register "spi_slave:inst1|miso~reg0" is 10.617 ns
-    Info: + Longest clock path from clock "clock" to source register is 8.445 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 113; CLK Node = 'clock'
-        Info: 2: + IC(1.171 ns) + CELL(0.809 ns) = 2.707 ns; Loc. = LC_X5_Y12_N5; Fanout = 4; REG Node = 'spi_master:inst|INT_sclk'
-        Info: 3: + IC(2.941 ns) + CELL(0.319 ns) = 5.967 ns; Loc. = LC_X14_Y3_N9; Fanout = 73; COMB Node = 'spi_slave:inst1|clk'
-        Info: 4: + IC(1.904 ns) + CELL(0.574 ns) = 8.445 ns; Loc. = LC_X1_Y12_N4; Fanout = 2; REG Node = 'spi_slave:inst1|miso~reg0'
-        Info: Total cell delay = 2.429 ns ( 28.76 % )
-        Info: Total interconnect delay = 6.016 ns ( 71.24 % )
     Info: + Micro clock to output delay of source is 0.235 ns
-    Info: + Longest register to pin delay is 1.937 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X1_Y12_N4; Fanout = 2; REG Node = 'spi_slave:inst1|miso~reg0'
-        Info: 2: + IC(0.483 ns) + CELL(1.454 ns) = 1.937 ns; Loc. = PIN_F3; Fanout = 0; PIN Node = 'SPI_miso'
-        Info: Total cell delay = 1.454 ns ( 75.06 % )
-        Info: Total interconnect delay = 0.483 ns ( 24.94 % )
-Info: th for register "spi_master:inst|txBuffer[6]" (data pin = "TX[6]", clock pin = "clock") is -0.747 ns
-    Info: + Longest clock path from clock "clock" to destination register is 2.472 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 113; CLK Node = 'clock'
-        Info: 2: + IC(1.171 ns) + CELL(0.574 ns) = 2.472 ns; Loc. = LC_X9_Y11_N5; Fanout = 1; REG Node = 'spi_master:inst|txBuffer[6]'
-        Info: Total cell delay = 1.301 ns ( 52.63 % )
-        Info: Total interconnect delay = 1.171 ns ( 47.37 % )
-    Info: + Micro hold delay of destination is 0.138 ns
-    Info: - Shortest pin to register delay is 3.357 ns
-        Info: 1: + IC(0.000 ns) + CELL(0.708 ns) = 0.708 ns; Loc. = PIN_A10; Fanout = 3; PIN Node = 'TX[6]'
-        Info: 2: + IC(2.147 ns) + CELL(0.502 ns) = 3.357 ns; Loc. = LC_X9_Y11_N5; Fanout = 1; REG Node = 'spi_master:inst|txBuffer[6]'
-        Info: Total cell delay = 1.210 ns ( 36.04 % )
-        Info: Total interconnect delay = 2.147 ns ( 63.96 % )
-Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 28 warnings
-    Info: Peak virtual memory: 175 megabytes
-    Info: Processing ended: Sun Apr 06 17:43:28 2025
-    Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:00
+    Info: + Micro setup delay of destination is 0.208 ns
+Info: tco from clock "CLKIN" to destination pin "READY" through register "READY~reg0" is 8.351 ns
+    Info: + Longest clock path from clock "CLKIN" to source register is 6.161 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.727 ns) = 0.727 ns; Loc. = PIN_J6; Fanout = 21; CLK Node = 'CLKIN'
+        Info: 2: + IC(1.171 ns) + CELL(0.809 ns) = 2.707 ns; Loc. = LC_X9_Y7_N3; Fanout = 13; REG Node = 'CLKSLOW~reg0'
+        Info: 3: + IC(2.880 ns) + CELL(0.574 ns) = 6.161 ns; Loc. = LC_X20_Y13_N2; Fanout = 1; REG Node = 'READY~reg0'
+        Info: Total cell delay = 2.110 ns ( 34.25 % )
+        Info: Total interconnect delay = 4.051 ns ( 65.75 % )
+    Info: + Micro clock to output delay of source is 0.235 ns
+    Info: + Longest register to pin delay is 1.955 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LC_X20_Y13_N2; Fanout = 1; REG Node = 'READY~reg0'
+        Info: 2: + IC(0.501 ns) + CELL(1.454 ns) = 1.955 ns; Loc. = PIN_D14; Fanout = 0; PIN Node = 'READY'
+        Info: Total cell delay = 1.454 ns ( 74.37 % )
+        Info: Total interconnect delay = 0.501 ns ( 25.63 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 179 megabytes
+    Info: Processing ended: Fri Apr 11 14:49:13 2025
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:06
 
 

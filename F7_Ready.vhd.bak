@@ -18,7 +18,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity F7_Ready is
 Generic(
-CLKVAL	:	natural := 1000000 	;	-- input frequency in Hz
+CLKVAL	:	natural := 600000 	;	-- input frequency in Hz
 FSLOW	:	natural := 1000;	-- output slow frequency in Hz.
 DELAY	:	natural := 500		 	-- ready output delay in ms
 ); 

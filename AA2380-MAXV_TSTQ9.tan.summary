@@ -2,55 +2,25 @@
 Timing Analyzer Summary
 --------------------------------------------------------------------------------------
 
-Type           : Worst-case tsu
-Slack          : N/A
-Required Time  : None
-Actual Time    : 3.660 ns
-From           : TX[15]
-To             : PulseOnChange:inst2|pulse
-From Clock     : --
-To Clock       : clock
-Failed Paths   : 0
-
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 10.617 ns
-From           : spi_slave:inst1|miso~reg0
-To             : SPI_miso
-From Clock     : clock
+Actual Time    : 8.351 ns
+From           : READY~reg0
+To             : READY
+From Clock     : CLKIN
 To Clock       : --
 Failed Paths   : 0
 
-Type           : Worst-case th
+Type           : Clock Setup: 'CLKIN'
 Slack          : N/A
 Required Time  : None
-Actual Time    : -0.747 ns
-From           : TX[6]
-To             : spi_master:inst|txBuffer[6]
-From Clock     : --
-To Clock       : clock
+Actual Time    : 174.49 MHz ( period = 5.731 ns )
+From           : slowcnt[3]
+To             : slowcnt[13]
+From Clock     : CLKIN
+To Clock       : CLKIN
 Failed Paths   : 0
-
-Type           : Clock Setup: 'clock'
-Slack          : N/A
-Required Time  : None
-Actual Time    : 66.50 MHz ( period = 15.038 ns )
-From           : spi_slave:inst1|miso~reg0
-To             : spi_master:inst|rxBuffer[0]
-From Clock     : clock
-To Clock       : clock
-Failed Paths   : 0
-
-Type           : Clock Hold: 'clock'
-Slack          : Not operational: Clock Skew > Data Delay
-Required Time  : None
-Actual Time    : N/A
-From           : spi_master:inst|mosi~en
-To             : spi_slave:inst1|rxBuffer[0]
-From Clock     : clock
-To Clock       : clock
-Failed Paths   : 15
 
 Type           : Total number of failed paths
 Slack          : 
@@ -60,7 +30,7 @@ From           :
 To             : 
 From Clock     : 
 To Clock       : 
-Failed Paths   : 15
+Failed Paths   : 0
 
 --------------------------------------------------------------------------------------
 

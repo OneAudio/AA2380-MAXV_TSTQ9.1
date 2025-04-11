@@ -25,8 +25,8 @@ HEADER
 	VERSION = 1;
 	TIME_UNIT = ns;
 	DATA_OFFSET = 0.0;
-	DATA_DURATION = 120000000.0;
-	SIMULATION_TIME = 120000000.0;
+	DATA_DURATION = 1373664920.7;
+	SIMULATION_TIME = 1373664920.7;
 	GRID_PHASE = 0.0;
 	GRID_PERIOD = 10.0;
 	GRID_DUTY_CYCLE = 50;
@@ -67,8 +67,8 @@ TRANSITION_LIST("READY")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 100006080.0;
-		LEVEL 1 FOR 19993920.0;
+		LEVEL 0 FOR 500999500.0;
+		LEVEL 1 FOR 872665420.7;
 	}
 }
 
@@ -79,10 +79,12 @@ TRANSITION_LIST("CLKIN")
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 187500;
-			LEVEL 0 FOR 320.0;
-			LEVEL 1 FOR 320.0;
+			REPEAT = 1373664;
+			LEVEL 0 FOR 500.0;
+			LEVEL 1 FOR 500.0;
 		}
+		LEVEL 0 FOR 500.0;
+		LEVEL 1 FOR 420.7;
 	}
 }
 
@@ -91,14 +93,14 @@ TRANSITION_LIST("CLKSLOW")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 10000320.0;
+		LEVEL 0 FOR 500500.0;
 		NODE
 		{
-			REPEAT = 5;
-			LEVEL 1 FOR 10000640.0;
-			LEVEL 0 FOR 10000640.0;
+			REPEAT = 1370;
+			LEVEL 1 FOR 501000.0;
+			LEVEL 0 FOR 501000.0;
 		}
-		LEVEL 1 FOR 9993280.0;
+		LEVEL 1 FOR 424420.7;
 	}
 }
 
@@ -132,12 +134,18 @@ DISPLAY_LINE
 TIME_BAR
 {
 	TIME = 30825;
-	MASTER = TRUE;
+	MASTER = FALSE;
 }
 
 TIME_BAR
 {
 	TIME = 100005043;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 4296859933;
 	MASTER = FALSE;
 }
 
@@ -149,31 +157,277 @@ TIME_BAR
 
 TIME_BAR
 {
-	TIME = 69000090413;
+	TIME = 678237950000;
+	MASTER = TRUE;
+}
+
+TIME_BAR
+{
+	TIME = 678239650000;
 	MASTER = FALSE;
 }
 
 TIME_BAR
 {
-	TIME = 82304526748;
+	TIME = 850000850000;
 	MASTER = FALSE;
 }
+;
 
-TIME_BAR
+/*transitions from sub-simulation number 4*/
+
+TRANSITION_LIST("READY")
 {
-	TIME = 100000000000;
-	MASTER = FALSE;
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68473139.6;
+	}
 }
 
-TIME_BAR
+TRANSITION_LIST("CLKSLOW")
 {
-	TIME = 120000000000;
-	MASTER = FALSE;
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 617.9;
+		NODE
+		{
+			REPEAT = 6810;
+			LEVEL 0 FOR 5026.7;
+			LEVEL 1 FOR 5026.7;
+		}
+		LEVEL 0 FOR 5026.7;
+		LEVEL 1 FOR 3841.0;
+	}
+}
+;
+
+/*transitions from sub-simulation number 14*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68359629.7;
+	}
 }
 
-TIME_BAR
+TRANSITION_LIST("CLKSLOW")
 {
-	TIME = 120000000000;
-	MASTER = FALSE;
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 5060.1;
+		NODE
+		{
+			REPEAT = 6182;
+			LEVEL 1 FOR 5527.7;
+			LEVEL 0 FOR 5527.7;
+		}
+		LEVEL 1 FOR 5527.7;
+		LEVEL 0 FOR 4559.1;
+	}
+}
+;
+
+/*transitions from sub-simulation number 5*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68472872.4;
+	}
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 1185.7;
+		NODE
+		{
+			REPEAT = 6810;
+			LEVEL 0 FOR 5026.7;
+			LEVEL 1 FOR 5026.7;
+		}
+		LEVEL 0 FOR 5026.7;
+		LEVEL 1 FOR 3006.0;
+	}
+}
+;
+
+/*transitions from sub-simulation number 15*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68359579.6;
+	}
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 968.6;
+		NODE
+		{
+			REPEAT = 6183;
+			LEVEL 1 FOR 5527.7;
+			LEVEL 0 FOR 5527.7;
+		}
+		LEVEL 1 FOR 3072.8;
+	}
+}
+;
+
+/*transitions from sub-simulation number 6*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68472822.3;
+	}
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 2020.7;
+		NODE
+		{
+			REPEAT = 6810;
+			LEVEL 0 FOR 5026.7;
+			LEVEL 1 FOR 5026.7;
+		}
+		LEVEL 0 FOR 5026.7;
+		LEVEL 1 FOR 2120.9;
+	}
+}
+;
+
+/*transitions from sub-simulation number 16*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68359729.9;
+	}
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 2454.9;
+		NODE
+		{
+			REPEAT = 6183;
+			LEVEL 0 FOR 5527.7;
+			LEVEL 1 FOR 5527.7;
+		}
+		LEVEL 0 FOR 1736.8;
+	}
+}
+;
+
+/*transitions from sub-simulation number 17*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 6254383.35;
+	}
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 3790.9;
+		NODE
+		{
+			REPEAT = 565;
+			LEVEL 1 FOR 5527.7;
+			LEVEL 0 FOR 5527.7;
+		}
+		LEVEL 1 FOR 4291.45;
+	}
+}
+;
+
+/*transitions from sub-simulation number 7*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68473122.9;
+	}
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 2905.8;
+		NODE
+		{
+			REPEAT = 6810;
+			LEVEL 0 FOR 5026.7;
+			LEVEL 1 FOR 5026.7;
+		}
+		LEVEL 0 FOR 5026.7;
+		LEVEL 1 FOR 1536.4;
+	}
+}
+;
+
+/*transitions from sub-simulation number 8*/
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 68472839.0;
+	}
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 3490.3;
+		NODE
+		{
+			REPEAT = 6810;
+			LEVEL 0 FOR 5026.7;
+			LEVEL 1 FOR 5026.7;
+		}
+		LEVEL 0 FOR 5026.7;
+		LEVEL 1 FOR 668.0;
+	}
 }
 ;

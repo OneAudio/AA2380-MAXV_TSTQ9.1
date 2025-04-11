@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "MAX II"
 set_global_assignment -name DEVICE EPM2210F324C3
-set_global_assignment -name TOP_LEVEL_ENTITY SPI_in_out_test
+set_global_assignment -name TOP_LEVEL_ENTITY F7_Ready
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:51:00  JANUARY 24, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -81,10 +81,13 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE F0_ctrl_encoder_E.vwf
 set_global_assignment -name VHDL_FILE PulseOnChange.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE PulseOnChange.vwf
 set_global_assignment -name GLITCH_DETECTION OFF
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE SPI_in_out_test.vwf
+set_global_assignment -name MISC_FILE "D:/GIT/AA2380-MAXV_TSTQ9.1/AA2380-MAXV_TSTQ9.dpf"
+set_global_assignment -name VHDL_FILE F21_Divider_by_64x64.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F21_Divider_by_64x64.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name MISC_FILE "D:/GIT/AA2380-MAXV_TSTQ9.1/AA2380-MAXV_TSTQ9.dpf"
+set_global_assignment -name VHDL_FILE F7_Ready.vhd
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE F7_Ready.vwf
