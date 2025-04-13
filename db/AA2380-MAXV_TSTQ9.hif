@@ -540,96 +540,6 @@ AUTO
 
 # end
 # entity
-F21_Divider_by_64x64
-# storage
-db|AA2380-MAXV_TSTQ9.(1).cnf
-db|AA2380-MAXV_TSTQ9.(1).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f21_divider_by_64x64.vhd
-2fe29e5af4a24031956a835548bcb6e3
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-F15_Par2I2S_2x4LanesII
-# storage
-db|AA2380-MAXV_TSTQ9.(14).cnf
-db|AA2380-MAXV_TSTQ9.(14).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f15_par2i2s_2x4lanesii.vhd
-5b9d22f9a6785865c34896f4efc5e26
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
-F16_I2S2Par_2x4Lanes
-# storage
-db|AA2380-MAXV_TSTQ9.(15).cnf
-db|AA2380-MAXV_TSTQ9.(15).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-f16_i2s2par_2x4lanes.vhd
-fec455a3c12e9797b9709ccafa934a9e
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|altera|quartus|lmf|maxplus2.lmf
-a36c8ec425c8a2589af98b2d4daabc3
-# macro_sequence
-
-# end
-# entity
 4LanesRXTX
 # storage
 db|AA2380-MAXV_TSTQ9.(12).cnf
@@ -649,8 +559,8 @@ AUTO
 # entity
 F7_Ready
 # storage
-db|AA2380-MAXV_TSTQ9.(16).cnf
-db|AA2380-MAXV_TSTQ9.(16).cnf
+db|AA2380-MAXV_TSTQ9.(1).cnf
+db|AA2380-MAXV_TSTQ9.(1).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -658,7 +568,7 @@ ON
 # case_insensitive
 # source_file
 f7_ready.vhd
-84b4bf2a4aa58e3c56f5666d7c1f6a3
+64e6fb3c943390a3e97bbc6827ab72d
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -672,11 +582,19 @@ ON
 }
 # user_parameter {
 CLKVAL
+50000000
+PARAMETER_SIGNED_DEC
+DEF
+Fhig
 1000000
 PARAMETER_SIGNED_DEC
 DEF
-FSLOW
-1000
+Fmid
+10000
+PARAMETER_SIGNED_DEC
+DEF
+Flow
+1
 PARAMETER_SIGNED_DEC
 DEF
 DELAY
@@ -688,7 +606,7 @@ DEF
 |
 }
 # lmf
-|altera|quartus|lmf|maxplus2.lmf
+c:|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 

@@ -1,8 +1,10 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="AA2380-MAXV_TSTQ9">
-		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_0nh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add1" CBX_FILE_NAME="add_sub_umh.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add2" CBX_FILE_NAME="add_sub_smh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add0" CBX_FILE_NAME="add_sub_3nh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add2" CBX_FILE_NAME="add_sub_4nh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add4" CBX_FILE_NAME="add_sub_4nh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add1" CBX_FILE_NAME="add_sub_2nh.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|F7_Ready|lpm_add_sub:Add3" CBX_FILE_NAME="add_sub_0nh.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
