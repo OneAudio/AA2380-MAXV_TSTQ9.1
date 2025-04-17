@@ -1,0 +1,363 @@
+--------------------------------------------------------------------------------
+-- Ressource : -- https://www.fpga4student.com/2017/08/how-to-generate-clock-enable-signal.html
+-- fpga4student.com: FPGA projects, Verilog projects, VHDL projects,
+-- Generate clock enable signal instead of creating another clock domain
+-- Assume that the input clock : CK98M304
+--------------------------------------------------------------------------------
+-- O.N - 15/04/2025 -- take  LE 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+library  IEEE;
+use  IEEE.STD_LOGIC_1164.ALL;
+use  ieee.numeric_std.all;
+use IEEE.STD_LOGIC_UNSIGNED.ALL; 
+
+entity  F0_CE_CLOCKS  is
+port(
+    CK98M304      :	in  std_logic   ;          -- Main input clock (98.304MHz)
+    SR            :	in integer range 0 to 7 ;  -- Sampling rate 4 bits (12kHz to 1536kHz)
+    AVG           :	in integer range 0 to 7 ;  -- Averaging ratio 4 bits (1 to 128)
+    AQMODE        :	in std_logic    ;          -- Aquisition mode ; 0= Normal Read - 1= Distributed Reading
+    -- Outputs used CLOCKs
+    ReadCLK       :	out std_logic   ;  -- clock used to read data (50% duty cycle output)
+    nFS           :	out std_logic   ;  -- Fso x AVG ratio (12kHz to 1536kHz) (80ns pulse output)
+    Fso           :	out std_logic   ;  -- Effective output sampling rate (12kHz to 1536kHz) (10ns pulse output)
+    LRCK_Fso      :	out std_logic   ; --Fso x AVG ratio (12kHz to 1536kHz) (50% duty cycle for LRCK)
+    CK8FSR       :	out std_logic   ; -- 64FS clock with 50% duty cycle
+    -- test outputs
+    -- TSTcounter_ReadCLK :out integer range 1 to 8192 ;
+    -- TSTSetCnt_ReadCLK  :out integer range 1 to 8192
+    XclearAll    :	out std_logic   
+    );
+end  F0_CE_CLOCKS;
+
+ARCHITECTURE DESCRIPTION OF F0_CE_CLOCKS IS
+
+signal   counter_nFS     : integer range 1 to 8192 ; -- nFS clock counter
+signal   SetCnt_nFS      : integer range 1 to 8192 ; -- nFS counter set value for frequency selection
+signal   counter_Fso     : integer range 1 to 8192 ; -- FSo clock counter
+signal   SetCnt_Fso      : integer range 1 to 8192 ; -- FSo counter set value for frequency selection
+signal   counter_CK64FS  : integer range 1 to 64   ; -- CK64FS clock counter
+signal   counter_CK8FSR  : integer range 1 to 1024  ; -- CK8FS clock counter
+signal   SetCnt_CK64FS   : integer range 1 to 128   ; -- CK64FS counter set value for frequency selection
+
+signal   clken_nFS       : std_logic;
+signal   clken_FSo       : std_logic;
+signal   clken_CK64FS    : std_logic;
+signal   clken_CK64FSR   : std_logic;
+signal   clken_CK8FSR   : std_logic;
+
+signal   counter_ReadCLK : integer range 1 to 8192 ; -- ReadCLK clock counter
+signal   SetCnt_ReadCLK  : integer range 1 to 8192 ; -- ReadCLK counter set value for frequency selection
+signal   clken_ReadCLK   : std_logic;
+signal   zReadCLK        : std_logic; 
+signal   Bypass          : std_logic;
+
+signal AVGlatch     : integer range 0 to 7; --
+signal SRLatch      : integer range 0 to 7; --
+signal clearAll    :  std_logic;
+
+signal clockDIV : unsigned (3 downto 0)    ;
+
+begin
+
+--Test signals
+--************
+--TSTcounter_ReadCLK <= counter_ReadCLK;
+--TSTSetCnt_ReadCLK  <= SetCnt_ReadCLK;
+XclearAll <= clearAll; --
+
+------------------------------------------------------------------
+-- Generate a clearAll pulse when the AVG or SR value is changed.
+-- This pulse is used to clear all counters and allow outputs to be synch.
+------------------------------------------------------------------
+ChangeDetect : process(CK98M304,AVG,SR,clockDIV)
+begin
+    if rising_edge(CK98M304)    then
+        clockDIV <= clockDIV +1;
+    end if;
+    --
+    if rising_edge(clockDIV(3))    then
+        AVGlatch <= AVG ; -- record previous  state
+        SRLatch  <=  SR ;
+        if  (AVGlatch /= AVG) or (SRLatch /= SR)  then -- compare previous with new state. 
+            clearAll <= '1'; -- set clearAll to high
+        else
+            clearAll <= '0'; -- set clearAll to low
+        end if;
+    end if;
+end process  ChangeDetect;
+------------------------------------------------------------------
+
+------------------------------------------------------------------
+-- Set SetCnt_Fso, SetCnt_nFS and SetCnt_CK64FS counters limit
+-- values depending on SR and AVG values.
+-- This allow to select effective desired output frequencies
+------------------------------------------------------------------
+process(AVG,SR,SetCnt_nFS,SetCnt_Fso)
+begin
+    -- Loaded counter limit for Fso ouput frequency from sampling rate "SR"
+    case (SR) is
+        when 0 => SetCnt_Fso <= 8192 ; -- 12kHz ()
+        when 1 => SetCnt_Fso <= 4096 ; --
+        when 2 => SetCnt_Fso <= 2048 ; --
+        when 3 => SetCnt_Fso <= 1024 ; --
+        when 4 => SetCnt_Fso <= 512  ; --
+        when 5 => SetCnt_Fso <= 256  ; --
+        when 6 => SetCnt_Fso <= 128  ; --
+        when 7 => SetCnt_Fso <= 64   ; -- 1536k
+    end case ;
+    --
+    -- Loaded counter limit for nFS ouput frequency from "AVG+SR" value
+    case (AVG+SR) is
+        when 0 => SetCnt_nFS <= 8192 ; -- 12kHz ()
+        when 1 => SetCnt_nFS <= 4096 ; --
+        when 2 => SetCnt_nFS <= 2048 ; --
+        when 3 => SetCnt_nFS <= 1024 ; --
+        when 4 => SetCnt_nFS <= 512  ; --
+        when 5 => SetCnt_nFS <= 256  ; --
+        when 6 => SetCnt_nFS <= 128  ; --
+        when 7 => SetCnt_nFS <= 64   ; -- 1536k
+        when others => SetCnt_nFS <= 64;
+    end case ;
+    --
+    SetCnt_CK64FS <= SetCnt_Fso/64 ; 
+
+end process;
+------------------------------------------------------------------
+-- ReadClock frequency selection.
+-- This is the clock used to read ADC DATA.
+------------------------------------------------------------------
+process(AQMODE,SetCnt_nFS,SR,AVG,Bypass,zReadCLK,CK98M304,SetCnt_ReadCLK)
+begin
+    if  AQMODE='0' then    
+        -- Normal aquisition mode (24 data samples read in one nFS cycle)
+        -- 
+        SetCnt_ReadCLK <= SetCnt_nFS / 64 ; -- Read clock is 64x time faster than nFS frequency
+    else
+--**********************************************************************************************
+-- 29/03/2024 * Table of all ReadClock value depending
+-- on SR and AVG values. When ReadCLK must be 98.304MHz,
+-- bypass bit must be set high to send clock to readclock without divider.
+-- NOTE: for more details, see document "AA2380_calc_ReadClockADC.ods"
+    case SR is
+        when 0 => -- FSo=12kHz
+            case AVG is
+                when 0 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 1 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 2 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 3 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 4 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 5 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 6 => SetCnt_ReadCLK <= 32 ; -- 1,536 MHz -- x2 3.072MHz
+                when 7 => SetCnt_ReadCLK <= 8 ; -- 6,144 MHz -- x2 12.288MHz
+            end case;
+        when 1 => -- FSo=24kHz
+            case AVG is
+                when 0 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 1 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 2 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz 
+                when 3 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz 
+                when 4 => SetCnt_ReadCLK <= 32 ; -- 1,536 MHz -- x2 3.072 MHz
+                when 5 => SetCnt_ReadCLK <= 32 ; -- 1,536 MHz -- x2 3.072 MHz
+                when 6 => SetCnt_ReadCLK <= 8  ; -- 6,144 MHz -- x2 12.288 MHz
+                when others => SetCnt_ReadCLK <= 8 ; -- NOT ALLOWED STATE
+            end case;
+        when 2 => -- FSo=48kHz
+            case AVG is
+                when 0 => SetCnt_ReadCLK <= 64 ; -- 1,536 MHz
+                when 1 => SetCnt_ReadCLK <= 32 ; -- 3,072 MHz
+                when 2 => SetCnt_ReadCLK <= 32 ; -- 3,072 MHz
+                when 3 => SetCnt_ReadCLK <= 32 ; -- 3,072 MHz
+                when 4 => SetCnt_ReadCLK <= 16 ; -- 3,072 MHz -- x2 6.144MHz
+                when 5 => SetCnt_ReadCLK <= 8 ; -- 6,144 MHz -- x2 12.288 MHz
+                when others => SetCnt_ReadCLK <= 8 ;-- NOT ALLOWED STATE
+            end case;
+        when 3 => -- FSo=96kHz
+            case AVG is
+                when 0 => SetCnt_ReadCLK <= 32 ; -- 3,072 MHz
+                when 1 => SetCnt_ReadCLK <= 16 ; -- 6,144 MHz
+                when 2 => SetCnt_ReadCLK <= 16 ; -- 6,144 MHz
+                when 3 => SetCnt_ReadCLK <= 8 ; -- 6,144 MHz -- x2 12.288 MHz
+                when 4 => SetCnt_ReadCLK <= 4  ; -- 12,288 MHz -- x2 24.576 MHz
+                when others => SetCnt_ReadCLK <= 8 ;-- NOT ALLOWED STATE
+            end case;
+        when 4 => -- FSo=192kHz
+            case AVG is
+                when 0 => SetCnt_ReadCLK <= 16 ; -- 6,144 MHz
+                when 1 => SetCnt_ReadCLK <= 8  ; -- 12,288 MHz
+                when 2 => SetCnt_ReadCLK <= 8  ; -- 12,288 MHz
+                when 3 => SetCnt_ReadCLK <= 4  ; -- 24,576 MHz 
+                when others => SetCnt_ReadCLK <= 8 ;-- NOT ALLOWED STATE
+            end case;
+        when 5 => -- FSo=384kHz
+            case AVG is
+                when 0 => SetCnt_ReadCLK <= 8 ; -- 12,288 MHz 
+                when 1 => SetCnt_ReadCLK <= 2 ; -- 49,152 MHz
+                when 2 => SetCnt_ReadCLK <= 2 ; -- 49,152 MHz  
+                when others => SetCnt_ReadCLK <= 8 ;-- NOT ALLOWED STATE
+            end case;   
+        when 6 => -- FSo=768kHz
+            case AVG is
+                when 0 => SetCnt_ReadCLK <= 2 ; -- 49.152 MHz 
+                when others => SetCnt_ReadCLK <= 8 ;-- NOT ALLOWED STATE
+            end case;
+         when others => SetCnt_ReadCLK <= 8 ;-- NOT ALLOWED STATE
+    end case;
+end if;
+-- Generate Bypass conditions where ReadClock is the main fast clock (98.304MHz).
+-- This is the ReadCLK mux command signal to choose direct (bypass) or divided clock.
+-- 98.304MHz Read clock in these conditions :  SR=7 and when SR=6 and AVG=1
+    if AQMODE='0'   then 
+    -- Normal read mode
+        if  (SR+AVG)=7   then 
+            Bypass <= '1';-- clock bypass ON
+        else
+            Bypass <= '0';-- clock bypass OFF
+        end if;    
+    else 
+    -- Distributed read mode
+        if  SR=7 or (SR=6 and AVG=1)   then 
+            Bypass <= '1';-- clock bypass ON
+        else
+            Bypass <= '0';-- clock bypass OFF
+        end if;
+    end if;
+    CLKBypass <= Bypass;
+--****************************************************************************************
+      -- Mux to choose where Readclock come from.
+    case Bypass is
+        when '0' => ReadCLK <= zReadCLK ; -- ReadClock is generated by divide counter
+        when '1' => ReadCLK <= CK98M304 ; -- ReadClock is directly fast main clock
+    end case;
+    --
+end process;
+
+------------------------------------------------------------------
+-- Counters incremented by main master clock (98.304MHz)
+-- 
+------------------------------------------------------------------
+process(CK98M304)
+begin
+  if(rising_edge(CK98M304)) then
+    ---- nFS clock counter (80ns pulse output)
+        if  clearAll='1' then
+            counter_nFS <= 1 ;
+            clken_nFS <= '1';
+        else
+            if(counter_nFS =SetCnt_nFS ) then
+                clken_nFS <= '1' ;
+                counter_nFS <= 1 ;
+            elsif (counter_nFS <8) then
+                clken_nFS <= '1' ;
+                counter_nFS <= counter_nFS + 1 ;
+            else
+                clken_nFS <= '0';
+                counter_nFS <= counter_nFS + 1 ;
+            end if;
+        end if;
+    ---- FSo clock counter (80ns pulse output)
+        if  clearAll='1' then
+            counter_Fso <= 1 ;
+            clken_FSo   <= '1';
+            LRCK_Fso    <= '0';
+        else
+            if(counter_Fso =SetCnt_Fso ) then
+                clken_FSo <= '1';
+                counter_Fso <= 1 ;
+            elsif (counter_Fso <8) then
+                clken_FSo <= '1' ;
+                counter_Fso <= counter_Fso + 1 ;
+            else
+                clken_FSo <= '0';
+                counter_Fso <= counter_Fso + 1 ;    
+            end if;
+            -- Generate 50% duty-cycle LRCK signal
+            if (counter_Fso < (SetCnt_Fso/2)+1 ) then
+                LRCK_Fso <= '1'; -- LRCK set to 1
+            else
+                LRCK_Fso <= '0';-- LRCK set to 0
+            end if;
+        end if;
+        --
+        ---- CK8FSR clock counter5 50% duty-cycle
+        if  clearAll='1' then
+            counter_CK8FSR <= 1 ;
+            clken_CK8FSR <= '1';
+        else
+            if counter_CK8FSR=SetCnt_Fso/8 then
+                    clken_CK8FSR <= '0';
+                    counter_CK8FSR <= 1 ;
+            else
+                    counter_CK8FSR <= counter_CK8FSR + 1 ;    
+            end if;
+            if (counter_CK8FSR < (SetCnt_Fso/16)+1 ) then
+                clken_CK8FSR <= '0'; -- clken_CK8FSR set to 1
+            else
+                clken_CK8FSR <= '1';-- clken_CK8FSR set to 0
+            end if;
+        end if;
+        --
+        -- Generate 50% du cycle ReadCLK signal.
+        -- This is required because ADC data are shifted on rising edge
+        -- and read on falling edge f this clock.
+        if clearAll='1' then
+            counter_ReadCLK <= 1 ;
+            clken_ReadCLK <= '1';
+        else
+            counter_ReadCLK <= counter_ReadCLK + 1 ; -- counter ++
+            if  (counter_ReadCLK < SetCnt_ReadCLK/2 ) then
+                clken_ReadCLK <= '1';-- Clock set to 1
+            else
+                if counter_ReadCLK = SetCnt_ReadCLK   then
+                    clken_ReadCLK <= '1'; -- Clock set to 1
+                    counter_ReadCLK <= 1 ;-- counter reset
+                else
+                    clken_ReadCLK <= '0';-- Clock set to 0
+                end if;
+            end if;
+        end if;
+        --
+        --
+        --
+    end if;
+end process;
+    
+------------------------------------------------------------------
+-- Use the same clock and the slow clock enable signal above 
+-- to drive another part of the design to avoid domain crossing issues
+------------------------------------------------------------------
+process(CK98M304,clken_nFS,clken_FSo,clken_CK64FS)
+begin
+    if(rising_edge(CK98M304)) then
+  --
+        if(clken_nFS = '1') then
+            nFS <= '1'; --
+        else
+            nFS <= '0'; --
+        end if;
+    --
+        if(clken_FSo = '1') then
+            FSo <= '1'; --
+        else
+            FSo <= '0'; --
+        end if;
+  
+        if(clken_CK8FSR = '1') then
+            CK8FSR <= '1'; --
+        else
+            CK8FSR <= '0'; --
+        end if;
+    --
+        if(clken_ReadCLK = '1') then
+            zReadCLK <= '1'; --
+        else
+            zReadCLK <= '0'; --
+        end if;
+    end if;
+    
+end process;
+
+END DESCRIPTION;

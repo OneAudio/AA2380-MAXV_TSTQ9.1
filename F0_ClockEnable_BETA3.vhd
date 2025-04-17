@@ -4,7 +4,7 @@
 -- Generate clock enable signal instead of creating another clock domain
 -- Assume that the input clock : CK98M304
 --------------------------------------------------------------------------------
--- O.N - 23/03/2025 -- take 277 LE (old 212)
+-- O.N - 15/04/2025 -- take ??? LE (old 285)
 --------------------------------------------------------------------------------
 -- NOTES sur les différents signaux d'horloges nécessaires :
 -- RANGE of clocks:
@@ -33,7 +33,7 @@ use  IEEE.STD_LOGIC_1164.ALL;
 use  ieee.numeric_std.all;
 use IEEE.STD_LOGIC_UNSIGNED.ALL; 
 
-entity  F0_ClockEnable_BETA2  is
+entity  F0_ClockEnable_BETA3  is
 port(
     CK98M304      :	in  std_logic   ;          -- Main input clock (98.304MHz)
     SR            :	in integer range 0 to 7 ;  -- Sampling rate 4 bits (12kHz to 1536kHz)
@@ -53,9 +53,9 @@ port(
     -- TSTSetCnt_ReadCLK  :out integer range 1 to 8192
     XclearAll    :	out std_logic   
     );
-end  F0_ClockEnable_BETA2;
+end  F0_ClockEnable_BETA3;
 
-ARCHITECTURE DESCRIPTION OF F0_ClockEnable_BETA2 IS
+ARCHITECTURE DESCRIPTION OF F0_ClockEnable_BETA3 IS
 
 signal   counter_nFS     : integer range 1 to 8192 ; -- nFS clock counter
 signal   SetCnt_nFS      : integer range 1 to 8192 ; -- nFS counter set value for frequency selection

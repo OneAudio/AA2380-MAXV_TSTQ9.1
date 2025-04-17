@@ -557,18 +557,18 @@ AUTO
 
 # end
 # entity
-F7_Ready
+fs_generator
 # storage
-db|AA2380-MAXV_TSTQ9.(1).cnf
-db|AA2380-MAXV_TSTQ9.(1).cnf
+db|AA2380-MAXV_TSTQ9.(14).cnf
+db|AA2380-MAXV_TSTQ9.(14).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
 }
 # case_insensitive
 # source_file
-f7_ready.vhd
-64e6fb3c943390a3e97bbc6827ab72d
+fs_generator.vhd
+1d0d24f436348b4a064f15a7a61b52
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -580,33 +580,1204 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+NCOandDIther
+# storage
+db|AA2380-MAXV_TSTQ9.(1).cnf
+db|AA2380-MAXV_TSTQ9.(1).cnf
+# case_insensitive
+# source_file
+ncoanddither.bdf
+876593ea4a4353c04f5f3c559ce7856
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+LUT_counter128P
+# storage
+db|AA2380-MAXV_TSTQ9.(17).cnf
+db|AA2380-MAXV_TSTQ9.(17).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+lut_counter128p.vhd
+7fc7365110fe95d522315a73682723
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+TestLUTcount96
+# storage
+db|AA2380-MAXV_TSTQ9.(19).cnf
+db|AA2380-MAXV_TSTQ9.(19).cnf
+# case_insensitive
+# source_file
+testlutcount96.bdf
+cc40a39fd496cf5f5448f6b08254393c
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+LUT_QuarterIII
+# storage
+db|AA2380-MAXV_TSTQ9.(20).cnf
+db|AA2380-MAXV_TSTQ9.(20).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+lut_quarteriii.vhd
+4f3f895fdcbfe8398d99b8dfc7428
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+compteur_base96
+# storage
+db|AA2380-MAXV_TSTQ9.(21).cnf
+db|AA2380-MAXV_TSTQ9.(21).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+compteur_base96.vhd
+d77d6ece79dca298865ad169fdda5079
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+Counter7bitsup
+# storage
+db|AA2380-MAXV_TSTQ9.(22).cnf
+db|AA2380-MAXV_TSTQ9.(22).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+counter7bitsup.vhd
+26f5f8abdae91d89dc98fe89f3cd97af
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+lpm_counter
+# storage
+db|AA2380-MAXV_TSTQ9.(23).cnf
+db|AA2380-MAXV_TSTQ9.(23).cnf
+# case_insensitive
+# source_file
+|altera|quartus|libraries|megafunctions|lpm_counter.tdf
+151f75e8fcf5e87e72b7df6bb2ea
+7
 # user_parameter {
-CLKVAL
-50000000
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+LPM_WIDTH
+16
 PARAMETER_SIGNED_DEC
+USR
+LPM_DIRECTION
+UP
+PARAMETER_UNKNOWN
+USR
+LPM_MODULUS
+0
+PARAMETER_UNKNOWN
 DEF
-Fhig
-1000000
-PARAMETER_SIGNED_DEC
+LPM_AVALUE
+UNUSED
+PARAMETER_UNKNOWN
 DEF
-Fmid
-10000
-PARAMETER_SIGNED_DEC
+LPM_SVALUE
+UNUSED
+PARAMETER_UNKNOWN
 DEF
-Flow
+LPM_PORT_UPDOWN
+PORT_UNUSED
+PARAMETER_UNKNOWN
+USR
+DEVICE_FAMILY
+MAX II
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN_LENGTH
+48
+CARRY_CHAIN_LENGTH
+USR
+NOT_GATE_PUSH_BACK
+ON
+NOT_GATE_PUSH_BACK
+USR
+CARRY_CNT_EN
+SMART
+PARAMETER_UNKNOWN
+DEF
+LABWIDE_SCLR
+ON
+PARAMETER_UNKNOWN
+DEF
+USE_NEW_VERSION
+TRUE
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+cntr_49h
+PARAMETER_UNKNOWN
+USR
+}
+# used_port {
+q9
+-1
+3
+q8
+-1
+3
+q7
+-1
+3
+q6
+-1
+3
+q5
+-1
+3
+q4
+-1
+3
+q3
+-1
+3
+q2
+-1
+3
+q15
+-1
+3
+q14
+-1
+3
+q13
+-1
+3
+q12
+-1
+3
+q11
+-1
+3
+q10
+-1
+3
+q1
+-1
+3
+q0
+-1
+3
+clock
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+cntr_49h
+# storage
+db|AA2380-MAXV_TSTQ9.(24).cnf
+db|AA2380-MAXV_TSTQ9.(24).cnf
+# case_insensitive
+# source_file
+db|cntr_49h.tdf
+4bba55e9e3815b1cec7782455b73cc
+7
+# used_port {
+q9
+-1
+3
+q8
+-1
+3
+q7
+-1
+3
+q6
+-1
+3
+q5
+-1
+3
+q4
+-1
+3
+q3
+-1
+3
+q2
+-1
+3
+q15
+-1
+3
+q14
+-1
+3
+q13
+-1
+3
+q12
+-1
+3
+q11
+-1
+3
+q10
+-1
+3
+q1
+-1
+3
+q0
+-1
+3
+clock
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+lpm_divide
+# storage
+db|AA2380-MAXV_TSTQ9.(25).cnf
+db|AA2380-MAXV_TSTQ9.(25).cnf
+# case_insensitive
+# source_file
+|altera|quartus|libraries|megafunctions|lpm_divide.tdf
+54966f81ff8a917b1dc9b9ad1a09648
+7
+# user_parameter {
+LPM_WIDTHN
+7
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHD
+7
+PARAMETER_UNKNOWN
+USR
+LPM_NREPRESENTATION
+UNSIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_DREPRESENTATION
+UNSIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+LPM_REMAINDERPOSITIVE
+TRUE
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+5
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+lpm_divide_vnl
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+OPTIMIZE_FOR_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+}
+# used_port {
+remain5
+-1
+3
+remain4
+-1
+3
+remain3
+-1
+3
+remain2
+-1
+3
+remain1
+-1
+3
+remain0
+-1
+3
+numer6
+-1
+3
+numer5
+-1
+3
+numer4
+-1
+3
+numer3
+-1
+3
+numer2
+-1
+3
+numer1
+-1
+3
+numer0
+-1
+3
+denom6
+-1
 1
+denom3
+-1
+1
+denom2
+-1
+1
+denom1
+-1
+1
+denom0
+-1
+1
+denom5
+-1
+2
+denom4
+-1
+2
+}
+# macro_sequence
+
+# end
+# entity
+lpm_divide_vnl
+# storage
+db|AA2380-MAXV_TSTQ9.(26).cnf
+db|AA2380-MAXV_TSTQ9.(26).cnf
+# case_insensitive
+# source_file
+db|lpm_divide_vnl.tdf
+55555e2dd73c4f3aac20bdb27c16c1d3
+7
+# used_port {
+remain6
+-1
+3
+remain5
+-1
+3
+remain4
+-1
+3
+remain3
+-1
+3
+remain2
+-1
+3
+remain1
+-1
+3
+remain0
+-1
+3
+numer6
+-1
+3
+numer5
+-1
+3
+numer4
+-1
+3
+numer3
+-1
+3
+numer2
+-1
+3
+numer1
+-1
+3
+numer0
+-1
+3
+denom6
+-1
+3
+denom5
+-1
+3
+denom4
+-1
+3
+denom3
+-1
+3
+denom2
+-1
+3
+denom1
+-1
+3
+denom0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+sign_div_unsign_dkh
+# storage
+db|AA2380-MAXV_TSTQ9.(27).cnf
+db|AA2380-MAXV_TSTQ9.(27).cnf
+# case_insensitive
+# source_file
+db|sign_div_unsign_dkh.tdf
+328787677178cb7747fded979bf89b
+7
+# used_port {
+remainder6
+-1
+3
+remainder5
+-1
+3
+remainder4
+-1
+3
+remainder3
+-1
+3
+remainder2
+-1
+3
+remainder1
+-1
+3
+remainder0
+-1
+3
+quotient6
+-1
+3
+quotient5
+-1
+3
+quotient4
+-1
+3
+quotient3
+-1
+3
+quotient2
+-1
+3
+quotient1
+-1
+3
+quotient0
+-1
+3
+numerator6
+-1
+3
+numerator5
+-1
+3
+numerator4
+-1
+3
+numerator3
+-1
+3
+numerator2
+-1
+3
+numerator1
+-1
+3
+numerator0
+-1
+3
+denominator6
+-1
+3
+denominator5
+-1
+3
+denominator4
+-1
+3
+denominator3
+-1
+3
+denominator2
+-1
+3
+denominator1
+-1
+3
+denominator0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+alt_u_div_lie
+# storage
+db|AA2380-MAXV_TSTQ9.(28).cnf
+db|AA2380-MAXV_TSTQ9.(28).cnf
+# case_insensitive
+# source_file
+db|alt_u_div_lie.tdf
+60e3176875b7e18577b7f0f59791f
+7
+# used_port {
+remainder6
+-1
+3
+remainder5
+-1
+3
+remainder4
+-1
+3
+remainder3
+-1
+3
+remainder2
+-1
+3
+remainder1
+-1
+3
+remainder0
+-1
+3
+quotient6
+-1
+3
+quotient5
+-1
+3
+quotient4
+-1
+3
+quotient3
+-1
+3
+quotient2
+-1
+3
+quotient1
+-1
+3
+quotient0
+-1
+3
+numerator6
+-1
+3
+numerator5
+-1
+3
+numerator4
+-1
+3
+numerator3
+-1
+3
+numerator2
+-1
+3
+numerator1
+-1
+3
+numerator0
+-1
+3
+denominator6
+-1
+3
+denominator5
+-1
+3
+denominator4
+-1
+3
+denominator3
+-1
+3
+denominator2
+-1
+3
+denominator1
+-1
+3
+denominator0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_j7c
+# storage
+db|AA2380-MAXV_TSTQ9.(29).cnf
+db|AA2380-MAXV_TSTQ9.(29).cnf
+# case_insensitive
+# source_file
+db|add_sub_j7c.tdf
+d8754d0f3e445a6984764521b916595
+7
+# used_port {
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cout
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+add_sub_k7c
+# storage
+db|AA2380-MAXV_TSTQ9.(30).cnf
+db|AA2380-MAXV_TSTQ9.(30).cnf
+# case_insensitive
+# source_file
+db|add_sub_k7c.tdf
+a66dfc3e69e57cea68fe137c7d87b1
+7
+# used_port {
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+cout
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+TestLUT_128
+# storage
+db|AA2380-MAXV_TSTQ9.(15).cnf
+db|AA2380-MAXV_TSTQ9.(15).cnf
+# case_insensitive
+# source_file
+testlut_128.bdf
+d4f4b32943cccc82bbe4df1add53d90
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# macro_sequence
+
+# end
+# entity
+LUT_QuarterII
+# storage
+db|AA2380-MAXV_TSTQ9.(16).cnf
+db|AA2380-MAXV_TSTQ9.(16).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+lut_quarterii.vhd
+3e62ac64dce68ca4e84280ea7aae1ba2
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+CONSTVAL
+# storage
+db|AA2380-MAXV_TSTQ9.(34).cnf
+db|AA2380-MAXV_TSTQ9.(34).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+constval.vhd
+5fc4533e21c87cf1d6f6dd78859757b0
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+CONSTVAL:inst13
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+lpm_constant
+# storage
+db|AA2380-MAXV_TSTQ9.(35).cnf
+db|AA2380-MAXV_TSTQ9.(35).cnf
+# case_insensitive
+# source_file
+|altera|quartus|libraries|megafunctions|lpm_constant.tdf
+20a173884457e9df4e4d620451461d
+7
+# user_parameter {
+LPM_WIDTH
+24
 PARAMETER_SIGNED_DEC
-DEF
-DELAY
-500
+USR
+LPM_CVALUE
+10264397
 PARAMETER_SIGNED_DEC
-DEF
+USR
+ENABLE_RUNTIME_MOD
+NO
+PARAMETER_UNKNOWN
+USR
+CBXI_PARAMETER
+lpm_constant_rs6
+PARAMETER_UNKNOWN
+USR
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result23
+-1
+3
+result22
+-1
+3
+result21
+-1
+3
+result20
+-1
+3
+result2
+-1
+3
+result19
+-1
+3
+result18
+-1
+3
+result17
+-1
+3
+result16
+-1
+3
+result15
+-1
+3
+result14
+-1
+3
+result13
+-1
+3
+result12
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+}
+# hierarchies {
+CONSTVAL:inst13|lpm_constant:lpm_constant_component
+}
+# macro_sequence
+
+# end
+# entity
+F1_ReadADCFullSpeed
+# storage
+db|AA2380-MAXV_TSTQ9.(31).cnf
+db|AA2380-MAXV_TSTQ9.(31).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f1_readadcfullspeed.vhd
+69fdefc582fd71b48e72862550bc9b1e
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+F1_ReadADCFullSpeed:inst1
+}
+# lmf
+|altera|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+TEST_ReadADCfullspeed
+# storage
+db|AA2380-MAXV_TSTQ9.(32).cnf
+db|AA2380-MAXV_TSTQ9.(32).cnf
+# case_insensitive
+# source_file
+test_readadcfullspeed.bdf
+c1b8ccadb7f680f63215a5cd56d73330
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
 }
 # hierarchies {
 |
 }
+# macro_sequence
+
+# end
+# entity
+f20_emulateadc
+# storage
+db|AA2380-MAXV_TSTQ9.(33).cnf
+db|AA2380-MAXV_TSTQ9.(33).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+f20_emulateadc.vhd
+33f6973fcb5c94458a2919ecd4ac37ad
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+F20_EmulateADC:inst9
+}
 # lmf
-c:|altera|91sp2|quartus|lmf|maxplus2.lmf
+|altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 

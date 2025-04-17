@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------
 -- The 19/01/24 O.Narce
 -- Version of LUT_Quarter wih 128 data points instead of 64 (double)
--- Amplitude is -6dB FS
+-- Amplitude is -1dB FS
 -- Take 188 LE
 ----------------------------------------------------------------------------------
 library IEEE;
@@ -81,74 +81,74 @@ begin
     if  CLOCK'event and CLOCK='1' then
         case DecAddr is  -- 
             when 0  => XOUT1 <= x"000000"; --24 bits signed value
-            when 1  => XOUT1 <= x"0647D9";
-            when 2  => XOUT1 <= x"0C8BD3";
-            when 3  => XOUT1 <= x"12C810";
-            when 4  => XOUT1 <= x"18F8B8";
-            when 5  => XOUT1 <= x"1F19F9";
-            when 6  => XOUT1 <= x"25280C";
-            when 7  => XOUT1 <= x"2B1F35";
-            when 8  => XOUT1 <= x"30FBC5";
-            when 9  => XOUT1 <= x"36BA20";
-            when 10 => XOUT1 <= x"3C56BA";
-            when 11 => XOUT1 <= x"41CE1E";
-            when 12 => XOUT1 <= x"471CED";
-            when 13 => XOUT1 <= x"4C3FE0";
-            when 14 => XOUT1 <= x"5133CD";
-            when 15 => XOUT1 <= x"55F5A5";
-            when 16 => XOUT1 <= x"5A827A";
-            when 17 => XOUT1 <= x"5ED77D"; 
-            when 18 => XOUT1 <= x"62F202";
-            when 19 => XOUT1 <= x"66CF81";
-            when 20 => XOUT1 <= x"6A6D99";
-            when 21 => XOUT1 <= x"6DCA0D";
-            when 22 => XOUT1 <= x"70E2CC";
-            when 23 => XOUT1 <= x"73B5EC";
-            when 24 => XOUT1 <= x"7641AF";
-            when 25 => XOUT1 <= x"788484";
-            when 26 => XOUT1 <= x"7A7D05";
-            when 27 => XOUT1 <= x"7C29FC";
-            when 28 => XOUT1 <= x"7D8A5F";
-            when 29 => XOUT1 <= x"7E9D56";
-            when 30 => XOUT1 <= x"7F6237";
-            when 31 => XOUT1 <= x"7FD888";
-            when 32 => XOUT1 <= x"7FFFFF";
+            when 1  => XOUT1 <= x"0598FF";
+            when 2  => XOUT1 <= x"0B2E8B";
+            when 3  => XOUT1 <= x"10BD31";
+            when 4  => XOUT1 <= x"164184";
+            when 5  => XOUT1 <= x"1BB81E";
+            when 6  => XOUT1 <= x"211D9F";
+            when 7  => XOUT1 <= x"266EB4";
+            when 8  => XOUT1 <= x"2BA815";
+            when 9  => XOUT1 <= x"30C68A";
+            when 10 => XOUT1 <= x"35C6E9";
+            when 11 => XOUT1 <= x"3AA61E";
+            when 12 => XOUT1 <= x"3F6128";
+            when 13 => XOUT1 <= x"43F51B";
+            when 14 => XOUT1 <= x"485F25";
+            when 15 => XOUT1 <= x"4C9C8D";
+            when 16 => XOUT1 <= x"50AAB5";
+            when 17 => XOUT1 <= x"54871D"; 
+            when 18 => XOUT1 <= x"582F64";
+            when 19 => XOUT1 <= x"5BA148";
+            when 20 => XOUT1 <= x"5EDAAA";
+            when 21 => XOUT1 <= x"61D98B";
+            when 22 => XOUT1 <= x"649C14";
+            when 23 => XOUT1 <= x"672091";
+            when 24 => XOUT1 <= x"696573";
+            when 25 => XOUT1 <= x"6B6955";
+            when 26 => XOUT1 <= x"6D2AF9";
+            when 27 => XOUT1 <= x"6EA94A";
+            when 28 => XOUT1 <= x"6FE35B";
+            when 29 => XOUT1 <= x"70D86A";
+            when 30 => XOUT1 <= x"7187E2";
+            when 31 => XOUT1 <= x"71F155";
+            when 32 => XOUT1 <= x"721483";
             when others => XOUT1 <= x"000000";
         end case;
         --- Cosine output (same data as Sine, but mirrored)
         case DecAddr is  --
-            when 0  => XOUT2 <= x"800000"; --24 bits signed value
-            when 1  => XOUT2 <= x"7FD888";
-            when 2  => XOUT2 <= x"7F6237";
-            when 3  => XOUT2 <= x"7E9D56";
-            when 4  => XOUT2 <= x"7D8A5F";
-            when 5  => XOUT2 <= x"7C29FC";
-            when 6  => XOUT2 <= x"7A7D05";
-            when 7  => XOUT2 <= x"788484";
-            when 8  => XOUT2 <= x"7641AF";
-            when 9  => XOUT2 <= x"73B5EC";
-            when 10 => XOUT2 <= x"70E2CC";
-            when 11 => XOUT2 <= x"6DCA0D";
-            when 12 => XOUT2 <= x"6A6D99";
-            when 13 => XOUT2 <= x"66CF81";
-            when 14 => XOUT2 <= x"62F202";
-            when 15 => XOUT2 <= x"5ED77D";
-            when 16 => XOUT2 <= x"5A827A";
-            when 17 => XOUT2 <= x"55F5A5"; 
-            when 18 => XOUT2 <= x"5133CD";
-            when 19 => XOUT2 <= x"4C3FE0";
-            when 20 => XOUT2 <= x"471CED";
-            when 21 => XOUT2 <= x"41CE1E";
-            when 22 => XOUT2 <= x"3C56BA";
-            when 23 => XOUT2 <= x"36BA20";
-            when 24 => XOUT2 <= x"30FBC5";
-            when 25 => XOUT2 <= x"2B1F35";
-            when 26 => XOUT2 <= x"25280C";
-            when 27 => XOUT2 <= x"1F19F9";
-            when 28 => XOUT2 <= x"18F8B8";
-            when 29 => XOUT2 <= x"12C810";
-            when 30 => XOUT2 <= x"0C8BD3";
-            when 31 => XOUT2 <= x"0647D9";
+            when 0  => XOUT2 <= x"721483"; --24 bits signed value
+            when 1  => XOUT2 <= x"71F155";
+            when 2  => XOUT2 <= x"7187E2";
+            when 3  => XOUT2 <= x"70D86A";
+            when 4  => XOUT2 <= x"6FE35B";
+            when 5  => XOUT2 <= x"6EA94A";
+            when 6  => XOUT2 <= x"6D2AF9";
+            when 7  => XOUT2 <= x"6B6955";
+            when 8  => XOUT2 <= x"696573";
+            when 9  => XOUT2 <= x"672091";
+            when 10 => XOUT2 <= x"649C14";
+            when 11 => XOUT2 <= x"61D98B";
+            when 12 => XOUT2 <= x"5EDAAA";
+            when 13 => XOUT2 <= x"5BA148";
+            when 14 => XOUT2 <= x"582F64";
+            when 15 => XOUT2 <= x"54871D";
+            when 16 => XOUT2 <= x"50AAB5";
+            when 17 => XOUT2 <= x"4C9C8D"; 
+            when 18 => XOUT2 <= x"485F25";
+            when 19 => XOUT2 <= x"43F51B";
+            when 20 => XOUT2 <= x"3F6128";
+            when 21 => XOUT2 <= x"3AA61E";
+            when 22 => XOUT2 <= x"35C6E9";
+            when 23 => XOUT2 <= x"30C68A";
+            when 24 => XOUT2 <= x"2BA815";
+            when 25 => XOUT2 <= x"266EB4";
+            when 26 => XOUT2 <= x"211D9F";
+            when 27 => XOUT2 <= x"1BB81E";
+            when 28 => XOUT2 <= x"164184";
+            when 29 => XOUT2 <= x"10BD31";
+            when 30 => XOUT2 <= x"0B2E8B";
+            when 31 => XOUT2 <= x"0598FF";
             when 32 => XOUT2 <= x"000000";
             when others => XOUT2 <= x"000000";
         end case;

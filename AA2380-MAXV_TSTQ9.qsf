@@ -38,26 +38,28 @@
 
 set_global_assignment -name FAMILY "MAX II"
 set_global_assignment -name DEVICE EPM2210F324C3
-set_global_assignment -name TOP_LEVEL_ENTITY F7_Ready
+set_global_assignment -name TOP_LEVEL_ENTITY TEST_ReadADCfullspeed
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:51:00  JANUARY 24, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
-set_global_assignment -name BDF_FILE AA2380_MAXV.bdf
 set_global_assignment -name LL_ROOT_REGION ON -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region"
-set_global_assignment -name BDF_FILE F00_TestADC.bdf
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR 3.3V
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 3
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
-set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name SIMULATION_MODE TIMING
+set_global_assignment -name ADD_DEFAULT_PINS_TO_SIMULATION_OUTPUT_WAVEFORMS OFF
+set_global_assignment -name CHECK_OUTPUTS OFF
+set_global_assignment -name GLITCH_DETECTION OFF
+set_global_assignment -name MISC_FILE "D:/GIT/AA2380-MAXV_TSTQ9.1/AA2380-MAXV_TSTQ9.dpf"
+set_global_assignment -name BDF_FILE AA2380_MAXV.bdf
+set_global_assignment -name BDF_FILE F00_TestADC.bdf
 set_global_assignment -name VHDL_FILE F20_EmulateADCII.vhd
 set_global_assignment -name BDF_FILE Test_F20II.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE F20_EmulateADCII.vwf
 set_global_assignment -name VHDL_FILE f1_readadc_multimodes.vhd
-set_global_assignment -name ADD_DEFAULT_PINS_TO_SIMULATION_OUTPUT_WAVEFORMS OFF
-set_global_assignment -name CHECK_OUTPUTS OFF
 set_global_assignment -name VHDL_FILE F1_readADC_multimodesTST.vhd
 set_global_assignment -name VHDL_FILE f20_emulateadc.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE F00_TestADC_mini.vwf
@@ -80,14 +82,22 @@ set_global_assignment -name VHDL_FILE F0_ctrl_encoder_E.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE F0_ctrl_encoder_E.vwf
 set_global_assignment -name VHDL_FILE PulseOnChange.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE PulseOnChange.vwf
-set_global_assignment -name GLITCH_DETECTION OFF
-set_global_assignment -name MISC_FILE "D:/GIT/AA2380-MAXV_TSTQ9.1/AA2380-MAXV_TSTQ9.dpf"
 set_global_assignment -name VHDL_FILE F21_Divider_by_64x64.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE F21_Divider_by_64x64.vwf
+set_global_assignment -name VHDL_FILE F7_Ready.vhd
+set_global_assignment -name VHDL_FILE fs_generator.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE fs_generator.vwf
+set_global_assignment -name VHDL_FILE F0_ClockEnable_BETA3.vhd
+set_global_assignment -name BDF_FILE TestLUT_128.bdf
+set_global_assignment -name BDF_FILE NCOandDIther.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE TestLUT_128.vwf
+set_global_assignment -name BDF_FILE TestLUTcount96.bdf
+set_global_assignment -name VHDL_FILE F1_ReadADCFullSpeed.vhd
+set_global_assignment -name BDF_FILE TEST_ReadADCfullspeed.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE TEST_ReadADCfullspeed.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE TEST_ReadADCfullspeed.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VHDL_FILE F7_Ready.vhd
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE F7_Ready.vwf

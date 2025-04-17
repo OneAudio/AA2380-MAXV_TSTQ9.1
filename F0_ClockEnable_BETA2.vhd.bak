@@ -4,7 +4,7 @@
 -- Generate clock enable signal instead of creating another clock domain
 -- Assume that the input clock : CK98M304
 --------------------------------------------------------------------------------
--- O.N - 23/03/2025 -- take 242 LE (old 212)
+-- O.N - 23/03/2025 -- take 285 LE (old 212)
 --------------------------------------------------------------------------------
 -- NOTES sur les différents signaux d'horloges nécessaires :
 -- RANGE of clocks:
@@ -62,7 +62,7 @@ signal   SetCnt_nFS      : integer range 1 to 8192 ; -- nFS counter set value fo
 signal   counter_Fso     : integer range 1 to 8192 ; -- FSo clock counter
 signal   SetCnt_Fso      : integer range 1 to 8192 ; -- FSo counter set value for frequency selection
 signal   counter_CK64FS  : integer range 1 to 64   ; -- CK64FS clock counter
-signal   counter_CK8FSR   : integer range 1 to 512   ; -- CK8FS clock counter
+signal   counter_CK8FSR  : integer range 1 to 1024  ; -- CK8FS clock counter
 signal   SetCnt_CK64FS   : integer range 1 to 128   ; -- CK64FS counter set value for frequency selection
 
 signal   clken_nFS       : std_logic;
@@ -105,7 +105,7 @@ begin
         AVGlatch <= AVG ; -- record previous  state
         SRLatch  <=  SR ;
         if  (AVGlatch /= AVG) or (SRLatch /= SR)  then -- compare previous with new state. 
-            clearAll <= '1'; -- set clearAll to high
+            clearAll <= '0'; -- set clearAll to high
         else
             clearAll <= '0'; -- set clearAll to low
         end if;
@@ -329,11 +329,16 @@ begin
             counter_CK8FSR <= 1 ;
             clken_CK8FSR <= '1';
         else
-            counter_CK8FSR <= counter_CK8FSR + 1 ;    
-            if (counter_CK8FSR < (SetCnt_CK64FS/16)+1 ) then
-                clken_CK8FSR <= '1'; -- clken_CK8FSR set to 1
+            if counter_CK8FSR=SetCnt_Fso/8 then
+                    clken_CK8FSR <= '0';
+                    counter_CK8FSR <= 1 ;
             else
-                clken_CK8FSR <= '0';-- clken_CK8FSR set to 0
+                    counter_CK8FSR <= counter_CK8FSR + 1 ;    
+            end if;
+            if (counter_CK8FSR < (SetCnt_Fso/16)+1 ) then
+                clken_CK8FSR <= '0'; -- clken_CK8FSR set to 1
+            else
+                clken_CK8FSR <= '1';-- clken_CK8FSR set to 0
             end if;
         end if;
         --

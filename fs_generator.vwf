@@ -1,0 +1,358 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+
+HEADER
+{
+	VERSION = 1;
+	TIME_UNIT = ns;
+	DATA_OFFSET = 0.0;
+	DATA_DURATION = 800000.0;
+	SIMULATION_TIME = 800000.0;
+	GRID_PHASE = 0.0;
+	GRID_PERIOD = 10.0;
+	GRID_DUTY_CYCLE = 50;
+}
+
+SIGNAL("clk")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("dfs")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 3;
+	LSB_INDEX = 0;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("dfs[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "dfs";
+}
+
+SIGNAL("dfs[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "dfs";
+}
+
+SIGNAL("dfs[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "dfs";
+}
+
+SIGNAL("fs")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("fs8")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+TRANSITION_LIST("clk")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 80000;
+			LEVEL 0 FOR 5.0;
+			LEVEL 1 FOR 5.0;
+		}
+	}
+}
+
+TRANSITION_LIST("dfs[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 400000.0;
+			LEVEL 1 FOR 400000.0;
+		}
+	}
+}
+
+TRANSITION_LIST("dfs[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 0 FOR 200000.0;
+			LEVEL 1 FOR 200000.0;
+		}
+	}
+}
+
+TRANSITION_LIST("dfs[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 4;
+			LEVEL 0 FOR 100000.0;
+			LEVEL 1 FOR 100000.0;
+		}
+	}
+}
+
+TRANSITION_LIST("fs")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 40972.038;
+		LEVEL 1 FOR 40960.0;
+		LEVEL 0 FOR 35840.0;
+		NODE
+		{
+			REPEAT = 2;
+			LEVEL 1 FOR 20480.0;
+			LEVEL 0 FOR 20480.0;
+		}
+		NODE
+		{
+			REPEAT = 4;
+			LEVEL 1 FOR 10240.0;
+			LEVEL 0 FOR 10240.0;
+		}
+		LEVEL 1 FOR 10240.0;
+		LEVEL 0 FOR 8960.0;
+		NODE
+		{
+			REPEAT = 9;
+			LEVEL 1 FOR 5120.0;
+			LEVEL 0 FOR 5120.0;
+		}
+		LEVEL 1 FOR 5120.0;
+		LEVEL 0 FOR 13440.0;
+		NODE
+		{
+			REPEAT = 17;
+			LEVEL 1 FOR 2560.0;
+			LEVEL 0 FOR 2560.0;
+		}
+		LEVEL 1 FOR 1920.0;
+		NODE
+		{
+			REPEAT = 38;
+			LEVEL 0 FOR 1280.0;
+			LEVEL 1 FOR 1280.0;
+		}
+		LEVEL 0 FOR 1280.0;
+		LEVEL 1 FOR 1120.0;
+		NODE
+		{
+			REPEAT = 78;
+			LEVEL 0 FOR 640.0;
+			LEVEL 1 FOR 640.0;
+		}
+		NODE
+		{
+			REPEAT = 156;
+			LEVEL 0 FOR 320.0;
+			LEVEL 1 FOR 320.0;
+		}
+		LEVEL 0 FOR 147.962;
+	}
+}
+
+TRANSITION_LIST("fs8")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 10240.422;
+		NODE
+		{
+			REPEAT = 4;
+			LEVEL 1 FOR 10240.0;
+			LEVEL 0 FOR 10240.0;
+		}
+		LEVEL 1 FOR 15360.0;
+		NODE
+		{
+			REPEAT = 9;
+			LEVEL 0 FOR 5120.0;
+			LEVEL 1 FOR 5120.0;
+		}
+		NODE
+		{
+			REPEAT = 19;
+			LEVEL 0 FOR 2560.0;
+			LEVEL 1 FOR 2560.0;
+		}
+		LEVEL 0 FOR 2560.0;
+		NODE
+		{
+			REPEAT = 39;
+			LEVEL 1 FOR 1280.0;
+			LEVEL 0 FOR 1280.0;
+		}
+		LEVEL 1 FOR 10880.0;
+		NODE
+		{
+			REPEAT = 70;
+			LEVEL 0 FOR 640.0;
+			LEVEL 1 FOR 640.0;
+		}
+		NODE
+		{
+			REPEAT = 156;
+			LEVEL 0 FOR 320.0;
+			LEVEL 1 FOR 320.0;
+		}
+		LEVEL 0 FOR 320.0;
+		NODE
+		{
+			REPEAT = 312;
+			LEVEL 1 FOR 160.0;
+			LEVEL 0 FOR 160.0;
+		}
+		LEVEL 1 FOR 160.0;
+		NODE
+		{
+			REPEAT = 624;
+			LEVEL 0 FOR 80.0;
+			LEVEL 1 FOR 80.0;
+		}
+		LEVEL 0 FOR 80.0;
+		LEVEL 1 FOR 79.578;
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "clk";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 0;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "dfs";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 1;
+	TREE_LEVEL = 0;
+	CHILDREN = 2, 3, 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "dfs[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 2;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "dfs[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 3;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "dfs[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 4;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "fs";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 5;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "fs8";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Signed;
+	TREE_INDEX = 6;
+	TREE_LEVEL = 0;
+}
+
+TIME_BAR
+{
+	TIME = 29800;
+	MASTER = TRUE;
+}
+;
