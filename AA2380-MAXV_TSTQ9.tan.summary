@@ -5,7 +5,7 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 1.216 ns
+Actual Time    : 1.206 ns
 From           : CLKFS
 To             : inst3
 From Clock     : --
@@ -15,9 +15,9 @@ Failed Paths   : 0
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 9.420 ns
-From           : F20_EmulateADC:inst9|SRDATA[23]
-To             : SDOL
+Actual Time    : 9.309 ns
+From           : F20_EmulateADC:inst10|SRDATA[23]
+To             : SDOR
 From Clock     : MCLK
 To Clock       : --
 Failed Paths   : 0
@@ -25,9 +25,9 @@ Failed Paths   : 0
 Type           : Worst-case tpd
 Slack          : N/A
 Required Time  : None
-Actual Time    : 6.657 ns
+Actual Time    : 6.418 ns
 From           : CLKFS
-To             : data_latch
+To             : nCNVL
 From Clock     : --
 To Clock       : --
 Failed Paths   : 0
@@ -35,7 +35,7 @@ Failed Paths   : 0
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : -0.870 ns
+Actual Time    : -0.860 ns
 From           : CLKFS
 To             : inst3
 From Clock     : --
@@ -45,9 +45,9 @@ Failed Paths   : 0
 Type           : Clock Setup: 'MCLK'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 174.92 MHz ( period = 5.717 ns )
+Actual Time    : 155.67 MHz ( period = 6.424 ns )
 From           : F1_ReadADCFullSpeed:inst1|TCLK23[4]
-To             : F1_ReadADCFullSpeed:inst1|r_DATAL[20]
+To             : F1_ReadADCFullSpeed:inst1|r_DATAR[20]
 From Clock     : MCLK
 To Clock       : MCLK
 Failed Paths   : 0

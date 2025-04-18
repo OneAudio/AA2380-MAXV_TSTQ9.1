@@ -1,5 +1,5 @@
 Analysis & Synthesis report for AA2380-MAXV_TSTQ9
-Thu Apr 17 15:42:18 2025
+Fri Apr 18 15:06:16 2025
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -15,9 +15,8 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Registers Removed During Synthesis
   9. General Register Statistics
- 10. Inverted Register Statistics
- 11. Parameter Settings for User Entity Instance: CONSTVAL:inst13|lpm_constant:lpm_constant_component
- 12. Analysis & Synthesis Messages
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -43,13 +42,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                               ;
 +-----------------------------+----------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Thu Apr 17 15:42:18 2025        ;
+; Analysis & Synthesis Status ; Successful - Fri Apr 18 15:06:16 2025        ;
 ; Quartus II Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name               ; AA2380-MAXV_TSTQ9                            ;
 ; Top-level Entity Name       ; TEST_ReadADCfullspeed                        ;
 ; Family                      ; MAX II                                       ;
-; Total logic elements        ; 122                                          ;
-; Total pins                  ; 32                                           ;
+; Total logic elements        ; 202                                          ;
+; Total pins                  ; 108                                          ;
 ; Total virtual pins          ; 0                                            ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                ;
 +-----------------------------+----------------------------------------------+
@@ -138,10 +137,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                            ;
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
 ; f20_emulateadc.vhd               ; yes             ; User VHDL File                     ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/f20_emulateadc.vhd        ;
-; CONSTVAL.vhd                     ; yes             ; User Wizard-Generated File         ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/CONSTVAL.vhd              ;
 ; F1_ReadADCFullSpeed.vhd          ; yes             ; User VHDL File                     ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/F1_ReadADCFullSpeed.vhd   ;
 ; TEST_ReadADCfullspeed.bdf        ; yes             ; User Block Diagram/Schematic File  ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/TEST_ReadADCfullspeed.bdf ;
-; lpm_constant.tdf                 ; yes             ; Megafunction                       ; d:/altera/quartus/libraries/megafunctions/lpm_constant.tdf                                                              ;
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -150,33 +147,33 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------------------+
 ; Resource                                    ; Usage                          ;
 +---------------------------------------------+--------------------------------+
-; Total logic elements                        ; 122                            ;
-;     -- Combinational with no register       ; 26                             ;
-;     -- Register only                        ; 39                             ;
-;     -- Combinational with a register        ; 57                             ;
+; Total logic elements                        ; 202                            ;
+;     -- Combinational with no register       ; 34                             ;
+;     -- Register only                        ; 147                            ;
+;     -- Combinational with a register        ; 21                             ;
 ;                                             ;                                ;
 ; Logic element usage by number of LUT inputs ;                                ;
-;     -- 4 input functions                    ; 35                             ;
-;     -- 3 input functions                    ; 7                              ;
-;     -- 2 input functions                    ; 26                             ;
-;     -- 1 input functions                    ; 13                             ;
-;     -- 0 input functions                    ; 2                              ;
+;     -- 4 input functions                    ; 29                             ;
+;     -- 3 input functions                    ; 2                              ;
+;     -- 2 input functions                    ; 20                             ;
+;     -- 1 input functions                    ; 1                              ;
+;     -- 0 input functions                    ; 3                              ;
 ;                                             ;                                ;
 ; Logic elements by mode                      ;                                ;
-;     -- normal mode                          ; 110                            ;
+;     -- normal mode                          ; 190                            ;
 ;     -- arithmetic mode                      ; 12                             ;
 ;     -- qfbk mode                            ; 0                              ;
 ;     -- register cascade mode                ; 0                              ;
-;     -- synchronous clear/load mode          ; 6                              ;
-;     -- asynchronous clear/load mode         ; 61                             ;
+;     -- synchronous clear/load mode          ; 7                              ;
+;     -- asynchronous clear/load mode         ; 109                            ;
 ;                                             ;                                ;
-; Total registers                             ; 96                             ;
+; Total registers                             ; 168                            ;
 ; Total logic cells in carry chains           ; 15                             ;
-; I/O pins                                    ; 32                             ;
+; I/O pins                                    ; 108                            ;
 ; Maximum fan-out node                        ; F1_ReadADCFullSpeed:inst1|SCKL ;
-; Maximum fan-out                             ; 54                             ;
-; Total fan-out                               ; 474                            ;
-; Average fan-out                             ; 3.08                           ;
+; Maximum fan-out                             ; 103                            ;
+; Total fan-out                               ; 756                            ;
+; Average fan-out                             ; 2.44                           ;
 +---------------------------------------------+--------------------------------+
 
 
@@ -185,21 +182,25 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------+--------------+
 ; Compilation Hierarchy Node     ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                              ; Library Name ;
 +--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------+--------------+
-; |TEST_ReadADCfullspeed         ; 122 (3)     ; 96           ; 0          ; 32   ; 0            ; 26 (1)       ; 39 (2)            ; 57 (0)           ; 15 (0)          ; 0 (0)      ; |TEST_ReadADCfullspeed                           ; work         ;
-;    |F1_ReadADCFullSpeed:inst1| ; 86 (86)     ; 62           ; 0          ; 0    ; 0            ; 24 (24)      ; 26 (26)           ; 36 (36)          ; 9 (9)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1 ; work         ;
-;    |F20_EmulateADC:inst9|      ; 33 (33)     ; 32           ; 0          ; 0    ; 0            ; 1 (1)        ; 11 (11)           ; 21 (21)          ; 6 (6)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F20_EmulateADC:inst9      ; work         ;
+; |TEST_ReadADCfullspeed         ; 202 (3)     ; 168          ; 0          ; 108  ; 0            ; 34 (1)       ; 147 (2)           ; 21 (0)           ; 15 (0)          ; 0 (0)      ; |TEST_ReadADCfullspeed                           ; work         ;
+;    |F1_ReadADCFullSpeed:inst1| ; 141 (141)   ; 110          ; 0          ; 0    ; 0            ; 31 (31)      ; 98 (98)           ; 12 (12)          ; 9 (9)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1 ; work         ;
+;    |F20_EmulateADC:inst10|     ; 34 (34)     ; 32           ; 0          ; 0    ; 0            ; 2 (2)        ; 24 (24)           ; 8 (8)            ; 6 (6)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F20_EmulateADC:inst10     ; work         ;
+;    |F20_EmulateADC:inst9|      ; 24 (24)     ; 24           ; 0          ; 0    ; 0            ; 0 (0)        ; 23 (23)           ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F20_EmulateADC:inst9      ; work         ;
 +--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; F1_ReadADCFullSpeed:inst1|CLKFSd1     ; Merged with inst3  ;
-; Total Number of Removed Registers = 1 ;                    ;
-+---------------------------------------+--------------------+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++---------------------------------------+-------------------------------------------+
+; Register name                         ; Reason for Removal                        ;
++---------------------------------------+-------------------------------------------+
+; F1_ReadADCFullSpeed:inst1|CLKFSd1     ; Merged with inst3                         ;
+; F20_EmulateADC:inst9|Busy_count[0..5] ; Lost fanout                               ;
+; F20_EmulateADC:inst9|Busy_end         ; Lost fanout                               ;
+; F20_EmulateADC:inst9|BUSY_on          ; Merged with F20_EmulateADC:inst10|BUSY_on ;
+; Total Number of Removed Registers = 9 ;                                           ;
++---------------------------------------+-------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -207,50 +208,30 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 96    ;
-; Number of registers using Synchronous Clear  ; 6     ;
+; Total registers                              ; 168   ;
+; Number of registers using Synchronous Clear  ; 7     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 61    ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 17    ;
+; Number of registers using Asynchronous Load  ; 48    ;
+; Number of registers using Clock Enable       ; 57    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+---------------------------------------------------+
-; Inverted Register Statistics                      ;
-+-----------------------------------------+---------+
-; Inverted Register                       ; Fan out ;
-+-----------------------------------------+---------+
-; F20_EmulateADC:inst9|SRDATA[23]         ; 19      ;
-; F20_EmulateADC:inst9|SRDATA[20]         ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[19]         ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[18]         ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[15]         ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[12]         ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[11]         ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[10]         ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[9]          ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[8]          ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[6]          ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[3]          ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[2]          ; 1       ;
-; F20_EmulateADC:inst9|SRDATA[0]          ; 1       ;
-; Total number of inverted registers = 14 ;         ;
-+-----------------------------------------+---------+
-
-
-+--------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: CONSTVAL:inst13|lpm_constant:lpm_constant_component ;
-+--------------------+------------------+----------------------------------------------------------+
-; Parameter Name     ; Value            ; Type                                                     ;
-+--------------------+------------------+----------------------------------------------------------+
-; LPM_WIDTH          ; 24               ; Signed Integer                                           ;
-; LPM_CVALUE         ; 10264397         ; Signed Integer                                           ;
-; ENABLE_RUNTIME_MOD ; NO               ; Untyped                                                  ;
-; CBXI_PARAMETER     ; lpm_constant_rs6 ; Untyped                                                  ;
-+--------------------+------------------+----------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[22] ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[20] ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[18] ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[16] ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[23] ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[21] ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[19] ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[17] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -259,7 +240,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Apr 17 15:42:17 2025
+    Info: Processing started: Fri Apr 18 15:06:15 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
 Info: Found 1 design units, including 1 entities, in source file aa2380_maxv.bdf
     Info: Found entity 1: AA2380_MAXV
@@ -335,25 +316,24 @@ Info: Found 1 design units, including 1 entities, in source file test_readadcful
 Info: Elaborating entity "TEST_ReadADCfullspeed" for the top level hierarchy
 Info: Elaborating entity "F1_ReadADCFullSpeed" for hierarchy "F1_ReadADCFullSpeed:inst1"
 Info: Elaborating entity "F20_EmulateADC" for hierarchy "F20_EmulateADC:inst9"
-Info: Elaborating entity "CONSTVAL" for hierarchy "CONSTVAL:inst13"
-Info: Elaborating entity "lpm_constant" for hierarchy "CONSTVAL:inst13|lpm_constant:lpm_constant_component"
-Info: Elaborated megafunction instantiation "CONSTVAL:inst13|lpm_constant:lpm_constant_component"
-Info: Instantiated megafunction "CONSTVAL:inst13|lpm_constant:lpm_constant_component" with the following parameter:
-    Info: Parameter "lpm_cvalue" = "10264397"
-    Info: Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
-    Info: Parameter "lpm_type" = "LPM_CONSTANT"
-    Info: Parameter "lpm_width" = "24"
-Info: Registers with preset signals will power-up high
-Info: Implemented 154 device resources after synthesis - the final resource count might be different
-    Info: Implemented 3 input pins
-    Info: Implemented 29 output pins
-    Info: Implemented 122 logic cells
+Info: 7 registers lost all their fanouts during netlist optimizations. The first 7 are displayed below.
+    Info: Register "F20_EmulateADC:inst9|Busy_count[4]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst9|Busy_count[3]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst9|Busy_count[1]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst9|Busy_count[0]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst9|Busy_count[5]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst9|Busy_count[2]" lost all its fanouts during netlist optimizations.
+    Info: Register "F20_EmulateADC:inst9|Busy_end" lost all its fanouts during netlist optimizations.
+Info: Implemented 310 device resources after synthesis - the final resource count might be different
+    Info: Implemented 51 input pins
+    Info: Implemented 57 output pins
+    Info: Implemented 202 logic cells
 Warning: Ignored assignments for entity "AA2380-MAXV_TSTQ9" -- entity does not exist in design
     Warning: Assignment for entity set_global_assignment -name LL_ROOT_REGION ON -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
     Warning: Assignment for entity set_global_assignment -name LL_MEMBER_STATE LOCKED -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 257 megabytes
-    Info: Processing ended: Thu Apr 17 15:42:18 2025
+    Info: Peak virtual memory: 253 megabytes
+    Info: Processing ended: Fri Apr 18 15:06:16 2025
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:02
 

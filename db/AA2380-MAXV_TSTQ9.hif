@@ -1579,9 +1579,6 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
-# hierarchies {
-CONSTVAL:inst13
-}
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
@@ -1690,9 +1687,6 @@ result0
 -1
 3
 }
-# hierarchies {
-CONSTVAL:inst13|lpm_constant:lpm_constant_component
-}
 # macro_sequence
 
 # end
@@ -1730,26 +1724,6 @@ a36c8ec425c8a2589af98b2d4daabc3
 
 # end
 # entity
-TEST_ReadADCfullspeed
-# storage
-db|AA2380-MAXV_TSTQ9.(32).cnf
-db|AA2380-MAXV_TSTQ9.(32).cnf
-# case_insensitive
-# source_file
-test_readadcfullspeed.bdf
-c1b8ccadb7f680f63215a5cd56d73330
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 f20_emulateadc
 # storage
 db|AA2380-MAXV_TSTQ9.(33).cnf
@@ -1775,10 +1749,31 @@ ON
 }
 # hierarchies {
 F20_EmulateADC:inst9
+F20_EmulateADC:inst10
 }
 # lmf
 |altera|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
+TEST_ReadADCfullspeed
+# storage
+db|AA2380-MAXV_TSTQ9.(32).cnf
+db|AA2380-MAXV_TSTQ9.(32).cnf
+# case_insensitive
+# source_file
+test_readadcfullspeed.bdf
+39e997d7711bc4c736424bc6876e2d9
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
 # macro_sequence
 
 # end
