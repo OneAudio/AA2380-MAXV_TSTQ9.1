@@ -1,0 +1,67 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity accumulator_avg128 is
+     Port (
+         clk      : in  STD_LOGIC;
+         rst      : in  STD_LOGIC;
+         en       : in  STD_LOGIC;
+         DFS     : in  STD_LOGIC_VECTOR(2 downto 0);
+         data_in  : in  STD_LOGIC_VECTOR(23 downto 0);
+         avg_out  : out STD_LOGIC_VECTOR(23 downto 0);
+         valid    : out STD_LOGIC;
+         -- test
+         DivRatioT: out integer range 1 to 128;
+         acc_regT : out signed(31 downto 0);
+         countT   : out integer range 0 to 128 
+     );
+end accumulator_avg128;
+
+architecture Behavioral of accumulator_avg128 is
+     signal acc_reg   : signed(31 downto 0) := (others => '0'); -- elargi pour eviter depassement
+     signal count     : integer range 1 to 128 := 1;
+     signal avg_reg   : signed(23 downto 0) := (others => '0');
+     signal valid_reg : std_logic := '0'; 
+     signal DivRatio  : integer range 1 to 128 := 1; -- facteur de moyennage entre 1 et 128.
+     signal ShiftRatio: integer range 0 to 7 := 0; -- facteur de moyennage entre 1 et 128.
+     
+     begin
+
+DivRatioT   <= DivRatio ;
+acc_regT    <= acc_reg  ;
+countT      <= count    ;
+     process(clk,DFS)
+     begin
+    ShiftRatio <= to_integer(unsigned(DFS)); --
+    DivRatio <= 2 ** to_integer(unsigned(DFS)); -- convertit DFS en facteur de moyennage entre 1 et 128.
+
+         if rising_edge(clk) then
+             if rst = '1' then
+                 acc_reg   <= (others => '0');
+                 count     <= 1;
+                 avg_reg   <= (others => '0');
+                 valid_reg <= '0';
+             elsif en = '1' then
+                 if count < DivRatio then
+                     acc_reg <= acc_reg + resize(signed(data_in), 32);
+                     count   <= count + 1;
+                     valid_reg <= '0';
+                 else
+                     -- moyenne = acc_reg / DivRatio = acc_reg srl 7
+                     --avg_reg   <= resize(acc_reg(31 downto 7), 24); -- shift right 7 bits
+                     avg_reg   <= resize(shift_right(acc_reg(31 downto 0),ShiftRatio),24);
+                     acc_reg   <= data_in ;  -- reset pour prochaine s�rie
+                     count     <= 1;
+                     valid_reg <= '1';
+                 end if;
+             else
+                 valid_reg <= '0'; -- valide seulement un cycle
+             end if;
+         end if;
+     end process;
+
+     avg_out <= std_logic_vector(avg_reg);
+     valid   <= valid_reg;
+end Behavioral;
+
