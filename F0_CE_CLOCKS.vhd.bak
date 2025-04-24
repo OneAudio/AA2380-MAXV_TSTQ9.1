@@ -43,14 +43,14 @@ begin
 ------------------------------------------------------------------
 --
 ------------------------------------------------------------------
-process (MCLK,MCLKCNT,Delay1,Delay2)	is
+process (MCLK,MCLKCNT,DL1,DL2)	is
 begin
-	-- Generate a short pulse of 1 MCLK perdio mini, that start when MCLKCNT4) become high.
+	-- 
 	if 	rising_edge(MCLK)	then
-		Delay1 <= MCLKCNT(5);
+		Delay1 <= MCLKCNT(4);
 		Delay2 <= Delay1    ;
 	end if;
-	clken_MCLKDV64p <= MCLKCNT(5) and not(Delay2);
+	clken_MCLKDV64p <= MCLKCNT(4) and not(Delay2);
 end process;
 
 process(MCLK,Clear,MCLKCNT)
@@ -63,10 +63,10 @@ begin
     end if;
   
     clken_MCLKDV8     <= MCLKCNT(2); -- divide by 8 output
-    clken_MCLKDV64    <= MCLKCNT(5); -- divide by 64 output
+    clken_MCLKDV64    <= MCLKCNT(4); -- divide by 64 output
 
     if(rising_edge(MCLK)) then
-  -- Clock enable to allow all clock to be perfectly syncronized
+  --
         if(clken_MCLKDV8 = '1') then
             MCLKDV8  <= '1'; --
         else

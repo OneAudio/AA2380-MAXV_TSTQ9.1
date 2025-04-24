@@ -1,7 +1,7 @@
 -------------------------------------------------------
 -- ON le 08/03/2024 --
 -------------------------------------------------------
--- Intel MAXV 5M570 CPLD	Take (52) 44 LE.
+-- Intel MAXV 5M570 CPLD	Take 44 LE.
 -- Function F7 :  F7_ReadyII.vhd
 -------------------------------------------------------
 -- Generate a 1KHz 'CLKSLOW' and 'READY' signal after 

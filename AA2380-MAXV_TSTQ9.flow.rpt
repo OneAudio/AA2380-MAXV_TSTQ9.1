@@ -1,5 +1,5 @@
 Flow report for AA2380-MAXV_TSTQ9
-Fri Apr 18 15:06:21 2025
+Tue Apr 22 18:06:08 2025
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,16 +38,16 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; Flow Summary                                                           ;
 +-------------------------+----------------------------------------------+
-; Flow Status             ; Successful - Fri Apr 18 15:06:21 2025        ;
+; Flow Status             ; Successful - Tue Apr 22 18:06:08 2025        ;
 ; Quartus II Version      ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name           ; AA2380-MAXV_TSTQ9                            ;
-; Top-level Entity Name   ; TEST_ReadADCfullspeed                        ;
+; Top-level Entity Name   ; accumulator_avg128                           ;
 ; Family                  ; MAX II                                       ;
 ; Device                  ; EPM2210F324C3                                ;
 ; Timing Models           ; Final                                        ;
-; Met timing requirements ; Yes                                          ;
-; Total logic elements    ; 198 / 2,210 ( 9 % )                          ;
-; Total pins              ; 108 / 272 ( 40 % )                           ;
+; Met timing requirements ; N/A                                          ;
+; Total logic elements    ; 68                                           ;
+; Total pins              ; 52                                           ;
 ; Total virtual pins      ; 0                                            ;
 ; UFM blocks              ; 0 / 1 ( 0 % )                                ;
 +-------------------------+----------------------------------------------+
@@ -58,65 +58,56 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/18/2025 15:06:15 ;
+; Start date & time ; 04/22/2025 18:06:07 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; AA2380-MAXV_TSTQ9   ;
 +-------------------+---------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                                  ;
-+---------------------------------------+--------------------------------------------------+-------------------+-----------------------+------------+
-; Assignment Name                       ; Value                                            ; Default Value     ; Entity Name           ; Section Id ;
-+---------------------------------------+--------------------------------------------------+-------------------+-----------------------+------------+
-; COMPILER_SIGNATURE_ID                 ; 92668497786263.174498157517412                   ; --                ; --                    ; --         ;
-; IP_TOOL_NAME                          ; LPM_CONSTANT                                     ; --                ; --                    ; --         ;
-; IP_TOOL_VERSION                       ; 9.1                                              ; --                ; --                    ; --         ;
-; MAX_CORE_JUNCTION_TEMP                ; 85                                               ; --                ; --                    ; --         ;
-; MIN_CORE_JUNCTION_TEMP                ; 0                                                ; --                ; --                    ; --         ;
-; MISC_FILE                             ; D:/GIT/AA2380-MAXV_TSTQ9.1/AA2380-MAXV_TSTQ9.dpf ; --                ; --                    ; --         ;
-; MISC_FILE                             ; CONSTVAL.bsf                                     ; --                ; --                    ; --         ;
-; MISC_FILE                             ; CONSTVAL_inst.vhd                                ; --                ; --                    ; --         ;
-; MISC_FILE                             ; CONSTVAL.cmp                                     ; --                ; --                    ; --         ;
-; PARTITION_COLOR                       ; 16764057                                         ; --                ; TEST_ReadADCfullspeed ; Top        ;
-; PARTITION_NETLIST_TYPE                ; SOURCE                                           ; --                ; TEST_ReadADCfullspeed ; Top        ;
-; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                                             ; --                ; --                    ; --         ;
-; TOP_LEVEL_ENTITY                      ; TEST_ReadADCfullspeed                            ; AA2380-MAXV_TSTQ9 ; --                    ; --         ;
-+---------------------------------------+--------------------------------------------------+-------------------+-----------------------+------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                               ;
++---------------------------------------+--------------------------------------------------+-------------------+--------------------+------------+
+; Assignment Name                       ; Value                                            ; Default Value     ; Entity Name        ; Section Id ;
++---------------------------------------+--------------------------------------------------+-------------------+--------------------+------------+
+; COMPILER_SIGNATURE_ID                 ; 189262218608270.174533796701248                  ; --                ; --                 ; --         ;
+; IP_TOOL_NAME                          ; LPM_CONSTANT                                     ; --                ; --                 ; --         ;
+; IP_TOOL_VERSION                       ; 9.1                                              ; --                ; --                 ; --         ;
+; MAX_CORE_JUNCTION_TEMP                ; 85                                               ; --                ; --                 ; --         ;
+; MIN_CORE_JUNCTION_TEMP                ; 0                                                ; --                ; --                 ; --         ;
+; MISC_FILE                             ; D:/GIT/AA2380-MAXV_TSTQ9.1/AA2380-MAXV_TSTQ9.dpf ; --                ; --                 ; --         ;
+; MISC_FILE                             ; CONSTVAL.bsf                                     ; --                ; --                 ; --         ;
+; MISC_FILE                             ; CONSTVAL_inst.vhd                                ; --                ; --                 ; --         ;
+; MISC_FILE                             ; CONSTVAL.cmp                                     ; --                ; --                 ; --         ;
+; PARTITION_COLOR                       ; 16764057                                         ; --                ; accumulator_avg128 ; Top        ;
+; PARTITION_NETLIST_TYPE                ; SOURCE                                           ; --                ; accumulator_avg128 ; Top        ;
+; POWER_EXT_SUPPLY_VOLTAGE_TO_REGULATOR ; 3.3V                                             ; --                ; --                 ; --         ;
+; TOP_LEVEL_ENTITY                      ; accumulator_avg128                               ; AA2380-MAXV_TSTQ9 ; --                 ; --         ;
++---------------------------------------+--------------------------------------------------+-------------------+--------------------+------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                           ;
-+-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:01     ; 1.0                     ; 253 MB              ; 00:00:02                           ;
-; Fitter                  ; 00:00:02     ; 1.0                     ; 222 MB              ; 00:00:02                           ;
-; Assembler               ; 00:00:00     ; 1.0                     ; 195 MB              ; 00:00:00                           ;
-; Classic Timing Analyzer ; 00:00:00     ; 1.0                     ; 165 MB              ; 00:00:00                           ;
-; Total                   ; 00:00:03     ; --                      ; --                  ; 00:00:04                           ;
-+-------------------------+--------------+-------------------------+---------------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 246 MB              ; 00:00:01                           ;
+; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                          ;
-+-------------------------+------------------+---------------+------------+----------------+
-; Module Name             ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
-+-------------------------+------------------+---------------+------------+----------------+
-; Analysis & Synthesis    ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
-; Fitter                  ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
-; Classic Timing Analyzer ; ON-PC-4          ; Windows Vista ; 6.2        ; x86_64         ;
-+-------------------------+------------------+---------------+------------+----------------+
++---------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                       ;
++----------------------+------------------+---------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
++----------------------+------------------+---------------+------------+----------------+
+; Analysis & Synthesis ; i5-Etabli        ; Windows Vista ; 6.2        ; x86_64         ;
++----------------------+------------------+---------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
-quartus_fit --read_settings_files=off --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
-quartus_asm --read_settings_files=off --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
-quartus_tan --read_settings_files=off --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
 
 
 

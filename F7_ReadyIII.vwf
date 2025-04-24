@@ -1,0 +1,343 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+
+/*
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+
+HEADER
+{
+	VERSION = 1;
+	TIME_UNIT = ns;
+	DATA_OFFSET = 0.0;
+	DATA_DURATION = 1000000000.0;
+	SIMULATION_TIME = 1000000000.0;
+	GRID_PHASE = 0.0;
+	GRID_PERIOD = 10.0;
+	GRID_DUTY_CYCLE = 50;
+}
+
+SIGNAL("CLKSLOW")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("FSo")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("READY")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("SR")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 3;
+	LSB_INDEX = 0;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("SR[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SR";
+}
+
+SIGNAL("SR[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SR";
+}
+
+SIGNAL("SR[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SR";
+}
+
+TRANSITION_LIST("CLKSLOW")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 499673.968;
+		NODE
+		{
+			REPEAT = 999;
+			LEVEL 1 FOR 499999.488;
+			LEVEL 0 FOR 499999.488;
+		}
+		LEVEL 1 FOR 499999.488;
+		LEVEL 0 FOR 1349.52;
+	}
+}
+
+TRANSITION_LIST("FSo")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1536001;
+			LEVEL 0 FOR 325.521;
+			LEVEL 1 FOR 325.52;
+		}
+		LEVEL 0 FOR 325.521;
+		LEVEL 1 FOR 47.438;
+	}
+}
+
+TRANSITION_LIST("READY")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 499999162.48;
+		LEVEL 1 FOR 500000837.52;
+	}
+}
+
+TRANSITION_LIST("SR[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 1000000000.0;
+	}
+}
+
+TRANSITION_LIST("SR[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 1000000000.0;
+	}
+}
+
+TRANSITION_LIST("SR[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 1 FOR 1000000000.0;
+	}
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "FSo";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = ASCII;
+	TREE_INDEX = 0;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SR";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 1;
+	TREE_LEVEL = 0;
+	CHILDREN = 2, 3, 4;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SR[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 2;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SR[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 3;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "SR[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 4;
+	TREE_LEVEL = 1;
+	PARENT = 1;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "READY";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = ASCII;
+	TREE_INDEX = 5;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "CLKSLOW";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = ASCII;
+	TREE_INDEX = 6;
+	TREE_LEVEL = 0;
+}
+
+TIME_BAR
+{
+	TIME = 0;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 0;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 0;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 43458315950;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 44458315550;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 100002980889;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 103562462700;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 104562463500;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 204781242350;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 205781240750;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 250250453649;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 250500779298;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 318817549174;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 319817549206;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 404840988949;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 405840988885;
+	MASTER = FALSE;
+}
+
+TIME_BAR
+{
+	TIME = 500000139041;
+	MASTER = TRUE;
+}
+;

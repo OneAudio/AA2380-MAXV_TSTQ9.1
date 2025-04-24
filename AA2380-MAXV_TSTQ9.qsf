@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "MAX II"
 set_global_assignment -name DEVICE EPM2210F324C3
-set_global_assignment -name TOP_LEVEL_ENTITY TEST_ReadADCfullspeed
+set_global_assignment -name TOP_LEVEL_ENTITY accumulator_avg128
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "08:51:00  JANUARY 24, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
@@ -95,9 +95,15 @@ set_global_assignment -name BDF_FILE TestLUTcount96.bdf
 set_global_assignment -name VHDL_FILE F1_ReadADCFullSpeed.vhd
 set_global_assignment -name BDF_FILE TEST_ReadADCfullspeed.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE TEST_ReadADCfullspeed.vwf
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE TEST_ReadADCfullspeed.vwf
+set_global_assignment -name VHDL_FILE F0_CE_CLOCKS.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F0_CE_CLOCKS.vwf
+set_global_assignment -name VHDL_FILE F7_ReadyIII.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE F7_ReadyIII.vwf
+set_global_assignment -name VHDL_FILE accumulator_avg128.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VECTOR_WAVEFORM_FILE accumulator_avg128.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE accumulator_avg128.vwf

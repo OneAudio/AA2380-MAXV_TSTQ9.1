@@ -1,5 +1,5 @@
 Analysis & Synthesis report for AA2380-MAXV_TSTQ9
-Fri Apr 18 15:06:16 2025
+Tue Apr 22 18:06:08 2025
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -13,10 +13,9 @@ Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Analysis & Synthesis Messages
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Analysis & Synthesis Messages
 
 
 
@@ -42,82 +41,82 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                               ;
 +-----------------------------+----------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Fri Apr 18 15:06:16 2025        ;
+; Analysis & Synthesis Status ; Successful - Tue Apr 22 18:06:08 2025        ;
 ; Quartus II Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name               ; AA2380-MAXV_TSTQ9                            ;
-; Top-level Entity Name       ; TEST_ReadADCfullspeed                        ;
+; Top-level Entity Name       ; accumulator_avg128                           ;
 ; Family                      ; MAX II                                       ;
-; Total logic elements        ; 202                                          ;
-; Total pins                  ; 108                                          ;
+; Total logic elements        ; 68                                           ;
+; Total pins                  ; 52                                           ;
 ; Total virtual pins          ; 0                                            ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                                ;
 +-----------------------------+----------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                           ;
-+----------------------------------------------------------------------------+-----------------------+--------------------+
-; Option                                                                     ; Setting               ; Default Value      ;
-+----------------------------------------------------------------------------+-----------------------+--------------------+
-; Device                                                                     ; EPM2210F324C3         ;                    ;
-; Top-level entity name                                                      ; TEST_ReadADCfullspeed ; AA2380-MAXV_TSTQ9  ;
-; Family name                                                                ; MAX II                ; Stratix II         ;
-; Use smart compilation                                                      ; Off                   ; Off                ;
-; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                    ; On                 ;
-; Enable compact report table                                                ; Off                   ; Off                ;
-; Restructure Multiplexers                                                   ; Auto                  ; Auto               ;
-; Create Debugging Nodes for IP Cores                                        ; Off                   ; Off                ;
-; Preserve fewer node names                                                  ; On                    ; On                 ;
-; Disable OpenCore Plus hardware evaluation                                  ; Off                   ; Off                ;
-; Verilog Version                                                            ; Verilog_2001          ; Verilog_2001       ;
-; VHDL Version                                                               ; VHDL_1993             ; VHDL_1993          ;
-; State Machine Processing                                                   ; Auto                  ; Auto               ;
-; Safe State Machine                                                         ; Off                   ; Off                ;
-; Extract Verilog State Machines                                             ; On                    ; On                 ;
-; Extract VHDL State Machines                                                ; On                    ; On                 ;
-; Ignore Verilog initial constructs                                          ; Off                   ; Off                ;
-; Iteration limit for constant Verilog loops                                 ; 5000                  ; 5000               ;
-; Iteration limit for non-constant Verilog loops                             ; 250                   ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                                    ; On                    ; On                 ;
-; Parallel Synthesis                                                         ; On                    ; On                 ;
-; NOT Gate Push-Back                                                         ; On                    ; On                 ;
-; Power-Up Don't Care                                                        ; On                    ; On                 ;
-; Remove Redundant Logic Cells                                               ; Off                   ; Off                ;
-; Remove Duplicate Registers                                                 ; On                    ; On                 ;
-; Ignore CARRY Buffers                                                       ; Off                   ; Off                ;
-; Ignore CASCADE Buffers                                                     ; Off                   ; Off                ;
-; Ignore GLOBAL Buffers                                                      ; Off                   ; Off                ;
-; Ignore ROW GLOBAL Buffers                                                  ; Off                   ; Off                ;
-; Ignore LCELL Buffers                                                       ; Off                   ; Off                ;
-; Ignore SOFT Buffers                                                        ; On                    ; On                 ;
-; Limit AHDL Integers to 32 Bits                                             ; Off                   ; Off                ;
-; Optimization Technique                                                     ; Balanced              ; Balanced           ;
-; Carry Chain Length                                                         ; 70                    ; 70                 ;
-; Auto Carry Chains                                                          ; On                    ; On                 ;
-; Auto Open-Drain Pins                                                       ; On                    ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                                      ; Off                   ; Off                ;
-; Auto Shift Register Replacement                                            ; Auto                  ; Auto               ;
-; Auto Clock Enable Replacement                                              ; On                    ; On                 ;
-; Allow Synchronous Control Signals                                          ; On                    ; On                 ;
-; Force Use of Synchronous Clear Signals                                     ; Off                   ; Off                ;
-; Auto Resource Sharing                                                      ; Off                   ; Off                ;
-; Use LogicLock Constraints during Resource Balancing                        ; On                    ; On                 ;
-; Ignore translate_off and synthesis_off directives                          ; Off                   ; Off                ;
-; Show Parameter Settings Tables in Synthesis Report                         ; On                    ; On                 ;
-; Ignore Maximum Fan-Out Assignments                                         ; Off                   ; Off                ;
-; Synchronization Register Chain Length                                      ; 2                     ; 2                  ;
-; PowerPlay Power Optimization                                               ; Normal compilation    ; Normal compilation ;
-; HDL message level                                                          ; Level2                ; Level2             ;
-; Suppress Register Optimization Related Messages                            ; Off                   ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report                   ; 5000                  ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report                  ; 100                   ; 100                ;
-; Clock MUX Protection                                                       ; On                    ; On                 ;
-; Block Design Naming                                                        ; Auto                  ; Auto               ;
-; Synthesis Effort                                                           ; Auto                  ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                    ; On                 ;
-; Analysis & Synthesis Message Level                                         ; Medium                ; Medium             ;
-; Disable Register Merging Across Hierarchies                                ; Auto                  ; Auto               ;
-+----------------------------------------------------------------------------+-----------------------+--------------------+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EPM2210F324C3      ;                    ;
+; Top-level entity name                                                      ; accumulator_avg128 ; AA2380-MAXV_TSTQ9  ;
+; Family name                                                                ; MAX II             ; Stratix II         ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
++----------------------------------------------------------------------------+--------------------+--------------------+
 
 
 Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
@@ -131,76 +130,58 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                            ;
-+----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                            ;
-+----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
-; f20_emulateadc.vhd               ; yes             ; User VHDL File                     ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/f20_emulateadc.vhd        ;
-; F1_ReadADCFullSpeed.vhd          ; yes             ; User VHDL File                     ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/F1_ReadADCFullSpeed.vhd   ;
-; TEST_ReadADCfullspeed.bdf        ; yes             ; User Block Diagram/Schematic File  ; D:/Mes documents/P-CAD_PROJECTS/_PROJETS_ON/Projects/Git/_Logiciels_KICAD/AA2380-MAXV_TSTQ9.1/TEST_ReadADCfullspeed.bdf ;
-+----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                   ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                      ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------+
+; accumulator_avg128.vhd           ; yes             ; User VHDL File  ; D:/GIT/AA2380-MAXV_TSTQ9.1/accumulator_avg128.vhd ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------+
 
 
-+------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                  ;
-+---------------------------------------------+--------------------------------+
-; Resource                                    ; Usage                          ;
-+---------------------------------------------+--------------------------------+
-; Total logic elements                        ; 202                            ;
-;     -- Combinational with no register       ; 34                             ;
-;     -- Register only                        ; 147                            ;
-;     -- Combinational with a register        ; 21                             ;
-;                                             ;                                ;
-; Logic element usage by number of LUT inputs ;                                ;
-;     -- 4 input functions                    ; 29                             ;
-;     -- 3 input functions                    ; 2                              ;
-;     -- 2 input functions                    ; 20                             ;
-;     -- 1 input functions                    ; 1                              ;
-;     -- 0 input functions                    ; 3                              ;
-;                                             ;                                ;
-; Logic elements by mode                      ;                                ;
-;     -- normal mode                          ; 190                            ;
-;     -- arithmetic mode                      ; 12                             ;
-;     -- qfbk mode                            ; 0                              ;
-;     -- register cascade mode                ; 0                              ;
-;     -- synchronous clear/load mode          ; 7                              ;
-;     -- asynchronous clear/load mode         ; 109                            ;
-;                                             ;                                ;
-; Total registers                             ; 168                            ;
-; Total logic cells in carry chains           ; 15                             ;
-; I/O pins                                    ; 108                            ;
-; Maximum fan-out node                        ; F1_ReadADCFullSpeed:inst1|SCKL ;
-; Maximum fan-out                             ; 103                            ;
-; Total fan-out                               ; 756                            ;
-; Average fan-out                             ; 2.44                           ;
-+---------------------------------------------+--------------------------------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 68    ;
+;     -- Combinational with no register       ; 3     ;
+;     -- Register only                        ; 0     ;
+;     -- Combinational with a register        ; 65    ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 32    ;
+;     -- 2 input functions                    ; 35    ;
+;     -- 1 input functions                    ; 1     ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 30    ;
+;     -- arithmetic mode                      ; 38    ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 41    ;
+;     -- asynchronous clear/load mode         ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 65    ;
+; Total logic cells in carry chains           ; 40    ;
+; I/O pins                                    ; 52    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 65    ;
+; Total fan-out                               ; 362   ;
+; Average fan-out                             ; 3.02  ;
++---------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                   ;
-+--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------+--------------+
-; Compilation Hierarchy Node     ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                              ; Library Name ;
-+--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------+--------------+
-; |TEST_ReadADCfullspeed         ; 202 (3)     ; 168          ; 0          ; 108  ; 0            ; 34 (1)       ; 147 (2)           ; 21 (0)           ; 15 (0)          ; 0 (0)      ; |TEST_ReadADCfullspeed                           ; work         ;
-;    |F1_ReadADCFullSpeed:inst1| ; 141 (141)   ; 110          ; 0          ; 0    ; 0            ; 31 (31)      ; 98 (98)           ; 12 (12)          ; 9 (9)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1 ; work         ;
-;    |F20_EmulateADC:inst10|     ; 34 (34)     ; 32           ; 0          ; 0    ; 0            ; 2 (2)        ; 24 (24)           ; 8 (8)            ; 6 (6)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F20_EmulateADC:inst10     ; work         ;
-;    |F20_EmulateADC:inst9|      ; 24 (24)     ; 24           ; 0          ; 0    ; 0            ; 0 (0)        ; 23 (23)           ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |TEST_ReadADCfullspeed|F20_EmulateADC:inst9      ; work         ;
-+--------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                  ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
+; |accumulator_avg128        ; 68 (68)     ; 65           ; 0          ; 52   ; 0            ; 3 (3)        ; 0 (0)             ; 65 (65)          ; 40 (40)         ; 0 (0)      ; |accumulator_avg128 ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+-----------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                ;
-+---------------------------------------+-------------------------------------------+
-; Register name                         ; Reason for Removal                        ;
-+---------------------------------------+-------------------------------------------+
-; F1_ReadADCFullSpeed:inst1|CLKFSd1     ; Merged with inst3                         ;
-; F20_EmulateADC:inst9|Busy_count[0..5] ; Lost fanout                               ;
-; F20_EmulateADC:inst9|Busy_end         ; Lost fanout                               ;
-; F20_EmulateADC:inst9|BUSY_on          ; Merged with F20_EmulateADC:inst10|BUSY_on ;
-; Total Number of Removed Registers = 9 ;                                           ;
-+---------------------------------------+-------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -208,30 +189,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 168   ;
-; Number of registers using Synchronous Clear  ; 7     ;
+; Total registers                              ; 65    ;
+; Number of registers using Synchronous Clear  ; 41    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 61    ;
-; Number of registers using Asynchronous Load  ; 48    ;
-; Number of registers using Clock Enable       ; 57    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 64    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                   ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[22] ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[20] ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[18] ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[16] ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[23] ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[21] ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[19] ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |TEST_ReadADCfullspeed|F1_ReadADCFullSpeed:inst1|r_DATAL[17] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; 4:1                ; 40 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |accumulator_avg128|acc_reg[15] ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |accumulator_avg128|avg_reg[0]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
 
 
 +-------------------------------+
@@ -240,7 +215,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Fri Apr 18 15:06:15 2025
+    Info: Processing started: Tue Apr 22 18:06:07 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off AA2380_MAXV -c AA2380-MAXV_TSTQ9
 Info: Found 1 design units, including 1 entities, in source file aa2380_maxv.bdf
     Info: Found entity 1: AA2380_MAXV
@@ -313,28 +288,27 @@ Info: Found 2 design units, including 1 entities, in source file f1_readadcfulls
     Info: Found entity 1: F1_ReadADCFullSpeed
 Info: Found 1 design units, including 1 entities, in source file test_readadcfullspeed.bdf
     Info: Found entity 1: TEST_ReadADCfullspeed
-Info: Elaborating entity "TEST_ReadADCfullspeed" for the top level hierarchy
-Info: Elaborating entity "F1_ReadADCFullSpeed" for hierarchy "F1_ReadADCFullSpeed:inst1"
-Info: Elaborating entity "F20_EmulateADC" for hierarchy "F20_EmulateADC:inst9"
-Info: 7 registers lost all their fanouts during netlist optimizations. The first 7 are displayed below.
-    Info: Register "F20_EmulateADC:inst9|Busy_count[4]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst9|Busy_count[3]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst9|Busy_count[1]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst9|Busy_count[0]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst9|Busy_count[5]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst9|Busy_count[2]" lost all its fanouts during netlist optimizations.
-    Info: Register "F20_EmulateADC:inst9|Busy_end" lost all its fanouts during netlist optimizations.
-Info: Implemented 310 device resources after synthesis - the final resource count might be different
-    Info: Implemented 51 input pins
-    Info: Implemented 57 output pins
-    Info: Implemented 202 logic cells
+Info: Found 2 design units, including 1 entities, in source file f0_ce_clocks.vhd
+    Info: Found design unit 1: F0_CE_CLOCKS-DESCRIPTION
+    Info: Found entity 1: F0_CE_CLOCKS
+Info: Found 2 design units, including 1 entities, in source file f7_readyiii.vhd
+    Info: Found design unit 1: F7_ReadyIII-Behavioral
+    Info: Found entity 1: F7_ReadyIII
+Info: Found 2 design units, including 1 entities, in source file accumulator_avg128.vhd
+    Info: Found design unit 1: accumulator_avg128-Behavioral
+    Info: Found entity 1: accumulator_avg128
+Info: Elaborating entity "accumulator_avg128" for the top level hierarchy
+Info: Implemented 120 device resources after synthesis - the final resource count might be different
+    Info: Implemented 27 input pins
+    Info: Implemented 25 output pins
+    Info: Implemented 68 logic cells
 Warning: Ignored assignments for entity "AA2380-MAXV_TSTQ9" -- entity does not exist in design
     Warning: Assignment for entity set_global_assignment -name LL_ROOT_REGION ON -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
     Warning: Assignment for entity set_global_assignment -name LL_MEMBER_STATE LOCKED -entity "AA2380-MAXV_TSTQ9" -section_id "Root Region" was ignored
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 253 megabytes
-    Info: Processing ended: Fri Apr 18 15:06:16 2025
+    Info: Peak virtual memory: 246 megabytes
+    Info: Processing ended: Tue Apr 22 18:06:08 2025
     Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
 
 

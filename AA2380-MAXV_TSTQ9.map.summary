@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Fri Apr 18 15:06:16 2025
+Analysis & Synthesis Status : Successful - Tue Apr 22 18:06:08 2025
 Quartus II Version : 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
 Revision Name : AA2380-MAXV_TSTQ9
-Top-level Entity Name : TEST_ReadADCfullspeed
+Top-level Entity Name : accumulator_avg128
 Family : MAX II
-Total logic elements : 202
-Total pins : 108
+Total logic elements : 68
+Total pins : 52
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

@@ -5,51 +5,41 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 1.206 ns
-From           : CLKFS
-To             : inst3
+Actual Time    : 1.469 ns
+From           : clear
+To             : CLK_1kHz~reg0
 From Clock     : --
-To Clock       : MCLK
+To Clock       : FSo
 Failed Paths   : 0
 
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 9.309 ns
-From           : F20_EmulateADC:inst10|SRDATA[23]
-To             : SDOR
-From Clock     : MCLK
-To Clock       : --
-Failed Paths   : 0
-
-Type           : Worst-case tpd
-Slack          : N/A
-Required Time  : None
-Actual Time    : 6.418 ns
-From           : CLKFS
-To             : nCNVL
-From Clock     : --
+Actual Time    : 10.508 ns
+From           : READY~reg0
+To             : READY
+From Clock     : FSo
 To Clock       : --
 Failed Paths   : 0
 
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : -0.860 ns
-From           : CLKFS
-To             : inst3
+Actual Time    : 3.918 ns
+From           : clear
+To             : READY~reg0
 From Clock     : --
-To Clock       : MCLK
+To Clock       : FSo
 Failed Paths   : 0
 
-Type           : Clock Setup: 'MCLK'
+Type           : Clock Setup: 'FSo'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 155.67 MHz ( period = 6.424 ns )
-From           : F1_ReadADCFullSpeed:inst1|TCLK23[4]
-To             : F1_ReadADCFullSpeed:inst1|r_DATAR[20]
-From Clock     : MCLK
-To Clock       : MCLK
+Actual Time    : 224.22 MHz ( period = 4.460 ns )
+From           : counter[3]
+To             : counter[5]
+From Clock     : FSo
+To Clock       : FSo
 Failed Paths   : 0
 
 Type           : Total number of failed paths
